@@ -1,0 +1,12 @@
+def shared_pods
+    pod 'SwiftLint'
+end
+
+def shared_pods_macos
+    platform :macos, '10.14'
+    shared_pods
+end
+
+target 'RVS_MediaServer' do
+    shared_pods_macos
+end

@@ -1,0 +1,6 @@
+xcodebuild_arguments:
+    - "-project"
+    - "RVS_MediaServer.xcodeproj"
+    - "-scheme"
+    - "RVS_MediaServer"
+    
