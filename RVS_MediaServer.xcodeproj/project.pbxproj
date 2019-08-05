@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		D43D8DDC22F8369400C075F3 /* RVS_MediaServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RVS_MediaServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		D43D8DDF22F8369400C075F3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D43D8DE622F836D700C075F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +42,7 @@
 		D43D8DD322F8369400C075F3 = {
 			isa = PBXGroup;
 			children = (
+				D43D8DE722F8370F00C075F3 /* Misc */,
 				D43D8DDE22F8369400C075F3 /* RVS_MediaServer */,
 				D43D8DDD22F8369400C075F3 /* Products */,
 			);
@@ -60,6 +62,14 @@
 				D43D8DDF22F8369400C075F3 /* main.swift */,
 			);
 			path = RVS_MediaServer;
+			sourceTree = "<group>";
+		};
+		D43D8DE722F8370F00C075F3 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				D43D8DE622F836D700C075F3 /* Info.plist */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +256,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KSAUGZFWP2;
+				INFOPLIST_FILE = "$(SRCROOT)/Misc/Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -256,6 +267,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KSAUGZFWP2;
+				INFOPLIST_FILE = "$(SRCROOT)/Misc/Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
