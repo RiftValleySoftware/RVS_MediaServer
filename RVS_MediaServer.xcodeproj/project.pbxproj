@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -127,7 +127,7 @@
 				};
 			};
 			buildConfigurationList = D43D8DD722F8369400C075F3 /* Build configuration list for PBXProject "RVS_MediaServer" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -204,7 +204,6 @@
 /* Begin XCBuildConfiguration section */
 		D43D8DE122F8369400C075F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4807B4322F843CD00759FE8 /* Warnings.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -266,7 +265,6 @@
 		};
 		D43D8DE222F8369400C075F3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4807B4322F843CD00759FE8 /* Warnings.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

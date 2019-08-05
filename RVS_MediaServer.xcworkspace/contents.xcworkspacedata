@@ -5,6 +5,9 @@
       location = "group:"
       name = "Meta">
       <FileRef
+         location = "group:README.md">
+      </FileRef>
+      <FileRef
          location = "group:.jazzy.yaml">
       </FileRef>
       <FileRef
