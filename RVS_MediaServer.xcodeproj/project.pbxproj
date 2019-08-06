@@ -7,19 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D454ED5D22F9EB940022F8E7 /* ffmpeg in Embed ffmpeg */ = {isa = PBXBuildFile; fileRef = D454ED5B22F9EB7D0022F8E7 /* ffmpeg */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D4807B4522F843CD00759FE8 /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D4807B4322F843CD00759FE8 /* Warnings.xcconfig */; };
-		D4EEC82122F83F81000AD2A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EEC82022F83F81000AD2A9 /* AppDelegate.swift */; };
+		D4EEC82122F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EEC82022F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift */; };
 		D4EEC82322F83F81000AD2A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EEC82222F83F81000AD2A9 /* ViewController.swift */; };
 		D4EEC82522F83F82000AD2A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4EEC82422F83F82000AD2A9 /* Assets.xcassets */; };
 		D4EEC82822F83F82000AD2A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4EEC82622F83F82000AD2A9 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D454ED5422F9EAFF0022F8E7 /* Embed ffmpeg */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				D454ED5D22F9EB940022F8E7 /* ffmpeg in Embed ffmpeg */,
+			);
+			name = "Embed ffmpeg";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		D454ED5B22F9EB7D0022F8E7 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = ffmpeg; path = ffmpeg/bin/ffmpeg; sourceTree = "<group>"; };
 		D4807B4122F843CD00759FE8 /* RVS_MediaServer_App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = RVS_MediaServer_App.entitlements; sourceTree = "<group>"; };
 		D4807B4222F843CD00759FE8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4807B4322F843CD00759FE8 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		D4EEC81E22F83F81000AD2A9 /* RVS_MediaServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RVS_MediaServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4EEC82022F83F81000AD2A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D4EEC82022F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_AppDelegate.swift; sourceTree = "<group>"; };
 		D4EEC82222F83F81000AD2A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D4EEC82422F83F82000AD2A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4EEC82722F83F82000AD2A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -42,6 +58,7 @@
 				D4807B3A22F8416700759FE8 /* MainApp */,
 				D4EEC81F22F83F81000AD2A9 /* ViewControllers */,
 				D4807B3922F8414E00759FE8 /* Resources */,
+				D454ED5922F9EB5B0022F8E7 /* ffmpeg */,
 				D4807B4022F843AE00759FE8 /* Meta */,
 				D43D8DDD22F8369400C075F3 /* Products */,
 			);
@@ -53,6 +70,22 @@
 				D4EEC81E22F83F81000AD2A9 /* RVS_MediaServer.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D454ED5922F9EB5B0022F8E7 /* ffmpeg */ = {
+			isa = PBXGroup;
+			children = (
+				D454ED5A22F9EB710022F8E7 /* bin */,
+			);
+			name = ffmpeg;
+			sourceTree = "<group>";
+		};
+		D454ED5A22F9EB710022F8E7 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				D454ED5B22F9EB7D0022F8E7 /* ffmpeg */,
+			);
+			name = bin;
 			sourceTree = "<group>";
 		};
 		D4807B3922F8414E00759FE8 /* Resources */ = {
@@ -67,7 +100,7 @@
 		D4807B3A22F8416700759FE8 /* MainApp */ = {
 			isa = PBXGroup;
 			children = (
-				D4EEC82022F83F81000AD2A9 /* AppDelegate.swift */,
+				D4EEC82022F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift */,
 			);
 			path = MainApp;
 			sourceTree = "<group>";
@@ -101,6 +134,7 @@
 				D4EEC81A22F83F81000AD2A9 /* Sources */,
 				D4EEC81B22F83F81000AD2A9 /* Frameworks */,
 				D4EEC81C22F83F81000AD2A9 /* Resources */,
+				D454ED5422F9EAFF0022F8E7 /* Embed ffmpeg */,
 			);
 			buildRules = (
 			);
@@ -184,7 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4EEC82322F83F81000AD2A9 /* ViewController.swift in Sources */,
-				D4EEC82122F83F81000AD2A9 /* AppDelegate.swift in Sources */,
+				D4EEC82122F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

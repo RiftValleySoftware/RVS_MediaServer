@@ -14,9 +14,6 @@
          location = "group:.swiftlint.yml">
       </FileRef>
       <FileRef
-         location = "group:Cartfile">
-      </FileRef>
-      <FileRef
          location = "group:jazzy.sh">
       </FileRef>
    </Group>
