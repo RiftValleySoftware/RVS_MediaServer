@@ -57,6 +57,12 @@
                 <a class="nav-group-task-link" href="Classes/RVS_MediaServer_AppDelegate.html">RVS_MediaServer_AppDelegate</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/RVS_MediaServer_PersistentPrefs.html">RVS_MediaServer_PersistentPrefs</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/RVS_MediaServer_PersistentPrefs/_PrefsKeys.html">– _PrefsKeys</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/RVS_MediaServer_SettingsViewController.html">RVS_MediaServer_SettingsViewController</a>
               </li>
               <li class="nav-group-task">
@@ -126,7 +132,47 @@
         <section class="section">
           <div class="section-content">
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Persistent%20Prefs%20Class"></a>
+                <a name="//apple_ref/swift/Section/Persistent Prefs Class" class="dashAnchor"></a>
+                <a href="#/Persistent%20Prefs%20Class">
+                  <h3 class="section-name">Persistent Prefs Class</h3>
+                </a>
+              </div>
               <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_PersistentPrefs"></a>
+                    <a name="//apple_ref/swift/Class/RVS_MediaServer_PersistentPrefs" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_PersistentPrefs">RVS_MediaServer_PersistentPrefs</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This class translates from the rather generic prefs we have in persistent storage, to an object model.
+It also provides a <a href="https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift">KVO</a> wrapper for them.
+This will also explicitly reference the main prefs object, so simply instantiating this class will automagically give you the app prefs. All changes will be sent to the bundle prefs.
+We use a class, even though we could get away with a struct, because we want to make it clear that we are affecting referenced values (saved in the bundle).
+As the class is KVO-enabled, you can bind it for stuff like SwiftUI.
+As it is a class, it can be subclassed and extended.</p>
+
+                        <a href="Classes/RVS_MediaServer_PersistentPrefs.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">RVS_MediaServer_PersistentPrefs</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>

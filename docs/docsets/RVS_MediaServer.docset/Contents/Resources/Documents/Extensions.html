@@ -57,6 +57,12 @@
                 <a class="nav-group-task-link" href="Classes/RVS_MediaServer_AppDelegate.html">RVS_MediaServer_AppDelegate</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/RVS_MediaServer_PersistentPrefs.html">RVS_MediaServer_PersistentPrefs</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/RVS_MediaServer_PersistentPrefs/_PrefsKeys.html">– _PrefsKeys</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/RVS_MediaServer_SettingsViewController.html">RVS_MediaServer_SettingsViewController</a>
               </li>
               <li class="nav-group-task">
@@ -158,6 +164,46 @@
               </ul>
             </div>
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/View%20Extension"></a>
+                <a name="//apple_ref/swift/Section/View Extension" class="dashAnchor"></a>
+                <a href="#/View%20Extension">
+                  <h3 class="section-name">View Extension</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)NSView"></a>
+                    <a name="//apple_ref/swift/Extension/NSView" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)NSView">NSView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is an extension to the standard NSView class, so we can see if we are in <q>dark mode.</q>
+Cribbed from here: <a href="https://stackoverflow.com/a/52523517/879365">https://stackoverflow.com/a/52523517/879365</a></p>
+
+                        <a href="Extensions/NSView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">NSView</span> <span class="p">:</span> <span class="kt">NSResponder</span><span class="p">,</span> <span class="kt">NSAnimatablePropertyContainer</span><span class="p">,</span> <span class="kt">NSUserInterfaceItemIdentification</span><span class="p">,</span> <span class="kt">NSDraggingDestination</span><span class="p">,</span> <span class="kt">NSAppearanceCustomization</span><span class="p">,</span> <span class="kt">NSAccessibilityElementProtocol</span><span class="p">,</span> <span class="kt">NSAccessibilityProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
               <ul class="item-container">
                 <li class="item">
                   <div>
@@ -213,46 +259,6 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">StringProtocol</span> <span class="p">:</span> <span class="kt">BidirectionalCollection</span><span class="p">,</span> <span class="kt">Comparable</span><span class="p">,</span> <span class="kt">ExpressibleByStringInterpolation</span><span class="p">,</span> <span class="kt">Hashable</span><span class="p">,</span> <span class="kt">LosslessStringConvertible</span><span class="p">,</span> <span class="kt">TextOutputStream</span><span class="p">,</span> <span class="kt">TextOutputStreamable</span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">Element</span> <span class="o">==</span> <span class="kt">Character</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">Index</span> <span class="o">==</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Index</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">StringInterpolation</span> <span class="o">==</span> <span class="kt">DefaultStringInterpolation</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">SubSequence</span> <span class="p">:</span> <span class="kt">StringProtocol</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/View%20Extension"></a>
-                <a name="//apple_ref/swift/Section/View Extension" class="dashAnchor"></a>
-                <a href="#/View%20Extension">
-                  <h3 class="section-name">View Extension</h3>
-                </a>
-              </div>
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)NSView"></a>
-                    <a name="//apple_ref/swift/Extension/NSView" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)NSView">NSView</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This is an extension to the standard NSView class, so we can see if we are in <q>dark mode.</q>
-Cribbed from here: <a href="https://stackoverflow.com/a/52523517/879365">https://stackoverflow.com/a/52523517/879365</a></p>
-
-                        <a href="Extensions/NSView.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">NSView</span> <span class="p">:</span> <span class="kt">NSResponder</span><span class="p">,</span> <span class="kt">NSAnimatablePropertyContainer</span><span class="p">,</span> <span class="kt">NSUserInterfaceItemIdentification</span><span class="p">,</span> <span class="kt">NSDraggingDestination</span><span class="p">,</span> <span class="kt">NSAppearanceCustomization</span><span class="p">,</span> <span class="kt">NSAccessibilityElementProtocol</span><span class="p">,</span> <span class="kt">NSAccessibilityProtocol</span></code></pre>
 
                         </div>
                       </div>

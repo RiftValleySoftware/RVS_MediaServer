@@ -57,6 +57,12 @@
                 <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_AppDelegate.html">RVS_MediaServer_AppDelegate</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_PersistentPrefs.html">RVS_MediaServer_PersistentPrefs</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_PersistentPrefs/_PrefsKeys.html">– _PrefsKeys</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_SettingsViewController.html">RVS_MediaServer_SettingsViewController</a>
               </li>
               <li class="nav-group-task">
@@ -188,36 +194,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15RVS_MediaServer0a1_bC12_AppDelegateC03webC0So06GCDWebC0CSgvp"></a>
-                    <a name="//apple_ref/swift/Property/webServer" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC12_AppDelegateC03webC0So06GCDWebC0CSgvp">webServer</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This contains the <q>mini webserver</q> that we use to serve the converted HSL stream.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">webServer</span><span class="p">:</span> <span class="kt">GCDWebServer</span><span class="o">!</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer0a1_bC12_AppDelegateC5prefsAA0A16_PersistentPrefsCSgvp"></a>
-                    <a name="//apple_ref/swift/Property/prefs" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC12_AppDelegateC5prefsAA0A16_PersistentPrefsCSgvp">prefs</a>
+                    <a name="/s:15RVS_MediaServer0a1_bC12_AppDelegateC6_prefs33_E682B9374B8CA039DE6E1B103F1DE015LLAA0A16_PersistentPrefsCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_prefs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC12_AppDelegateC6_prefs33_E682B9374B8CA039DE6E1B103F1DE015LLAA0A16_PersistentPrefsCSgvp">_prefs</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -232,7 +211,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">prefs</span><span class="p">:</span> <span class="kt"><a href="../Classes/RVS_PersistentPrefs.html">RVS_PersistentPrefs</a></span><span class="o">!</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">fileprivate</span> <span class="k">var</span> <span class="nv">_prefs</span><span class="p">:</span> <span class="kt"><a href="../Classes/RVS_PersistentPrefs.html">RVS_PersistentPrefs</a></span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -263,7 +242,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>This displays a simple alert, with an OK button.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -273,31 +253,36 @@
 
                         </div>
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer0a1_bC12_AppDelegateC08startWebC0yyF"></a>
-                    <a name="//apple_ref/swift/Method/startWebServer()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC12_AppDelegateC08startWebC0yyF">startWebServer()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">startWebServer</span><span class="p">()</span></code></pre>
-
-                        </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>header</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The header to display at the top.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>message</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A String, containing whatever messge is to be displayed below the header.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

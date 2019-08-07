@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RVS_PersistentPrefs Class Reference</title>
+    <title>RVS_MediaServer_PersistentPrefs Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/RVS_PersistentPrefs" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Class/RVS_MediaServer_PersistentPrefs" class="dashAnchor"></a>
 
-    <a title="RVS_PersistentPrefs Class Reference"></a>
+    <a title="RVS_MediaServer_PersistentPrefs Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">RVS_MediaServer Reference</a>
       <img class="carat" src="../img/carat.png" />
-      RVS_PersistentPrefs Class Reference
+      RVS_MediaServer_PersistentPrefs Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -123,15 +123,19 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>RVS_PersistentPrefs</h1>
+            <h1>RVS_MediaServer_PersistentPrefs</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RVS_PersistentPrefs</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">RVS_MediaServer_PersistentPrefs</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>This is a <q>persistent defaults</q> class (not a struct -we want this to be by reference). It uses the app standard userDefaults mechanism
-for saving and retrieving a Dictionary<String, Any>.</p>
+            <p>This class translates from the rather generic prefs we have in persistent storage, to an object model.
+It also provides a <a href="https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift">KVO</a> wrapper for them.
+This will also explicitly reference the main prefs object, so simply instantiating this class will automagically give you the app prefs. All changes will be sent to the bundle prefs.
+We use a class, even though we could get away with a struct, because we want to make it clear that we are affecting referenced values (saved in the bundle).
+As the class is KVO-enabled, you can bind it for stuff like SwiftUI.
+As it is a class, it can be subclassed and extended.</p>
 
           </div>
         </section>
@@ -139,20 +143,13 @@ for saving and retrieving a Dictionary<String, Any>.</p>
         <section class="section">
           <div class="section-content">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Private%20Instance%20Properties"></a>
-                <a name="//apple_ref/swift/Section/Private Instance Properties" class="dashAnchor"></a>
-                <a href="#/Private%20Instance%20Properties">
-                  <h3 class="section-name">Private Instance Properties</h3>
-                </a>
-              </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC12_defaultKeys33_E5345A130D3B59AEB4195B15451E375CLLSaySSGSgvp"></a>
-                    <a name="//apple_ref/swift/Property/_defaultKeys" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC12_defaultKeys33_E5345A130D3B59AEB4195B15451E375CLLSaySSGSgvp">_defaultKeys</a>
+                    <a name="/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC6_prefs33_E5345A130D3B59AEB4195B15451E375CLLAA0a1_dE0CSgvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/_prefs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC6_prefs33_E5345A130D3B59AEB4195B15451E375CLLAA0a1_dE0CSgvpZ">_prefs</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -160,68 +157,15 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This will contain the default keys that are used to describe the stored prefs.</p>
+                        <p>This is a SINGLETON instance of our prefs.
+I hate SINGLETONS, but in this case, it&rsquo;s safe.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">let</span> <span class="nv">_defaultKeys</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span><span class="o">!</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC7_values33_E5345A130D3B59AEB4195B15451E375CLLSDySSypGSgvp"></a>
-                    <a name="//apple_ref/swift/Property/_values" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC7_values33_E5345A130D3B59AEB4195B15451E375CLLSDySSypGSgvp">_values</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>These are the current values.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_values</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span><span class="o">!</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC4_tag33_E5345A130D3B59AEB4195B15451E375CLLSSSgvp"></a>
-                    <a name="//apple_ref/swift/Property/_tag" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC4_tag33_E5345A130D3B59AEB4195B15451E375CLLSSSgvp">_tag</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This is the tag for the overall set of prefs.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">let</span> <span class="nv">_tag</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">_prefs</span><span class="p">:</span> <span class="kt"><a href="../Classes/RVS_PersistentPrefs.html">RVS_PersistentPrefs</a></span><span class="o">!</span></code></pre>
 
                         </div>
                       </div>
@@ -232,19 +176,19 @@ for saving and retrieving a Dictionary<String, Any>.</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Private%20Instance%20Methods"></a>
-                <a name="//apple_ref/swift/Section/Private Instance Methods" class="dashAnchor"></a>
-                <a href="#/Private%20Instance%20Methods">
-                  <h3 class="section-name">Private Instance Methods</h3>
+                <a name="/Private%20Enums"></a>
+                <a name="//apple_ref/swift/Section/Private Enums" class="dashAnchor"></a>
+                <a href="#/Private%20Enums">
+                  <h3 class="section-name">Private Enums</h3>
                 </a>
               </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC10_saveState33_E5345A130D3B59AEB4195B15451E375CLLyyF"></a>
-                    <a name="//apple_ref/swift/Method/_saveState()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC10_saveState33_E5345A130D3B59AEB4195B15451E375CLLyyF">_saveState()</a>
+                    <a name="/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC01_E4Keys33_E5345A130D3B59AEB4195B15451E375CLLO"></a>
+                    <a name="//apple_ref/swift/Enum/_PrefsKeys" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC01_E4Keys33_E5345A130D3B59AEB4195B15451E375CLLO">_PrefsKeys</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -252,41 +196,15 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This simply takes a snapshot of all the text fields, and saves them in the app defaults container.</p>
+                        <p>These are the keys for our prefs.</p>
 
+                        <a href="../Classes/RVS_MediaServer_PersistentPrefs/_PrefsKeys.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">_saveState</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC10_loadState33_E5345A130D3B59AEB4195B15451E375CLLyyF"></a>
-                    <a name="//apple_ref/swift/Method/_loadState()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC10_loadState33_E5345A130D3B59AEB4195B15451E375CLLyyF">_loadState()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This reads anything in the app defaults container, and applies them to set up the text fields.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">_loadState</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">enum</span> <span class="nv">_PrefsKeys</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -297,19 +215,19 @@ for saving and retrieving a Dictionary<String, Any>.</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Private%20Instance%20Initializer"></a>
-                <a name="//apple_ref/swift/Section/Private Instance Initializer" class="dashAnchor"></a>
-                <a href="#/Private%20Instance%20Initializer">
-                  <h3 class="section-name">Private Instance Initializer</h3>
+                <a name="/Private%20Static%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Private Static Properties" class="dashAnchor"></a>
+                <a href="#/Private%20Static%20Properties">
+                  <h3 class="section-name">Private Static Properties</h3>
                 </a>
               </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC9_defaults4_tag7_valuesACSDySSypG_SSAGtc33_E5345A130D3B59AEB4195B15451E375CLlfc"></a>
-                    <a name="//apple_ref/swift/Method/init(_defaults:_tag:_values:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC9_defaults4_tag7_valuesACSDySSypG_SSAGtc33_E5345A130D3B59AEB4195B15451E375CLlfc">init(_defaults:_tag:_values:)</a>
+                    <a name="/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC08_defaultE6Values33_E5345A130D3B59AEB4195B15451E375CLLSDySSypGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/_defaultPrefsValues" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC08_defaultE6Values33_E5345A130D3B59AEB4195B15451E375CLLSDySSypGvpZ">_defaultPrefsValues</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -317,14 +235,14 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This is private to prevent this class from being instantiated in an undefined state.</p>
+                        <p>These are the default prefs values.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="nf">init</span><span class="p">(</span><span class="n">_defaults</span> <span class="nv">inDefaults</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:],</span> <span class="n"><a href="../Classes/RVS_PersistentPrefs.html#/s:15RVS_MediaServer0A16_PersistentPrefsC4_tag33_E5345A130D3B59AEB4195B15451E375CLLSSSgvp">_tag</a></span> <span class="nv">inTag</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span><span class="p">,</span> <span class="n"><a href="../Classes/RVS_PersistentPrefs.html#/s:15RVS_MediaServer0A16_PersistentPrefsC7_values33_E5345A130D3B59AEB4195B15451E375CLLSDySSypGSgvp">_values</a></span> <span class="nv">inValues</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:])</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">_defaultPrefsValues</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -335,19 +253,19 @@ for saving and retrieving a Dictionary<String, Any>.</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Public%20Instance%20Properties"></a>
-                <a name="//apple_ref/swift/Section/Public Instance Properties" class="dashAnchor"></a>
-                <a href="#/Public%20Instance%20Properties">
-                  <h3 class="section-name">Public Instance Properties</h3>
+                <a name="/Private%20Calculated%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Private Calculated Properties" class="dashAnchor"></a>
+                <a href="#/Private%20Calculated%20Properties">
+                  <h3 class="section-name">Private Calculated Properties</h3>
                 </a>
               </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC6valuesSDySSypGSgvp"></a>
-                    <a name="//apple_ref/swift/Property/values" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC6valuesSDySSypGSgvp">values</a>
+                    <a name="/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC05_calcE033_E5345A130D3B59AEB4195B15451E375CLLAA0a1_dE0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_calcPrefs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC05_calcE033_E5345A130D3B59AEB4195B15451E375CLLAA0a1_dE0CSgvp">_calcPrefs</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -355,16 +273,14 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Accessor for the values. Returns them as a String-hashed Dictionary of Any.</p>
-
-<p>When we read, we always load, first, and when we write, we always save, after.</p>
+                        <p>This is an accessor that translates between the static prefs SINGLETON, and the instance.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">values</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_calcPrefs</span><span class="p">:</span> <span class="kt"><a href="../Classes/RVS_PersistentPrefs.html">RVS_PersistentPrefs</a></span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -375,19 +291,19 @@ for saving and retrieving a Dictionary<String, Any>.</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Public%20Instance%20Initializer"></a>
-                <a name="//apple_ref/swift/Section/Public Instance Initializer" class="dashAnchor"></a>
-                <a href="#/Public%20Instance%20Initializer">
-                  <h3 class="section-name">Public Instance Initializer</h3>
+                <a name="/Class%20Calculated%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Class Calculated Properties" class="dashAnchor"></a>
+                <a href="#/Class%20Calculated%20Properties">
+                  <h3 class="section-name">Class Calculated Properties</h3>
                 </a>
               </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC3tag6valuesACSS_SDySSypGtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(tag:values:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC3tag6valuesACSS_SDySSypGtcfc">init(tag:values:)</a>
+                    <a name="/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC3tagSSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/tag" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC3tagSSvpZ">tag</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -395,47 +311,93 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The default initializer.</p>
+                        <p>This is the <q>tag</q> we use for storing the main prefs.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">tag</span> <span class="nv">inTag</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n"><a href="../Classes/RVS_PersistentPrefs.html#/s:15RVS_MediaServer0A16_PersistentPrefsC6valuesSDySSypGSgvp">values</a></span> <span class="nv">inValues</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">])</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="k">var</span> <span class="nv">tag</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>tag</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>This is the tag for the overall set of stored prefs.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>values</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>This is the set of default values, as String-hashed Dictionary of Any.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Internal%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Internal Methods" class="dashAnchor"></a>
+                <a href="#/Internal%20Methods">
+                  <h3 class="section-name">Internal Methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC5resetyyF"></a>
+                    <a name="//apple_ref/swift/Method/reset()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC5resetyyF">reset()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This clears the prefs to default.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">reset</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Internal%20Calculated%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Internal Calculated Properties" class="dashAnchor"></a>
+                <a href="#/Internal%20Calculated%20Properties">
+                  <h3 class="section-name">Internal Calculated Properties</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_PersistentPrefs(py)input_uri"></a>
+                    <a name="//apple_ref/swift/Property/input_uri" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_PersistentPrefs(py)input_uri">input_uri</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The input URI, as a String.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">input_uri</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -443,9 +405,9 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsCyypSgSScip"></a>
-                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsCyypSgSScip">subscript(_:)</a>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_PersistentPrefs(py)output_tcp_port"></a>
+                    <a name="//apple_ref/swift/Property/output_tcp_port" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_PersistentPrefs(py)output_tcp_port">output_tcp_port</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -453,16 +415,99 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This allows you to access values directly, via subscript.</p>
-
-<p>-returns: The value (Any), or nil, if not available.</p>
+                        <p>The output TCP port, as an Int.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">subscript</span><span class="p">(</span><span class="nv">inStringKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Any</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">output_tcp_port</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_PersistentPrefs(py)login_id"></a>
+                    <a name="//apple_ref/swift/Property/login_id" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_PersistentPrefs(py)login_id">login_id</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Login ID, as a String.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">login_id</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_PersistentPrefs(py)password"></a>
+                    <a name="//apple_ref/swift/Property/password" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_PersistentPrefs(py)password">password</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Password, as a String.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_PersistentPrefs(py)temp_directory_name"></a>
+                    <a name="//apple_ref/swift/Property/temp_directory_name" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_PersistentPrefs(py)temp_directory_name">temp_directory_name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Temp Directory Name, as a String.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">temp_directory_name</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>

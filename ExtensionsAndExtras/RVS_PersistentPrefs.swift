@@ -22,11 +22,13 @@ import Foundation
 /* ############################################################################################################################## */
 /**
  This class translates from the rather generic prefs we have in persistent storage, to an object model.
- This will also explicitly reference the main prefs object, so simply instantiating this struct will automagically give you the app prefs.
+ It also provides a [KVO](https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift) wrapper for them.
+ This will also explicitly reference the main prefs object, so simply instantiating this class will automagically give you the app prefs. All changes will be sent to the bundle prefs.
  We use a class, even though we could get away with a struct, because we want to make it clear that we are affecting referenced values (saved in the bundle).
- This class is also set up for key/value observing, so you can bind it.
+ As the class is KVO-enabled, you can bind it for stuff like SwiftUI.
+ As it is a class, it can be subclassed and extended.
  */
-class RVS_MediaServer_PersistentPrefs: NSObject {
+open class RVS_MediaServer_PersistentPrefs: NSObject {
     /* ################################################################## */
     /**
      This is a SINGLETON instance of our prefs.
@@ -78,18 +80,46 @@ class RVS_MediaServer_PersistentPrefs: NSObject {
      */
     private var _calcPrefs: RVS_PersistentPrefs! {
         /// We will create a new set of prefs (loading anything saved), if we didn't already have them.
-        if  nil == type(of: self)._prefs,
-            // We use the app name as our tag.
-            let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as? String {
-            type(of: self)._prefs = RVS_PersistentPrefs(tag: appName, values: type(of: self)._defaultPrefsValues)
+        if  nil == type(of: self)._prefs {
+            type(of: self)._prefs = RVS_PersistentPrefs(tag: type(of: self).tag, values: type(of: self)._defaultPrefsValues)
         }
         
         return type(of: self)._prefs
     }
-    
+
+    /* ############################################################################################################################## */
+    // MARK: - Class Calculated Properties
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     This is the "tag" we use for storing the main prefs.
+     */
+    class var tag: String {
+        if let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as? String {
+            return appName
+        }
+        
+        return className()
+    }
+
+    /* ############################################################################################################################## */
+    // MARK: - Internal Methods
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     This clears the prefs to default.
+     */
+    func reset() {
+        _calcPrefs.values = type(of: self)._defaultPrefsValues
+    }
+
     /* ############################################################################################################################## */
     // MARK: - Internal Calculated Properties
     /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     Thse properties are the "meat" of the class. Accessing them interacts directly with the stored persistent prefs.
+     */
     /* ################################################################## */
     /**
      The input URI, as a String.
@@ -158,17 +188,6 @@ class RVS_MediaServer_PersistentPrefs: NSObject {
         set {
             _calcPrefs.values[_PrefsKeys.temp_directory_name.rawValue] = newValue
         }
-    }
-    
-    /* ############################################################################################################################## */
-    // MARK: - Internal Methods
-    /* ############################################################################################################################## */
-    /* ################################################################## */
-    /**
-     This clears the prefs to default.
-     */
-    func reset() {
-        _calcPrefs.values = type(of: self)._defaultPrefsValues
     }
 }
 

@@ -57,6 +57,12 @@
                 <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_AppDelegate.html">RVS_MediaServer_AppDelegate</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_PersistentPrefs.html">RVS_MediaServer_PersistentPrefs</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_PersistentPrefs/_PrefsKeys.html">– _PrefsKeys</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_SettingsViewController.html">RVS_MediaServer_SettingsViewController</a>
               </li>
               <li class="nav-group-task">
@@ -154,7 +160,8 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>This will contain the default keys that are used to describe the stored prefs.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -180,7 +187,8 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>These are the current values.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -206,7 +214,8 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>This is the tag for the overall set of prefs.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -346,7 +355,10 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Accessor for the values. Returns them as a String-hashed Dictionary of Any.</p>
+
+<p>When we read, we always load, first, and when we write, we always save, after.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -383,7 +395,8 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>The default initializer.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -392,6 +405,37 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                           <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">tag</span> <span class="nv">inTag</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n"><a href="../Classes/RVS_PersistentPrefs.html#/s:15RVS_MediaServer0A16_PersistentPrefsC6valuesSDySSypGSgvp">values</a></span> <span class="nv">inValues</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">])</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tag</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>This is the tag for the overall set of stored prefs.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>values</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>This is the set of default values, as String-hashed Dictionary of Any.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -409,7 +453,10 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>This allows you to access values directly, via subscript.</p>
+
+<p>-returns: The value (Any), or nil, if not available.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>

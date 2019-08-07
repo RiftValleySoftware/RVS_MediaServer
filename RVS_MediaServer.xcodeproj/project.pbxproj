@@ -214,9 +214,9 @@
 			buildPhases = (
 				D4EEC82F22F84010000AD2A9 /* SwiftLint */,
 				D4EEC81A22F83F81000AD2A9 /* Sources */,
+				D4F9D9D322FB0E7600310F17 /* Frameworks */,
 				D4EEC81C22F83F81000AD2A9 /* Resources */,
 				D454ED5422F9EAFF0022F8E7 /* Embed ffmpeg */,
-				D4F9D9D322FB0E7600310F17 /* Frameworks */,
 				D4F9D9D422FB0E7600310F17 /* Embed Frameworks */,
 			);
 			buildRules = (
