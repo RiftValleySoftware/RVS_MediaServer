@@ -21,6 +21,9 @@
       location = "group:RVS_MediaServer.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:GCDWebServer/GCDWebServer.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

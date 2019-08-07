@@ -8,7 +8,6 @@ jazzy   --github_url https://github.com/RiftValleySoftware/RVS_MediaServer\
         --author The\ Great\ Rift\ Valley\ Software\ Company\
         --author_url https://riftvalleysoftware.com\
         --module RVS_MediaServer\
-        --min-acl public\
-        --copyright [©2019\ The\ Great\ Rift\ Valley\ Software\ Company]\(https://riftvalleysoftware.com\)
+        --min-acl private
 cp icon.png docs/icon.png
 cd "${CWD}"

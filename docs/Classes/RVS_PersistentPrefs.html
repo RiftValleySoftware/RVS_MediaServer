@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RVS_PersistentPrefs Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/RVS_PersistentPrefs" class="dashAnchor"></a>
+
+    <a title="RVS_PersistentPrefs Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          RVS_MediaServer Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/RiftValleySoftware/RVS_MediaServer">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">RVS_MediaServer Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      RVS_PersistentPrefs Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_AppDelegate.html">RVS_MediaServer_AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_SettingsViewController.html">RVS_MediaServer_SettingsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_PersistentPrefs.html">RVS_PersistentPrefs</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/NSView.html">NSView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Sequence.html">Sequence</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/StringProtocol.html">StringProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:15RVS_MediaServer0a17_IPAddressExtractD0_8isPaddedAA0a1_D0_pSgSS_SbtF">RVS_IPAddressExtractIPAddress(_:isPadded:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:15RVS_MediaServer0a17_IPAddressExtractD05array4port8isPaddedAA0a1_D0_pSgSaySiG_SiSbtF">RVS_IPAddressExtractIPAddress(array:port:isPadded:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_IPAddress.html">RVS_IPAddress</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RVS_IPAddressV4.html">RVS_IPAddressV4</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RVS_IPAddressV6.html">RVS_IPAddressV6</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>RVS_PersistentPrefs</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RVS_PersistentPrefs</span></code></pre>
+
+                </div>
+              </div>
+            <p>This is a <q>persistent defaults</q> class (not a struct -we want this to be by reference). It uses the app standard userDefaults mechanism
+for saving and retrieving a Dictionary<String, Any>.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Private%20Instance%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Private Instance Properties" class="dashAnchor"></a>
+                <a href="#/Private%20Instance%20Properties">
+                  <h3 class="section-name">Private Instance Properties</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC12_defaultKeys33_E5345A130D3B59AEB4195B15451E375CLLSaySSGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_defaultKeys" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC12_defaultKeys33_E5345A130D3B59AEB4195B15451E375CLLSaySSGSgvp">_defaultKeys</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">let</span> <span class="nv">_defaultKeys</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC7_values33_E5345A130D3B59AEB4195B15451E375CLLSDySSypGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_values" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC7_values33_E5345A130D3B59AEB4195B15451E375CLLSDySSypGSgvp">_values</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_values</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC4_tag33_E5345A130D3B59AEB4195B15451E375CLLSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_tag" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC4_tag33_E5345A130D3B59AEB4195B15451E375CLLSSSgvp">_tag</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">let</span> <span class="nv">_tag</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Private%20Instance%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Private Instance Methods" class="dashAnchor"></a>
+                <a href="#/Private%20Instance%20Methods">
+                  <h3 class="section-name">Private Instance Methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC10_saveState33_E5345A130D3B59AEB4195B15451E375CLLyyF"></a>
+                    <a name="//apple_ref/swift/Method/_saveState()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC10_saveState33_E5345A130D3B59AEB4195B15451E375CLLyyF">_saveState()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This simply takes a snapshot of all the text fields, and saves them in the app defaults container.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">_saveState</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC10_loadState33_E5345A130D3B59AEB4195B15451E375CLLyyF"></a>
+                    <a name="//apple_ref/swift/Method/_loadState()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC10_loadState33_E5345A130D3B59AEB4195B15451E375CLLyyF">_loadState()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This reads anything in the app defaults container, and applies them to set up the text fields.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">_loadState</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Private%20Instance%20Initializer"></a>
+                <a name="//apple_ref/swift/Section/Private Instance Initializer" class="dashAnchor"></a>
+                <a href="#/Private%20Instance%20Initializer">
+                  <h3 class="section-name">Private Instance Initializer</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC9_defaults4_tag7_valuesACSDySSypG_SSAGtc33_E5345A130D3B59AEB4195B15451E375CLlfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_defaults:_tag:_values:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC9_defaults4_tag7_valuesACSDySSypG_SSAGtc33_E5345A130D3B59AEB4195B15451E375CLlfc">init(_defaults:_tag:_values:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is private to prevent this class from being instantiated in an undefined state.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="nf">init</span><span class="p">(</span><span class="n">_defaults</span> <span class="nv">inDefaults</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:],</span> <span class="n"><a href="../Classes/RVS_PersistentPrefs.html#/s:15RVS_MediaServer0A16_PersistentPrefsC4_tag33_E5345A130D3B59AEB4195B15451E375CLLSSSgvp">_tag</a></span> <span class="nv">inTag</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span><span class="p">,</span> <span class="n"><a href="../Classes/RVS_PersistentPrefs.html#/s:15RVS_MediaServer0A16_PersistentPrefsC7_values33_E5345A130D3B59AEB4195B15451E375CLLSDySSypGSgvp">_values</a></span> <span class="nv">inValues</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Instance%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Public Instance Properties" class="dashAnchor"></a>
+                <a href="#/Public%20Instance%20Properties">
+                  <h3 class="section-name">Public Instance Properties</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC6valuesSDySSypGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/values" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC6valuesSDySSypGSgvp">values</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">values</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Instance%20Initializer"></a>
+                <a name="//apple_ref/swift/Section/Public Instance Initializer" class="dashAnchor"></a>
+                <a href="#/Public%20Instance%20Initializer">
+                  <h3 class="section-name">Public Instance Initializer</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC3tag6valuesACSS_SDySSypGtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(tag:values:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC3tag6valuesACSS_SDySSypGtcfc">init(tag:values:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">tag</span> <span class="nv">inTag</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n"><a href="../Classes/RVS_PersistentPrefs.html#/s:15RVS_MediaServer0A16_PersistentPrefsC6valuesSDySSypGSgvp">values</a></span> <span class="nv">inValues</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsCyypSgSScip"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsCyypSgSScip">subscript(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">subscript</span><span class="p">(</span><span class="nv">inStringKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Any</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-08-07)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

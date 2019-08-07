@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>StringProtocol Extension Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Extension/StringProtocol" class="dashAnchor"></a>
+
+    <a title="StringProtocol Extension Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          RVS_MediaServer Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/RiftValleySoftware/RVS_MediaServer">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">RVS_MediaServer Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      StringProtocol Extension Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_AppDelegate.html">RVS_MediaServer_AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_SettingsViewController.html">RVS_MediaServer_SettingsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_PersistentPrefs.html">RVS_PersistentPrefs</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/NSView.html">NSView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Sequence.html">Sequence</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/StringProtocol.html">StringProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:15RVS_MediaServer0a17_IPAddressExtractD0_8isPaddedAA0a1_D0_pSgSS_SbtF">RVS_IPAddressExtractIPAddress(_:isPadded:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:15RVS_MediaServer0a17_IPAddressExtractD05array4port8isPaddedAA0a1_D0_pSgSaySiG_SiSbtF">RVS_IPAddressExtractIPAddress(array:port:isPadded:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_IPAddress.html">RVS_IPAddress</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RVS_IPAddressV4.html">RVS_IPAddressV4</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RVS_IPAddressV6.html">RVS_IPAddressV6</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>StringProtocol</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">StringProtocol</span> <span class="p">:</span> <span class="kt">BidirectionalCollection</span><span class="p">,</span> <span class="kt">Comparable</span><span class="p">,</span> <span class="kt">ExpressibleByStringInterpolation</span><span class="p">,</span> <span class="kt">Hashable</span><span class="p">,</span> <span class="kt">LosslessStringConvertible</span><span class="p">,</span> <span class="kt">TextOutputStream</span><span class="p">,</span> <span class="kt">TextOutputStreamable</span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">Element</span> <span class="o">==</span> <span class="kt">Character</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">Index</span> <span class="o">==</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Index</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">StringInterpolation</span> <span class="o">==</span> <span class="kt">DefaultStringInterpolation</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">SubSequence</span> <span class="p">:</span> <span class="kt">StringProtocol</span></code></pre>
+
+                </div>
+              </div>
+            <p>These are a variety of cool String extensions that add some great extra cheese on the pizza.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sy15RVS_MediaServerE16localizedVariantSSvp"></a>
+                    <a name="//apple_ref/swift/Property/localizedVariant" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sy15RVS_MediaServerE16localizedVariantSSvp">localizedVariant</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">localizedVariant</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the localized string (main bundle) for this string.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sy15RVS_MediaServerE3md5SSvp"></a>
+                    <a name="//apple_ref/swift/Property/md5" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sy15RVS_MediaServerE3md5SSvp">md5</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>From here: <a href="https://stackoverflow.com/q/24123518/879365">https://stackoverflow.com/q/24123518/879365</a>, but modified from here: <a href="https://stackoverflow.com/a/55639723/879365">https://stackoverflow.com/a/55639723/879365</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">md5</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>an MD5 hash of the String</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sy15RVS_MediaServerE15firstUppercasedSSvp"></a>
+                    <a name="//apple_ref/swift/Property/firstUppercased" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sy15RVS_MediaServerE15firstUppercasedSSvp">firstUppercased</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This extension lets us uppercase only the first letter of the string (used for weekdays).
+From here: <a href="https://stackoverflow.com/a/28288340/879365">https://stackoverflow.com/a/28288340/879365</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">firstUppercased</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The string, with only the first letter uppercased.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sy15RVS_MediaServerE16urlEncodedStringSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/urlEncodedString" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sy15RVS_MediaServerE16urlEncodedStringSSSgvp">urlEncodedString</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The following calculated property comes from this: <a href="http://stackoverflow.com/a/27736118/879365">http://stackoverflow.com/a/27736118/879365</a></p>
+
+<p>This extension function cleans up a URI string.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">urlEncodedString</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a string, cleaned for URI.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sy15RVS_MediaServerE16urlDecodedStringSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/urlDecodedString" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sy15RVS_MediaServerE16urlDecodedStringSSSgvp">urlDecodedString</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The opposite of the above</p>
+
+<p>This extension function cleans up a URI string.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">urlDecodedString</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a string, cleaned for URI.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sy15RVS_MediaServerE5index2of7optionsSS5IndexVSgx_So22NSStringCompareOptionsVtF"></a>
+                    <a name="//apple_ref/swift/Method/index(of:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sy15RVS_MediaServerE5index2of7optionsSS5IndexVSgx_So22NSStringCompareOptionsVtF">index(of:options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This allows us to find the first index of a substring.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">index</span><span class="p">(</span><span class="n">of</span> <span class="nv">inString</span><span class="p">:</span> <span class="k">Self</span><span class="p">,</span> <span class="n">options</span> <span class="nv">inOptions</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">CompareOptions</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kt">Index</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>of</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The substring we&rsquo;re looking for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The String options for the search.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The index of the first occurrence. Nil, if does not occur.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sy15RVS_MediaServerE8endIndex2of7optionsSS0E0VSgx_So22NSStringCompareOptionsVtF"></a>
+                    <a name="//apple_ref/swift/Method/endIndex(of:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sy15RVS_MediaServerE8endIndex2of7optionsSS0E0VSgx_So22NSStringCompareOptionsVtF">endIndex(of:options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This allows us to find the last index of a substring.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">endIndex</span><span class="p">(</span><span class="n">of</span> <span class="nv">inString</span><span class="p">:</span> <span class="k">Self</span><span class="p">,</span> <span class="n">options</span> <span class="nv">inOptions</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">CompareOptions</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kt">Index</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>of</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The substring we&rsquo;re looking for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The String options for the search.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The index of the last occurrence. Nil, if does not occur.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sy15RVS_MediaServerE7indexes2of7optionsSaySS5IndexVGx_So22NSStringCompareOptionsVtF"></a>
+                    <a name="//apple_ref/swift/Method/indexes(of:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sy15RVS_MediaServerE7indexes2of7optionsSaySS5IndexVGx_So22NSStringCompareOptionsVtF">indexes(of:options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This returns an Array of indexes that map all the occurrences of a given substring.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">indexes</span><span class="p">(</span><span class="n">of</span> <span class="nv">inString</span><span class="p">:</span> <span class="k">Self</span><span class="p">,</span> <span class="n">options</span> <span class="nv">inOptions</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">CompareOptions</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Index</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>of</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The substring we&rsquo;re looking for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The String options for the search.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>an Array, containing the indexes of each occurrence. Empty Array, if does not occur.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sy15RVS_MediaServerE6ranges2of7optionsSaySnySS5IndexVGGx_So22NSStringCompareOptionsVtF"></a>
+                    <a name="//apple_ref/swift/Method/ranges(of:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sy15RVS_MediaServerE6ranges2of7optionsSaySnySS5IndexVGGx_So22NSStringCompareOptionsVtF">ranges(of:options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This returns an Array of Index Ranges that map all the occurrences of a given substring.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">ranges</span><span class="p">(</span><span class="n">of</span> <span class="nv">inString</span><span class="p">:</span> <span class="k">Self</span><span class="p">,</span> <span class="n">options</span> <span class="nv">inOptions</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">CompareOptions</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Range</span><span class="o">&lt;</span><span class="kt">Index</span><span class="o">&gt;</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>of</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The substring we&rsquo;re looking for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The String options for the search.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>an Array, containing the Ranges that map each occurrence. Empty Array, if does not occur.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-08-07)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
