@@ -34,6 +34,7 @@
 		D4F9D9E522FB2C1E00310F17 /* RVS_Sequence_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9D9E222FB2C1E00310F17 /* RVS_Sequence_Extensions.swift */; };
 		D4F9D9E622FB2C1E00310F17 /* RVS_String_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9D9E322FB2C1E00310F17 /* RVS_String_Extensions.swift */; };
 		D4F9D9E822FB2CC000310F17 /* RVS_PersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9D9E722FB2CC000310F17 /* RVS_PersistentPrefs.swift */; };
+		D4FF5E2E22FB3D7A001F787E /* RVS_NSView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF5E2D22FB3D7A001F787E /* RVS_NSView_Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +78,7 @@
 		D4F9D9E222FB2C1E00310F17 /* RVS_Sequence_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_Sequence_Extensions.swift; sourceTree = "<group>"; };
 		D4F9D9E322FB2C1E00310F17 /* RVS_String_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_String_Extensions.swift; sourceTree = "<group>"; };
 		D4F9D9E722FB2CC000310F17 /* RVS_PersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_PersistentPrefs.swift; sourceTree = "<group>"; };
+		D4FF5E2D22FB3D7A001F787E /* RVS_NSView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_NSView_Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				D4F9D9E722FB2CC000310F17 /* RVS_PersistentPrefs.swift */,
 				D4F9D9E122FB2C1E00310F17 /* RVS_IPAddress.swift */,
 				D4F9D9E222FB2C1E00310F17 /* RVS_Sequence_Extensions.swift */,
+				D4FF5E2D22FB3D7A001F787E /* RVS_NSView_Extension.swift */,
 				D4F9D9E322FB2C1E00310F17 /* RVS_String_Extensions.swift */,
 			);
 			path = ExtensionsAndExtras;
@@ -304,6 +307,7 @@
 				D4F9D9E822FB2CC000310F17 /* RVS_PersistentPrefs.swift in Sources */,
 				D4F9D9E622FB2C1E00310F17 /* RVS_String_Extensions.swift in Sources */,
 				D4F9D9E422FB2C1E00310F17 /* RVS_IPAddress.swift in Sources */,
+				D4FF5E2E22FB3D7A001F787E /* RVS_NSView_Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

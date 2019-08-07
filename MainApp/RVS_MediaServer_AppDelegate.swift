@@ -20,27 +20,6 @@ import Cocoa
 import GCDWebServers
 
 /* ############################################################################################################################## */
-// MARK: - View Extension
-/* ############################################################################################################################## */
-/**
- This is an extension to the standard NSView class, so we can see if we are in "dark mode."
- Cribbed from here: https://stackoverflow.com/a/52523517/879365
- */
-extension NSView {
-    /* ################################################################## */
-    /**
-     - returns: True, if the app is in Dark Mode.
-     */
-    var isDarkMode: Bool {
-        if #available(OSX 10.14, *) {
-            return .darkAqua == effectiveAppearance.name
-        }
-        
-        return false
-    }
-}
-
-/* ############################################################################################################################## */
 // MARK: - Main Application Class
 /* ############################################################################################################################## */
 /**
