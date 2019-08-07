@@ -1,3 +1,6 @@
 [submodule "ffmpeg-src"]
 	path = ffmpeg-src
 	url = https://git.ffmpeg.org/ffmpeg.git
+[submodule "GCDWebServer"]
+	path = GCDWebServer
+	url = git@github.com:swisspol/GCDWebServer.git
