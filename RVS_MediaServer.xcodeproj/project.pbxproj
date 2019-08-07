@@ -6,8 +6,22 @@
 	objectVersion = 51;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		D40393D722FA4CF300DF4877 /* Build ffmpeg */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D40393D822FA4CF300DF4877 /* Build configuration list for PBXAggregateTarget "Build ffmpeg" */;
+			buildPhases = (
+				D40393DB22FA4D0F00DF4877 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Build ffmpeg";
+			productName = "Build ffmpeg";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		D454ED5D22F9EB940022F8E7 /* ffmpeg in Embed ffmpeg */ = {isa = PBXBuildFile; fileRef = D454ED5B22F9EB7D0022F8E7 /* ffmpeg */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D40393D622FA4C9400DF4877 /* ffmpeg in Embed ffmpeg */ = {isa = PBXBuildFile; fileRef = D40393D422FA4C8700DF4877 /* ffmpeg */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D4807B4522F843CD00759FE8 /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D4807B4322F843CD00759FE8 /* Warnings.xcconfig */; };
 		D4EEC82122F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EEC82022F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift */; };
 		D4EEC82322F83F81000AD2A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EEC82222F83F81000AD2A9 /* ViewController.swift */; };
@@ -22,7 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				D454ED5D22F9EB940022F8E7 /* ffmpeg in Embed ffmpeg */,
+				D40393D622FA4C9400DF4877 /* ffmpeg in Embed ffmpeg */,
 			);
 			name = "Embed ffmpeg";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -30,7 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D454ED5B22F9EB7D0022F8E7 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = ffmpeg; path = ffmpeg/bin/ffmpeg; sourceTree = "<group>"; };
+		D40393D422FA4C8700DF4877 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = ffmpeg; path = "ffmpeg-src/ffmpeg"; sourceTree = "<group>"; };
 		D4807B4122F843CD00759FE8 /* RVS_MediaServer_App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = RVS_MediaServer_App.entitlements; sourceTree = "<group>"; };
 		D4807B4222F843CD00759FE8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4807B4322F843CD00759FE8 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
@@ -41,24 +55,22 @@
 		D4EEC82722F83F82000AD2A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		D4EEC81B22F83F81000AD2A9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
+		D40393D322FA4C6C00DF4877 /* Executables */ = {
+			isa = PBXGroup;
+			children = (
+				D40393D422FA4C8700DF4877 /* ffmpeg */,
+			);
+			name = Executables;
+			sourceTree = "<group>";
+		};
 		D43D8DD322F8369400C075F3 = {
 			isa = PBXGroup;
 			children = (
 				D4807B3A22F8416700759FE8 /* MainApp */,
 				D4EEC81F22F83F81000AD2A9 /* ViewControllers */,
 				D4807B3922F8414E00759FE8 /* Resources */,
-				D454ED5922F9EB5B0022F8E7 /* ffmpeg */,
+				D40393D322FA4C6C00DF4877 /* Executables */,
 				D4807B4022F843AE00759FE8 /* Meta */,
 				D43D8DDD22F8369400C075F3 /* Products */,
 			);
@@ -70,22 +82,6 @@
 				D4EEC81E22F83F81000AD2A9 /* RVS_MediaServer.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D454ED5922F9EB5B0022F8E7 /* ffmpeg */ = {
-			isa = PBXGroup;
-			children = (
-				D454ED5A22F9EB710022F8E7 /* bin */,
-			);
-			name = ffmpeg;
-			sourceTree = "<group>";
-		};
-		D454ED5A22F9EB710022F8E7 /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				D454ED5B22F9EB7D0022F8E7 /* ffmpeg */,
-			);
-			name = bin;
 			sourceTree = "<group>";
 		};
 		D4807B3922F8414E00759FE8 /* Resources */ = {
@@ -132,7 +128,6 @@
 			buildPhases = (
 				D4EEC82F22F84010000AD2A9 /* SwiftLint */,
 				D4EEC81A22F83F81000AD2A9 /* Sources */,
-				D4EEC81B22F83F81000AD2A9 /* Frameworks */,
 				D4EEC81C22F83F81000AD2A9 /* Resources */,
 				D454ED5422F9EAFF0022F8E7 /* Embed ffmpeg */,
 			);
@@ -155,6 +150,9 @@
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "The Great Rift Valley Software Company";
 				TargetAttributes = {
+					D40393D722FA4CF300DF4877 = {
+						CreatedOnToolsVersion = 10.3;
+					};
 					D4EEC81D22F83F81000AD2A9 = {
 						CreatedOnToolsVersion = 10.3;
 					};
@@ -173,6 +171,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				D40393D722FA4CF300DF4877 /* Build ffmpeg */,
 				D4EEC81D22F83F81000AD2A9 /* RVS_MediaServer */,
 			);
 		};
@@ -192,6 +191,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		D40393DB22FA4D0F00DF4877 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\nCWD=\"$(pwd)\"\ncd \"${PROJECT_DIR}/ffmpeg-src\"\n./configure --enable-gpl --enable-libx264 --enable-libx265 --enable-appkit --enable-avfoundation --enable-coreimage --enable-audiotoolbox\nmake\ncd \"${CWD}\"\n";
+		};
 		D4EEC82F22F84010000AD2A9 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -236,6 +252,24 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D40393D922FA4CF300DF4877 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KSAUGZFWP2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D40393DA22FA4CF300DF4877 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KSAUGZFWP2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		D43D8DE122F8369400C075F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -394,6 +428,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D40393D822FA4CF300DF4877 /* Build configuration list for PBXAggregateTarget "Build ffmpeg" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D40393D922FA4CF300DF4877 /* Debug */,
+				D40393DA22FA4CF300DF4877 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D43D8DD722F8369400C075F3 /* Build configuration list for PBXProject "RVS_MediaServer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
