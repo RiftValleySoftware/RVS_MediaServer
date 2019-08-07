@@ -35,7 +35,19 @@
 		D4F9D9E622FB2C1E00310F17 /* RVS_String_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9D9E322FB2C1E00310F17 /* RVS_String_Extensions.swift */; };
 		D4F9D9E822FB2CC000310F17 /* RVS_PersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9D9E722FB2CC000310F17 /* RVS_PersistentPrefs.swift */; };
 		D4FF5E2E22FB3D7A001F787E /* RVS_NSView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF5E2D22FB3D7A001F787E /* RVS_NSView_Extension.swift */; };
+		D4FF5E3622FB52D6001F787E /* RVS_MediaServer_Prefs_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF5E3522FB52D6001F787E /* RVS_MediaServer_Prefs_Tests.swift */; };
+		D4FF5E3E22FB53D3001F787E /* RVS_PersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9D9E722FB2CC000310F17 /* RVS_PersistentPrefs.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D4FF5E3822FB52D6001F787E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D43D8DD422F8369400C075F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4EEC81D22F83F81000AD2A9;
+			remoteInfo = RVS_MediaServer;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D454ED5422F9EAFF0022F8E7 /* Embed ffmpeg */ = {
@@ -79,6 +91,9 @@
 		D4F9D9E322FB2C1E00310F17 /* RVS_String_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_String_Extensions.swift; sourceTree = "<group>"; };
 		D4F9D9E722FB2CC000310F17 /* RVS_PersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_PersistentPrefs.swift; sourceTree = "<group>"; };
 		D4FF5E2D22FB3D7A001F787E /* RVS_NSView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_NSView_Extension.swift; sourceTree = "<group>"; };
+		D4FF5E3322FB52D6001F787E /* RVS_MediaServer_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RVS_MediaServer_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4FF5E3522FB52D6001F787E /* RVS_MediaServer_Prefs_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_Prefs_Tests.swift; sourceTree = "<group>"; };
+		D4FF5E3722FB52D6001F787E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +123,7 @@
 				D4EEC81F22F83F81000AD2A9 /* ViewControllers */,
 				D4807B3922F8414E00759FE8 /* Resources */,
 				D4F9D9E022FB2BE900310F17 /* ExtensionsAndExtras */,
+				D4FF5E3422FB52D6001F787E /* RVS_MediaServer_Tests */,
 				D4F9D9D522FB107200310F17 /* Frameworks */,
 				D40393D322FA4C6C00DF4877 /* Executables */,
 				D4807B4022F843AE00759FE8 /* Meta */,
@@ -119,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				D4EEC81E22F83F81000AD2A9 /* RVS_MediaServer.app */,
+				D4FF5E3322FB52D6001F787E /* RVS_MediaServer_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,6 +196,15 @@
 			path = ExtensionsAndExtras;
 			sourceTree = "<group>";
 		};
+		D4FF5E3422FB52D6001F787E /* RVS_MediaServer_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D4FF5E3522FB52D6001F787E /* RVS_MediaServer_Prefs_Tests.swift */,
+				D4FF5E3722FB52D6001F787E /* Info.plist */,
+			);
+			path = RVS_MediaServer_Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -202,6 +228,22 @@
 			productReference = D4EEC81E22F83F81000AD2A9 /* RVS_MediaServer.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D4FF5E3222FB52D6001F787E /* RVS_MediaServer_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4FF5E3A22FB52D6001F787E /* Build configuration list for PBXNativeTarget "RVS_MediaServer_Tests" */;
+			buildPhases = (
+				D4FF5E2F22FB52D6001F787E /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4FF5E3922FB52D6001F787E /* PBXTargetDependency */,
+			);
+			name = RVS_MediaServer_Tests;
+			productName = RVS_MediaServer_Tests;
+			productReference = D4FF5E3322FB52D6001F787E /* RVS_MediaServer_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -223,6 +265,10 @@
 							};
 						};
 					};
+					D4FF5E3222FB52D6001F787E = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = D4EEC81D22F83F81000AD2A9;
+					};
 				};
 			};
 			buildConfigurationList = D43D8DD722F8369400C075F3 /* Build configuration list for PBXProject "RVS_MediaServer" */;
@@ -240,6 +286,7 @@
 			targets = (
 				D40393D722FA4CF300DF4877 /* Build ffmpeg */,
 				D4EEC81D22F83F81000AD2A9 /* RVS_MediaServer */,
+				D4FF5E3222FB52D6001F787E /* RVS_MediaServer_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -311,7 +358,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4FF5E2F22FB52D6001F787E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4FF5E3E22FB53D3001F787E /* RVS_PersistentPrefs.swift in Sources */,
+				D4FF5E3622FB52D6001F787E /* RVS_MediaServer_Prefs_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D4FF5E3922FB52D6001F787E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4EEC81D22F83F81000AD2A9 /* RVS_MediaServer */;
+			targetProxy = D4FF5E3822FB52D6001F787E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D4EEC82622F83F82000AD2A9 /* Main.storyboard */ = {
@@ -514,6 +578,48 @@
 			};
 			name = Release;
 		};
+		D4FF5E3B22FB52D6001F787E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4807B4322F843CD00759FE8 /* Warnings.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = KSAUGZFWP2;
+				INFOPLIST_FILE = RVS_MediaServer_Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.riftvalleysoftware.RVS-MediaServer-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RVS_MediaServer.app/Contents/MacOS/RVS_MediaServer";
+			};
+			name = Debug;
+		};
+		D4FF5E3C22FB52D6001F787E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4807B4322F843CD00759FE8 /* Warnings.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = KSAUGZFWP2;
+				INFOPLIST_FILE = RVS_MediaServer_Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.riftvalleysoftware.RVS-MediaServer-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RVS_MediaServer.app/Contents/MacOS/RVS_MediaServer";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -540,6 +646,15 @@
 			buildConfigurations = (
 				D4EEC82C22F83F82000AD2A9 /* Debug */,
 				D4EEC82D22F83F82000AD2A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4FF5E3A22FB52D6001F787E /* Build configuration list for PBXNativeTarget "RVS_MediaServer_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4FF5E3B22FB52D6001F787E /* Debug */,
+				D4FF5E3C22FB52D6001F787E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

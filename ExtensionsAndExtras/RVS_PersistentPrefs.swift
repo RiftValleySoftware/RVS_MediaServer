@@ -17,6 +17,161 @@
 
 import Foundation
 
+/* ############################################################################################################################## */
+// MARK: - Persistent Prefs Class
+/* ############################################################################################################################## */
+/**
+ This class translates from the rather generic prefs we have in persistent storage, to an object model.
+ This will also explicitly reference the main prefs object, so simply instantiating this struct will automagically give you the app prefs.
+ We use a class, even though we could get away with a struct, because we want to make it clear that we are affecting referenced values (saved in the bundle).
+ This class is also set up for key/value observing, so you can bind it.
+ */
+class RVS_MediaServer_PersistentPrefs: NSObject {
+    /* ################################################################## */
+    /**
+     This is a SINGLETON instance of our prefs.
+     I hate SINGLETONS, but in this case, it's safe.
+     */
+    private static var _prefs: RVS_PersistentPrefs! = nil
+    
+    /* ############################################################################################################################## */
+    // MARK: - Private Enums
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     These are the keys for our prefs.
+     */
+    private enum _PrefsKeys: String {
+        /// This is the URI for the input RTSP stream.
+        case input_uri
+        /// This is the TCP port to use for the output HLS stream
+        case output_tcp_port
+        /// This is the login ID of the RTSP streaming device.
+        case login_id
+        /// This is the password for the RTSP streaming device.
+        case password
+        /// This is the name for our temporary stream files directory.
+        case temp_directory_name
+    }
+    
+    /* ############################################################################################################################## */
+    // MARK: - Private Static Properties
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     These are the default prefs values.
+     */
+    private static let _defaultPrefsValues: [String: Any] = [
+        _PrefsKeys.input_uri.rawValue: "",
+        _PrefsKeys.output_tcp_port.rawValue: 8080,
+        _PrefsKeys.login_id.rawValue: "",
+        _PrefsKeys.password.rawValue: "",
+        _PrefsKeys.temp_directory_name.rawValue: "html"
+    ]
+    
+    /* ############################################################################################################################## */
+    // MARK: - Private Calculated Properties
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     This is an accessor that translates between the static prefs SINGLETON, and the instance.
+     */
+    private var _calcPrefs: RVS_PersistentPrefs! {
+        /// We will create a new set of prefs (loading anything saved), if we didn't already have them.
+        if  nil == type(of: self)._prefs,
+            // We use the app name as our tag.
+            let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as? String {
+            type(of: self)._prefs = RVS_PersistentPrefs(tag: appName, values: type(of: self)._defaultPrefsValues)
+        }
+        
+        return type(of: self)._prefs
+    }
+    
+    /* ############################################################################################################################## */
+    // MARK: - Internal Calculated Properties
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     The input URI, as a String.
+     */
+    @objc dynamic var input_uri: String {
+        get {
+            return _calcPrefs?.values[_PrefsKeys.input_uri.rawValue] as? String ?? ""
+        }
+        
+        set {
+            _calcPrefs?.values[_PrefsKeys.input_uri.rawValue] = newValue
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     The output TCP port, as an Int.
+     */
+    @objc dynamic var output_tcp_port: Int {
+        get {
+            return _calcPrefs.values[_PrefsKeys.output_tcp_port.rawValue] as? Int ?? 0
+        }
+        
+        set {
+            _calcPrefs.values[_PrefsKeys.output_tcp_port.rawValue] = newValue
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     The Login ID, as a String.
+     */
+    @objc dynamic var login_id: String {
+        get {
+            return _calcPrefs.values[_PrefsKeys.login_id.rawValue] as? String ?? ""
+        }
+        
+        set {
+            _calcPrefs.values[_PrefsKeys.login_id.rawValue] = newValue
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     The Password, as a String.
+     */
+    @objc dynamic var password: String {
+        get {
+            return _calcPrefs.values[_PrefsKeys.password.rawValue] as? String ?? ""
+        }
+        
+        set {
+            _calcPrefs.values[_PrefsKeys.password.rawValue] = newValue
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     The Temp Directory Name, as a String.
+     */
+    @objc dynamic var temp_directory_name: String {
+        get {
+            return _calcPrefs.values[_PrefsKeys.temp_directory_name.rawValue] as? String ?? ""
+        }
+        
+        set {
+            _calcPrefs.values[_PrefsKeys.temp_directory_name.rawValue] = newValue
+        }
+    }
+    
+    /* ############################################################################################################################## */
+    // MARK: - Internal Methods
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     This clears the prefs to default.
+     */
+    func reset() {
+        _calcPrefs.values = type(of: self)._defaultPrefsValues
+    }
+}
+
 /* ################################################################################################################################## */
 /**
  This is a "persistent defaults" class (not a struct -we want this to be by reference). It uses the app standard userDefaults mechanism
@@ -31,16 +186,19 @@ class RVS_PersistentPrefs {
      */
     /* ################################################################## */
     /**
+     This will contain the default keys that are used to describe the stored prefs.
      */
     private let _defaultKeys: [String]!
     
     /* ################################################################## */
     /**
+     These are the current values.
      */
     private var _values: [String: Any]!
     
     /* ################################################################## */
     /**
+     This is the tag for the overall set of prefs.
      */
     private let _tag: String!
 
@@ -125,6 +283,9 @@ class RVS_PersistentPrefs {
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
+     Accessor for the values. Returns them as a String-hashed Dictionary of Any.
+     
+     When we read, we always load, first, and when we write, we always save, after.
      */
     var values: [String: Any]! {
         get {
@@ -143,6 +304,10 @@ class RVS_PersistentPrefs {
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
+     The default initializer.
+     
+     - parameter tag: This is the tag for the overall set of stored prefs.
+     - parameter values: This is the set of default values, as String-hashed Dictionary of Any.
      */
     init(tag inTag: String, values inValues: [String: Any]) {
         _tag = inTag
@@ -158,6 +323,9 @@ class RVS_PersistentPrefs {
     
     /* ################################################################## */
     /**
+     This allows you to access values directly, via subscript.
+     
+     -returns: The value (Any), or nil, if not available.
      */
     public subscript(_ inStringKey: String) -> Any! {
         get {

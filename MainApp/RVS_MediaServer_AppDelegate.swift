@@ -16,12 +16,10 @@
  */
 
 import Cocoa
-/// This is the dependency for a small, embedded GCD Web server.
-import GCDWebServers
 
-/* ############################################################################################################################## */
+/* ################################################################################################################################## */
 // MARK: - Main Application Class
-/* ############################################################################################################################## */
+/* ################################################################################################################################## */
 /**
  This class implements the main application delegate.
  
@@ -41,27 +39,33 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
     class var appDelegateObject: RVS_MediaServer_AppDelegate {
         return (NSApplication.shared.delegate as? RVS_MediaServer_AppDelegate)!
     }
+    
+    /* ############################################################################################################################## */
+    // MARK: - Internal Enums
+    /* ############################################################################################################################## */
 
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Properties
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     This contains the "mini webserver" that we use to serve the converted HSL stream.
-     */
-    var webServer: GCDWebServer! = nil
-    
-    /* ################################################################## */
-    /**
      This is the prefs object that we'll use to maintain our persistent state.
      */
-    var prefs: RVS_PersistentPrefs! = nil
+    fileprivate var _prefs: RVS_PersistentPrefs! = nil
+    
+    /* ############################################################################################################################## */
+    // MARK: - Internal Calculated Properties
+    /* ############################################################################################################################## */
 
     /* ############################################################################################################################## */
     // MARK: - Internal Class Functions
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
+     This displays a simple alert, with an OK button.
+     
+     - parameter header: The header to display at the top.
+     - parameter message: A String, containing whatever messge is to be displayed below the header.
      */
     class func displayAlert(header inHeader: String, message inMessage: String = "") {
         let alert = NSAlert()
@@ -71,25 +75,6 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
         alert.runModal()
     }
     
-    /* ################################################################## */
-    /**
-     */
-    func startWebServer() {
-        webServer = GCDWebServer()
-        
-        webServer.addDefaultHandler(forMethod: "GET", request: GCDWebServerRequest.self, processBlock: { _ in
-            return GCDWebServerDataResponse(html: "<html><body><p>Hello World</p></body></html>")
-        })
-        
-        webServer.start(withPort: 8080, bonjourName: "RVS_MediaServer")
-        
-        if let uri = webServer.serverURL {
-            print("Visit \(uri) in your web browser")
-        } else {
-            print("Error in Setting Up the Web Server!")
-        }
-    }
-    
     /* ############################################################################################################################## */
     // MARK: - NSApplicationDelegate Methods
     /* ############################################################################################################################## */
@@ -97,7 +82,6 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
     /**
      */
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        startWebServer()
     }
 
     /* ################################################################## */
