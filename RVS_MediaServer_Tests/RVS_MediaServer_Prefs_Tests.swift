@@ -34,6 +34,7 @@ class RVS_MediaServer_Prefs_Tests: XCTestCase {
         test_Target.reset()    // We reset the instance to default.
 
         // Make sure we have our defaults.
+        XCTAssertEqual("RVS_MediaServer_Stream", test_Target.stream_name)
         XCTAssertEqual("", test_Target.input_uri)
         XCTAssertEqual(8080, test_Target.output_tcp_port)
         XCTAssertEqual("", test_Target.login_id)
@@ -41,6 +42,7 @@ class RVS_MediaServer_Prefs_Tests: XCTestCase {
         XCTAssertEqual("html", test_Target.temp_directory_name)
 
         // Now, set a few random values.
+        test_Target.stream_name = "NOPROBLEM"
         test_Target.input_uri = "HIHOWAYA"
         test_Target.output_tcp_port = 80
         test_Target.login_id = "IMFINETANKS"
@@ -48,6 +50,7 @@ class RVS_MediaServer_Prefs_Tests: XCTestCase {
         test_Target.temp_directory_name = "OK"
 
         // Make sure that our prefs are available in this instance.
+        XCTAssertEqual("NOPROBLEM", test_Target.stream_name)
         XCTAssertEqual("HIHOWAYA", test_Target.input_uri)
         XCTAssertEqual(80, test_Target.output_tcp_port)
         XCTAssertEqual("IMFINETANKS", test_Target.login_id)
@@ -57,6 +60,7 @@ class RVS_MediaServer_Prefs_Tests: XCTestCase {
         // Make sure that they carry over into a new instance.
         let test_Target2 = RVS_MediaServer_PersistentPrefs()
 
+        XCTAssertEqual("NOPROBLEM", test_Target2.stream_name)
         XCTAssertEqual("HIHOWAYA", test_Target2.input_uri)
         XCTAssertEqual(80, test_Target2.output_tcp_port)
         XCTAssertEqual("IMFINETANKS", test_Target2.login_id)
@@ -66,6 +70,7 @@ class RVS_MediaServer_Prefs_Tests: XCTestCase {
         // Now, make sure that we can go back to defaults.
         test_Target2.reset()    // We reset the second instance, which should affect the first.
         
+        XCTAssertEqual("RVS_MediaServer_Stream", test_Target.stream_name)
         XCTAssertEqual("", test_Target.input_uri)
         XCTAssertEqual(8080, test_Target.output_tcp_port)
         XCTAssertEqual("", test_Target.login_id)
@@ -80,6 +85,7 @@ class RVS_MediaServer_Prefs_Tests: XCTestCase {
     func testKeyValueBinding() {
         class TestObserverClass: NSObject {
             @objc var objectToObserve: RVS_MediaServer_PersistentPrefs
+            var observation_stream_name: NSKeyValueObservation?
             var observation_input_uri: NSKeyValueObservation?
             var observation_output_tcp_port: NSKeyValueObservation?
             var observation_login_id: NSKeyValueObservation?
@@ -92,6 +98,15 @@ class RVS_MediaServer_Prefs_Tests: XCTestCase {
                 objectToObserve = object
                 super.init()
                 
+                observation_stream_name = observe(
+                    \.objectToObserve.stream_name,
+                    options: [.old, .new]
+                ) { _, change in
+                    XCTAssertEqual("RVS_MediaServer_Stream", change.oldValue)
+                    XCTAssertEqual("YOURLYTINKSO", change.newValue)
+                    self.expectationFulfiller()
+                }
+                
                 observation_input_uri = observe(
                     \.objectToObserve.input_uri,
                     options: [.old, .new]
@@ -100,7 +115,7 @@ class RVS_MediaServer_Prefs_Tests: XCTestCase {
                     XCTAssertEqual("WHAZZUP", change.newValue)
                     self.expectationFulfiller()
                 }
-                
+
                 observation_output_tcp_port = observe(
                     \.objectToObserve.output_tcp_port,
                     options: [.old, .new]
@@ -147,6 +162,7 @@ class RVS_MediaServer_Prefs_Tests: XCTestCase {
         
         _ = TestObserverClass(test_Target, fulfiller: { expectation.fulfill() })
         
+        test_Target.stream_name = "YOURLYTINKSO"
         test_Target.input_uri = "WHAZZUP"
         test_Target.output_tcp_port = 80
         test_Target.login_id = "IMFINETANKS"

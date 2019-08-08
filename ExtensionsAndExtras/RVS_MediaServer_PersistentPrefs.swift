@@ -16,6 +16,8 @@
  */
 
 import Foundation
+/// This is the dependency for a small, embedded GCD Web server.
+import GCDWebServers
 
 /* ############################################################################################################################## */
 // MARK: - Specific Persistent Prefs Class
@@ -47,6 +49,8 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
      These are the keys for our prefs.
      */
     private enum _PrefsKeys: String {
+        /// This is the Stream Name for the input RTSP stream.
+        case stream_name
         /// This is the URI for the input RTSP stream.
         case input_uri
         /// This is the TCP port to use for the output HLS stream
@@ -67,6 +71,7 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
      These are the default prefs values.
      */
     private static let _defaultPrefsValues: [String: Any] = [
+        _PrefsKeys.stream_name.rawValue: "RVS_MediaServer_Stream",
         _PrefsKeys.input_uri.rawValue: "",
         _PrefsKeys.output_tcp_port.rawValue: 8080,
         _PrefsKeys.login_id.rawValue: "",
@@ -106,11 +111,26 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
     }
 
     /* ############################################################################################################################## */
+    // MARK: - Instance Stored Properties (Ephemeral)
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     This is a Web Server instance that is associated with this stream. Its lifetime is the lifetime of the object (not persistent).
+     */
+    var webServer: GCDWebServer! = nil
+    
+    /* ################################################################## */
+    /**
+     */
+    var webServerHandler: GCDWebServerProcessBlock! = nil
+
+    /* ############################################################################################################################## */
     // MARK: - Internal Methods
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
      This clears the prefs to default.
+     This does not clear the webserver property.
      */
     func reset() {
         _calcPrefs.values = type(of: self)._defaultPrefsValues
@@ -118,13 +138,56 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
     
     /* ################################################################## */
     /**
-     Blank Initializer
+     This simply starts the Web server.
+     
+     - parameter webServerHandler: This is an optional handling closure for Web Server calls.
+        If not provided (or set to nil), then whatever we already have is used. This will replace any existing handler.
+     */
+    func startWebServer(webServerHandler inWebServerHandler: GCDWebServerProcessBlock! = nil) {
+        webServer = GCDWebServer()
+        
+        // If they gave us a handler, we use that instead of anything else we have.
+        if nil != inWebServerHandler {
+            webServerHandler = inWebServerHandler
+        }
+        
+        // If a handler method was not provided, we create a placeholder that yells at us.
+        if nil == webServerHandler {
+            webServerHandler = { _ in
+                return GCDWebServerDataResponse(html: "<html><body><h1>ERROR! NO PROCESS BLOCK!</h1></body></html>")
+            }
+        }
+        
+        webServer.addDefaultHandler(forMethod: "GET", request: GCDWebServerRequest.self, processBlock: webServerHandler)
+        
+        webServer.start(withPort: UInt(output_tcp_port), bonjourName: stream_name)
+        
+        if let uri = webServer.serverURL {
+            print("Visit \(uri) in your web browser")
+        } else {
+            print("Error in Setting Up the Web Server!")
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     This simply stops the Web server.
+     */
+    func stopWebServer() {
+        if  let webServer = webServer,
+            webServer.isRunning {
+            webServer.stop()
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     We need to declare this in order to allow blank instances.
      */
     override init() {
         super.init()
-        reset()
     }
-
+    
     /* ############################################################################################################################## */
     // MARK: - Internal Calculated Properties
     /* ############################################################################################################################## */
@@ -132,6 +195,20 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
     /**
      Thse properties are the "meat" of the class. Accessing them interacts directly with the stored persistent prefs.
      */
+    /* ################################################################## */
+    /**
+     The Stream Title, as a String.
+     */
+    @objc dynamic var stream_name: String {
+        get {
+            return _calcPrefs?.values[_PrefsKeys.stream_name.rawValue] as? String ?? ""
+        }
+        
+        set {
+            _calcPrefs?.values[_PrefsKeys.stream_name.rawValue] = newValue
+        }
+    }
+    
     /* ################################################################## */
     /**
      The input URI, as a String.
@@ -201,6 +278,7 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
             _calcPrefs.values[_PrefsKeys.temp_directory_name.rawValue] = newValue
         }
     }
+    
     /* ############################################################################################################################## */
     // MARK: - NSCoding Methods
     /* ############################################################################################################################## */
@@ -211,6 +289,7 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
      - parameter with: The encoder we'll be saving into.
      */
     public func encode(with inCoder: NSCoder) {
+        inCoder.encode(stream_name, forKey: _PrefsKeys.stream_name.rawValue)
         inCoder.encode(input_uri, forKey: _PrefsKeys.input_uri.rawValue)
         inCoder.encode(output_tcp_port, forKey: _PrefsKeys.output_tcp_port.rawValue)
         inCoder.encode(login_id, forKey: _PrefsKeys.login_id.rawValue)
@@ -226,6 +305,10 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
      */
     public required init?(coder inDecoder: NSCoder) {
         super.init()
+        
+        if let value = inDecoder.decodeObject(forKey: _PrefsKeys.stream_name.rawValue) as? String {
+            stream_name = value
+        }
         
         if let value = inDecoder.decodeObject(forKey: _PrefsKeys.input_uri.rawValue) as? String {
             input_uri = value
