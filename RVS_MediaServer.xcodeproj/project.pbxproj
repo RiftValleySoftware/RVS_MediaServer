@@ -22,6 +22,8 @@
 
 /* Begin PBXBuildFile section */
 		D40393D622FA4C9400DF4877 /* ffmpeg in Embed ffmpeg */ = {isa = PBXBuildFile; fileRef = D40393D422FA4C8700DF4877 /* ffmpeg */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D41DF25322FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */; };
+		D41DF25422FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */; };
 		D4807B4522F843CD00759FE8 /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D4807B4322F843CD00759FE8 /* Warnings.xcconfig */; };
 		D4EEC82122F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EEC82022F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift */; };
 		D4EEC82322F83F81000AD2A9 /* RVS_MediaServer_SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EEC82222F83F81000AD2A9 /* RVS_MediaServer_SettingsViewController.swift */; };
@@ -76,6 +78,7 @@
 
 /* Begin PBXFileReference section */
 		D40393D422FA4C8700DF4877 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = ffmpeg; path = "ffmpeg-src/ffmpeg"; sourceTree = "<group>"; };
+		D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_PersistentPrefs.swift; sourceTree = "<group>"; };
 		D4807B4222F843CD00759FE8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4807B4322F843CD00759FE8 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		D4EEC81E22F83F81000AD2A9 /* RVS_MediaServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RVS_MediaServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +190,7 @@
 		D4F9D9E022FB2BE900310F17 /* ExtensionsAndExtras */ = {
 			isa = PBXGroup;
 			children = (
+				D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */,
 				D4F9D9E722FB2CC000310F17 /* RVS_PersistentPrefs.swift */,
 				D4F9D9E122FB2C1E00310F17 /* RVS_IPAddress.swift */,
 				D4F9D9E222FB2C1E00310F17 /* RVS_Sequence_Extensions.swift */,
@@ -349,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4EEC82322F83F81000AD2A9 /* RVS_MediaServer_SettingsViewController.swift in Sources */,
+				D41DF25322FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift in Sources */,
 				D4EEC82122F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift in Sources */,
 				D4F9D9E522FB2C1E00310F17 /* RVS_Sequence_Extensions.swift in Sources */,
 				D4F9D9E822FB2CC000310F17 /* RVS_PersistentPrefs.swift in Sources */,
@@ -364,6 +369,7 @@
 			files = (
 				D4FF5E3E22FB53D3001F787E /* RVS_PersistentPrefs.swift in Sources */,
 				D4FF5E3622FB52D6001F787E /* RVS_MediaServer_Prefs_Tests.swift in Sources */,
+				D41DF25422FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
