@@ -16,8 +16,9 @@
  */
 
 import Foundation
+
 /* ################################################################################################################################## */
-// MARK: - Generic Persisten Prefs Class
+// MARK: - Generic Persistent Prefs Class
 /* ################################################################################################################################## */
 /**
  This is a "persistent defaults" class (not a struct -we want this to be by reference). It uses the app standard userDefaults mechanism

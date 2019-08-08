@@ -51,11 +51,18 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
     /**
      This is the prefs object that we'll use to maintain our persistent state.
      */
-    fileprivate var _prefs: RVS_MediaServer_PersistentPrefs! = nil
+    private var _prefs: RVS_MediaServer_PersistentPrefs! = nil
     
     /* ############################################################################################################################## */
     // MARK: - Internal Calculated Properties
     /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     Accessor for the prefs state (READ ONLY).
+     */
+    var prefs: RVS_MediaServer_PersistentPrefs! {
+        return _prefs
+    }
 
     /* ############################################################################################################################## */
     // MARK: - Internal Class Functions
