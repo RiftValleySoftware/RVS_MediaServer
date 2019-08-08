@@ -22,7 +22,22 @@ import Cocoa
 /* ################################################################################################################################## */
 /**
  */
-class RVS_MediaServer_SettingsViewController: NSViewController {
+class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController {
+    /* ############################################################################################################################## */
+    // MARK: - Internal IBOutlet Properties
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     The label for the Input URI Text Field
+     */
+    @IBOutlet weak var input_uri_label: NSTextField!
+    
+    /* ################################################################## */
+    /**
+     The Input URI Text Field
+     */
+    @IBOutlet weak var input_uri_text_field: NSTextField!
+    
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Properties
     /* ############################################################################################################################## */
@@ -34,4 +49,13 @@ class RVS_MediaServer_SettingsViewController: NSViewController {
     /* ############################################################################################################################## */
     // MARK: - Superclass Override Methods
     /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     Set up the various localized items and initial values.
+     */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        input_uri_label.stringValue = input_uri_label.stringValue.localizedVariant
+        input_uri_text_field.placeholderString = input_uri_text_field.placeholderString?.localizedVariant
+    }
 }

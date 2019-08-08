@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		D401206E22FC775300F0ECCD /* RVS_MediaServer_ServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D401206D22FC775200F0ECCD /* RVS_MediaServer_ServerViewController.swift */; };
+		D401207022FC8B3F00F0ECCD /* RVS_MediaServer_BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D401206F22FC8B3F00F0ECCD /* RVS_MediaServer_BaseViewController.swift */; };
 		D40393D622FA4C9400DF4877 /* ffmpeg in Embed ffmpeg */ = {isa = PBXBuildFile; fileRef = D40393D422FA4C8700DF4877 /* ffmpeg */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D41DF25322FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */; };
 		D41DF25422FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */; };
@@ -80,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		D401206D22FC775200F0ECCD /* RVS_MediaServer_ServerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_ServerViewController.swift; sourceTree = "<group>"; };
+		D401206F22FC8B3F00F0ECCD /* RVS_MediaServer_BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_BaseViewController.swift; sourceTree = "<group>"; };
 		D40393D422FA4C8700DF4877 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = ffmpeg; path = "ffmpeg-src/ffmpeg"; sourceTree = "<group>"; };
 		D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_PersistentPrefs.swift; sourceTree = "<group>"; };
 		D41DF25522FC50E200BDB620 /* RVS_MediaServer_WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_WindowController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		D4EEC81F22F83F81000AD2A9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D401206F22FC8B3F00F0ECCD /* RVS_MediaServer_BaseViewController.swift */,
 				D4EEC82222F83F81000AD2A9 /* RVS_MediaServer_SettingsViewController.swift */,
 				D401206D22FC775200F0ECCD /* RVS_MediaServer_ServerViewController.swift */,
 			);
@@ -368,6 +371,7 @@
 				D401206E22FC775300F0ECCD /* RVS_MediaServer_ServerViewController.swift in Sources */,
 				D4F9D9E422FB2C1E00310F17 /* RVS_IPAddress.swift in Sources */,
 				D4FF5E2E22FB3D7A001F787E /* RVS_NSView_Extension.swift in Sources */,
+				D401207022FC8B3F00F0ECCD /* RVS_MediaServer_BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

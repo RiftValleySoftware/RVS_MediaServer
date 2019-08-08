@@ -746,7 +746,46 @@
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p8t-uz-yCl">
+                                <rect key="frame" x="18" y="230" width="156" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="NKn-I1-NMi"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ZTt-Ll-F3c"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-INPUT-URI-LABEL" id="tGO-Tq-b6F">
+                                    <font key="font" metaFont="titleBar"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zQE-AS-Dx3">
+                                <rect key="frame" x="176" y="230" width="284" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="EyF-5A-gWs"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-INPUT-URI-PLACEHOLDER" drawsBackground="YES" id="Pfm-cf-Drl">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.input_uri" id="Q0x-41-myD"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="zQE-AS-Dx3" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="6m7-Vq-5MP"/>
+                            <constraint firstItem="p8t-uz-yCl" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="8Qw-pa-4iG"/>
+                            <constraint firstItem="zQE-AS-Dx3" firstAttribute="leading" secondItem="p8t-uz-yCl" secondAttribute="trailing" constant="4" id="8fQ-av-zLb"/>
+                            <constraint firstItem="p8t-uz-yCl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="CSJ-fk-iCr"/>
+                            <constraint firstAttribute="trailing" secondItem="zQE-AS-Dx3" secondAttribute="trailing" constant="20" id="fHb-B0-2kA"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="input_uri_label" destination="p8t-uz-yCl" id="FVu-Y4-ujF"/>
+                        <outlet property="input_uri_text_field" destination="zQE-AS-Dx3" id="4Wv-nT-1KP"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
