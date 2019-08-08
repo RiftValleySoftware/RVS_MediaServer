@@ -80,7 +80,7 @@ class RVS_MediaServer_Prefs_Tests: XCTestCase {
     
     /* ################################################################## */
     /**
-     This makes sure that we can do key/value obesrving.
+     This makes sure that we can do key/value observing.
      */
     func testKeyValueBinding() {
         class TestObserverClass: NSObject {

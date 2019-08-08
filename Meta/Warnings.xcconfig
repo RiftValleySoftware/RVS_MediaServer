@@ -1,9 +1,17 @@
+// This is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 2 of the License, or
+// (at your option) any later version.
 //
-//  Warnings.xcconfig
-//  
+// This Software is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
 //
-//  Created by Chris Marshall on 8/5/19.
+// You should have received a copy of the GNU General Public License
+// along with this code.  If not, see <http: //www.gnu.org/licenses/>.
 //
+// The Great Rift Valley Software Company: https://riftvalleysoftware.com
 
 CLANG_ANALYZER_NONNULL = YES
 CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE

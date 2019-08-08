@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qo2-ZW-lZH">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -682,7 +682,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="-211" y="-111"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -704,6 +704,40 @@
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="Xh6-Jr-kIw">
+            <objects>
+                <windowController id="Qo2-ZW-lZH" customClass="RVS_MediaServer_WindowController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="SERVER" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Qpj-Ue-v32">
+                        <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="-2135" y="461" width="480" height="270"/>
+                        <rect key="screenRect" x="-2560" y="0.0" width="2560" height="1417"/>
+                        <connections>
+                            <outlet property="delegate" destination="Qo2-ZW-lZH" id="ZBm-BL-9jV"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="Vb5-tk-ief" kind="relationship" relationship="window.shadowedContentViewController" id="Xrm-nN-DHH"/>
+                    </connections>
+                </windowController>
+                <customObject id="rMP-U5-FGI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-516" y="250"/>
+        </scene>
+        <!--SERVER-->
+        <scene sceneID="TEx-l4-qOy">
+            <objects>
+                <viewController title="SERVER" id="Vb5-tk-ief" customClass="RVS_MediaServer_ServerViewController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="lkg-00-B7e">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="lxA-RB-8sx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-516" y="655"/>
         </scene>
         <!--SETTINGS-->
         <scene sceneID="hIz-AP-VOD">

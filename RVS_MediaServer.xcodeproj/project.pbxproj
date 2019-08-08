@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		D401206E22FC775300F0ECCD /* RVS_MediaServer_ServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D401206D22FC775200F0ECCD /* RVS_MediaServer_ServerViewController.swift */; };
 		D40393D622FA4C9400DF4877 /* ffmpeg in Embed ffmpeg */ = {isa = PBXBuildFile; fileRef = D40393D422FA4C8700DF4877 /* ffmpeg */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D41DF25322FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */; };
 		D41DF25422FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D401206D22FC775200F0ECCD /* RVS_MediaServer_ServerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_ServerViewController.swift; sourceTree = "<group>"; };
 		D40393D422FA4C8700DF4877 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = ffmpeg; path = "ffmpeg-src/ffmpeg"; sourceTree = "<group>"; };
 		D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_PersistentPrefs.swift; sourceTree = "<group>"; };
 		D41DF25522FC50E200BDB620 /* RVS_MediaServer_WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_WindowController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				D4EEC82222F83F81000AD2A9 /* RVS_MediaServer_SettingsViewController.swift */,
+				D401206D22FC775200F0ECCD /* RVS_MediaServer_ServerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				D4F9D9E522FB2C1E00310F17 /* RVS_Sequence_Extensions.swift in Sources */,
 				D4F9D9E822FB2CC000310F17 /* RVS_PersistentPrefs.swift in Sources */,
 				D4F9D9E622FB2C1E00310F17 /* RVS_String_Extensions.swift in Sources */,
+				D401206E22FC775300F0ECCD /* RVS_MediaServer_ServerViewController.swift in Sources */,
 				D4F9D9E422FB2C1E00310F17 /* RVS_IPAddress.swift in Sources */,
 				D4FF5E2E22FB3D7A001F787E /* RVS_NSView_Extension.swift in Sources */,
 			);
