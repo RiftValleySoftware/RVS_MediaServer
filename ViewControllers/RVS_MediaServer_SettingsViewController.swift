@@ -38,6 +38,18 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
      */
     @IBOutlet weak var input_uri_text_field: NSTextField!
     
+    /* ################################################################## */
+    /**
+     The label for the Output TCP Port Text Field
+     */
+    @IBOutlet weak var output_tcp_port_label: NSTextField!
+    
+    /* ################################################################## */
+    /**
+     The Output TCP Port Text Field
+     */
+    @IBOutlet weak var output_tcp_port_text_field: NSTextField!
+    
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Properties
     /* ############################################################################################################################## */
@@ -57,5 +69,6 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
         super.viewDidLoad()
         input_uri_label.stringValue = input_uri_label.stringValue.localizedVariant
         input_uri_text_field.placeholderString = input_uri_text_field.placeholderString?.localizedVariant
+        output_tcp_port_label.stringValue = output_tcp_port_label.stringValue.localizedVariant
     }
 }

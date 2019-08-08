@@ -743,12 +743,12 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController title="SETTINGS" id="XfG-lQ-9wD" customClass="RVS_MediaServer_SettingsViewController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
+                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p8t-uz-yCl">
-                                <rect key="frame" x="18" y="230" width="156" height="20"/>
+                                <rect key="frame" x="18" y="230" width="168" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="NKn-I1-NMi"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ZTt-Ll-F3c"/>
@@ -760,7 +760,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zQE-AS-Dx3">
-                                <rect key="frame" x="176" y="230" width="284" height="20"/>
+                                <rect key="frame" x="188" y="230" width="272" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="EyF-5A-gWs"/>
                                 </constraints>
@@ -773,18 +773,52 @@
                                     <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.input_uri" id="Q0x-41-myD"/>
                                 </connections>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WzA-wP-OEE">
+                                <rect key="frame" x="18" y="202" width="168" height="20"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-OUTPUT-TCP-PORT" id="GyU-80-piX">
+                                    <font key="font" metaFont="titleBar"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38O-Bl-nJn">
+                                <rect key="frame" x="188" y="202" width="100" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="28q-Y6-imz"/>
+                                    <constraint firstAttribute="width" constant="100" id="ot2-T5-L4v"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="9gS-CS-684">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="mNm-UZ-DPr">
+                                        <real key="minimum" value="1"/>
+                                        <real key="maximum" value="65535"/>
+                                    </numberFormatter>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.output_tcp_port" id="x8f-rX-XUx"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="zQE-AS-Dx3" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="6m7-Vq-5MP"/>
                             <constraint firstItem="p8t-uz-yCl" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="8Qw-pa-4iG"/>
                             <constraint firstItem="zQE-AS-Dx3" firstAttribute="leading" secondItem="p8t-uz-yCl" secondAttribute="trailing" constant="4" id="8fQ-av-zLb"/>
                             <constraint firstItem="p8t-uz-yCl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="CSJ-fk-iCr"/>
+                            <constraint firstItem="WzA-wP-OEE" firstAttribute="leading" secondItem="p8t-uz-yCl" secondAttribute="leading" id="HiB-cl-Ode"/>
+                            <constraint firstItem="WzA-wP-OEE" firstAttribute="top" secondItem="p8t-uz-yCl" secondAttribute="bottom" constant="8" symbolic="YES" id="HuP-rR-3hd"/>
+                            <constraint firstItem="WzA-wP-OEE" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="JqD-kX-H4T"/>
+                            <constraint firstItem="38O-Bl-nJn" firstAttribute="leading" secondItem="WzA-wP-OEE" secondAttribute="trailing" constant="4" id="Mt2-4Q-VtW"/>
+                            <constraint firstItem="WzA-wP-OEE" firstAttribute="height" secondItem="p8t-uz-yCl" secondAttribute="height" id="XiX-DJ-MFh"/>
+                            <constraint firstItem="zQE-AS-Dx3" firstAttribute="baseline" secondItem="p8t-uz-yCl" secondAttribute="firstBaseline" id="avZ-rJ-6L1"/>
                             <constraint firstAttribute="trailing" secondItem="zQE-AS-Dx3" secondAttribute="trailing" constant="20" id="fHb-B0-2kA"/>
+                            <constraint firstItem="38O-Bl-nJn" firstAttribute="baseline" secondItem="WzA-wP-OEE" secondAttribute="firstBaseline" id="fvL-JK-ySl"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="input_uri_label" destination="p8t-uz-yCl" id="FVu-Y4-ujF"/>
                         <outlet property="input_uri_text_field" destination="zQE-AS-Dx3" id="4Wv-nT-1KP"/>
+                        <outlet property="output_tcp_port_label" destination="WzA-wP-OEE" id="zHr-de-12V"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

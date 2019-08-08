@@ -25,13 +25,22 @@ import Cocoa
  */
 class RVS_MediaServer_BaseViewController: NSViewController {
     /* ############################################################################################################################## */
+    // MARK: - Internal Instance Properties
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     This is the prefs object that we'll use to maintain our persistent state.
+     */
+    var _prefs: RVS_MediaServer_PersistentPrefs! = nil
+
+    /* ############################################################################################################################## */
     // MARK: - Internal Instance Calculated Properties
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     This is a direct accessor to the app prefs object.
+     This is a direct accessor to the app prefs object for this controller.
      */
     @objc dynamic var prefs: RVS_MediaServer_PersistentPrefs {
-        return RVS_MediaServer_AppDelegate.appDelegateObject.prefs
+        return nil == _prefs ? RVS_MediaServer_AppDelegate.appDelegateObject.prefs : _prefs
     }
 }

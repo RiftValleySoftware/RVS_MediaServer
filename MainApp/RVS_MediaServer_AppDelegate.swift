@@ -45,7 +45,7 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
     /* ############################################################################################################################## */
 
     /* ############################################################################################################################## */
-    // MARK: - Internal Instance Properties
+    // MARK: - Private Instance Properties
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
@@ -60,8 +60,8 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
     /**
      Accessor for the prefs state (READ ONLY).
      */
-    var prefs: RVS_MediaServer_PersistentPrefs! {
-        return _prefs
+    var prefs: RVS_MediaServer_PersistentPrefs {
+        return _prefs   // I deliberately want this to crash if it is not available.
     }
 
     /* ############################################################################################################################## */
@@ -89,9 +89,9 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
     /**
      */
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        _prefs = RVS_MediaServer_PersistentPrefs()
+        _prefs = RVS_MediaServer_PersistentPrefs(tag: "MAIN") // The first one is the main, or default one.
     }
-
+    
     /* ################################################################## */
     /**
      */

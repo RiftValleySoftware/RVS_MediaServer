@@ -88,8 +88,9 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
      */
     private var _calcPrefs: RVS_PersistentPrefs! {
         /// We will create a new set of prefs (loading anything saved), if we didn't already have them.
-        if  nil == type(of: self)._prefs {
-            type(of: self)._prefs = RVS_PersistentPrefs(tag: type(of: self).tag, values: type(of: self)._defaultPrefsValues)
+        if  nil == type(of: self)._prefs,
+            !tag.isEmpty {
+            type(of: self)._prefs = RVS_PersistentPrefs(tag: tag, values: type(of: self)._defaultPrefsValues)
         }
         
         return type(of: self)._prefs
@@ -102,14 +103,8 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
     /**
      This is the "tag" we use for storing the main prefs.
      */
-    class var tag: String {
-        if let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as? String {
-            return appName
-        }
-        
-        return className()
-    }
-
+    var tag: String = ""
+    
     /* ############################################################################################################################## */
     // MARK: - Instance Stored Properties (Ephemeral)
     /* ############################################################################################################################## */
@@ -121,8 +116,19 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
     
     /* ################################################################## */
     /**
+     This is the handler closure for acting on Web server requests.
+     
+     The closure signature is (_ inRequestObject: GCDWebServerRequest) -> GCDWebServerProcessBlock
      */
     var webServerHandler: GCDWebServerProcessBlock! = nil
+    
+    /* ################################################################## */
+    /**
+     This is the handler closure for acting on Web server requests.
+     
+     The closure signature is (_ inRequestObject: GCDWebServerRequest) -> GCDWebServerProcessBlock
+     */
+    var index: GCDWebServerProcessBlock! = nil
 
     /* ############################################################################################################################## */
     // MARK: - Internal Methods
@@ -182,10 +188,13 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
     
     /* ################################################################## */
     /**
-     We need to declare this in order to allow blank instances.
+     Init with a tag for this instance.
+     
+     - parameter tag: The tag (as a String) for this instance.
      */
-    override init() {
+    init(tag inTag: String) {
         super.init()
+        tag = inTag
     }
     
     /* ############################################################################################################################## */
