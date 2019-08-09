@@ -83,7 +83,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     /**
      This starts the ffmpeg task.
      */
-    func startFFMpeg() {
+    func startFFMpeg() -> Bool {
         let ffmpegTask = Process()
         let tempDirPath = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true).path + "/" + prefs.temp_directory_name + "/stream.m3u8"
         if let executablePath = Bundle.main.executablePath {
@@ -117,9 +117,23 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
             ffmpegTask.launch()
             
             print(pipe)
+            
+            return ffmpegTask.isRunning
         }
+        
+        return false
     }
     
+    /* ################################################################## */
+    /**
+     This stops the ffmpeg task.
+     */
+    func stopFFMpeg() {
+        if ffmpegTask?.isRunning ?? false {
+            ffmpegTask?.terminate()
+        }
+    }
+
     /* ############################################################################################################################## */
     // MARK: - Internal IBAction Instance Methods
     /* ############################################################################################################################## */
@@ -131,9 +145,9 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      */
     @IBAction func startStopButtonHit(_ inSender: NSButton) {
         if prefs.isRunning {
+            stopFFMpeg()
             stopServer()
-        } else {
-            startFFMpeg()
+        } else if startFFMpeg() {
             startServer()
         }
     }
