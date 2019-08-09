@@ -62,6 +62,30 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
      */
     @IBOutlet weak var login_text_field: NSTextField!
     
+    /* ################################################################## */
+    /**
+     The Password Label
+     */
+    @IBOutlet var password_label: NSTextField!
+    
+    /* ################################################################## */
+    /**
+     The Password Text Field
+     */
+    @IBOutlet weak var password_text_field: NSTextField!
+    
+    /* ################################################################## */
+    /**
+     The Temp HTML Directory Label
+     */
+    @IBOutlet var temp_directory_name_label: NSTextField!
+    
+    /* ################################################################## */
+    /**
+     The Temp HTML Directory Text Field
+     */
+    @IBOutlet weak var temp_directory_name_text_field: NSTextField!
+
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Properties
     /* ############################################################################################################################## */
@@ -84,5 +108,9 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
         output_tcp_port_label.stringValue = output_tcp_port_label.stringValue.localizedVariant
         login_label.stringValue = login_label.stringValue.localizedVariant
         login_text_field.placeholderString = login_text_field.placeholderString?.localizedVariant
+        password_label.stringValue = password_label.stringValue.localizedVariant
+        password_text_field.placeholderString = password_text_field.placeholderString?.localizedVariant
+        temp_directory_name_label.stringValue = temp_directory_name_label.stringValue.localizedVariant
+        temp_directory_name_text_field.placeholderString = temp_directory_name_text_field.placeholderString?.localizedVariant
     }
 }

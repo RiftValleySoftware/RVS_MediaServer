@@ -22,3 +22,7 @@
 "SLUG-OUTPUT-TCP-PORT"                      =       "TCP Port:";
 "SLUG-LOGIN-LABEL"                          =       "Login ID:";
 "SLUG-LOGIN-PLACEHOLDER"                    =       "Enter the Login ID";
+"SLUG-PASSWORD-LABEL"                       =       "Password:";
+"SLUG-PASSWORD-PLACEHOLDER"                 =       "Enter the Password";
+"SLUG-TMP-LABEL"                            =       "Temp Dir:";
+"SLUG-TMP-PLACEHOLDER"                      =       "Enter the Temp Directory Name";

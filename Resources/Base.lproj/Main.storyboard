@@ -825,25 +825,90 @@
                                     <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.login_id" id="zuv-lu-BB5"/>
                                 </connections>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-F2-NZ7">
+                                <rect key="frame" x="18" y="144" width="168" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="LMM-ba-kVC"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-PASSWORD-LABEL" id="Ljb-M3-eJd">
+                                    <font key="font" metaFont="titleBar"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eXd-4I-l4C">
+                                <rect key="frame" x="188" y="146" width="272" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="IBQ-Cx-IJy"/>
+                                </constraints>
+                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-PASSWORD-PLACEHOLDER" drawsBackground="YES" usesSingleLineMode="YES" id="b5n-kV-qbD">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <allowedInputSourceLocales>
+                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                    </allowedInputSourceLocales>
+                                </secureTextFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.password" id="XNc-ds-YH2"/>
+                                </connections>
+                            </secureTextField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="266-Ac-esv">
+                                <rect key="frame" x="18" y="116" width="168" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="JWe-w1-T7O"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-TMP-LABEL" id="eok-Go-H08">
+                                    <font key="font" metaFont="titleBar"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4w0-nQ-DW5">
+                                <rect key="frame" x="188" y="118" width="272" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Xfs-bE-Ve3"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-TMP-PLACEHOLDER" drawsBackground="YES" id="6ZP-0M-BTO">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.temp_directory_name" id="DBO-wf-qp9"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="7E1-pb-BUM" firstAttribute="top" secondItem="38O-Bl-nJn" secondAttribute="bottom" constant="8" id="0n3-Jf-4Ba"/>
+                            <constraint firstItem="4w0-nQ-DW5" firstAttribute="firstBaseline" secondItem="266-Ac-esv" secondAttribute="firstBaseline" id="1cq-ov-3WE"/>
+                            <constraint firstItem="eXd-4I-l4C" firstAttribute="trailing" secondItem="7E1-pb-BUM" secondAttribute="trailing" id="20t-CB-Kmq"/>
+                            <constraint firstItem="266-Ac-esv" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="3bw-h7-Cpz"/>
                             <constraint firstItem="7HW-Yg-asM" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="4ry-jO-PFL"/>
+                            <constraint firstItem="4w0-nQ-DW5" firstAttribute="leading" secondItem="266-Ac-esv" secondAttribute="trailing" constant="4" id="68D-CC-Hcx"/>
                             <constraint firstItem="7E1-pb-BUM" firstAttribute="firstBaseline" secondItem="7HW-Yg-asM" secondAttribute="firstBaseline" id="6sQ-Ky-y6c"/>
                             <constraint firstAttribute="trailing" secondItem="7E1-pb-BUM" secondAttribute="trailing" constant="20" id="81k-hG-e0y"/>
                             <constraint firstItem="p8t-uz-yCl" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="8Qw-pa-4iG"/>
                             <constraint firstItem="zQE-AS-Dx3" firstAttribute="leading" secondItem="p8t-uz-yCl" secondAttribute="trailing" constant="4" id="8fQ-av-zLb"/>
                             <constraint firstItem="p8t-uz-yCl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="CSJ-fk-iCr"/>
+                            <constraint firstItem="yNT-F2-NZ7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="DIE-Dx-Zl6"/>
                             <constraint firstItem="WzA-wP-OEE" firstAttribute="leading" secondItem="p8t-uz-yCl" secondAttribute="leading" id="HiB-cl-Ode"/>
                             <constraint firstItem="WzA-wP-OEE" firstAttribute="top" secondItem="p8t-uz-yCl" secondAttribute="bottom" constant="8" symbolic="YES" id="HuP-rR-3hd"/>
                             <constraint firstItem="WzA-wP-OEE" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="JqD-kX-H4T"/>
                             <constraint firstItem="38O-Bl-nJn" firstAttribute="leading" secondItem="WzA-wP-OEE" secondAttribute="trailing" constant="4" id="Mt2-4Q-VtW"/>
+                            <constraint firstItem="eXd-4I-l4C" firstAttribute="leading" secondItem="yNT-F2-NZ7" secondAttribute="trailing" constant="4" id="SoW-gF-UAY"/>
                             <constraint firstItem="WzA-wP-OEE" firstAttribute="height" secondItem="p8t-uz-yCl" secondAttribute="height" id="XiX-DJ-MFh"/>
+                            <constraint firstItem="266-Ac-esv" firstAttribute="top" secondItem="yNT-F2-NZ7" secondAttribute="bottom" constant="8" id="YHl-cD-QaY"/>
                             <constraint firstItem="zQE-AS-Dx3" firstAttribute="baseline" secondItem="p8t-uz-yCl" secondAttribute="firstBaseline" id="avZ-rJ-6L1"/>
                             <constraint firstItem="7HW-Yg-asM" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="ccO-NN-WoV"/>
                             <constraint firstItem="7E1-pb-BUM" firstAttribute="leading" secondItem="7HW-Yg-asM" secondAttribute="trailing" constant="4" id="dTG-vk-Hh5"/>
                             <constraint firstAttribute="trailing" secondItem="zQE-AS-Dx3" secondAttribute="trailing" constant="20" id="fHb-B0-2kA"/>
                             <constraint firstItem="38O-Bl-nJn" firstAttribute="baseline" secondItem="WzA-wP-OEE" secondAttribute="firstBaseline" id="fvL-JK-ySl"/>
+                            <constraint firstItem="eXd-4I-l4C" firstAttribute="top" secondItem="7E1-pb-BUM" secondAttribute="bottom" constant="8" id="hRK-PH-3Qp"/>
+                            <constraint firstItem="eXd-4I-l4C" firstAttribute="firstBaseline" secondItem="yNT-F2-NZ7" secondAttribute="firstBaseline" id="hmU-QQ-aAD"/>
+                            <constraint firstAttribute="trailing" secondItem="4w0-nQ-DW5" secondAttribute="trailing" constant="20" id="nAr-Ms-yzc"/>
+                            <constraint firstItem="yNT-F2-NZ7" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="nbI-mV-TIJ"/>
+                            <constraint firstItem="266-Ac-esv" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="rl4-FO-4fc"/>
                         </constraints>
                     </view>
                     <connections>
@@ -852,6 +917,11 @@
                         <outlet property="login_label" destination="7HW-Yg-asM" id="GnK-Gr-ZHo"/>
                         <outlet property="login_text_field" destination="7E1-pb-BUM" id="R9D-Mc-iRk"/>
                         <outlet property="output_tcp_port_label" destination="WzA-wP-OEE" id="zHr-de-12V"/>
+                        <outlet property="output_tcp_port_text_field" destination="38O-Bl-nJn" id="AXN-tz-gNe"/>
+                        <outlet property="password_label" destination="yNT-F2-NZ7" id="gWZ-X7-JJ9"/>
+                        <outlet property="password_text_field" destination="eXd-4I-l4C" id="xl2-RN-o4h"/>
+                        <outlet property="temp_directory_name_label" destination="266-Ac-esv" id="qog-f1-gEn"/>
+                        <outlet property="temp_directory_name_text_field" destination="4w0-nQ-DW5" id="5DO-nS-JzK"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
