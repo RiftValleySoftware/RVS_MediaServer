@@ -755,7 +755,7 @@
                                     <font key="font" metaFont="systemBold" size="18"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="startStopButtonHit:" target="Vb5-tk-ief" id="uWf-9J-wgv"/>
+                                    <action selector="startStopButtonHit:" target="Vb5-tk-ief" id="e6y-En-Pa7"/>
                                 </connections>
                             </button>
                             <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="flW-J9-XVc">
@@ -791,6 +791,7 @@
                     </connections>
                 </viewController>
                 <customObject id="lxA-RB-8sx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="9ZC-jU-DMW"/>
             </objects>
             <point key="canvasLocation" x="-516" y="655"/>
         </scene>

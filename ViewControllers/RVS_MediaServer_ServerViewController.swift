@@ -28,7 +28,6 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     /* ############################################################################################################################## */
     // MARK: - Internal IB Instance Properties
     /* ############################################################################################################################## */
-    
     /* ################################################################## */
     /**
      This label shows the server status. If running, the color is green. If stopped, the color is red.
@@ -66,26 +65,38 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     /**
      This will hold the url of our output streaming file.
      */
-    var outputFileURL: URL!
+    var outputTmpFile: TemporaryFile?
+    
+    /* ################################################################## */
+    /**
+     This is a Web Server instance that is associated with this stream. Its lifetime is the lifetime of the object (not persistent).
+     */
+    var webServer: GCDWebServer?
 
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Methods
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     This starts the streaming server.
+     This simply starts the Web server.
+     
+     - parameter webServerHandler: This is an optional handling closure for Web Server calls.
+     If not provided (or set to nil), then whatever we already have is used. This will replace any existing handler.
      */
     func startServer() {
-        prefs.webServerHandler = webServerHandler
-        prefs.isRunning = true
-    }
-    
-    /* ################################################################## */
-    /**
-     This stops the streaming server.
-     */
-    func stopServer() {
-        prefs.isRunning = false
+        if nil == webServer || !(webServer?.isRunning ?? false) {
+            webServer = GCDWebServer()
+            
+            webServer?.addGETHandler(forBasePath: "/", directoryPath: outputTmpFile?.directoryURL.path ?? "", indexFilename: "stream.m3u8", cacheAge: 3600, allowRangeRequests: true)
+            
+            webServer?.start(withPort: UInt(prefs.output_tcp_port), bonjourName: prefs.stream_name)
+            
+            if let uri = webServer?.serverURL {
+                print("Visit \(uri) in your web browser")
+            } else {
+                print("Error in Setting Up the Web Server!")
+            }
+        }
     }
     
     /* ################################################################## */
@@ -93,44 +104,50 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      This starts the ffmpeg task.
      */
     func startFFMpeg() -> Bool {
-        let ffmpegTask = Process()
-        outputFileURL = URL(fileURLWithPath: NSTemporaryDirectory() + prefs.temp_directory_name + "/stream.m3u8", isDirectory: false)
-//        outputFileURL = URL(fileURLWithPath: "/Volumes/Development/webroot/fftest/stream.m3u8", isDirectory: false)
-        if var executablePath = (Bundle.main.executablePath as NSString?)?.deletingLastPathComponent {
-            executablePath += "/ffmpeg"
-            ffmpegTask.launchPath = executablePath
-            ffmpegTask.arguments = [
-                "-i",
-                prefs.input_uri,
-                "-sc_threshold",
-                "0",
-                "-f",
-                "hls",
-                "-hls_flags",
-                "delete_segments",
-                "-hls_time",
-                "4",
-                outputFileURL.path
-            ]
+        ffmpegTask = Process()
+        
+        if let ffmpegTask = ffmpegTask {
+            if let tmp = try? TemporaryFile(creatingTempDirectoryForFilename: "stream.m3u8") {
+                outputTmpFile = tmp
+            }
             
-            #if DEBUG
-                if let args = ffmpegTask.arguments, 1 < args.count {
-                    let path = ([executablePath] + args).joined(separator: " ")
-                        print("Starting FFMPEG: \(String(describing: path))")
-                }
-            #endif
-            
-            // Create a Pipe and make the task
-            // put all the output there
-            let pipe = Pipe()
-            ffmpegTask.standardOutput = pipe
-            
-            // Launch the task
-            ffmpegTask.launch()
-            
-            print(pipe)
-            
-            return ffmpegTask.isRunning
+            if  nil != outputTmpFile,
+                var executablePath = (Bundle.main.executablePath as NSString?)?.deletingLastPathComponent {
+                executablePath += "/ffmpeg"
+                ffmpegTask.launchPath = executablePath
+                ffmpegTask.arguments = [
+                    "-i",
+                    prefs.input_uri,
+                    "-sc_threshold",
+                    "0",
+                    "-f",
+                    "hls",
+                    "-hls_flags",
+                    "delete_segments",
+                    "-hls_time",
+                    "4",
+                    outputTmpFile?.fileURL.path ?? ""
+                ]
+                
+                #if DEBUG
+                    if let args = ffmpegTask.arguments, 1 < args.count {
+                        let path = ([executablePath] + args).joined(separator: " ")
+                            print("Starting FFMPEG: \(String(describing: path))")
+                    }
+                #endif
+                
+                // Create a Pipe and make the task
+                // put all the output there
+                let pipe = Pipe()
+                ffmpegTask.standardOutput = pipe
+                
+                // Launch the task
+                ffmpegTask.launch()
+                
+                print(pipe)
+                
+                return ffmpegTask.isRunning
+            }
         }
         
         return false
@@ -138,12 +155,15 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     
     /* ################################################################## */
     /**
-     This stops the ffmpeg task.
+     This simply stops the Web server.
      */
-    func stopFFMpeg() {
-        if ffmpegTask?.isRunning ?? false {
-            ffmpegTask?.terminate()
-        }
+    func stopServer() {
+        ffmpegTask?.terminate()
+        ffmpegTask = nil
+        webServer?.stop()
+        webServer = nil
+        try? outputTmpFile?.deleteDirectory()
+        outputTmpFile = nil
     }
 
     /* ############################################################################################################################## */
@@ -156,12 +176,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      - parameter inSender: Ignored
      */
     @IBAction func startStopButtonHit(_ inSender: NSButton) {
-        if prefs.isRunning {
-            stopFFMpeg()
-            stopServer()
-        } else if startFFMpeg() {
-            startServer()
-        }
+        isRunning = !isRunning
     }
     
     /* ################################################################## */
@@ -172,7 +187,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      - parameter inSender: The  Link button. We will use its text value as our URI source.
      */
     @IBAction func linkButtonHit(_ inSender: NSButton) {
-        if prefs.isRunning {
+        if isRunning {
             let uriString = inSender.title
             if  let uri = URL(string: uriString),
                 NSWorkspace.shared.open(uri) {
@@ -180,6 +195,25 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
         }
     }
     
+    /* ############################################################################################################################## */
+    // MARK: - Internal Observable Properties
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     The Web Server Running Status.
+     If set to true, then the server will start, using whatever handler is already in webServerHandler
+     */
+    @objc dynamic var isRunning: Bool = false {
+        didSet {
+            if isRunning, startFFMpeg() {
+                startServer()
+                isRunning = webServer?.isRunning ?? false
+            } else {
+                stopServer()
+            }
+        }
+    }
+
     /* ############################################################################################################################## */
     // MARK: - Internal Callback Handler Methods
     /* ############################################################################################################################## */
@@ -190,12 +224,12 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      - parameter inObject: The object that is being changed. We ignore it.
      - parameter inChange: The change object. We ignore this, too.
      */
-    func serverStatusObserverHandler(_ inObject: Any, _ inChange: NSKeyValueObservedChange<Bool>! = nil) {
-        if prefs.isRunning {
+    func serverStatusObserverHandler(_ inObject: Any! = nil, _ inChange: NSKeyValueObservedChange<Bool>! = nil) {
+        if isRunning {
             serverStatusLabel.textColor = NSColor.green
             serverStatusLabel.stringValue = "SLUG-SERVER-IS-RUNNING".localizedVariant
             startStopButton.title = "SLUG-STOP-SERVER".localizedVariant
-            if let linkButtonTitle = prefs.webServer?.serverURL?.absoluteString {
+            if let linkButtonTitle = webServer?.serverURL?.absoluteString {
                 linkButton.isHidden = false
                 linkButton.title = linkButtonTitle + "stream.m3u8"
             }
@@ -211,12 +245,17 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     /**
      */
     func webServerHandler(_ inRequestObject: GCDWebServerRequest) -> GCDWebServerDataResponse! {
+        print(String(describing: inRequestObject))
         do {
-            let outputData = try Data(contentsOf: outputFileURL)
-            return GCDWebServerDataResponse(data: outputData, contentType: "application/vnd.apple.mpegurl")
+            if let url = outputTmpFile?.fileURL {
+                let outputData = try Data(contentsOf: url)
+                return GCDWebServerDataResponse(data: outputData, contentType: "application/vnd.apple.mpegurl")
+            }
         } catch {
             return GCDWebServerDataResponse(html: "<html><body><h1>ERROR!</h1></body></html>")
         }
+        
+        return nil
     }
 
     /* ############################################################################################################################## */
@@ -228,7 +267,18 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        serverStatusObserver = observe(\.prefs.isRunning, changeHandler: serverStatusObserverHandler)
-        serverStatusObserverHandler(prefs)
+        serverStatusObserver = observe(\.isRunning, changeHandler: serverStatusObserverHandler)
+        serverStatusObserverHandler()
+    }
+    
+    /* ############################################################################################################################## */
+    // MARK: - Deinit
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     Make sure that we stop the server upon quit/close.
+     */
+    deinit {
+        stopServer()
     }
 }

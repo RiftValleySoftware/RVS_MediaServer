@@ -108,19 +108,6 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
     /* ############################################################################################################################## */
     // MARK: - Instance Stored Properties (Ephemeral)
     /* ############################################################################################################################## */
-    /* ################################################################## */
-    /**
-     This is a Web Server instance that is associated with this stream. Its lifetime is the lifetime of the object (not persistent).
-     */
-    var webServer: GCDWebServer! = nil
-    
-    /* ################################################################## */
-    /**
-     This is the handler closure for acting on Web server requests.
-     
-     The closure signature is (_ inRequestObject: GCDWebServerRequest) -> GCDWebServerDataResponse!
-     */
-    var webServerHandler: GCDWebServerProcessBlock! = nil
     
     /* ############################################################################################################################## */
     // MARK: - Internal Methods
@@ -132,50 +119,6 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
      */
     func reset() {
         _calcPrefs.values = type(of: self)._defaultPrefsValues
-    }
-    
-    /* ################################################################## */
-    /**
-     This simply starts the Web server.
-     
-     - parameter webServerHandler: This is an optional handling closure for Web Server calls.
-        If not provided (or set to nil), then whatever we already have is used. This will replace any existing handler.
-     */
-    func startWebServer(webServerHandler inWebServerHandler: GCDWebServerProcessBlock! = nil) {
-        webServer = GCDWebServer()
-        
-        // If they gave us a handler, we use that instead of anything else we have.
-        if nil != inWebServerHandler {
-            webServerHandler = inWebServerHandler
-        }
-        
-        // If a handler method was not provided, we create a placeholder that yells at us.
-        if nil == webServerHandler {
-            webServerHandler = { _ in
-                return GCDWebServerDataResponse(html: "<html><body><h1>ERROR! NO PROCESS BLOCK!</h1></body></html>")
-            }
-        }
-        
-        webServer.addDefaultHandler(forMethod: "GET", request: GCDWebServerRequest.self, processBlock: webServerHandler)
-        
-        webServer.start(withPort: UInt(output_tcp_port), bonjourName: stream_name)
-        
-        if let uri = webServer.serverURL {
-            print("Visit \(uri) in your web browser")
-        } else {
-            print("Error in Setting Up the Web Server!")
-        }
-    }
-    
-    /* ################################################################## */
-    /**
-     This simply stops the Web server.
-     */
-    func stopWebServer() {
-        if  let webServer = webServer,
-            webServer.isRunning {
-            webServer.stop()
-        }
     }
     
     /* ################################################################## */
@@ -277,25 +220,6 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
         
         set {
             _calcPrefs.values[_PrefsKeys.temp_directory_name.rawValue] = newValue
-        }
-    }
-    
-    /* ################################################################## */
-    /**
-     The Web Server Running Status.
-     If set to true, then the server will start, using whatever handler is already in webServerHandler
-     */
-    @objc dynamic var isRunning: Bool {
-        get {
-            return webServer?.isRunning ?? false
-        }
-        
-        set {
-            if newValue, !(webServer?.isRunning ?? false) {
-                self.startWebServer()
-            } else if !newValue, (webServer?.isRunning ?? false), nil != webServer {
-                self.stopWebServer()
-            }
         }
     }
 
