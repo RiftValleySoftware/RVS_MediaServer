@@ -20,3 +20,5 @@
 "SLUG-INPUT-URI-LABEL"                      =       "Input URI:";
 "SLUG-INPUT-URI-PLACEHOLDER"                =       "Enter the Stream URI";
 "SLUG-OUTPUT-TCP-PORT"                      =       "TCP Port:";
+"SLUG-LOGIN-LABEL"                          =       "Login ID:";
+"SLUG-LOGIN-PLACEHOLDER"                    =       "Enter the Login ID";

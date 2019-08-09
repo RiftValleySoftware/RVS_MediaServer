@@ -50,6 +50,18 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
      */
     @IBOutlet weak var output_tcp_port_text_field: NSTextField!
     
+    /* ################################################################## */
+    /**
+     The Login ID Label
+     */
+    @IBOutlet var login_label: NSTextField!
+    
+    /* ################################################################## */
+    /**
+     The Login ID Text Field
+     */
+    @IBOutlet weak var login_text_field: NSTextField!
+    
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Properties
     /* ############################################################################################################################## */
@@ -70,5 +82,7 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
         input_uri_label.stringValue = input_uri_label.stringValue.localizedVariant
         input_uri_text_field.placeholderString = input_uri_text_field.placeholderString?.localizedVariant
         output_tcp_port_label.stringValue = output_tcp_port_label.stringValue.localizedVariant
+        login_label.stringValue = login_label.stringValue.localizedVariant
+        login_text_field.placeholderString = login_text_field.placeholderString?.localizedVariant
     }
 }

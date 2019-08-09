@@ -800,8 +800,37 @@
                                     <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.output_tcp_port" id="x8f-rX-XUx"/>
                                 </connections>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-Yg-asM">
+                                <rect key="frame" x="18" y="172" width="168" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Wad-0e-2kM"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-LOGIN-LABEL" id="LIX-Sf-uAQ">
+                                    <font key="font" metaFont="titleBar"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7E1-pb-BUM">
+                                <rect key="frame" x="188" y="174" width="272" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="w1v-in-yPo"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-LOGIN-PLACEHOLDER" drawsBackground="YES" id="Aut-7R-qKX">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.login_id" id="zuv-lu-BB5"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="7E1-pb-BUM" firstAttribute="top" secondItem="38O-Bl-nJn" secondAttribute="bottom" constant="8" id="0n3-Jf-4Ba"/>
+                            <constraint firstItem="7HW-Yg-asM" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="4ry-jO-PFL"/>
+                            <constraint firstItem="7E1-pb-BUM" firstAttribute="firstBaseline" secondItem="7HW-Yg-asM" secondAttribute="firstBaseline" id="6sQ-Ky-y6c"/>
+                            <constraint firstAttribute="trailing" secondItem="7E1-pb-BUM" secondAttribute="trailing" constant="20" id="81k-hG-e0y"/>
                             <constraint firstItem="p8t-uz-yCl" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="8Qw-pa-4iG"/>
                             <constraint firstItem="zQE-AS-Dx3" firstAttribute="leading" secondItem="p8t-uz-yCl" secondAttribute="trailing" constant="4" id="8fQ-av-zLb"/>
                             <constraint firstItem="p8t-uz-yCl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="CSJ-fk-iCr"/>
@@ -811,6 +840,8 @@
                             <constraint firstItem="38O-Bl-nJn" firstAttribute="leading" secondItem="WzA-wP-OEE" secondAttribute="trailing" constant="4" id="Mt2-4Q-VtW"/>
                             <constraint firstItem="WzA-wP-OEE" firstAttribute="height" secondItem="p8t-uz-yCl" secondAttribute="height" id="XiX-DJ-MFh"/>
                             <constraint firstItem="zQE-AS-Dx3" firstAttribute="baseline" secondItem="p8t-uz-yCl" secondAttribute="firstBaseline" id="avZ-rJ-6L1"/>
+                            <constraint firstItem="7HW-Yg-asM" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="ccO-NN-WoV"/>
+                            <constraint firstItem="7E1-pb-BUM" firstAttribute="leading" secondItem="7HW-Yg-asM" secondAttribute="trailing" constant="4" id="dTG-vk-Hh5"/>
                             <constraint firstAttribute="trailing" secondItem="zQE-AS-Dx3" secondAttribute="trailing" constant="20" id="fHb-B0-2kA"/>
                             <constraint firstItem="38O-Bl-nJn" firstAttribute="baseline" secondItem="WzA-wP-OEE" secondAttribute="firstBaseline" id="fvL-JK-ySl"/>
                         </constraints>
@@ -818,6 +849,8 @@
                     <connections>
                         <outlet property="input_uri_label" destination="p8t-uz-yCl" id="FVu-Y4-ujF"/>
                         <outlet property="input_uri_text_field" destination="zQE-AS-Dx3" id="4Wv-nT-1KP"/>
+                        <outlet property="login_label" destination="7HW-Yg-asM" id="GnK-Gr-ZHo"/>
+                        <outlet property="login_text_field" destination="7E1-pb-BUM" id="R9D-Mc-iRk"/>
                         <outlet property="output_tcp_port_label" destination="WzA-wP-OEE" id="zHr-de-12V"/>
                     </connections>
                 </viewController>
