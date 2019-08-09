@@ -190,9 +190,9 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
     /**
      Init with a tag for this instance.
      
-     - parameter tag: The tag (as a String) for this instance.
+     - parameter tag: The tag (as a String) for this instance. The default is "0"
      */
-    init(tag inTag: String) {
+    init(tag inTag: String = "0") {
         super.init()
         tag = inTag
     }
@@ -288,6 +288,25 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
         }
     }
     
+    /* ################################################################## */
+    /**
+     The Web Server Running Status.
+     If set to true, then the server will start, using whatever handler is already in webServerHandler
+     */
+    @objc dynamic var isRunning: Bool {
+        get {
+            return webServer?.isRunning ?? false
+        }
+        
+        set {
+            if newValue, !(webServer?.isRunning ?? false) {
+                self.startWebServer()
+            } else if !newValue, (webServer?.isRunning ?? false), nil != webServer {
+                self.stopWebServer()
+            }
+        }
+    }
+
     /* ############################################################################################################################## */
     // MARK: - NSCoding Methods
     /* ############################################################################################################################## */

@@ -26,3 +26,7 @@
 "SLUG-PASSWORD-PLACEHOLDER"                 =       "Enter the Password";
 "SLUG-TMP-LABEL"                            =       "Temp Dir:";
 "SLUG-TMP-PLACEHOLDER"                      =       "Enter the Temp Directory Name";
+"SLUG-SERVER-IS-RUNNING"                    =       "The Server Is Running";
+"SLUG-SERVER-IS-NOT-RUNNING"                =       "The Server Is Not Running";
+"SLUG-START-SERVER"                         =       "START SERVER";
+"SLUG-STOP-SERVER"                          =       "STOP SERVER";

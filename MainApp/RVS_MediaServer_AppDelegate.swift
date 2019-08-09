@@ -61,6 +61,10 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
      Accessor for the prefs state (READ ONLY).
      */
     var prefs: RVS_MediaServer_PersistentPrefs {
+        if nil == _prefs {
+            _prefs = RVS_MediaServer_PersistentPrefs() // The first one is the main, or default one. Its tag will be "0" (The class defaults).
+        }
+        
         return _prefs   // I deliberately want this to crash if it is not available.
     }
 
@@ -89,7 +93,6 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
     /**
      */
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        _prefs = RVS_MediaServer_PersistentPrefs(tag: "MAIN") // The first one is the main, or default one.
     }
     
     /* ################################################################## */

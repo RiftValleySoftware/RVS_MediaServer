@@ -733,7 +733,45 @@
                     <view key="view" id="lkg-00-B7e">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TOd-Va-Rbc">
+                                <rect key="frame" x="18" y="226" width="444" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="jaI-8O-xxV"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="gst-9a-BJP">
+                                    <font key="font" metaFont="systemHeavy" size="20"/>
+                                    <color key="textColor" red="1" green="0.055564177690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CRg-Vt-LF4">
+                                <rect key="frame" x="14" y="181" width="452" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="s9d-FA-hXx"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UcE-ph-EZV">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="systemBold" size="18"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="startStopButtonHit:" target="Vb5-tk-ief" id="uWf-9J-wgv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="TOd-Va-Rbc" firstAttribute="leading" secondItem="lkg-00-B7e" secondAttribute="leading" constant="20" id="2Jg-SP-kIg"/>
+                            <constraint firstItem="TOd-Va-Rbc" firstAttribute="top" secondItem="lkg-00-B7e" secondAttribute="top" constant="20" id="DmJ-gV-gpI"/>
+                            <constraint firstAttribute="trailing" secondItem="CRg-Vt-LF4" secondAttribute="trailing" constant="20" id="Ejq-l9-JtK"/>
+                            <constraint firstItem="CRg-Vt-LF4" firstAttribute="leading" secondItem="lkg-00-B7e" secondAttribute="leading" constant="20" id="HDP-Gn-X5c"/>
+                            <constraint firstItem="CRg-Vt-LF4" firstAttribute="top" secondItem="TOd-Va-Rbc" secondAttribute="bottom" constant="8" id="JuG-4B-Nh4"/>
+                            <constraint firstAttribute="trailing" secondItem="TOd-Va-Rbc" secondAttribute="trailing" constant="20" id="kFG-QT-cWG"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="serverStatusLabel" destination="TOd-Va-Rbc" id="g1k-9n-vPd"/>
+                        <outlet property="startStopButton" destination="CRg-Vt-LF4" id="oMO-31-zIs"/>
+                    </connections>
                 </viewController>
                 <customObject id="lxA-RB-8sx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
