@@ -758,17 +758,34 @@
                                     <action selector="startStopButtonHit:" target="Vb5-tk-ief" id="uWf-9J-wgv"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="flW-J9-XVc">
+                                <rect key="frame" x="14" y="148" width="452" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="zXG-8U-Rbd"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hIz-kr-xdc">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="linkButtonHit:" target="Vb5-tk-ief" id="JtV-TY-cat"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="TOd-Va-Rbc" firstAttribute="leading" secondItem="lkg-00-B7e" secondAttribute="leading" constant="20" id="2Jg-SP-kIg"/>
+                            <constraint firstItem="flW-J9-XVc" firstAttribute="leading" secondItem="lkg-00-B7e" secondAttribute="leading" constant="20" id="2k5-R9-azv"/>
                             <constraint firstItem="TOd-Va-Rbc" firstAttribute="top" secondItem="lkg-00-B7e" secondAttribute="top" constant="20" id="DmJ-gV-gpI"/>
                             <constraint firstAttribute="trailing" secondItem="CRg-Vt-LF4" secondAttribute="trailing" constant="20" id="Ejq-l9-JtK"/>
                             <constraint firstItem="CRg-Vt-LF4" firstAttribute="leading" secondItem="lkg-00-B7e" secondAttribute="leading" constant="20" id="HDP-Gn-X5c"/>
                             <constraint firstItem="CRg-Vt-LF4" firstAttribute="top" secondItem="TOd-Va-Rbc" secondAttribute="bottom" constant="8" id="JuG-4B-Nh4"/>
+                            <constraint firstAttribute="trailing" secondItem="flW-J9-XVc" secondAttribute="trailing" constant="20" id="MAm-sK-l1e"/>
+                            <constraint firstItem="flW-J9-XVc" firstAttribute="top" secondItem="CRg-Vt-LF4" secondAttribute="bottom" constant="12" id="Mz6-5E-TaW"/>
                             <constraint firstAttribute="trailing" secondItem="TOd-Va-Rbc" secondAttribute="trailing" constant="20" id="kFG-QT-cWG"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="linkButton" destination="flW-J9-XVc" id="x8e-mU-7CI"/>
                         <outlet property="serverStatusLabel" destination="TOd-Va-Rbc" id="g1k-9n-vPd"/>
                         <outlet property="startStopButton" destination="CRg-Vt-LF4" id="oMO-31-zIs"/>
                     </connections>

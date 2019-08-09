@@ -39,6 +39,12 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      */
     @IBOutlet weak var startStopButton: NSButton!
     
+    /* ################################################################## */
+    /**
+     This button displays a link to allow the server to be easily opened.
+     */
+    @IBOutlet weak var linkButton: NSButton!
+    
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Properties
     /* ############################################################################################################################## */
@@ -73,12 +79,30 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     /* ################################################################## */
     /**
      This starts or stops the streaming server, depending on the state of the server.
+     
+     - parameter inSender: Ignored
      */
-    @IBAction func startStopButtonHit(_ sender: NSButton) {
+    @IBAction func startStopButtonHit(_ inSender: NSButton) {
         if prefs.isRunning {
             stopServer()
         } else {
             startServer()
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     This responds to the server link button being hit.
+     Assuming the server is running, this will ask the default browser to open the link.
+     
+     - parameter inSender: The  Link button. We will use its text value as our URI source.
+     */
+    @IBAction func linkButtonHit(_ inSender: NSButton) {
+        if prefs.isRunning {
+            let uriString = inSender.title
+            if  let uri = URL(string: uriString),
+                NSWorkspace.shared.open(uri) {
+            }
         }
     }
     
@@ -97,10 +121,13 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
             serverStatusLabel.textColor = NSColor.green
             serverStatusLabel.stringValue = "SLUG-SERVER-IS-RUNNING".localizedVariant
             startStopButton.title = "SLUG-STOP-SERVER".localizedVariant
+            linkButton.isHidden = false
+            linkButton.title = prefs.webServer?.serverURL?.absoluteString ?? "ERROR"
         } else {
             serverStatusLabel.textColor = NSColor.red
             serverStatusLabel.stringValue = "SLUG-SERVER-IS-NOT-RUNNING".localizedVariant
             startStopButton.title = "SLUG-START-SERVER".localizedVariant
+            linkButton.isHidden = true
         }
     }
     
