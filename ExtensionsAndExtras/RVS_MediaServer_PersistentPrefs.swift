@@ -118,18 +118,10 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
     /**
      This is the handler closure for acting on Web server requests.
      
-     The closure signature is (_ inRequestObject: GCDWebServerRequest) -> GCDWebServerProcessBlock
+     The closure signature is (_ inRequestObject: GCDWebServerRequest) -> GCDWebServerDataResponse!
      */
     var webServerHandler: GCDWebServerProcessBlock! = nil
     
-    /* ################################################################## */
-    /**
-     This is the handler closure for acting on Web server requests.
-     
-     The closure signature is (_ inRequestObject: GCDWebServerRequest) -> GCDWebServerProcessBlock
-     */
-    var index: GCDWebServerProcessBlock! = nil
-
     /* ############################################################################################################################## */
     // MARK: - Internal Methods
     /* ############################################################################################################################## */

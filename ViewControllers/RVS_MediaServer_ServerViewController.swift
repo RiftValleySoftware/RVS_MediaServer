@@ -16,6 +16,8 @@
  */
 
 import Cocoa
+/// This is the dependency for a small, embedded GCD Web server.
+import GCDWebServers
 
 /* ################################################################################################################################## */
 // MARK: - Main View Controller Class
@@ -59,6 +61,12 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      This will hold the ffmpeg command line task.
      */
     var ffmpegTask: Process?
+    
+    /* ################################################################## */
+    /**
+     This will hold the url of our output streaming file.
+     */
+    var outputFileURL: URL!
 
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Methods
@@ -68,6 +76,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      This starts the streaming server.
      */
     func startServer() {
+        prefs.webServerHandler = webServerHandler
         prefs.isRunning = true
     }
     
@@ -85,7 +94,8 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      */
     func startFFMpeg() -> Bool {
         let ffmpegTask = Process()
-        let tempDirPath = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true).path + "/" + prefs.temp_directory_name + "/stream.m3u8"
+        outputFileURL = URL(fileURLWithPath: NSTemporaryDirectory() + prefs.temp_directory_name + "/stream.m3u8", isDirectory: false)
+//        outputFileURL = URL(fileURLWithPath: "/Volumes/Development/webroot/fftest/stream.m3u8", isDirectory: false)
         if var executablePath = (Bundle.main.executablePath as NSString?)?.deletingLastPathComponent {
             executablePath += "/ffmpeg"
             ffmpegTask.launchPath = executablePath
@@ -96,9 +106,11 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
                 "0",
                 "-f",
                 "hls",
-                "-hls_flags delete_segments",
-                "-hls_time 4",
-                tempDirPath
+                "-hls_flags",
+                "delete_segments",
+                "-hls_time",
+                "4",
+                outputFileURL.path
             ]
             
             #if DEBUG
@@ -185,7 +197,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
             startStopButton.title = "SLUG-STOP-SERVER".localizedVariant
             if let linkButtonTitle = prefs.webServer?.serverURL?.absoluteString {
                 linkButton.isHidden = false
-                linkButton.title = linkButtonTitle + "/stream.m3u8"
+                linkButton.title = linkButtonTitle + "stream.m3u8"
             }
         } else {
             serverStatusLabel.textColor = NSColor.red
@@ -195,6 +207,18 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
         }
     }
     
+    /* ################################################################## */
+    /**
+     */
+    func webServerHandler(_ inRequestObject: GCDWebServerRequest) -> GCDWebServerDataResponse! {
+        do {
+            let outputData = try Data(contentsOf: outputFileURL)
+            return GCDWebServerDataResponse(data: outputData, contentType: "application/vnd.apple.mpegurl")
+        } catch {
+            return GCDWebServerDataResponse(html: "<html><body><h1>ERROR!</h1></body></html>")
+        }
+    }
+
     /* ############################################################################################################################## */
     // MARK: - Superclass Override Methods
     /* ############################################################################################################################## */
