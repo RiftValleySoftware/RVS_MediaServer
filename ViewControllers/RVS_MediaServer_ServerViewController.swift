@@ -86,10 +86,10 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     func startFFMpeg() -> Bool {
         let ffmpegTask = Process()
         let tempDirPath = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true).path + "/" + prefs.temp_directory_name + "/stream.m3u8"
-        if let executablePath = Bundle.main.executablePath {
+        if var executablePath = (Bundle.main.executablePath as NSString?)?.deletingLastPathComponent {
+            executablePath += "/ffmpeg"
             ffmpegTask.launchPath = executablePath
             ffmpegTask.arguments = [
-                "ffmpeg",
                 "-i",
                 prefs.input_uri,
                 "-sc_threshold",
@@ -103,7 +103,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
             
             #if DEBUG
                 if let args = ffmpegTask.arguments, 1 < args.count {
-                    let path = ([ffmpegTask.currentDirectoryPath + "/" + args[0]] + args[1...]).joined(separator: " ")
+                    let path = ([executablePath] + args).joined(separator: " ")
                         print("Starting FFMPEG: \(String(describing: path))")
                 }
             #endif
