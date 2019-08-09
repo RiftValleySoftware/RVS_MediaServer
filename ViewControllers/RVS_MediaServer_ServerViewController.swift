@@ -53,6 +53,12 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      We use this to observe the current Web Server status
      */
     var serverStatusObserver: NSKeyValueObservation?
+    
+    /* ################################################################## */
+    /**
+     This will hold the ffmpeg command line task.
+     */
+    var ffmpegTask: Process?
 
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Methods
@@ -73,6 +79,47 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
         prefs.isRunning = false
     }
     
+    /* ################################################################## */
+    /**
+     This starts the ffmpeg task.
+     */
+    func startFFMpeg() {
+        let ffmpegTask = Process()
+        let tempDirPath = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true).path + "/" + prefs.temp_directory_name + "/stream.m3u8"
+        if let executablePath = Bundle.main.executablePath {
+            ffmpegTask.launchPath = executablePath
+            ffmpegTask.arguments = [
+                "ffmpeg",
+                "-i",
+                prefs.input_uri,
+                "-sc_threshold",
+                "0",
+                "-f",
+                "hls",
+                "-hls_flags delete_segments",
+                "-hls_time 4",
+                tempDirPath
+            ]
+            
+            #if DEBUG
+                if let args = ffmpegTask.arguments, 1 < args.count {
+                    let path = ([ffmpegTask.currentDirectoryPath + "/" + args[0]] + args[1...]).joined(separator: " ")
+                        print("Starting FFMPEG: \(String(describing: path))")
+                }
+            #endif
+            
+            // Create a Pipe and make the task
+            // put all the output there
+            let pipe = Pipe()
+            ffmpegTask.standardOutput = pipe
+            
+            // Launch the task
+            ffmpegTask.launch()
+            
+            print(pipe)
+        }
+    }
+    
     /* ############################################################################################################################## */
     // MARK: - Internal IBAction Instance Methods
     /* ############################################################################################################################## */
@@ -86,6 +133,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
         if prefs.isRunning {
             stopServer()
         } else {
+            startFFMpeg()
             startServer()
         }
     }
@@ -121,8 +169,10 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
             serverStatusLabel.textColor = NSColor.green
             serverStatusLabel.stringValue = "SLUG-SERVER-IS-RUNNING".localizedVariant
             startStopButton.title = "SLUG-STOP-SERVER".localizedVariant
-            linkButton.isHidden = false
-            linkButton.title = prefs.webServer?.serverURL?.absoluteString ?? "ERROR"
+            if let linkButtonTitle = prefs.webServer?.serverURL?.absoluteString {
+                linkButton.isHidden = false
+                linkButton.title = linkButtonTitle + "/stream.m3u8"
+            }
         } else {
             serverStatusLabel.textColor = NSColor.red
             serverStatusLabel.stringValue = "SLUG-SERVER-IS-NOT-RUNNING".localizedVariant
