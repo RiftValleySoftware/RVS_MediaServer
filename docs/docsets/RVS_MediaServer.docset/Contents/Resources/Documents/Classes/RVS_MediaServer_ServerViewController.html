@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RVS_MediaServer_ServerViewController Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/RVS_MediaServer_ServerViewController" class="dashAnchor"></a>
+
+    <a title="RVS_MediaServer_ServerViewController Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          RVS_MediaServer Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/RiftValleySoftware/RVS_MediaServer">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">RVS_MediaServer Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      RVS_MediaServer_ServerViewController Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_AppDelegate.html">RVS_MediaServer_AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_BaseViewController.html">RVS_MediaServer_BaseViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_PersistentPrefs.html">RVS_MediaServer_PersistentPrefs</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_PersistentPrefs/_PrefsKeys.html">– _PrefsKeys</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_ServerViewController.html">RVS_MediaServer_ServerViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_SettingsViewController.html">RVS_MediaServer_SettingsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_WindowController.html">RVS_MediaServer_WindowController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_PersistentPrefs.html">RVS_PersistentPrefs</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/FileManager.html">FileManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/NSView.html">NSView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Sequence.html">Sequence</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/StringProtocol.html">StringProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:15RVS_MediaServer0a17_IPAddressExtractD0_8isPaddedAA0a1_D0_pSgSS_SbtF">RVS_IPAddressExtractIPAddress(_:isPadded:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:15RVS_MediaServer0a17_IPAddressExtractD05array4port8isPaddedAA0a1_D0_pSgSaySiG_SiSbtF">RVS_IPAddressExtractIPAddress(array:port:isPadded:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_IPAddress.html">RVS_IPAddress</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RVS_IPAddressV4.html">RVS_IPAddressV4</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RVS_IPAddressV6.html">RVS_IPAddressV6</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TemporaryFile.html">TemporaryFile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>RVS_MediaServer_ServerViewController</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RVS_MediaServer_ServerViewController</span> <span class="p">:</span> <span class="kt"><a href="../Classes/RVS_MediaServer_BaseViewController.html">RVS_MediaServer_BaseViewController</a></span></code></pre>
+
+                </div>
+              </div>
+            
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Internal%20IB%20Instance%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Internal IB Instance Properties" class="dashAnchor"></a>
+                <a href="#/Internal%20IB%20Instance%20Properties">
+                  <h3 class="section-name">Internal IB Instance Properties</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(py)serverStatusLabel"></a>
+                    <a name="//apple_ref/swift/Property/serverStatusLabel" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(py)serverStatusLabel">serverStatusLabel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This label shows the server status. If running, the color is green. If stopped, the color is red.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="k">weak</span> <span class="k">var</span> <span class="nv">serverStatusLabel</span><span class="p">:</span> <span class="kt">NSTextField</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(py)startStopButton"></a>
+                    <a name="//apple_ref/swift/Property/startStopButton" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(py)startStopButton">startStopButton</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This button will either start or stop the server.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="k">weak</span> <span class="k">var</span> <span class="nv">startStopButton</span><span class="p">:</span> <span class="kt">NSButton</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(py)linkButton"></a>
+                    <a name="//apple_ref/swift/Property/linkButton" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(py)linkButton">linkButton</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This button displays a link to allow the server to be easily opened.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="k">weak</span> <span class="k">var</span> <span class="nv">linkButton</span><span class="p">:</span> <span class="kt">NSButton</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Internal%20Instance%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Internal Instance Properties" class="dashAnchor"></a>
+                <a href="#/Internal%20Instance%20Properties">
+                  <h3 class="section-name">Internal Instance Properties</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC20serverStatusObserver10Foundation21NSKeyValueObservationCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/serverStatusObserver" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC20serverStatusObserver10Foundation21NSKeyValueObservationCSgvp">serverStatusObserver</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>We use this to observe the current Web Server status</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">serverStatusObserver</span><span class="p">:</span> <span class="kt">NSKeyValueObservation</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC10ffmpegTaskSo6NSTaskCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/ffmpegTask" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC10ffmpegTaskSo6NSTaskCSgvp">ffmpegTask</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This will hold the ffmpeg command line task.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">ffmpegTask</span><span class="p">:</span> <span class="kt">Process</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC13outputTmpFileAA09TemporaryH0VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/outputTmpFile" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC13outputTmpFileAA09TemporaryH0VSgvp">outputTmpFile</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This will hold the url of our output streaming file.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">outputTmpFile</span><span class="p">:</span> <span class="kt"><a href="../Structs/TemporaryFile.html">TemporaryFile</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC03webC0So06GCDWebC0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/webServer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC03webC0So06GCDWebC0CSgvp">webServer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is a Web Server instance that is associated with this stream. Its lifetime is the lifetime of the object (not persistent).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">webServer</span><span class="p">:</span> <span class="kt">GCDWebServer</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Internal%20Instance%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Internal Instance Methods" class="dashAnchor"></a>
+                <a href="#/Internal%20Instance%20Methods">
+                  <h3 class="section-name">Internal Instance Methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC05startC0yyF"></a>
+                    <a name="//apple_ref/swift/Method/startServer()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC05startC0yyF">startServer()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This simply starts the Web server.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">startServer</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>webServerHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>This is an optional handling closure for Web Server calls.
+If not provided (or set to nil), then whatever we already have is used. This will replace any existing handler.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC11startFFMpegSbyF"></a>
+                    <a name="//apple_ref/swift/Method/startFFMpeg()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC11startFFMpegSbyF">startFFMpeg()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This starts the ffmpeg task.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">startFFMpeg</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC04stopC0yyF"></a>
+                    <a name="//apple_ref/swift/Method/stopServer()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC04stopC0yyF">stopServer()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This simply stops the Web server.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">stopServer</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Internal%20IBAction%20Instance%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Internal IBAction Instance Methods" class="dashAnchor"></a>
+                <a href="#/Internal%20IBAction%20Instance%20Methods">
+                  <h3 class="section-name">Internal IBAction Instance Methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(im)startStopButtonHit:"></a>
+                    <a name="//apple_ref/swift/Method/startStopButtonHit(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(im)startStopButtonHit:">startStopButtonHit(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This starts or stops the streaming server, depending on the state of the server.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">func</span> <span class="nf">startStopButtonHit</span><span class="p">(</span><span class="n">_</span> <span class="nv">inSender</span><span class="p">:</span> <span class="kt">NSButton</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inSender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Ignored</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(im)linkButtonHit:"></a>
+                    <a name="//apple_ref/swift/Method/linkButtonHit(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(im)linkButtonHit:">linkButtonHit(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This responds to the server link button being hit.
+Assuming the server is running, this will ask the default browser to open the link.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">func</span> <span class="nf">linkButtonHit</span><span class="p">(</span><span class="n">_</span> <span class="nv">inSender</span><span class="p">:</span> <span class="kt">NSButton</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inSender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The  Link button. We will use its text value as our URI source.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Internal%20Observable%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Internal Observable Properties" class="dashAnchor"></a>
+                <a href="#/Internal%20Observable%20Properties">
+                  <h3 class="section-name">Internal Observable Properties</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(py)isRunning"></a>
+                    <a name="//apple_ref/swift/Property/isRunning" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(py)isRunning">isRunning</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Web Server Running Status.
+If set to true, then the server will start, using whatever handler is already in webServerHandler</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">isRunning</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Internal%20Callback%20Handler%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Internal Callback Handler Methods" class="dashAnchor"></a>
+                <a href="#/Internal%20Callback%20Handler%20Methods">
+                  <h3 class="section-name">Internal Callback Handler Methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC27serverStatusObserverHandleryyypSg_10Foundation24NSKeyValueObservedChangeVySbGSgtF"></a>
+                    <a name="//apple_ref/swift/Method/serverStatusObserverHandler(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC27serverStatusObserverHandleryyypSg_10Foundation24NSKeyValueObservedChangeVySbGSgtF">serverStatusObserverHandler(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is an observer callback that handles changes in the prefs server running status.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">serverStatusObserverHandler</span><span class="p">(</span><span class="n">_</span> <span class="nv">inObject</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">_</span> <span class="nv">inChange</span><span class="p">:</span> <span class="kt">NSKeyValueObservedChange</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inObject</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The object that is being changed. We ignore it.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inChange</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The change object. We ignore this, too.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC03webC7HandlerySo06GCDWebC12DataResponseCSgSo0hC7RequestCF"></a>
+                    <a name="//apple_ref/swift/Method/webServerHandler(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bc1_C14ViewControllerC03webC7HandlerySo06GCDWebC12DataResponseCSgSo0hC7RequestCF">webServerHandler(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">webServerHandler</span><span class="p">(</span><span class="n">_</span> <span class="nv">inRequestObject</span><span class="p">:</span> <span class="kt">GCDWebServerRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">GCDWebServerDataResponse</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Superclass%20Override%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Superclass Override Methods" class="dashAnchor"></a>
+                <a href="#/Superclass%20Override%20Methods">
+                  <h3 class="section-name">Superclass Override Methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(im)viewDidLoad"></a>
+                    <a name="//apple_ref/swift/Method/viewDidLoad()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(im)viewDidLoad">viewDidLoad()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set up the various localized items and initial values.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Deinit"></a>
+                <a name="//apple_ref/swift/Section/Deinit" class="dashAnchor"></a>
+                <a href="#/Deinit">
+                  <h3 class="section-name">Deinit</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(im)dealloc"></a>
+                    <a name="//apple_ref/swift/Method/deinit" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController(im)dealloc">deinit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Make sure that we stop the server upon quit/close.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">deinit</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-08-10)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

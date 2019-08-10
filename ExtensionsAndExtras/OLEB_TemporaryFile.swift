@@ -9,7 +9,9 @@ import Foundation
 ///
 /// Call `deleteDirectory` when you no longer need the file.
 struct TemporaryFile {
+    /// This will be the URL that references the directory, itself.
     let directoryURL: URL
+    /// This will be the URL to the file (once it's created).
     let fileURL: URL
     /// Deletes the temporary directory and all files in it.
     let deleteDirectory: () throws -> Void

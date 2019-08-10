@@ -57,13 +57,22 @@
                 <a class="nav-group-task-link" href="Classes/RVS_MediaServer_AppDelegate.html">RVS_MediaServer_AppDelegate</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/RVS_MediaServer_BaseViewController.html">RVS_MediaServer_BaseViewController</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/RVS_MediaServer_PersistentPrefs.html">RVS_MediaServer_PersistentPrefs</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/RVS_MediaServer_PersistentPrefs/_PrefsKeys.html">– _PrefsKeys</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/RVS_MediaServer_ServerViewController.html">RVS_MediaServer_ServerViewController</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/RVS_MediaServer_SettingsViewController.html">RVS_MediaServer_SettingsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/RVS_MediaServer_WindowController.html">RVS_MediaServer_WindowController</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/RVS_PersistentPrefs.html">RVS_PersistentPrefs</a>
@@ -73,6 +82,9 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/FileManager.html">FileManager</a>
+              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/NSView.html">NSView</a>
               </li>
@@ -115,6 +127,9 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/RVS_IPAddressV6.html">RVS_IPAddressV6</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/TemporaryFile.html">TemporaryFile</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -133,10 +148,10 @@
           <div class="section-content">
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Persistent%20Prefs%20Class"></a>
-                <a name="//apple_ref/swift/Section/Persistent Prefs Class" class="dashAnchor"></a>
-                <a href="#/Persistent%20Prefs%20Class">
-                  <h3 class="section-name">Persistent Prefs Class</h3>
+                <a name="/Specific%20Persistent%20Prefs%20Class"></a>
+                <a name="//apple_ref/swift/Section/Specific Persistent Prefs Class" class="dashAnchor"></a>
+                <a href="#/Specific%20Persistent%20Prefs%20Class">
+                  <h3 class="section-name">Specific Persistent Prefs Class</h3>
                 </a>
               </div>
               <ul class="item-container">
@@ -166,13 +181,24 @@ As it is a class, it can be subclassed and extended.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">RVS_MediaServer_PersistentPrefs</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">RVS_MediaServer_PersistentPrefs</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSCoding</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Generic%20Persistent%20Prefs%20Class"></a>
+                <a name="//apple_ref/swift/Section/Generic Persistent Prefs Class" class="dashAnchor"></a>
+                <a href="#/Generic%20Persistent%20Prefs%20Class">
+                  <h3 class="section-name">Generic Persistent Prefs Class</h3>
+                </a>
+              </div>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -248,9 +274,125 @@ for saving and retrieving a Dictionary<String, Any>.</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
+                <a name="/Basic%20Window%20Controller%20Class"></a>
+                <a name="//apple_ref/swift/Section/Basic Window Controller Class" class="dashAnchor"></a>
+                <a href="#/Basic%20Window%20Controller%20Class">
+                  <h3 class="section-name">Basic Window Controller Class</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_WindowController"></a>
+                    <a name="//apple_ref/swift/Class/RVS_MediaServer_WindowController" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_WindowController">RVS_MediaServer_WindowController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The main reason for creating this class was to allow us to interpret settings, and to fix an issue with Interface Builder.</p>
+
+                        <a href="Classes/RVS_MediaServer_WindowController.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RVS_MediaServer_WindowController</span> <span class="p">:</span> <span class="kt">NSWindowController</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Main%20View%20Controller%20Class%20for%20Use%20As%20A%20Base%20Class%20for%20View%20Controllers."></a>
+                <a name="//apple_ref/swift/Section/Main View Controller Class for Use As A Base Class for View Controllers." class="dashAnchor"></a>
+                <a href="#/Main%20View%20Controller%20Class%20for%20Use%20As%20A%20Base%20Class%20for%20View%20Controllers.">
+                  <h3 class="section-name">Main View Controller Class for Use As A Base Class for View Controllers.</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_BaseViewController"></a>
+                    <a name="//apple_ref/swift/Class/RVS_MediaServer_BaseViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_BaseViewController">RVS_MediaServer_BaseViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This class will provide some common base properties and methods to be made available to derived View Controllers.</p>
+
+                        <a href="Classes/RVS_MediaServer_BaseViewController.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RVS_MediaServer_BaseViewController</span> <span class="p">:</span> <span class="kt">NSViewController</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
                 <a name="/Main%20View%20Controller%20Class"></a>
                 <a name="//apple_ref/swift/Section/Main View Controller Class" class="dashAnchor"></a>
                 <a href="#/Main%20View%20Controller%20Class">
+                  <h3 class="section-name">Main View Controller Class</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController"></a>
+                    <a name="//apple_ref/swift/Class/RVS_MediaServer_ServerViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_ServerViewController">RVS_MediaServer_ServerViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Classes/RVS_MediaServer_ServerViewController.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RVS_MediaServer_ServerViewController</span> <span class="p">:</span> <span class="kt"><a href="Classes/RVS_MediaServer_BaseViewController.html">RVS_MediaServer_BaseViewController</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Main%20View%20Controller%20Class2"></a>
+                <a name="//apple_ref/swift/Section/Main View Controller Class" class="dashAnchor"></a>
+                <a href="#/Main%20View%20Controller%20Class2">
                   <h3 class="section-name">Main View Controller Class</h3>
                 </a>
               </div>
@@ -275,7 +417,7 @@ for saving and retrieving a Dictionary<String, Any>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RVS_MediaServer_SettingsViewController</span> <span class="p">:</span> <span class="kt">NSViewController</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RVS_MediaServer_SettingsViewController</span> <span class="p">:</span> <span class="kt"><a href="Classes/RVS_MediaServer_BaseViewController.html">RVS_MediaServer_BaseViewController</a></span></code></pre>
 
                         </div>
                       </div>
@@ -290,7 +432,7 @@ for saving and retrieving a Dictionary<String, Any>.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-08-07)</p>
+      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-08-10)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
