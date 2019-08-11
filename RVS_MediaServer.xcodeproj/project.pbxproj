@@ -29,8 +29,8 @@
 		D41DF25622FC50E200BDB620 /* RVS_MediaServer_WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41DF25522FC50E200BDB620 /* RVS_MediaServer_WindowController.swift */; };
 		D4807B4522F843CD00759FE8 /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D4807B4322F843CD00759FE8 /* Warnings.xcconfig */; };
 		D4AB8ED722FE0C8200080197 /* OLEB_TemporaryFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AB8ED622FE0C8200080197 /* OLEB_TemporaryFile.swift */; };
-		D4DA9D4522FFB712005444CE /* GCDWebServers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4DA9D3B22FFB6C5005444CE /* GCDWebServers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D4DA9D4722FFB76D005444CE /* GCDWebServers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DA9D3B22FFB6C5005444CE /* GCDWebServers.framework */; };
+		D4D4805A2300456E0037AFB1 /* GCDWebServers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D480592300456E0037AFB1 /* GCDWebServers.framework */; };
+		D4D4805C230045820037AFB1 /* GCDWebServers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4D480592300456E0037AFB1 /* GCDWebServers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4EEC82122F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EEC82022F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift */; };
 		D4EEC82322F83F81000AD2A9 /* RVS_MediaServer_SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EEC82222F83F81000AD2A9 /* RVS_MediaServer_SettingsViewController.swift */; };
 		D4EEC82522F83F82000AD2A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4EEC82422F83F82000AD2A9 /* Assets.xcassets */; };
@@ -46,62 +46,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D4DA9D3422FFB6C5005444CE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4DA9D2922FFB6C5005444CE /* GCDWebServer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DD76FB20486AB0100D96B5E;
-			remoteInfo = "GCDWebServer (Mac)";
-		};
-		D4DA9D3622FFB6C5005444CE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4DA9D2922FFB6C5005444CE /* GCDWebServer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E2DDD1F61BE69EE4002CE867;
-			remoteInfo = "GCDWebServer (iOS)";
-		};
-		D4DA9D3822FFB6C5005444CE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4DA9D2922FFB6C5005444CE /* GCDWebServer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E2DDD1C71BE698A8002CE867;
-			remoteInfo = "GCDWebServer (tvOS)";
-		};
-		D4DA9D3A22FFB6C5005444CE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4DA9D2922FFB6C5005444CE /* GCDWebServer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CEE28CD11AE004D800F4023C;
-			remoteInfo = "GCDWebServers (Mac)";
-		};
-		D4DA9D3C22FFB6C5005444CE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4DA9D2922FFB6C5005444CE /* GCDWebServer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CEE28CEF1AE0051F00F4023C;
-			remoteInfo = "GCDWebServers (iOS)";
-		};
-		D4DA9D3E22FFB6C5005444CE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4DA9D2922FFB6C5005444CE /* GCDWebServer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E2DDD18B1BE69404002CE867;
-			remoteInfo = "GCDWebServers (tvOS)";
-		};
-		D4DA9D4022FFB6C5005444CE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4DA9D2922FFB6C5005444CE /* GCDWebServer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E24039251BA09207000B7089;
-			remoteInfo = "Tests (Mac)";
-		};
-		D4DA9D4222FFB6F3005444CE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4DA9D2922FFB6C5005444CE /* GCDWebServer.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = CEE28CD01AE004D800F4023C;
-			remoteInfo = "GCDWebServers (Mac)";
-		};
 		D4FF5E3822FB52D6001F787E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D43D8DD422F8369400C075F3 /* Project object */;
@@ -123,13 +67,13 @@
 			name = "Embed ffmpeg";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D4F9D9D422FB0E7600310F17 /* Embed Frameworks */ = {
+		D4D48055230043370037AFB1 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D4DA9D4522FFB712005444CE /* GCDWebServers.framework in Embed Frameworks */,
+				D4D4805C230045820037AFB1 /* GCDWebServers.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,7 +89,7 @@
 		D4807B4222F843CD00759FE8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4807B4322F843CD00759FE8 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		D4AB8ED622FE0C8200080197 /* OLEB_TemporaryFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OLEB_TemporaryFile.swift; sourceTree = "<group>"; };
-		D4DA9D2922FFB6C5005444CE /* GCDWebServer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GCDWebServer.xcodeproj; path = GCDWebServer/GCDWebServer.xcodeproj; sourceTree = "<group>"; };
+		D4D480592300456E0037AFB1 /* GCDWebServers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCDWebServers.framework; path = DerivedData/RVS_MediaServer/Build/Products/Release/GCDWebServers.framework; sourceTree = "<group>"; };
 		D4EEC81E22F83F81000AD2A9 /* RVS_MediaServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RVS_MediaServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4EEC82022F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_AppDelegate.swift; sourceTree = "<group>"; };
 		D4EEC82222F83F81000AD2A9 /* RVS_MediaServer_SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_SettingsViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4DA9D4722FFB76D005444CE /* GCDWebServers.framework in Frameworks */,
+				D4D4805A2300456E0037AFB1 /* GCDWebServers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +130,6 @@
 		D43D8DD322F8369400C075F3 = {
 			isa = PBXGroup;
 			children = (
-				D4DA9D2922FFB6C5005444CE /* GCDWebServer.xcodeproj */,
 				D4807B3A22F8416700759FE8 /* MainApp */,
 				D4EEC81F22F83F81000AD2A9 /* ViewControllers */,
 				D4807B3922F8414E00759FE8 /* Resources */,
@@ -237,20 +180,6 @@
 			path = Meta;
 			sourceTree = "<group>";
 		};
-		D4DA9D2A22FFB6C5005444CE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D4DA9D3522FFB6C5005444CE /* GCDWebServer */,
-				D4DA9D3722FFB6C5005444CE /* GCDWebServer.app */,
-				D4DA9D3922FFB6C5005444CE /* GCDWebServer.app */,
-				D4DA9D3B22FFB6C5005444CE /* GCDWebServers.framework */,
-				D4DA9D3D22FFB6C5005444CE /* GCDWebServers.framework */,
-				D4DA9D3F22FFB6C5005444CE /* GCDWebServers.framework */,
-				D4DA9D4122FFB6C5005444CE /* Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		D4EEC81F22F83F81000AD2A9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +193,7 @@
 		D4F9D9D522FB107200310F17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4D480592300456E0037AFB1 /* GCDWebServers.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -301,14 +231,13 @@
 				D4EEC82F22F84010000AD2A9 /* SwiftLint */,
 				D4EEC81A22F83F81000AD2A9 /* Sources */,
 				D454ED5422F9EAFF0022F8E7 /* Embed ffmpeg */,
-				D4F9D9D422FB0E7600310F17 /* Embed Frameworks */,
 				D4F9D9D322FB0E7600310F17 /* Frameworks */,
 				D4EEC81C22F83F81000AD2A9 /* Resources */,
+				D4D48055230043370037AFB1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D4DA9D4322FFB6F3005444CE /* PBXTargetDependency */,
 			);
 			name = RVS_MediaServer;
 			productName = RVS_MediaServer_App;
@@ -369,12 +298,6 @@
 			mainGroup = D43D8DD322F8369400C075F3;
 			productRefGroup = D43D8DDD22F8369400C075F3 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = D4DA9D2A22FFB6C5005444CE /* Products */;
-					ProjectRef = D4DA9D2922FFB6C5005444CE /* GCDWebServer.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D40393D722FA4CF300DF4877 /* Build ffmpeg */,
@@ -383,58 +306,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		D4DA9D3522FFB6C5005444CE /* GCDWebServer */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = GCDWebServer;
-			remoteRef = D4DA9D3422FFB6C5005444CE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D4DA9D3722FFB6C5005444CE /* GCDWebServer.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = GCDWebServer.app;
-			remoteRef = D4DA9D3622FFB6C5005444CE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D4DA9D3922FFB6C5005444CE /* GCDWebServer.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = GCDWebServer.app;
-			remoteRef = D4DA9D3822FFB6C5005444CE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D4DA9D3B22FFB6C5005444CE /* GCDWebServers.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GCDWebServers.framework;
-			remoteRef = D4DA9D3A22FFB6C5005444CE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D4DA9D3D22FFB6C5005444CE /* GCDWebServers.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GCDWebServers.framework;
-			remoteRef = D4DA9D3C22FFB6C5005444CE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D4DA9D3F22FFB6C5005444CE /* GCDWebServers.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GCDWebServers.framework;
-			remoteRef = D4DA9D3E22FFB6C5005444CE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D4DA9D4122FFB6C5005444CE /* Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = Tests.xctest;
-			remoteRef = D4DA9D4022FFB6C5005444CE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D4EEC81C22F83F81000AD2A9 /* Resources */ = {
@@ -521,11 +392,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D4DA9D4322FFB6F3005444CE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "GCDWebServers (Mac)";
-			targetProxy = D4DA9D4222FFB6F3005444CE /* PBXContainerItemProxy */;
-		};
 		D4FF5E3922FB52D6001F787E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D4EEC81D22F83F81000AD2A9 /* RVS_MediaServer */;
@@ -700,6 +566,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DerivedData/RVS_MediaServer/Build/Products/Debug",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/DerivedData/RVS_MediaServer/Build/Products/Release",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Meta/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -724,6 +591,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DerivedData/RVS_MediaServer/Build/Products/Debug",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/DerivedData/RVS_MediaServer/Build/Products/Release",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Meta/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

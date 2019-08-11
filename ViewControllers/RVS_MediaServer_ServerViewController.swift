@@ -102,51 +102,47 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     /* ################################################################## */
     /**
      This starts the ffmpeg task.
+     
+     - returns: True, if the task launched successfully.
      */
     func startFFMpeg() -> Bool {
         ffmpegTask = Process()
         
+        // First, we make sure that we got a Process. It's a conditional init.
         if let ffmpegTask = ffmpegTask {
+            // Next, set up a tempdir for the stream files.
             if let tmp = try? TemporaryFile(creatingTempDirectoryForFilename: "stream.m3u8") {
                 outputTmpFile = tmp
-            }
-            
-            if  nil != outputTmpFile,
-                var executablePath = (Bundle.main.executablePath as NSString?)?.deletingLastPathComponent {
-                executablePath += "/ffmpeg"
-                ffmpegTask.launchPath = executablePath
-                ffmpegTask.arguments = [
-                    "-i",
-                    prefs.input_uri,
-                    "-sc_threshold",
-                    "0",
-                    "-f",
-                    "hls",
-                    "-hls_flags",
-                    "delete_segments",
-                    "-hls_time",
-                    "4",
-                    outputTmpFile?.fileURL.path ?? ""
-                ]
-                
-                #if DEBUG
-                    if let args = ffmpegTask.arguments, 1 < args.count {
-                        let path = ([executablePath] + args).joined(separator: " ")
-                            print("Starting FFMPEG: \(String(describing: path))")
-                    }
-                #endif
-                
-                // Create a Pipe and make the task
-                // put all the output there
-                let pipe = Pipe()
-                ffmpegTask.standardOutput = pipe
-                
-                // Launch the task
-                ffmpegTask.launch()
-                
-                print(pipe)
-                
-                return ffmpegTask.isRunning
+
+                // Fetch the executable path from the bundle. We have our copy of ffmpeg in there with the app.
+                if var executablePath = (Bundle.main.executablePath as NSString?)?.deletingLastPathComponent {
+                    executablePath += "/ffmpeg"
+                    ffmpegTask.launchPath = executablePath
+                    ffmpegTask.arguments = [
+                        "-i", prefs.input_uri,
+                        "-sc_threshold", "0",
+                        "-f", "hls",
+                        "-hls_flags", "delete_segments",
+                        "-hls_time", "4",
+                        outputTmpFile?.fileURL.path ?? ""
+                    ]
+                    
+                    #if DEBUG
+                        if let args = ffmpegTask.arguments, 1 < args.count {
+                            let path = ([executablePath] + args).joined(separator: " ")
+                                print("\n----\n\(String(describing: path))")
+                        }
+                    #endif
+
+                    // Launch the task
+                    ffmpegTask.launch()
+                    
+                    #if DEBUG
+                        print("\n----\n")
+                    #endif
+
+                    return ffmpegTask.isRunning
+                }
             }
         }
         
