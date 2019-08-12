@@ -82,7 +82,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
             webServer = GCDWebServer()
             
             webServer?.addGETHandler(forBasePath: "/", directoryPath: outputTmpFile?.directoryURL.path ?? "", indexFilename: "stream.m3u8", cacheAge: 3600, allowRangeRequests: true)
-            
+            webServer?.addDefaultHandler(forMethod: "GET", request: GCDWebServerRequest.self, processBlock: webServerHandler)
             webServer?.start(withPort: UInt(prefs.output_tcp_port), bonjourName: prefs.stream_name)
             
             if let uri = webServer?.serverURL {
@@ -126,8 +126,15 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
                             let path = ([executablePath] + args).joined(separator: " ")
                             print("\n----\n\(String(describing: path))")
                         }
+                    #else
+                        // This just eats the output from the ffmpeg task for non-debug, so we don't litter the console.
+                        let standardOutputPipe = Pipe()
+                        ffmpegTask.standardOutput = standardOutputPipe
+                    
+                        let standardErrorPipe = Pipe()
+                        ffmpegTask.standardError = standardErrorPipe
                     #endif
-
+                    
                     // Launch the task
                     ffmpegTask.launch()
                     
@@ -227,17 +234,21 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     /**
      */
     func webServerHandler(_ inRequestObject: GCDWebServerRequest) -> GCDWebServerDataResponse! {
-        print(String(describing: inRequestObject))
-        do {
-            if let url = outputTmpFile?.fileURL {
-                let outputData = try Data(contentsOf: url)
-                return GCDWebServerDataResponse(data: outputData, contentType: "application/vnd.apple.mpegurl")
-            }
-        } catch {
-            return GCDWebServerDataResponse(html: "<html><body><h1>ERROR!</h1></body></html>")
-        }
+        #if DEBUG
+            print("Requested URI: " + String(describing: inRequestObject))
+        #endif
         
-        return nil
+        if  let path = outputTmpFile?.directoryURL.path,
+            let dirContents = try? FileManager.default.contentsOfDirectory(atPath: path),
+            1 < dirContents.count {
+            webServer?.stop()
+            webServer?.removeAllHandlers()
+            webServer?.addGETHandler(forBasePath: "/", directoryPath: outputTmpFile?.directoryURL.path ?? "", indexFilename: "stream.m3u8", cacheAge: 3600, allowRangeRequests: true)
+            webServer?.start()
+            return nil
+        } else {
+            return GCDWebServerDataResponse(html: "<html><body><h1>HOLD ON...</h1></body></html>")
+        }
     }
 
     /* ################################################################## */
