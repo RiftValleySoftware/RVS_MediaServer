@@ -26,6 +26,15 @@ import GCDWebServers
  */
 class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     /* ############################################################################################################################## */
+    // MARK: - Private Static Propeties
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     The number of seconds to wait between page refreshes, while waiting to load.
+     */
+    static private let _pageReloadDelayInSeconds: Float = 1.0
+    
+    /* ############################################################################################################################## */
     // MARK: - Internal IB Instance Properties
     /* ############################################################################################################################## */
     /* ################################################################## */
@@ -81,15 +90,11 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
         if nil == webServer || !(webServer?.isRunning ?? false) {
             webServer = GCDWebServer()
             
+            // Add a default get handler to make sure that the stream file is considered our index.
             webServer?.addGETHandler(forBasePath: "/", directoryPath: outputTmpFile?.directoryURL.path ?? "", indexFilename: "stream.m3u8", cacheAge: 3600, allowRangeRequests: true)
+            // Make sure that our handler is called for all requests.
             webServer?.addDefaultHandler(forMethod: "GET", request: GCDWebServerRequest.self, processBlock: webServerHandler)
             webServer?.start(withPort: UInt(prefs.output_tcp_port), bonjourName: prefs.stream_name)
-            
-            if let uri = webServer?.serverURL {
-                print("Visit \(uri) in your web browser")
-            } else {
-                print("Error in Setting Up the Web Server!")
-            }
         }
     }
     
@@ -255,14 +260,23 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
                 #endif
                 webServer?.stop()
                 webServer?.removeAllHandlers()
+                // Re-add the default handler for the directory.
                 webServer?.addGETHandler(forBasePath: "/", directoryPath: outputTmpFile?.directoryURL.path ?? "", indexFilename: "stream.m3u8", cacheAge: 3600, allowRangeRequests: true)
                 webServer?.start()
-                // We emit a "LOADING..." text, and set the browser to refresh in two seconds.
-                return GCDWebServerDataResponse(html: "<html><head><meta http-equiv=\"refresh\" content=\"2; URL=/\"></head><body style=\"background-color:black\"><h1 style=\"font-family:Helvetica,Sans-serif;margin:0;margin-top:-0.5em;text-align:center;position:absolute;top:50%;left:0;width:100%;color: white\">" + "SLUG-LOADING".localizedVariant + "</h1></body></html>")
+                // We emit a "LOADING..." text, and set the browser to refresh in one second.
+                var retHTML = "<html><head><meta http-equiv=\"refresh\" content=\""
+                retHTML += String(type(of: self)._pageReloadDelayInSeconds)
+                retHTML += "; URL=/\"></head><body style=\"background-color:black\"><h1 style=\"font-family:Helvetica,Sans-serif;margin:0;margin-top:-0.5em;text-align:center;position:absolute;top:50%;left:0;width:100%;color: white\">"
+                retHTML += "SLUG-LOADING".localizedVariant
+                retHTML += "</h1></body></html>"
+                return GCDWebServerDataResponse(html: retHTML)
             }
         }
         
-        return GCDWebServerDataResponse(html: "<html><head><meta http-equiv=\"refresh\" content=\"2; URL=/\"></head><body style=\"background-color:black\"><img src=\"throbber.gif\" style=\"display:block;position:absolute;top:50%;left:50%;margin-left:-16px;margin-top:-16px\" /></body></html>")
+        var retHTML = "<html><head><meta http-equiv=\"refresh\" content=\""
+        retHTML += String(type(of: self)._pageReloadDelayInSeconds)
+        retHTML += "; URL=/\"></head><body style=\"background-color:black\"><img src=\"throbber.gif\" style=\"display:block;position:absolute;top:50%;left:50%;margin-left:-16px;margin-top:-16px\" /></body></html>"
+        return GCDWebServerDataResponse(html: retHTML)
     }
 
     /* ################################################################## */
