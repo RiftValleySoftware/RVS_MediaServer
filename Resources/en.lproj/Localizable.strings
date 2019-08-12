@@ -17,6 +17,8 @@
 
 /// The OK button in alerts.
 "SLUG-OK-BUTTON-TEXT"                       =       "OK";
+"SLUG-STREAM-NAME-LABEL"                    =       "Stream Name:";
+"SLUG-STREAM-NAME-PLACEHOLDER"              =       "Enter the Stream Name";
 "SLUG-INPUT-URI-LABEL"                      =       "Input URI:";
 "SLUG-INPUT-URI-PLACEHOLDER"                =       "Enter the Stream URI";
 "SLUG-OUTPUT-TCP-PORT"                      =       "TCP Port:";

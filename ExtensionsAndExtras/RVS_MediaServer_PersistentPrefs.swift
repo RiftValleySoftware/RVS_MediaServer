@@ -135,7 +135,7 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     Thse properties are the "meat" of the class. Accessing them interacts directly with the stored persistent prefs.
+     These properties are the "meat" of the class. Accessing them interacts directly with the stored persistent prefs.
      */
     /* ################################################################## */
     /**

@@ -804,7 +804,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p8t-uz-yCl">
-                                <rect key="frame" x="18" y="230" width="168" height="20"/>
+                                <rect key="frame" x="18" y="214" width="186" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="NKn-I1-NMi"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ZTt-Ll-F3c"/>
@@ -816,7 +816,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zQE-AS-Dx3">
-                                <rect key="frame" x="188" y="230" width="272" height="20"/>
+                                <rect key="frame" x="206" y="214" width="254" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="EyF-5A-gWs"/>
                                 </constraints>
@@ -830,7 +830,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WzA-wP-OEE">
-                                <rect key="frame" x="18" y="202" width="168" height="20"/>
+                                <rect key="frame" x="18" y="186" width="186" height="20"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-OUTPUT-TCP-PORT" id="GyU-80-piX">
                                     <font key="font" metaFont="titleBar"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -838,7 +838,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38O-Bl-nJn">
-                                <rect key="frame" x="188" y="202" width="100" height="20"/>
+                                <rect key="frame" x="206" y="186" width="100" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="28q-Y6-imz"/>
                                     <constraint firstAttribute="width" constant="100" id="ot2-T5-L4v"/>
@@ -857,7 +857,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-Yg-asM">
-                                <rect key="frame" x="18" y="172" width="168" height="20"/>
+                                <rect key="frame" x="18" y="156" width="186" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Wad-0e-2kM"/>
                                 </constraints>
@@ -868,7 +868,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7E1-pb-BUM">
-                                <rect key="frame" x="188" y="174" width="272" height="20"/>
+                                <rect key="frame" x="206" y="158" width="254" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="w1v-in-yPo"/>
                                 </constraints>
@@ -882,7 +882,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-F2-NZ7">
-                                <rect key="frame" x="18" y="144" width="168" height="20"/>
+                                <rect key="frame" x="18" y="128" width="186" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="LMM-ba-kVC"/>
                                 </constraints>
@@ -893,7 +893,7 @@
                                 </textFieldCell>
                             </textField>
                             <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eXd-4I-l4C">
-                                <rect key="frame" x="188" y="146" width="272" height="20"/>
+                                <rect key="frame" x="206" y="130" width="254" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="IBQ-Cx-IJy"/>
                                 </constraints>
@@ -910,7 +910,7 @@
                                 </connections>
                             </secureTextField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="266-Ac-esv">
-                                <rect key="frame" x="18" y="116" width="168" height="20"/>
+                                <rect key="frame" x="18" y="100" width="186" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="JWe-w1-T7O"/>
                                 </constraints>
@@ -921,7 +921,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4w0-nQ-DW5">
-                                <rect key="frame" x="188" y="118" width="272" height="20"/>
+                                <rect key="frame" x="206" y="102" width="254" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Xfs-bE-Ve3"/>
                                 </constraints>
@@ -932,6 +932,31 @@
                                 </textFieldCell>
                                 <connections>
                                     <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.temp_directory_name" id="DBO-wf-qp9"/>
+                                </connections>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y1R-yr-gis">
+                                <rect key="frame" x="18" y="242" width="186" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="rHW-jt-e2U"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-STREAM-NAME-LABEL" id="G87-Eu-GNR">
+                                    <font key="font" metaFont="titleBar"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rrl-ob-xd8">
+                                <rect key="frame" x="206" y="242" width="254" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="lMW-r9-zmp"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-STREAM-NAME-PLACEHOLDER" drawsBackground="YES" id="XXR-iv-Ikh">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.stream_name" id="HnU-pl-J1k"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -946,15 +971,19 @@
                             <constraint firstAttribute="trailing" secondItem="7E1-pb-BUM" secondAttribute="trailing" constant="20" id="81k-hG-e0y"/>
                             <constraint firstItem="p8t-uz-yCl" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="8Qw-pa-4iG"/>
                             <constraint firstItem="zQE-AS-Dx3" firstAttribute="leading" secondItem="p8t-uz-yCl" secondAttribute="trailing" constant="4" id="8fQ-av-zLb"/>
-                            <constraint firstItem="p8t-uz-yCl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="CSJ-fk-iCr"/>
+                            <constraint firstAttribute="trailing" secondItem="rrl-ob-xd8" secondAttribute="trailing" constant="20" id="AAW-bf-noP"/>
                             <constraint firstItem="yNT-F2-NZ7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="DIE-Dx-Zl6"/>
+                            <constraint firstItem="p8t-uz-yCl" firstAttribute="width" secondItem="y1R-yr-gis" secondAttribute="width" id="DjA-K7-a15"/>
+                            <constraint firstItem="y1R-yr-gis" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="H1f-od-TOG"/>
                             <constraint firstItem="WzA-wP-OEE" firstAttribute="leading" secondItem="p8t-uz-yCl" secondAttribute="leading" id="HiB-cl-Ode"/>
                             <constraint firstItem="WzA-wP-OEE" firstAttribute="top" secondItem="p8t-uz-yCl" secondAttribute="bottom" constant="8" symbolic="YES" id="HuP-rR-3hd"/>
                             <constraint firstItem="WzA-wP-OEE" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="JqD-kX-H4T"/>
                             <constraint firstItem="38O-Bl-nJn" firstAttribute="leading" secondItem="WzA-wP-OEE" secondAttribute="trailing" constant="4" id="Mt2-4Q-VtW"/>
                             <constraint firstItem="eXd-4I-l4C" firstAttribute="leading" secondItem="yNT-F2-NZ7" secondAttribute="trailing" constant="4" id="SoW-gF-UAY"/>
+                            <constraint firstItem="rrl-ob-xd8" firstAttribute="leading" secondItem="y1R-yr-gis" secondAttribute="trailing" constant="4" id="XUT-iZ-PUi"/>
                             <constraint firstItem="WzA-wP-OEE" firstAttribute="height" secondItem="p8t-uz-yCl" secondAttribute="height" id="XiX-DJ-MFh"/>
                             <constraint firstItem="266-Ac-esv" firstAttribute="top" secondItem="yNT-F2-NZ7" secondAttribute="bottom" constant="8" id="YHl-cD-QaY"/>
+                            <constraint firstItem="p8t-uz-yCl" firstAttribute="top" secondItem="y1R-yr-gis" secondAttribute="bottom" constant="8" id="YhZ-GO-riN"/>
                             <constraint firstItem="zQE-AS-Dx3" firstAttribute="baseline" secondItem="p8t-uz-yCl" secondAttribute="firstBaseline" id="avZ-rJ-6L1"/>
                             <constraint firstItem="7HW-Yg-asM" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="ccO-NN-WoV"/>
                             <constraint firstItem="7E1-pb-BUM" firstAttribute="leading" secondItem="7HW-Yg-asM" secondAttribute="trailing" constant="4" id="dTG-vk-Hh5"/>
@@ -964,6 +993,8 @@
                             <constraint firstItem="eXd-4I-l4C" firstAttribute="firstBaseline" secondItem="yNT-F2-NZ7" secondAttribute="firstBaseline" id="hmU-QQ-aAD"/>
                             <constraint firstAttribute="trailing" secondItem="4w0-nQ-DW5" secondAttribute="trailing" constant="20" id="nAr-Ms-yzc"/>
                             <constraint firstItem="yNT-F2-NZ7" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="nbI-mV-TIJ"/>
+                            <constraint firstItem="rrl-ob-xd8" firstAttribute="baseline" secondItem="y1R-yr-gis" secondAttribute="firstBaseline" id="oNL-le-Nq6"/>
+                            <constraint firstItem="y1R-yr-gis" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="8" id="qwQ-8L-CTs"/>
                             <constraint firstItem="266-Ac-esv" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="rl4-FO-4fc"/>
                         </constraints>
                     </view>
@@ -976,6 +1007,8 @@
                         <outlet property="output_tcp_port_text_field" destination="38O-Bl-nJn" id="AXN-tz-gNe"/>
                         <outlet property="password_label" destination="yNT-F2-NZ7" id="gWZ-X7-JJ9"/>
                         <outlet property="password_text_field" destination="eXd-4I-l4C" id="xl2-RN-o4h"/>
+                        <outlet property="stream_name_label" destination="y1R-yr-gis" id="FFL-RZ-pis"/>
+                        <outlet property="stream_name_text_field" destination="rrl-ob-xd8" id="96u-zQ-AcQ"/>
                         <outlet property="temp_directory_name_label" destination="266-Ac-esv" id="qog-f1-gEn"/>
                         <outlet property="temp_directory_name_text_field" destination="4w0-nQ-DW5" id="5DO-nS-JzK"/>
                     </connections>

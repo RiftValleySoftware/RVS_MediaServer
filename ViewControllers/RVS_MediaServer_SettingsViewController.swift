@@ -28,6 +28,18 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
+     The label for the Stream Name Text Field
+     */
+    @IBOutlet weak var stream_name_label: NSTextField!
+    
+    /* ################################################################## */
+    /**
+     The Stream Name Text Field
+     */
+    @IBOutlet weak var stream_name_text_field: NSTextField!
+    
+    /* ################################################################## */
+    /**
      The label for the Input URI Text Field
      */
     @IBOutlet weak var input_uri_label: NSTextField!
@@ -93,16 +105,9 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Methods
     /* ############################################################################################################################## */
-
-    /* ############################################################################################################################## */
-    // MARK: - Superclass Override Methods
-    /* ############################################################################################################################## */
-    /* ################################################################## */
-    /**
-     Set up the various localized items and initial values.
-     */
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func setUpLocalizations() {
+        stream_name_label.stringValue = stream_name_label.stringValue.localizedVariant
+        stream_name_text_field.placeholderString = stream_name_text_field.placeholderString?.localizedVariant
         input_uri_label.stringValue = input_uri_label.stringValue.localizedVariant
         input_uri_text_field.placeholderString = input_uri_text_field.placeholderString?.localizedVariant
         output_tcp_port_label.stringValue = output_tcp_port_label.stringValue.localizedVariant
@@ -112,5 +117,17 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
         password_text_field.placeholderString = password_text_field.placeholderString?.localizedVariant
         temp_directory_name_label.stringValue = temp_directory_name_label.stringValue.localizedVariant
         temp_directory_name_text_field.placeholderString = temp_directory_name_text_field.placeholderString?.localizedVariant
+    }
+    
+    /* ############################################################################################################################## */
+    // MARK: - Superclass Override Methods
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     Set up the various localized items and initial values.
+     */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setUpLocalizations()
     }
 }
