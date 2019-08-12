@@ -32,3 +32,4 @@
 "SLUG-SERVER-VIEWCONTROLLER"                =       "SERVER";
 "SLUG-SERVER-STOPPED"                       =       "SERVER STOPPED";
 "SLUG-SERVER-RUNNING"                       =       "SERVER RUNNING";
+"SLUG-LOADING"                              =       "LOADING...";

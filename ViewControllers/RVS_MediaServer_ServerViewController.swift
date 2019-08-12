@@ -238,20 +238,31 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
             print("Requested URI: " + String(describing: inRequestObject))
         #endif
         
-        // If we have started to build up video data files, then we stop the server, strip out this handler, and then restart it.
-        if  let path = outputTmpFile?.directoryURL.path,
-            let dirContents = try? FileManager.default.contentsOfDirectory(atPath: path),
-            1 < dirContents.count {
-            #if DEBUG
-                print("Restarting the Server")
-            #endif
-            webServer?.stop()
-            webServer?.removeAllHandlers()
-            webServer?.addGETHandler(forBasePath: "/", directoryPath: outputTmpFile?.directoryURL.path ?? "", indexFilename: "stream.m3u8", cacheAge: 3600, allowRangeRequests: true)
-            webServer?.start()
+        // If they are requesting the animated throbber GIF, then we give it to them.
+        if  "/throbber.gif" == inRequestObject.path,
+            let resourceURL = Bundle.main.url(forResource: "throbber", withExtension: "gif") {
+            
+            if let throbberData = try? Data(contentsOf: resourceURL) {
+                return GCDWebServerDataResponse(data: throbberData, contentType: "application/gif")
+            }
+        } else {
+            // If we have started to build up video data files, then we stop the server, strip out this handler, and then restart it.
+            if  let path = outputTmpFile?.directoryURL.path,
+                let dirContents = try? FileManager.default.contentsOfDirectory(atPath: path),
+                1 < dirContents.count {
+                #if DEBUG
+                    print("Restarting the Server")
+                #endif
+                webServer?.stop()
+                webServer?.removeAllHandlers()
+                webServer?.addGETHandler(forBasePath: "/", directoryPath: outputTmpFile?.directoryURL.path ?? "", indexFilename: "stream.m3u8", cacheAge: 3600, allowRangeRequests: true)
+                webServer?.start()
+                // We emit a "LOADING..." text, and set the browser to refresh in two seconds.
+                return GCDWebServerDataResponse(html: "<html><head><meta http-equiv=\"refresh\" content=\"2; URL=/\"></head><body style=\"background-color:black\"><h1 style=\"font-family:Helvetica,Sans-serif;margin:0;margin-top:-0.5em;text-align:center;position:absolute;top:50%;left:0;width:100%;color: white\">" + "SLUG-LOADING".localizedVariant + "</h1></body></html>")
+            }
         }
         
-        return GCDWebServerDataResponse(html: "<html><head><meta http-equiv=\"refresh\" content=\"5; URL=/\"></head><body><h1>HOLD ON...</h1></body></html>")
+        return GCDWebServerDataResponse(html: "<html><head><meta http-equiv=\"refresh\" content=\"2; URL=/\"></head><body style=\"background-color:black\"><img src=\"throbber.gif\" style=\"display:block;position:absolute;top:50%;left:50%;margin-left:-16px;margin-top:-16px\" /></body></html>")
     }
 
     /* ################################################################## */
