@@ -30,6 +30,7 @@ class RVS_MediaServer_WindowController: NSWindowController {
      */
     override func windowDidLoad() {
         super.windowDidLoad()
+        window?.title = window?.title.localizedVariant ?? "ERROR"
         self.windowFrameAutosaveName = (window?.title ?? "ERROR") + "-position"
     }
 }

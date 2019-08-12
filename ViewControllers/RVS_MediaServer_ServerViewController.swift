@@ -124,7 +124,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
                     #if DEBUG
                         if let args = ffmpegTask.arguments, 1 < args.count {
                             let path = ([executablePath] + args).joined(separator: " ")
-                                print("\n----\n\(String(describing: path))")
+                            print("\n----\n\(String(describing: path))")
                         }
                     #endif
 
@@ -166,7 +166,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      - parameter inSender: Ignored
      */
     @IBAction func startStopButtonHit(_ inSender: NSSegmentedControl) {
-        isRunning = 0 == inSender.selectedSegment
+        isRunning = 1 == inSender.selectedSegment
     }
     
     /* ################################################################## */

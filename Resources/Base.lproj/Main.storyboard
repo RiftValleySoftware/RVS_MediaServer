@@ -688,7 +688,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="SETTINGS" id="B8D-0N-5wS" customClass="RVS_MediaServer_WindowController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="SETTINGS" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="SLUG-PREFERENCES-VIEWCONTROLLER" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -709,7 +709,7 @@
         <scene sceneID="Xh6-Jr-kIw">
             <objects>
                 <windowController id="Qo2-ZW-lZH" customClass="RVS_MediaServer_WindowController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="SERVER" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Qpj-Ue-v32">
+                    <window key="window" title="SLUG-SERVER-VIEWCONTROLLER" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Qpj-Ue-v32">
                         <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="-2135" y="461" width="480" height="270"/>
@@ -726,10 +726,10 @@
             </objects>
             <point key="canvasLocation" x="-516" y="250"/>
         </scene>
-        <!--SERVER-->
+        <!--SLUG-SERVER-VIEWCONTROLLER-->
         <scene sceneID="TEx-l4-qOy">
             <objects>
-                <viewController title="SERVER" id="Vb5-tk-ief" customClass="RVS_MediaServer_ServerViewController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="SLUG-SERVER-VIEWCONTROLLER" id="Vb5-tk-ief" customClass="RVS_MediaServer_ServerViewController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="lkg-00-B7e">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -742,8 +742,8 @@
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="3or-K0-peu">
                                     <font key="font" metaFont="system"/>
                                     <segments>
-                                        <segment label="SLUG-SERVER-RUNNING" width="219"/>
-                                        <segment label="SLUG-SERVER-STOPPED" width="218" selected="YES" tag="1"/>
+                                        <segment label="SLUG-SERVER-STOPPED" width="219" selected="YES"/>
+                                        <segment label="SLUG-SERVER-RUNNING" width="218" tag="1"/>
                                     </segments>
                                 </segmentedCell>
                                 <connections>
@@ -783,10 +783,10 @@
             </objects>
             <point key="canvasLocation" x="-516" y="655"/>
         </scene>
-        <!--SETTINGS-->
+        <!--SLUG-PREFERENCES-VIEWCONTROLLER-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="SETTINGS" id="XfG-lQ-9wD" customClass="RVS_MediaServer_SettingsViewController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="SLUG-PREFERENCES-VIEWCONTROLLER" id="XfG-lQ-9wD" customClass="RVS_MediaServer_SettingsViewController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>

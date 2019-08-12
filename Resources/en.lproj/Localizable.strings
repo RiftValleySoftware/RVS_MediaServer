@@ -17,6 +17,7 @@
 
 /// The OK button in alerts.
 "SLUG-OK-BUTTON-TEXT"                       =       "OK";
+"SLUG-PREFERENCES-VIEWCONTROLLER"           =       "PREFERENCES";
 "SLUG-STREAM-NAME-LABEL"                    =       "Stream Name:";
 "SLUG-STREAM-NAME-PLACEHOLDER"              =       "Enter the Stream Name";
 "SLUG-INPUT-URI-LABEL"                      =       "Input URI:";
@@ -28,5 +29,6 @@
 "SLUG-PASSWORD-PLACEHOLDER"                 =       "Enter the Password";
 "SLUG-TMP-LABEL"                            =       "Temp Dir:";
 "SLUG-TMP-PLACEHOLDER"                      =       "Enter the Temp Directory Name";
+"SLUG-SERVER-VIEWCONTROLLER"                =       "SERVER";
 "SLUG-SERVER-STOPPED"                       =       "SERVER STOPPED";
 "SLUG-SERVER-RUNNING"                       =       "SERVER RUNNING";
