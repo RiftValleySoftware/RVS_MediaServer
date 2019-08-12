@@ -238,17 +238,20 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
             print("Requested URI: " + String(describing: inRequestObject))
         #endif
         
+        // If we have started to build up video data files, then we stop the server, strip out this handler, and then restart it.
         if  let path = outputTmpFile?.directoryURL.path,
             let dirContents = try? FileManager.default.contentsOfDirectory(atPath: path),
             1 < dirContents.count {
+            #if DEBUG
+                print("Restarting the Server")
+            #endif
             webServer?.stop()
             webServer?.removeAllHandlers()
             webServer?.addGETHandler(forBasePath: "/", directoryPath: outputTmpFile?.directoryURL.path ?? "", indexFilename: "stream.m3u8", cacheAge: 3600, allowRangeRequests: true)
             webServer?.start()
-            return nil
-        } else {
-            return GCDWebServerDataResponse(html: "<html><body><h1>HOLD ON...</h1></body></html>")
         }
+        
+        return GCDWebServerDataResponse(html: "<html><head><meta http-equiv=\"refresh\" content=\"5; URL=/\"></head><body><h1>HOLD ON...</h1></body></html>")
     }
 
     /* ################################################################## */
