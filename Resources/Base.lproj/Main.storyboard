@@ -734,36 +734,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TOd-Va-Rbc">
-                                <rect key="frame" x="18" y="226" width="444" height="24"/>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Vh-zu-8Z5">
+                                <rect key="frame" x="18" y="227" width="444" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="jaI-8O-xxV"/>
+                                    <constraint firstAttribute="height" constant="21" id="qzw-PQ-Omb"/>
                                 </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="gst-9a-BJP">
-                                    <font key="font" metaFont="systemHeavy" size="20"/>
-                                    <color key="textColor" red="1" green="0.055564177690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CRg-Vt-LF4">
-                                <rect key="frame" x="14" y="181" width="452" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="s9d-FA-hXx"/>
-                                </constraints>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UcE-ph-EZV">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="systemBold" size="18"/>
-                                </buttonCell>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="3or-K0-peu">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="SLUG-SERVER-RUNNING" width="219"/>
+                                        <segment label="SLUG-SERVER-STOPPED" width="218" selected="YES" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
                                 <connections>
-                                    <action selector="startStopButtonHit:" target="Vb5-tk-ief" id="e6y-En-Pa7"/>
+                                    <action selector="startStopButtonHit:" target="Vb5-tk-ief" id="c6e-4m-M0Y"/>
                                 </connections>
-                            </button>
+                            </segmentedControl>
                             <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="flW-J9-XVc">
-                                <rect key="frame" x="14" y="148" width="452" height="32"/>
+                                <rect key="frame" x="14" y="193" width="452" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="zXG-8U-Rbd"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hIz-kr-xdc">
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hIz-kr-xdc">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -773,21 +765,17 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="TOd-Va-Rbc" firstAttribute="leading" secondItem="lkg-00-B7e" secondAttribute="leading" constant="20" id="2Jg-SP-kIg"/>
                             <constraint firstItem="flW-J9-XVc" firstAttribute="leading" secondItem="lkg-00-B7e" secondAttribute="leading" constant="20" id="2k5-R9-azv"/>
-                            <constraint firstItem="TOd-Va-Rbc" firstAttribute="top" secondItem="lkg-00-B7e" secondAttribute="top" constant="20" id="DmJ-gV-gpI"/>
-                            <constraint firstAttribute="trailing" secondItem="CRg-Vt-LF4" secondAttribute="trailing" constant="20" id="Ejq-l9-JtK"/>
-                            <constraint firstItem="CRg-Vt-LF4" firstAttribute="leading" secondItem="lkg-00-B7e" secondAttribute="leading" constant="20" id="HDP-Gn-X5c"/>
-                            <constraint firstItem="CRg-Vt-LF4" firstAttribute="top" secondItem="TOd-Va-Rbc" secondAttribute="bottom" constant="8" id="JuG-4B-Nh4"/>
+                            <constraint firstItem="0Vh-zu-8Z5" firstAttribute="leading" secondItem="lkg-00-B7e" secondAttribute="leading" constant="20" id="Dnb-Bl-nL2"/>
+                            <constraint firstItem="0Vh-zu-8Z5" firstAttribute="top" secondItem="lkg-00-B7e" secondAttribute="top" constant="20" id="LdD-lR-wr4"/>
                             <constraint firstAttribute="trailing" secondItem="flW-J9-XVc" secondAttribute="trailing" constant="20" id="MAm-sK-l1e"/>
-                            <constraint firstItem="flW-J9-XVc" firstAttribute="top" secondItem="CRg-Vt-LF4" secondAttribute="bottom" constant="12" id="Mz6-5E-TaW"/>
-                            <constraint firstAttribute="trailing" secondItem="TOd-Va-Rbc" secondAttribute="trailing" constant="20" id="kFG-QT-cWG"/>
+                            <constraint firstAttribute="trailing" secondItem="0Vh-zu-8Z5" secondAttribute="trailing" constant="20" id="Y8R-sb-Jtm"/>
+                            <constraint firstItem="flW-J9-XVc" firstAttribute="top" secondItem="0Vh-zu-8Z5" secondAttribute="bottom" constant="8" id="jx0-VR-hdG"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="linkButton" destination="flW-J9-XVc" id="x8e-mU-7CI"/>
-                        <outlet property="serverStatusLabel" destination="TOd-Va-Rbc" id="g1k-9n-vPd"/>
-                        <outlet property="startStopButton" destination="CRg-Vt-LF4" id="oMO-31-zIs"/>
+                        <outlet property="linkButton" destination="flW-J9-XVc" id="bLw-6I-MAC"/>
+                        <outlet property="serverStateSegmentedSwitch" destination="0Vh-zu-8Z5" id="vyG-z1-uLR"/>
                     </connections>
                 </viewController>
                 <customObject id="lxA-RB-8sx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

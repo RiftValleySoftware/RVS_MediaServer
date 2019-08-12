@@ -30,15 +30,9 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     This label shows the server status. If running, the color is green. If stopped, the color is red.
+     The Server Status Segmented Switch
      */
-    @IBOutlet weak var serverStatusLabel: NSTextField!
-    
-    /* ################################################################## */
-    /**
-     This button will either start or stop the server.
-     */
-    @IBOutlet weak var startStopButton: NSButton!
+    @IBOutlet weak var serverStateSegmentedSwitch: NSSegmentedControl!
     
     /* ################################################################## */
     /**
@@ -171,8 +165,8 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      
      - parameter inSender: Ignored
      */
-    @IBAction func startStopButtonHit(_ inSender: NSButton) {
-        isRunning = !isRunning
+    @IBAction func startStopButtonHit(_ inSender: NSSegmentedControl) {
+        isRunning = 0 == inSender.selectedSegment
     }
     
     /* ################################################################## */
@@ -204,7 +198,12 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
             if isRunning, startFFMpeg() {
                 startServer()
                 isRunning = webServer?.isRunning ?? false
+                if let linkButtonTitle = webServer?.serverURL?.absoluteString {
+                    linkButton.isHidden = false
+                    linkButton.title = linkButtonTitle + "stream.m3u8"
+                }
             } else {
+                linkButton.isHidden = true
                 stopServer()
             }
         }
@@ -221,20 +220,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      - parameter inChange: The change object. We ignore this, too.
      */
     func serverStatusObserverHandler(_ inObject: Any! = nil, _ inChange: NSKeyValueObservedChange<Bool>! = nil) {
-        if isRunning {
-            serverStatusLabel.textColor = NSColor.green
-            serverStatusLabel.stringValue = "SLUG-SERVER-IS-RUNNING".localizedVariant
-            startStopButton.title = "SLUG-STOP-SERVER".localizedVariant
-            if let linkButtonTitle = webServer?.serverURL?.absoluteString {
-                linkButton.isHidden = false
-                linkButton.title = linkButtonTitle + "stream.m3u8"
-            }
-        } else {
-            serverStatusLabel.textColor = NSColor.red
-            serverStatusLabel.stringValue = "SLUG-SERVER-IS-NOT-RUNNING".localizedVariant
-            startStopButton.title = "SLUG-START-SERVER".localizedVariant
-            linkButton.isHidden = true
-        }
+        linkButton.isHidden = !isRunning
     }
     
     /* ################################################################## */
@@ -254,15 +240,29 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
         return nil
     }
 
+    /* ################################################################## */
+    /**
+     Set up the various localized items and initial values.
+     */
+    func setUpLocalizations() {
+        linkButton.isHidden = true
+        for i in 0..<serverStateSegmentedSwitch.segmentCount {
+            if let label = serverStateSegmentedSwitch.label(forSegment: i)?.localizedVariant {
+                serverStateSegmentedSwitch.setLabel(label, forSegment: i)
+            }
+        }
+    }
+    
     /* ############################################################################################################################## */
     // MARK: - Superclass Override Methods
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     Set up the various localized items and initial values.
+     Called when the view finishes loading.
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpLocalizations()
         serverStatusObserver = observe(\.isRunning, changeHandler: serverStatusObserverHandler)
         serverStatusObserverHandler()
     }
