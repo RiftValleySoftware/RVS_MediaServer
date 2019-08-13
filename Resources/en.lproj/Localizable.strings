@@ -17,19 +17,45 @@
 
 /// The OK button in alerts.
 "SLUG-OK-BUTTON-TEXT"                       =       "OK";
+/// The title of the Preferences window.
 "SLUG-PREFERENCES-VIEWCONTROLLER"           =       "PREFERENCES";
+/// The label for the preferences stream name text entry
 "SLUG-STREAM-NAME-LABEL"                    =       "Stream Name:";
+/// The placeholder text for the preferences stream name text entry
 "SLUG-STREAM-NAME-PLACEHOLDER"              =       "Enter the Stream Name";
+/// The label for the preferences input URI text entry
 "SLUG-INPUT-URI-LABEL"                      =       "Input URI:";
+/// The placeholder text for the preferences input URI text entry
 "SLUG-INPUT-URI-PLACEHOLDER"                =       "Enter the Stream URI";
+/// The label for the preferences TCP port text entry
 "SLUG-OUTPUT-TCP-PORT"                      =       "TCP Port:";
+/// The label for the preferences login text entry
 "SLUG-LOGIN-LABEL"                          =       "Login ID:";
+/// The placeholder text for the preferences login text entry
 "SLUG-LOGIN-PLACEHOLDER"                    =       "Enter the Login ID";
+/// The label for the preferences password text entry
 "SLUG-PASSWORD-LABEL"                       =       "Password:";
+/// The placeholder text for the preferences password text entry
 "SLUG-PASSWORD-PLACEHOLDER"                 =       "Enter the Password";
+/// The label for the preferences temp directory name text entry
 "SLUG-TMP-LABEL"                            =       "Temp Dir:";
+/// The placeholder text for the preferences temp directory text entry
 "SLUG-TMP-PLACEHOLDER"                      =       "Enter the Temp Directory Name";
+/// The name of the main server window.
 "SLUG-SERVER-VIEWCONTROLLER"                =       "SERVER";
+/// The title of the server not running segmented switch segment
 "SLUG-SERVER-STOPPED"                       =       "SERVER STOPPED";
+/// The title of the server running segmented switch segment
 "SLUG-SERVER-RUNNING"                       =       "SERVER RUNNING";
+/// The text displayed when the Web server restars to load video.
 "SLUG-LOADING"                              =       "LOADING...";
+/// The general error alert title.
+"SLUG-SERVER-ERROR-HEADER"                  =       "Server Error";
+/// The message displayed when the Web server takes too long to start.
+"SLUG-TIMEOUT-MESSAGE"                      =       "The server took too long to start.";
+/// The message displayed when the URL in the preferences is bad.
+"SLUG-BAD-URI-MESSAGE"                      =       "The provided URI is not usable.";
+/// The message displayed when the ffmpeg instance can't start.
+"SLUG-CANNOT-START-FFMPEG-MESSAGE"          =       "Cannot start the ffmpeg service.";
+/// The message displayed when the Web server can't start.
+"SLUG-CANNOT-START-WEBSERVER-MESSAGE"       =       "Cannot start the Web server.";
