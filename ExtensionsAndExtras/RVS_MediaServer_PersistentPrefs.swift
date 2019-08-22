@@ -88,7 +88,7 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
         /// We will create a new set of prefs (loading anything saved), if we didn't already have them.
         if  nil == type(of: self)._prefs,
             !tag.isEmpty {
-            type(of: self)._prefs = RVS_PersistentPrefs(tag: tag, values: type(of: self)._defaultPrefsValues)
+            type(of: self)._prefs = RVS_PersistentPrefs(key: tag, values: type(of: self)._defaultPrefsValues)
         }
         
         return type(of: self)._prefs
