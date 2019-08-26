@@ -28,25 +28,19 @@ import Foundation
  As the class is KVO-enabled, you can bind it for stuff like SwiftUI.
  As it is a class, it can be subclassed and extended.
  */
-open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
+public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs, NSCoding {
     /* ############################################################################################################################## */
     // MARK: - Private Static Properties
     /* ############################################################################################################################## */
-    /* ################################################################## */
-    /**
-     This is a SINGLETON instance of our prefs.
-     I hate SINGLETONS, but in this case, it's safe.
-     */
-    private static var _prefs: RVS_PersistentPrefs! = nil
-    
     /* ############################################################################################################################## */
     // MARK: - Private Enums
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
      These are the keys for our prefs.
+     Making it CaseIterable means that we can access the cases and return them as strings.
      */
-    private enum _PrefsKeys: String {
+    private enum _PrefsKeys: String, CaseIterable {
         /// This is the Stream Name for the input RTSP stream.
         case stream_name
         /// This is the URI for the input RTSP stream.
@@ -59,6 +53,11 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
         case password
         /// This is the name for our temporary stream files directory.
         case temp_directory_name
+        /// This is a flag that determines what type of ffmpeg interaction we will have.
+        /// Possible values are "HLS" (simple HLS recoding), "raw" ("raw" ffmpeg argument string).
+        case mode_flag
+        /// This is the string to be applied, if mode_flag is set to "raw".
+        case rawFFMPEGString
     }
     
     /* ############################################################################################################################## */
@@ -74,35 +73,18 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
         _PrefsKeys.output_tcp_port.rawValue: 8080,
         _PrefsKeys.login_id.rawValue: "",
         _PrefsKeys.password.rawValue: "",
-        _PrefsKeys.temp_directory_name.rawValue: "html"
+        _PrefsKeys.temp_directory_name.rawValue: "html",
+        _PrefsKeys.mode_flag.rawValue: "HLS",
+        _PrefsKeys.rawFFMPEGString.rawValue: ""
     ]
     
     /* ############################################################################################################################## */
     // MARK: - Private Calculated Properties
     /* ############################################################################################################################## */
-    /* ################################################################## */
-    /**
-     This is an accessor that translates between the static prefs SINGLETON, and the instance.
-     */
-    private var _calcPrefs: RVS_PersistentPrefs! {
-        /// We will create a new set of prefs (loading anything saved), if we didn't already have them.
-        if  nil == type(of: self)._prefs,
-            !tag.isEmpty {
-            type(of: self)._prefs = RVS_PersistentPrefs(key: tag, values: type(of: self)._defaultPrefsValues)
-        }
-        
-        return type(of: self)._prefs
-    }
 
     /* ############################################################################################################################## */
     // MARK: - Class Calculated Properties
     /* ############################################################################################################################## */
-    /* ################################################################## */
-    /**
-     This is the "tag" we use for storing the main prefs.
-     */
-    var tag: String = ""
-    
     /* ############################################################################################################################## */
     // MARK: - Instance Stored Properties (Ephemeral)
     /* ############################################################################################################################## */
@@ -116,18 +98,28 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
      This does not clear the webserver property.
      */
     func reset() {
-        _calcPrefs.values = type(of: self)._defaultPrefsValues
+        values = type(of: self)._defaultPrefsValues
     }
     
     /* ################################################################## */
     /**
-     Init with a tag for this instance.
+     Init with a key for this instance.
      
-     - parameter tag: The tag (as a String) for this instance. The default is "0"
+     - parameter key: The key (as a String) for this instance. The default is "0"
      */
-    init(tag inTag: String = "0") {
-        super.init()
-        tag = inTag
+    init(key inKey: String = "0") {
+        super.init(key: inKey)
+    }
+    
+    /* ############################################################################################################################## */
+    // MARK: - Public Calculated Properties
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     It is an Array of String, containing the keys used to store and retrieve the values from persistent storage.
+     */
+    override public var keys: [String] {
+        return _PrefsKeys.allCases.compactMap { $0.rawValue }
     }
     
     /* ############################################################################################################################## */
@@ -143,11 +135,11 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
      */
     @objc dynamic var stream_name: String {
         get {
-            return _calcPrefs?.values[_PrefsKeys.stream_name.rawValue] as? String ?? ""
+            return values[_PrefsKeys.stream_name.rawValue] as? String ?? ""
         }
         
         set {
-            _calcPrefs?.values[_PrefsKeys.stream_name.rawValue] = newValue
+            values[_PrefsKeys.stream_name.rawValue] = newValue
         }
     }
     
@@ -157,11 +149,11 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
      */
     @objc dynamic var input_uri: String {
         get {
-            return _calcPrefs?.values[_PrefsKeys.input_uri.rawValue] as? String ?? ""
+            return values[_PrefsKeys.input_uri.rawValue] as? String ?? ""
         }
         
         set {
-            _calcPrefs?.values[_PrefsKeys.input_uri.rawValue] = newValue
+            values[_PrefsKeys.input_uri.rawValue] = newValue
         }
     }
     
@@ -171,11 +163,11 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
      */
     @objc dynamic var output_tcp_port: Int {
         get {
-            return _calcPrefs.values[_PrefsKeys.output_tcp_port.rawValue] as? Int ?? 0
+            return values[_PrefsKeys.output_tcp_port.rawValue] as? Int ?? 0
         }
         
         set {
-            _calcPrefs.values[_PrefsKeys.output_tcp_port.rawValue] = newValue
+            values[_PrefsKeys.output_tcp_port.rawValue] = newValue
         }
     }
     
@@ -185,11 +177,11 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
      */
     @objc dynamic var login_id: String {
         get {
-            return _calcPrefs.values[_PrefsKeys.login_id.rawValue] as? String ?? ""
+            return values[_PrefsKeys.login_id.rawValue] as? String ?? ""
         }
         
         set {
-            _calcPrefs.values[_PrefsKeys.login_id.rawValue] = newValue
+            values[_PrefsKeys.login_id.rawValue] = newValue
         }
     }
     
@@ -199,11 +191,11 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
      */
     @objc dynamic var password: String {
         get {
-            return _calcPrefs.values[_PrefsKeys.password.rawValue] as? String ?? ""
+            return values[_PrefsKeys.password.rawValue] as? String ?? ""
         }
         
         set {
-            _calcPrefs.values[_PrefsKeys.password.rawValue] = newValue
+            values[_PrefsKeys.password.rawValue] = newValue
         }
     }
     
@@ -213,11 +205,39 @@ open class RVS_MediaServer_PersistentPrefs: NSObject, NSCoding {
      */
     @objc dynamic var temp_directory_name: String {
         get {
-            return _calcPrefs.values[_PrefsKeys.temp_directory_name.rawValue] as? String ?? ""
+            return values[_PrefsKeys.temp_directory_name.rawValue] as? String ?? ""
         }
         
         set {
-            _calcPrefs.values[_PrefsKeys.temp_directory_name.rawValue] = newValue
+            values[_PrefsKeys.temp_directory_name.rawValue] = newValue
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     Returns true, if we are using a raw parameter list.
+     */
+    @objc dynamic var use_raw_parameters: Bool {
+        get {
+            return "raw" == (values[_PrefsKeys.mode_flag.rawValue] as? String ?? "HLS")
+        }
+        
+        set {
+            values[_PrefsKeys.mode_flag.rawValue] = newValue ? "raw" : "HLS"
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     The parameter list (only used if use_raw_parameters is true).
+     */
+    @objc dynamic var rawFFMPEGString: String {
+        get {
+            return values[_PrefsKeys.rawFFMPEGString.rawValue] as? String ?? ""
+        }
+        
+        set {
+            values[_PrefsKeys.rawFFMPEGString.rawValue] = newValue
         }
     }
 
