@@ -30,7 +30,7 @@ class RVS_MediaServer_Prefs_Tests: XCTestCase {
      */
     func testSimpleChangeValues() {
         // Start by allocating a new instance. Since the tests are sandboxed, we can be sure that it will not have any dingleberries.
-        let test_Target = RVS_MediaServer_PersistentPrefs()
+        let test_Target = RVS_MediaServer_PersistentPrefs(key: "testSimpleChangeValues-0")
         test_Target.reset()    // We reset the instance to default.
 
         // Make sure we have our defaults.
@@ -58,7 +58,7 @@ class RVS_MediaServer_Prefs_Tests: XCTestCase {
         XCTAssertEqual("OK", test_Target.temp_directory_name)
 
         // Make sure that they carry over into a new instance.
-        let test_Target2 = RVS_MediaServer_PersistentPrefs()
+        let test_Target2 = RVS_MediaServer_PersistentPrefs(key: "testSimpleChangeValues-0")
 
         XCTAssertEqual("NOPROBLEM", test_Target2.stream_name)
         XCTAssertEqual("HIHOWAYA", test_Target2.input_uri)
@@ -154,7 +154,7 @@ class RVS_MediaServer_Prefs_Tests: XCTestCase {
             }
         }
         
-        let test_Target = RVS_MediaServer_PersistentPrefs()
+        let test_Target = RVS_MediaServer_PersistentPrefs(key: "testSimpleChangeValues-0")
         test_Target.reset()    // We reset the instance to default.
         
         let expectation = XCTestExpectation()

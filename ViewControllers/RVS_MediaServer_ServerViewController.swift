@@ -192,19 +192,48 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
                     if var executablePath = (Bundle.main.executablePath as NSString?)?.deletingLastPathComponent {
                         executablePath += "/ffmpeg"
                         ffmpegTask.launchPath = executablePath
-                        ffmpegTask.arguments = [
-                            "-i", rtspURI,          // This is the main URL to the stream. It should have auth parameters included.
-                            "-c:v", "libx264",      // This denotes that we use the libx264 (VideoLAN) version of the H.264 decoder.
-                            "-crf", "21",           // This is a "middle" quality level (1...51, with 1 being the best -slowest-, and 51 being the worst -fastsest-).
-                            "-preset", "superfast", // As fast as possible (we are streaming).
-                            "-g", "30",             // This says assume that the input is coming at 30 frames/sec.
-                            "-sc_threshold", "0",   // This tells ffmpeg not to do scene analysis, so we can regulate the time slices
-                            "-f", "hls",            // This says output HLS
-                            "-hls_flags", "delete_segments",    // This says that the streamer should pick up after itself, and remove old files. This keeps a "window" going.
-                            "-hls_time", "\(type(of: self)._hlsTimeSliceInSeconds)",    // The size of HLS slices, in seconds.
-                            outputTmpFile?.fileURL.path ?? ""   // The output temp dir, where the Webserver picks up the stream.
-                        ]
+                        // For "raw" parameters, each line is one argument pair, with the key, followed by the value, separated by one space (" ").
+                        // For example: "-c:v libx264\n-crf 21" would be two arguments.
+                        if prefs.use_raw_parameters {
+                            let rawFFMPEGString = prefs.rawFFMPEGString
+                            let lines = rawFFMPEGString.split(separator: "\n")
+                            if 0 < lines.count {
+                                var arguments: [String] = ["-i", rtspURI    // This is the main URL to the stream. It should have auth parameters included.
+                                ]
+                                
+                                lines.forEach {
+                                    let lineItem = $0.split(separator: " ", maxSplits: 1, omittingEmptySubsequences: true)
+                                    if 2 == lineItem.count {
+                                        let flag = String(lineItem[0]).trimmingCharacters(in: .whitespacesAndNewlines)
+                                        let value = String(lineItem[1]).trimmingCharacters(in: .whitespacesAndNewlines)
+                                        if !flag.isEmpty, !value.isEmpty {
+                                            arguments.append(flag)
+                                            arguments.append(value)
+                                        }
+                                    }
+                                }
+                                
+                                ffmpegTask.arguments = arguments
+                            }
+                        } else {
+                            let arguments =
+                                [
+                                "-i", rtspURI,          // This is the main URL to the stream. It should have auth parameters included.
+                                "-c:v", "libx264",      // This denotes that we use the libx264 (VideoLAN) version of the H.264 decoder.
+                                "-crf", "21",           // This is a "middle" quality level (1...51, with 1 being the best -slowest-, and 51 being the worst -fastsest-).
+                                "-preset", "superfast", // As fast as possible (we are streaming).
+                                "-g", "30",             // This says assume that the input is coming at 30 frames/sec.
+                                "-sc_threshold", "0",   // This tells ffmpeg not to do scene analysis, so we can regulate the time slices
+                                "-f", "hls",            // This says output HLS
+                                "-hls_flags", "delete_segments",    // This says that the streamer should pick up after itself, and remove old files. This keeps a "window" going.
+                                "-hls_time", "\(type(of: self)._hlsTimeSliceInSeconds)"    // The size of HLS slices, in seconds.
+                            ]
+                            
+                            ffmpegTask.arguments = arguments
+                        }
                         
+                        ffmpegTask.arguments?.append(outputTmpFile?.fileURL.path ?? "") // The output temp dir, where the Webserver picks up the stream.
+
                         #if DEBUG
                             if let args = ffmpegTask.arguments, 1 < args.count {
                                 let path = ([executablePath] + args).joined(separator: " ")
