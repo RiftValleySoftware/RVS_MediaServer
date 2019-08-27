@@ -689,9 +689,9 @@
             <objects>
                 <windowController storyboardIdentifier="SETTINGS" id="B8D-0N-5wS" customClass="RVS_MediaServer_WindowController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="SLUG-PREFERENCES-VIEWCONTROLLER" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="96" y="489" width="640" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -788,11 +788,11 @@
             <objects>
                 <viewController title="SLUG-PREFERENCES-VIEWCONTROLLER" id="XfG-lQ-9wD" customClass="RVS_MediaServer_SettingsViewController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p8t-uz-yCl">
-                                <rect key="frame" x="18" y="214" width="186" height="20"/>
+                                <rect key="frame" x="18" y="424" width="186" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="NKn-I1-NMi"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ZTt-Ll-F3c"/>
@@ -804,7 +804,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zQE-AS-Dx3">
-                                <rect key="frame" x="206" y="214" width="254" height="20"/>
+                                <rect key="frame" x="206" y="424" width="414" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="EyF-5A-gWs"/>
                                 </constraints>
@@ -818,7 +818,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WzA-wP-OEE">
-                                <rect key="frame" x="18" y="186" width="186" height="20"/>
+                                <rect key="frame" x="18" y="396" width="186" height="20"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-OUTPUT-TCP-PORT" id="GyU-80-piX">
                                     <font key="font" metaFont="titleBar"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -826,7 +826,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38O-Bl-nJn">
-                                <rect key="frame" x="206" y="186" width="100" height="20"/>
+                                <rect key="frame" x="206" y="396" width="100" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="28q-Y6-imz"/>
                                     <constraint firstAttribute="width" constant="100" id="ot2-T5-L4v"/>
@@ -845,7 +845,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-Yg-asM">
-                                <rect key="frame" x="18" y="156" width="186" height="20"/>
+                                <rect key="frame" x="18" y="366" width="186" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Wad-0e-2kM"/>
                                 </constraints>
@@ -856,7 +856,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7E1-pb-BUM">
-                                <rect key="frame" x="206" y="158" width="254" height="20"/>
+                                <rect key="frame" x="206" y="368" width="414" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="w1v-in-yPo"/>
                                 </constraints>
@@ -870,7 +870,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-F2-NZ7">
-                                <rect key="frame" x="18" y="128" width="186" height="20"/>
+                                <rect key="frame" x="18" y="338" width="186" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="LMM-ba-kVC"/>
                                 </constraints>
@@ -881,7 +881,7 @@
                                 </textFieldCell>
                             </textField>
                             <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eXd-4I-l4C">
-                                <rect key="frame" x="206" y="130" width="254" height="20"/>
+                                <rect key="frame" x="206" y="340" width="414" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="IBQ-Cx-IJy"/>
                                 </constraints>
@@ -898,7 +898,7 @@
                                 </connections>
                             </secureTextField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="266-Ac-esv">
-                                <rect key="frame" x="18" y="100" width="186" height="20"/>
+                                <rect key="frame" x="18" y="310" width="186" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="JWe-w1-T7O"/>
                                 </constraints>
@@ -909,7 +909,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4w0-nQ-DW5">
-                                <rect key="frame" x="206" y="102" width="254" height="20"/>
+                                <rect key="frame" x="206" y="312" width="414" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Xfs-bE-Ve3"/>
                                 </constraints>
@@ -923,7 +923,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y1R-yr-gis">
-                                <rect key="frame" x="18" y="242" width="186" height="20"/>
+                                <rect key="frame" x="18" y="452" width="186" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="rHW-jt-e2U"/>
                                 </constraints>
@@ -934,7 +934,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rrl-ob-xd8">
-                                <rect key="frame" x="206" y="242" width="254" height="20"/>
+                                <rect key="frame" x="206" y="452" width="414" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="lMW-r9-zmp"/>
                                 </constraints>
@@ -947,6 +947,59 @@
                                     <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.stream_name" id="HnU-pl-J1k"/>
                                 </connections>
                             </textField>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="THC-4H-l6j">
+                                <rect key="frame" x="18" y="279" width="604" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="eWd-Ag-PbZ"/>
+                                </constraints>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="kPp-6H-yxz">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="SLUG-USE-HLS-AUTO" width="299" selected="YES"/>
+                                        <segment label="SLUG-USE-RAW-COMMAND-LINE" width="298" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="modeSwitchChanged:" target="XfG-lQ-9wD" id="DRl-0V-GaV"/>
+                                </connections>
+                            </segmentedControl>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCN-5m-GuM">
+                                <rect key="frame" x="20" y="20" width="600" height="253"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="b0o-p2-T85">
+                                    <rect key="frame" x="0.0" y="0.0" width="585" height="253"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="23c-gc-DPw">
+                                            <rect key="frame" x="0.0" y="0.0" width="585" height="253"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="585" height="253"/>
+                                            <size key="maxSize" width="591" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.rawFFMPEGString" id="uPf-5E-Zgd"/>
+                                                <outlet property="delegate" destination="XfG-lQ-9wD" id="iw6-gA-VEm"/>
+                                            </connections>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="iSb-Xy-C4o">
+                                    <rect key="frame" x="-100" y="-100" width="225" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="y34-IN-Ozk">
+                                    <rect key="frame" x="585" y="0.0" width="15" height="253"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.prefs.use_raw_parameters" id="eGk-tm-8hq">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="7E1-pb-BUM" firstAttribute="top" secondItem="38O-Bl-nJn" secondAttribute="bottom" constant="8" id="0n3-Jf-4Ba"/>
@@ -966,6 +1019,7 @@
                             <constraint firstItem="WzA-wP-OEE" firstAttribute="leading" secondItem="p8t-uz-yCl" secondAttribute="leading" id="HiB-cl-Ode"/>
                             <constraint firstItem="WzA-wP-OEE" firstAttribute="top" secondItem="p8t-uz-yCl" secondAttribute="bottom" constant="8" symbolic="YES" id="HuP-rR-3hd"/>
                             <constraint firstItem="WzA-wP-OEE" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="JqD-kX-H4T"/>
+                            <constraint firstItem="THC-4H-l6j" firstAttribute="top" secondItem="266-Ac-esv" secondAttribute="bottom" constant="8" id="LMl-wN-cHJ"/>
                             <constraint firstItem="38O-Bl-nJn" firstAttribute="leading" secondItem="WzA-wP-OEE" secondAttribute="trailing" constant="4" id="Mt2-4Q-VtW"/>
                             <constraint firstItem="eXd-4I-l4C" firstAttribute="leading" secondItem="yNT-F2-NZ7" secondAttribute="trailing" constant="4" id="SoW-gF-UAY"/>
                             <constraint firstItem="rrl-ob-xd8" firstAttribute="leading" secondItem="y1R-yr-gis" secondAttribute="trailing" constant="4" id="XUT-iZ-PUi"/>
@@ -973,17 +1027,23 @@
                             <constraint firstItem="266-Ac-esv" firstAttribute="top" secondItem="yNT-F2-NZ7" secondAttribute="bottom" constant="8" id="YHl-cD-QaY"/>
                             <constraint firstItem="p8t-uz-yCl" firstAttribute="top" secondItem="y1R-yr-gis" secondAttribute="bottom" constant="8" id="YhZ-GO-riN"/>
                             <constraint firstItem="zQE-AS-Dx3" firstAttribute="baseline" secondItem="p8t-uz-yCl" secondAttribute="firstBaseline" id="avZ-rJ-6L1"/>
+                            <constraint firstItem="ZCN-5m-GuM" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="c8e-z6-ZjZ"/>
+                            <constraint firstAttribute="trailing" secondItem="THC-4H-l6j" secondAttribute="trailing" constant="20" id="c9l-dT-mbE"/>
                             <constraint firstItem="7HW-Yg-asM" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="ccO-NN-WoV"/>
                             <constraint firstItem="7E1-pb-BUM" firstAttribute="leading" secondItem="7HW-Yg-asM" secondAttribute="trailing" constant="4" id="dTG-vk-Hh5"/>
                             <constraint firstAttribute="trailing" secondItem="zQE-AS-Dx3" secondAttribute="trailing" constant="20" id="fHb-B0-2kA"/>
                             <constraint firstItem="38O-Bl-nJn" firstAttribute="baseline" secondItem="WzA-wP-OEE" secondAttribute="firstBaseline" id="fvL-JK-ySl"/>
+                            <constraint firstAttribute="trailing" secondItem="ZCN-5m-GuM" secondAttribute="trailing" constant="20" id="gqp-8n-pRC"/>
+                            <constraint firstItem="ZCN-5m-GuM" firstAttribute="top" secondItem="THC-4H-l6j" secondAttribute="bottom" constant="8" id="guj-tw-zLf"/>
                             <constraint firstItem="eXd-4I-l4C" firstAttribute="top" secondItem="7E1-pb-BUM" secondAttribute="bottom" constant="8" id="hRK-PH-3Qp"/>
                             <constraint firstItem="eXd-4I-l4C" firstAttribute="firstBaseline" secondItem="yNT-F2-NZ7" secondAttribute="firstBaseline" id="hmU-QQ-aAD"/>
+                            <constraint firstAttribute="bottom" secondItem="ZCN-5m-GuM" secondAttribute="bottom" constant="20" id="lGZ-e2-wuD"/>
                             <constraint firstAttribute="trailing" secondItem="4w0-nQ-DW5" secondAttribute="trailing" constant="20" id="nAr-Ms-yzc"/>
                             <constraint firstItem="yNT-F2-NZ7" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="nbI-mV-TIJ"/>
                             <constraint firstItem="rrl-ob-xd8" firstAttribute="baseline" secondItem="y1R-yr-gis" secondAttribute="firstBaseline" id="oNL-le-Nq6"/>
                             <constraint firstItem="y1R-yr-gis" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="8" id="qwQ-8L-CTs"/>
                             <constraint firstItem="266-Ac-esv" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="rl4-FO-4fc"/>
+                            <constraint firstItem="THC-4H-l6j" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="s6z-Oe-ffn"/>
                         </constraints>
                     </view>
                     <connections>
@@ -991,6 +1051,7 @@
                         <outlet property="input_uri_text_field" destination="zQE-AS-Dx3" id="4Wv-nT-1KP"/>
                         <outlet property="login_label" destination="7HW-Yg-asM" id="GnK-Gr-ZHo"/>
                         <outlet property="login_text_field" destination="7E1-pb-BUM" id="R9D-Mc-iRk"/>
+                        <outlet property="modeSwitchSegmentedControl" destination="THC-4H-l6j" id="kwe-ow-xJw"/>
                         <outlet property="output_tcp_port_label" destination="WzA-wP-OEE" id="zHr-de-12V"/>
                         <outlet property="output_tcp_port_text_field" destination="38O-Bl-nJn" id="AXN-tz-gNe"/>
                         <outlet property="password_label" destination="yNT-F2-NZ7" id="gWZ-X7-JJ9"/>
@@ -1002,8 +1063,9 @@
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="Chb-aL-vh3"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="873"/>
         </scene>
     </scenes>
 </document>

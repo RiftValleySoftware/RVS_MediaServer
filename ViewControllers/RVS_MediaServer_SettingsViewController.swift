@@ -22,7 +22,7 @@ import Cocoa
 /* ################################################################################################################################## */
 /**
  */
-class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController {
+class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController, NSTextViewDelegate {
     /* ############################################################################################################################## */
     // MARK: - Internal IBOutlet Properties
     /* ############################################################################################################################## */
@@ -98,10 +98,25 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
      */
     @IBOutlet weak var temp_directory_name_text_field: NSTextField!
 
-    /* ############################################################################################################################## */
-    // MARK: - Internal Instance Properties
-    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     The Mode Selector Segmented Switch
+     */
+    @IBOutlet weak var modeSwitchSegmentedControl: NSSegmentedControl!
     
+    /* ############################################################################################################################## */
+    // MARK: - @IBAction Methods
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     Called when the mode selector changes.
+     
+     - parameter: Ignored
+     */
+    @IBAction func modeSwitchChanged(_: Any) {
+        prefs.use_raw_parameters = 1 == modeSwitchSegmentedControl.selectedSegment
+    }
+
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Methods
     /* ############################################################################################################################## */
@@ -117,6 +132,13 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
         password_text_field.placeholderString = password_text_field.placeholderString?.localizedVariant
         temp_directory_name_label.stringValue = temp_directory_name_label.stringValue.localizedVariant
         temp_directory_name_text_field.placeholderString = temp_directory_name_text_field.placeholderString?.localizedVariant
+        for i in 0..<modeSwitchSegmentedControl.segmentCount {
+            if let label = modeSwitchSegmentedControl.label(forSegment: i)?.localizedVariant {
+                modeSwitchSegmentedControl.setLabel(label, forSegment: i)
+            }
+        }
+        
+        modeSwitchSegmentedControl.selectedSegment = prefs.use_raw_parameters ? 1 : 0
     }
     
     /* ############################################################################################################################## */

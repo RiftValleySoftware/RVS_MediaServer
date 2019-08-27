@@ -59,3 +59,7 @@
 "SLUG-CANNOT-START-FFMPEG-MESSAGE"          =       "Cannot start the ffmpeg service.";
 /// The message displayed when the Web server can't start.
 "SLUG-CANNOT-START-WEBSERVER-MESSAGE"       =       "Cannot start the Web server.";
+/// The HLS Value of the Mode Switch
+"SLUG-USE-HLS-AUTO"                         =       "Simple HLS Server";
+/// The Raw Value of the Mode Switch
+"SLUG-USE-RAW-COMMAND-LINE"                 =       "Direct Command-Line Entry";

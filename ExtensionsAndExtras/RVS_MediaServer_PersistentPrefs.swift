@@ -105,9 +105,9 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs, NSCoding {
     /**
      Init with a key for this instance.
      
-     - parameter key: The key (as a String) for this instance. The default is "0"
+     - parameter key: The key (as a String) for this instance.
      */
-    init(key inKey: String = "0") {
+    init(key inKey: String) {
         super.init(key: inKey)
     }
     
