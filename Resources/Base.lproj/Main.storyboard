@@ -791,6 +791,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y1R-yr-gis">
+                                <rect key="frame" x="18" y="452" width="186" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="rHW-jt-e2U"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-STREAM-NAME-LABEL" id="G87-Eu-GNR">
+                                    <font key="font" metaFont="titleBar"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rrl-ob-xd8">
+                                <rect key="frame" x="206" y="452" width="414" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="lMW-r9-zmp"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-STREAM-NAME-PLACEHOLDER" drawsBackground="YES" id="XXR-iv-Ikh">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.stream_name" id="057-hQ-6kX">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p8t-uz-yCl">
                                 <rect key="frame" x="18" y="424" width="186" height="20"/>
                                 <constraints>
@@ -814,7 +843,11 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.input_uri" id="Q0x-41-myD"/>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.input_uri" id="vtJ-rq-aps">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WzA-wP-OEE">
@@ -841,7 +874,11 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.output_tcp_port" id="x8f-rX-XUx"/>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.output_tcp_port" id="Q1E-lj-zhJ">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-Yg-asM">
@@ -866,7 +903,11 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.login_id" id="zuv-lu-BB5"/>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.login_id" id="dZf-5P-VnZ">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-F2-NZ7">
@@ -894,7 +935,11 @@
                                     </allowedInputSourceLocales>
                                 </secureTextFieldCell>
                                 <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.password" id="XNc-ds-YH2"/>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.password" id="PgH-6Q-mvU">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </secureTextField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="266-Ac-esv">
@@ -919,32 +964,11 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.temp_directory_name" id="DBO-wf-qp9"/>
-                                </connections>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y1R-yr-gis">
-                                <rect key="frame" x="18" y="452" width="186" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="rHW-jt-e2U"/>
-                                </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-STREAM-NAME-LABEL" id="G87-Eu-GNR">
-                                    <font key="font" metaFont="titleBar"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rrl-ob-xd8">
-                                <rect key="frame" x="206" y="452" width="414" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="lMW-r9-zmp"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-STREAM-NAME-PLACEHOLDER" drawsBackground="YES" id="XXR-iv-Ikh">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.stream_name" id="HnU-pl-J1k"/>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.temp_directory_name" id="H3l-Mq-18X">
+                                        <dictionary key="options">
+                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="THC-4H-l6j">
@@ -975,10 +999,14 @@
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="585" height="253"/>
-                                            <size key="maxSize" width="591" height="10000000"/>
+                                            <size key="maxSize" width="600" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
-                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.rawFFMPEGString" id="uPf-5E-Zgd"/>
+                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.rawFFMPEGString" id="67V-jb-QEf">
+                                                    <dictionary key="options">
+                                                        <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                    </dictionary>
+                                                </binding>
                                                 <outlet property="delegate" destination="XfG-lQ-9wD" id="iw6-gA-VEm"/>
                                             </connections>
                                         </textView>
