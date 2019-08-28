@@ -147,7 +147,7 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
             prefs.use_output_http_server = .on == useOutputServerCheckbox.state
         }
         
-        outputItemsStackView.isHidden = (0 == modeSwitchSegmentedControl.selectedSegment) || !prefs.use_output_http_server
+        outputItemsStackView.isHidden = (0 != modeSwitchSegmentedControl.selectedSegment) && !prefs.use_output_http_server
     }
     
     /* ############################################################################################################################## */
