@@ -28,7 +28,7 @@ import Foundation
  As the class is KVO-enabled, you can bind it for stuff like SwiftUI.
  As it is a class, it can be subclassed and extended.
  */
-public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs, NSCoding {
+public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
     /* ############################################################################################################################## */
     // MARK: - Private Static Properties
     /* ############################################################################################################################## */
@@ -58,6 +58,8 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs, NSCoding {
         case mode_flag
         /// This is the string to be applied, if mode_flag is set to "raw".
         case rawFFMPEGString
+        /// This is true, if we are to use an output HTTP server.
+        case use_output_http_server
     }
     
     /* ############################################################################################################################## */
@@ -75,7 +77,8 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs, NSCoding {
         _PrefsKeys.password.rawValue: "",
         _PrefsKeys.temp_directory_name.rawValue: "html",
         _PrefsKeys.mode_flag.rawValue: "HLS",
-        _PrefsKeys.rawFFMPEGString.rawValue: ""
+        _PrefsKeys.rawFFMPEGString.rawValue: "",
+        _PrefsKeys.use_output_http_server.rawValue: "true"
     ]
     
     /* ############################################################################################################################## */
@@ -240,56 +243,18 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs, NSCoding {
             values[_PrefsKeys.rawFFMPEGString.rawValue] = newValue
         }
     }
-
-    /* ############################################################################################################################## */
-    // MARK: - NSCoding Methods
-    /* ############################################################################################################################## */
-    /* ################################################################## */
-    /**
-     This saves off our current state into an encoder.
-     
-     - parameter with: The encoder we'll be saving into.
-     */
-    public func encode(with inCoder: NSCoder) {
-        inCoder.encode(stream_name, forKey: _PrefsKeys.stream_name.rawValue)
-        inCoder.encode(input_uri, forKey: _PrefsKeys.input_uri.rawValue)
-        inCoder.encode(output_tcp_port, forKey: _PrefsKeys.output_tcp_port.rawValue)
-        inCoder.encode(login_id, forKey: _PrefsKeys.login_id.rawValue)
-        inCoder.encode(password, forKey: _PrefsKeys.password.rawValue)
-        inCoder.encode(temp_directory_name, forKey: _PrefsKeys.temp_directory_name.rawValue)
-    }
     
     /* ################################################################## */
     /**
-     This initializes our object off of an encoder.
-     
-     - parameter coder: The encoder we'll be reading our state from.
+     Returns true, if we are using a built-in HTTP server.
      */
-    public required init?(coder inDecoder: NSCoder) {
-        super.init()
-        
-        if let value = inDecoder.decodeObject(forKey: _PrefsKeys.stream_name.rawValue) as? String {
-            stream_name = value
+    @objc dynamic var use_output_http_server: Bool {
+        get {
+            return "true" == (values[_PrefsKeys.use_output_http_server.rawValue] as? String ?? "true")
         }
         
-        if let value = inDecoder.decodeObject(forKey: _PrefsKeys.input_uri.rawValue) as? String {
-            input_uri = value
-        }
-        
-        if let value = inDecoder.decodeObject(forKey: _PrefsKeys.output_tcp_port.rawValue) as? Int {
-            output_tcp_port = value
-        }
-        
-        if let value = inDecoder.decodeObject(forKey: _PrefsKeys.login_id.rawValue) as? String {
-            login_id = value
-        }
-        
-        if let value = inDecoder.decodeObject(forKey: _PrefsKeys.password.rawValue) as? String {
-            password = value
-        }
-        
-        if let value = inDecoder.decodeObject(forKey: _PrefsKeys.temp_directory_name.rawValue) as? String {
-            temp_directory_name = value
+        set {
+            values[_PrefsKeys.use_output_http_server.rawValue] = newValue ? "true" : "false"
         }
     }
 }

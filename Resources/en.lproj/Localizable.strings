@@ -63,3 +63,5 @@
 "SLUG-USE-HLS-AUTO"                         =       "Simple HLS Server";
 /// The Raw Value of the Mode Switch
 "SLUG-USE-RAW-COMMAND-LINE"                 =       "Direct Command-Line Entry";
+/// The label text for the use output checkbox
+"SLUG-USE-OUTPUT-CHECKBOX"                  =       "Use Built-In HTTP Server";

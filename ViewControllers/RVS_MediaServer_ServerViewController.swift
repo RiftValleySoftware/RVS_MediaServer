@@ -198,8 +198,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
                             let rawFFMPEGString = prefs.rawFFMPEGString
                             let lines = rawFFMPEGString.split(separator: "\n")
                             if 0 < lines.count {
-                                var arguments: [String] = ["-i", rtspURI    // This is the main URL to the stream. It should have auth parameters included.
-                                ]
+                                var arguments: [String] = []
                                 
                                 lines.forEach {
                                     let lineItem = $0.split(separator: " ", maxSplits: 1, omittingEmptySubsequences: true)
@@ -232,7 +231,10 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
                             ffmpegTask.arguments = arguments
                         }
                         
-                        ffmpegTask.arguments?.append(outputTmpFile?.fileURL.path ?? "") // The output temp dir, where the Webserver picks up the stream.
+                        // We use the output Webserver for simple HLS, or if the raw parameters mode requests it.
+                        if prefs.use_output_http_server || !prefs.use_raw_parameters {
+                            ffmpegTask.arguments?.append(outputTmpFile?.fileURL.path ?? "") // The output temp dir, where the Webserver picks up the stream.
+                        }
 
                         #if DEBUG
                             if let args = ffmpegTask.arguments, 1 < args.count {
@@ -351,12 +353,17 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      */
     @objc dynamic var isRunning: Bool = false {
         didSet {
-            if isRunning, startFFMpeg() {
-                startServer()
-                isRunning = webServer?.isRunning ?? false
-                if let linkButtonTitle = webServer?.serverURL?.absoluteString {
-                    linkButton.isHidden = false
-                    linkButton.title = linkButtonTitle + "stream.m3u8"
+            if  isRunning {
+                if startFFMpeg(),
+                prefs.use_output_http_server {
+                    startServer()
+                    isRunning = webServer?.isRunning ?? false
+                    if let linkButtonTitle = webServer?.serverURL?.absoluteString {
+                        linkButton.isHidden = false
+                        linkButton.title = linkButtonTitle + "stream.m3u8"
+                    }
+                } else {
+                    linkButton.isHidden = true
                 }
             } else {
                 linkButton.isHidden = true
@@ -376,7 +383,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      - parameter inChange: The change object. We ignore this, too.
      */
     func serverStatusObserverHandler(_ inObject: Any! = nil, _ inChange: NSKeyValueObservedChange<Bool>! = nil) {
-        self.linkButton.isHidden = !self.isRunning
+        self.linkButton.isHidden = !self.isRunning || !prefs.use_output_http_server
     }
     
     /* ################################################################## */

@@ -104,6 +104,24 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
      */
     @IBOutlet weak var modeSwitchSegmentedControl: NSSegmentedControl!
     
+    /* ################################################################## */
+    /**
+     These are the input items
+     */
+    @IBOutlet weak var inputItemsStackView: NSStackView!
+    
+    /* ################################################################## */
+    /**
+     These are the items about the HTTP server.
+     */
+    @IBOutlet weak var outputItemsStackView: NSStackView!
+    
+    /* ################################################################## */
+    /**
+     These are the items about the HTTP server.
+     */
+    @IBOutlet weak var useOutputServerCheckbox: NSButton!
+    
     /* ############################################################################################################################## */
     // MARK: - @IBAction Methods
     /* ############################################################################################################################## */
@@ -115,8 +133,23 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
      */
     @IBAction func modeSwitchChanged(_: Any) {
         prefs.use_raw_parameters = 1 == modeSwitchSegmentedControl.selectedSegment
+        outputItemsCheckboxChanged()
     }
-
+    
+    /* ################################################################## */
+    /**
+     Called when the use output HTTP server checkbox changes.
+     
+     - parameter inCheckbox: The checkbox object. Can be omitted.
+     */
+    @IBAction func outputItemsCheckboxChanged(_ inCheckbox: NSButton! = nil) {
+        if 1 == modeSwitchSegmentedControl.selectedSegment {
+            prefs.use_output_http_server = .on == useOutputServerCheckbox.state
+        }
+        
+        outputItemsStackView.isHidden = (0 == modeSwitchSegmentedControl.selectedSegment) || !prefs.use_output_http_server
+    }
+    
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Methods
     /* ############################################################################################################################## */
@@ -132,13 +165,16 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
         password_text_field.placeholderString = password_text_field.placeholderString?.localizedVariant
         temp_directory_name_label.stringValue = temp_directory_name_label.stringValue.localizedVariant
         temp_directory_name_text_field.placeholderString = temp_directory_name_text_field.placeholderString?.localizedVariant
+        useOutputServerCheckbox.title = useOutputServerCheckbox.title.localizedVariant
         for i in 0..<modeSwitchSegmentedControl.segmentCount {
             if let label = modeSwitchSegmentedControl.label(forSegment: i)?.localizedVariant {
                 modeSwitchSegmentedControl.setLabel(label, forSegment: i)
             }
         }
         
+        useOutputServerCheckbox.state = prefs.use_output_http_server ? .on : .off
         modeSwitchSegmentedControl.selectedSegment = prefs.use_raw_parameters ? 1 : 0
+        outputItemsCheckboxChanged()
     }
     
     /* ############################################################################################################################## */
