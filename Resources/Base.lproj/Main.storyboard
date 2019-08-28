@@ -787,291 +787,341 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController title="SLUG-PREFERENCES-VIEWCONTROLLER" id="XfG-lQ-9wD" customClass="RVS_MediaServer_SettingsViewController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
+                    <view key="view" wantsLayer="YES" misplaced="YES" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="652" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y1R-yr-gis">
-                                <rect key="frame" x="18" y="452" width="186" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="rHW-jt-e2U"/>
-                                </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-STREAM-NAME-LABEL" id="G87-Eu-GNR">
-                                    <font key="font" metaFont="titleBar"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rrl-ob-xd8">
-                                <rect key="frame" x="206" y="452" width="414" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="lMW-r9-zmp"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-STREAM-NAME-PLACEHOLDER" drawsBackground="YES" id="XXR-iv-Ikh">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.stream_name" id="057-hQ-6kX">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p8t-uz-yCl">
-                                <rect key="frame" x="18" y="424" width="186" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="NKn-I1-NMi"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ZTt-Ll-F3c"/>
-                                </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-INPUT-URI-LABEL" id="tGO-Tq-b6F">
-                                    <font key="font" metaFont="titleBar"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zQE-AS-Dx3">
-                                <rect key="frame" x="206" y="424" width="414" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="EyF-5A-gWs"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-INPUT-URI-PLACEHOLDER" drawsBackground="YES" id="Pfm-cf-Drl">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.input_uri" id="vtJ-rq-aps">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WzA-wP-OEE">
-                                <rect key="frame" x="18" y="396" width="186" height="20"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-OUTPUT-TCP-PORT" id="GyU-80-piX">
-                                    <font key="font" metaFont="titleBar"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38O-Bl-nJn">
-                                <rect key="frame" x="206" y="396" width="100" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="28q-Y6-imz"/>
-                                    <constraint firstAttribute="width" constant="100" id="ot2-T5-L4v"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="9gS-CS-684">
-                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="mNm-UZ-DPr">
-                                        <real key="minimum" value="1"/>
-                                        <real key="maximum" value="65535"/>
-                                    </numberFormatter>
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.output_tcp_port" id="Q1E-lj-zhJ">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-Yg-asM">
-                                <rect key="frame" x="18" y="366" width="186" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="Wad-0e-2kM"/>
-                                </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-LOGIN-LABEL" id="LIX-Sf-uAQ">
-                                    <font key="font" metaFont="titleBar"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7E1-pb-BUM">
-                                <rect key="frame" x="206" y="368" width="414" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="w1v-in-yPo"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-LOGIN-PLACEHOLDER" drawsBackground="YES" id="Aut-7R-qKX">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.login_id" id="dZf-5P-VnZ">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-F2-NZ7">
-                                <rect key="frame" x="18" y="338" width="186" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="LMM-ba-kVC"/>
-                                </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-PASSWORD-LABEL" id="Ljb-M3-eJd">
-                                    <font key="font" metaFont="titleBar"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eXd-4I-l4C">
-                                <rect key="frame" x="206" y="340" width="414" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="IBQ-Cx-IJy"/>
-                                </constraints>
-                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-PASSWORD-PLACEHOLDER" drawsBackground="YES" usesSingleLineMode="YES" id="b5n-kV-qbD">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <allowedInputSourceLocales>
-                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                    </allowedInputSourceLocales>
-                                </secureTextFieldCell>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.password" id="PgH-6Q-mvU">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </secureTextField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="266-Ac-esv">
-                                <rect key="frame" x="18" y="310" width="186" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="JWe-w1-T7O"/>
-                                </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-TMP-LABEL" id="eok-Go-H08">
-                                    <font key="font" metaFont="titleBar"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4w0-nQ-DW5">
-                                <rect key="frame" x="206" y="312" width="414" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="Xfs-bE-Ve3"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-TMP-PLACEHOLDER" drawsBackground="YES" id="6ZP-0M-BTO">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.temp_directory_name" id="H3l-Mq-18X">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </textField>
-                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="THC-4H-l6j">
-                                <rect key="frame" x="18" y="279" width="604" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="eWd-Ag-PbZ"/>
-                                </constraints>
-                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="kPp-6H-yxz">
-                                    <font key="font" metaFont="system"/>
-                                    <segments>
-                                        <segment label="SLUG-USE-HLS-AUTO" width="299" selected="YES"/>
-                                        <segment label="SLUG-USE-RAW-COMMAND-LINE" width="298" tag="1"/>
-                                    </segments>
-                                </segmentedCell>
-                                <connections>
-                                    <action selector="modeSwitchChanged:" target="XfG-lQ-9wD" id="DRl-0V-GaV"/>
-                                </connections>
-                            </segmentedControl>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCN-5m-GuM">
-                                <rect key="frame" x="20" y="20" width="600" height="253"/>
-                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="b0o-p2-T85">
-                                    <rect key="frame" x="0.0" y="0.0" width="585" height="253"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="23c-gc-DPw">
+                            <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2r6-BR-TS7">
+                                <rect key="frame" x="20" y="20" width="600" height="496"/>
+                                <subviews>
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sn3-bz-Tnu">
+                                        <rect key="frame" x="0.0" y="440" width="600" height="56"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y1R-yr-gis">
+                                                <rect key="frame" x="-2" y="39" width="186" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-STREAM-NAME-LABEL" id="G87-Eu-GNR">
+                                                    <font key="font" metaFont="titleBar"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rrl-ob-xd8">
+                                                <rect key="frame" x="190" y="34" width="410" height="22"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-STREAM-NAME-PLACEHOLDER" drawsBackground="YES" id="XXR-iv-Ikh">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.stream_name" id="057-hQ-6kX">
+                                                        <dictionary key="options">
+                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="npC-on-BMU">
+                                        <rect key="frame" x="0.0" y="410" width="600" height="22"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p8t-uz-yCl">
+                                                <rect key="frame" x="-2" y="5" width="186" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-INPUT-URI-LABEL" id="tGO-Tq-b6F">
+                                                    <font key="font" metaFont="titleBar"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zQE-AS-Dx3">
+                                                <rect key="frame" x="190" y="0.0" width="410" height="22"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-INPUT-URI-PLACEHOLDER" drawsBackground="YES" id="Pfm-cf-Drl">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.input_uri" id="vtJ-rq-aps">
+                                                        <dictionary key="options">
+                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dQB-5V-0sf">
+                                        <rect key="frame" x="0.0" y="380" width="600" height="22"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WzA-wP-OEE">
+                                                <rect key="frame" x="-2" y="5" width="186" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-OUTPUT-TCP-PORT" id="GyU-80-piX">
+                                                    <font key="font" metaFont="titleBar"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38O-Bl-nJn">
+                                                <rect key="frame" x="190" y="0.0" width="410" height="22"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="9gS-CS-684">
+                                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="mNm-UZ-DPr">
+                                                        <real key="minimum" value="1"/>
+                                                        <real key="maximum" value="65535"/>
+                                                    </numberFormatter>
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.output_tcp_port" id="Q1E-lj-zhJ">
+                                                        <dictionary key="options">
+                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUS-d7-Vej">
+                                        <rect key="frame" x="0.0" y="350" width="600" height="22"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-Yg-asM">
+                                                <rect key="frame" x="-2" y="5" width="186" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-LOGIN-LABEL" id="LIX-Sf-uAQ">
+                                                    <font key="font" metaFont="titleBar"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7E1-pb-BUM">
+                                                <rect key="frame" x="190" y="0.0" width="410" height="22"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-LOGIN-PLACEHOLDER" drawsBackground="YES" id="Aut-7R-qKX">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.login_id" id="dZf-5P-VnZ">
+                                                        <dictionary key="options">
+                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M0S-fd-8e8">
+                                        <rect key="frame" x="0.0" y="320" width="600" height="22"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-F2-NZ7">
+                                                <rect key="frame" x="-2" y="5" width="186" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-PASSWORD-LABEL" id="Ljb-M3-eJd">
+                                                    <font key="font" metaFont="titleBar"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eXd-4I-l4C">
+                                                <rect key="frame" x="190" y="0.0" width="410" height="22"/>
+                                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-PASSWORD-PLACEHOLDER" drawsBackground="YES" usesSingleLineMode="YES" id="b5n-kV-qbD">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <allowedInputSourceLocales>
+                                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                    </allowedInputSourceLocales>
+                                                </secureTextFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.password" id="PgH-6Q-mvU">
+                                                        <dictionary key="options">
+                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </secureTextField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0dc-zr-B6L">
+                                        <rect key="frame" x="0.0" y="290" width="600" height="22"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="266-Ac-esv">
+                                                <rect key="frame" x="-2" y="5" width="186" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="SLUG-TMP-LABEL" id="eok-Go-H08">
+                                                    <font key="font" metaFont="titleBar"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4w0-nQ-DW5">
+                                                <rect key="frame" x="190" y="0.0" width="410" height="22"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="SLUG-TMP-PLACEHOLDER" drawsBackground="YES" id="6ZP-0M-BTO">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.temp_directory_name" id="H3l-Mq-18X">
+                                                        <dictionary key="options">
+                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <segmentedControl horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="THC-4H-l6j">
+                                        <rect key="frame" x="-2" y="259" width="604" height="24"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="kPp-6H-yxz">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="SLUG-USE-HLS-AUTO" width="299" selected="YES"/>
+                                                <segment label="SLUG-USE-RAW-COMMAND-LINE" width="298" tag="1"/>
+                                            </segments>
+                                        </segmentedCell>
+                                        <connections>
+                                            <action selector="modeSwitchChanged:" target="XfG-lQ-9wD" id="DRl-0V-GaV"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCN-5m-GuM">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="253"/>
+                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="b0o-p2-T85">
                                             <rect key="frame" x="0.0" y="0.0" width="585" height="253"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="585" height="253"/>
-                                            <size key="maxSize" width="600" height="10000000"/>
-                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <connections>
-                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.rawFFMPEGString" id="67V-jb-QEf">
-                                                    <dictionary key="options">
-                                                        <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                    </dictionary>
-                                                </binding>
-                                                <outlet property="delegate" destination="XfG-lQ-9wD" id="iw6-gA-VEm"/>
-                                            </connections>
-                                        </textView>
-                                    </subviews>
-                                </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="iSb-Xy-C4o">
-                                    <rect key="frame" x="-100" y="-100" width="225" height="15"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="y34-IN-Ozk">
-                                    <rect key="frame" x="585" y="0.0" width="15" height="253"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.prefs.use_raw_parameters" id="eGk-tm-8hq">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </scrollView>
+                                            <subviews>
+                                                <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="23c-gc-DPw">
+                                                    <rect key="frame" x="0.0" y="0.0" width="585" height="253"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <size key="minSize" width="585" height="253"/>
+                                                    <size key="maxSize" width="666" height="10000000"/>
+                                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <connections>
+                                                        <binding destination="XfG-lQ-9wD" name="value" keyPath="self.prefs.rawFFMPEGString" id="67V-jb-QEf">
+                                                            <dictionary key="options">
+                                                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                            </dictionary>
+                                                        </binding>
+                                                        <outlet property="delegate" destination="XfG-lQ-9wD" id="iw6-gA-VEm"/>
+                                                    </connections>
+                                                </textView>
+                                            </subviews>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="iSb-Xy-C4o">
+                                            <rect key="frame" x="-100" y="-100" width="225" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="y34-IN-Ozk">
+                                            <rect key="frame" x="585" y="0.0" width="15" height="253"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <connections>
+                                            <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.prefs.use_raw_parameters" id="eGk-tm-8hq">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </scrollView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="yNT-F2-NZ7" firstAttribute="width" secondItem="y1R-yr-gis" secondAttribute="width" id="1ol-hC-JtA"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sn3-bz-Tnu" secondAttribute="trailing" id="EYQ-fG-LRS"/>
+                                    <constraint firstItem="THC-4H-l6j" firstAttribute="leading" secondItem="2r6-BR-TS7" secondAttribute="leading" id="FgM-wA-17c"/>
+                                    <constraint firstItem="7HW-Yg-asM" firstAttribute="width" secondItem="y1R-yr-gis" secondAttribute="width" id="JQs-hL-uDo"/>
+                                    <constraint firstItem="p8t-uz-yCl" firstAttribute="width" secondItem="y1R-yr-gis" secondAttribute="width" id="K1S-2s-RV3"/>
+                                    <constraint firstItem="RUS-d7-Vej" firstAttribute="leading" secondItem="2r6-BR-TS7" secondAttribute="leading" id="MLo-ZQ-cMg"/>
+                                    <constraint firstAttribute="trailing" secondItem="dQB-5V-0sf" secondAttribute="trailing" id="NHk-KK-eIX"/>
+                                    <constraint firstAttribute="trailing" secondItem="M0S-fd-8e8" secondAttribute="trailing" id="NfG-f5-EkZ"/>
+                                    <constraint firstItem="WzA-wP-OEE" firstAttribute="width" secondItem="y1R-yr-gis" secondAttribute="width" id="Uns-xU-h6I"/>
+                                    <constraint firstAttribute="trailing" secondItem="npC-on-BMU" secondAttribute="trailing" id="Wwn-zW-Kfm"/>
+                                    <constraint firstItem="M0S-fd-8e8" firstAttribute="leading" secondItem="2r6-BR-TS7" secondAttribute="leading" id="YAV-xM-4H2"/>
+                                    <constraint firstItem="npC-on-BMU" firstAttribute="leading" secondItem="2r6-BR-TS7" secondAttribute="leading" id="Yaj-W3-NeR"/>
+                                    <constraint firstItem="266-Ac-esv" firstAttribute="width" secondItem="y1R-yr-gis" secondAttribute="width" id="cHK-Dv-aE6"/>
+                                    <constraint firstAttribute="trailing" secondItem="0dc-zr-B6L" secondAttribute="trailing" id="f8n-aw-piu"/>
+                                    <constraint firstItem="Sn3-bz-Tnu" firstAttribute="leading" secondItem="2r6-BR-TS7" secondAttribute="leading" id="pMM-Lf-34u"/>
+                                    <constraint firstItem="ZCN-5m-GuM" firstAttribute="leading" secondItem="2r6-BR-TS7" secondAttribute="leading" id="sTe-ns-ahI"/>
+                                    <constraint firstAttribute="trailing" secondItem="RUS-d7-Vej" secondAttribute="trailing" id="tce-Bw-FAc"/>
+                                    <constraint firstItem="dQB-5V-0sf" firstAttribute="leading" secondItem="2r6-BR-TS7" secondAttribute="leading" id="uDA-s3-1ka"/>
+                                    <constraint firstAttribute="trailing" secondItem="THC-4H-l6j" secondAttribute="trailing" id="vdb-8g-Fq9"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZCN-5m-GuM" secondAttribute="trailing" id="wMZ-ys-vPB"/>
+                                    <constraint firstItem="0dc-zr-B6L" firstAttribute="leading" secondItem="2r6-BR-TS7" secondAttribute="leading" id="xAE-Dm-eH0"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="7E1-pb-BUM" firstAttribute="top" secondItem="38O-Bl-nJn" secondAttribute="bottom" constant="8" id="0n3-Jf-4Ba"/>
-                            <constraint firstItem="4w0-nQ-DW5" firstAttribute="firstBaseline" secondItem="266-Ac-esv" secondAttribute="firstBaseline" id="1cq-ov-3WE"/>
-                            <constraint firstItem="eXd-4I-l4C" firstAttribute="trailing" secondItem="7E1-pb-BUM" secondAttribute="trailing" id="20t-CB-Kmq"/>
-                            <constraint firstItem="266-Ac-esv" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="3bw-h7-Cpz"/>
-                            <constraint firstItem="7HW-Yg-asM" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="4ry-jO-PFL"/>
-                            <constraint firstItem="4w0-nQ-DW5" firstAttribute="leading" secondItem="266-Ac-esv" secondAttribute="trailing" constant="4" id="68D-CC-Hcx"/>
-                            <constraint firstItem="7E1-pb-BUM" firstAttribute="firstBaseline" secondItem="7HW-Yg-asM" secondAttribute="firstBaseline" id="6sQ-Ky-y6c"/>
-                            <constraint firstAttribute="trailing" secondItem="7E1-pb-BUM" secondAttribute="trailing" constant="20" id="81k-hG-e0y"/>
-                            <constraint firstItem="p8t-uz-yCl" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="8Qw-pa-4iG"/>
-                            <constraint firstItem="zQE-AS-Dx3" firstAttribute="leading" secondItem="p8t-uz-yCl" secondAttribute="trailing" constant="4" id="8fQ-av-zLb"/>
-                            <constraint firstAttribute="trailing" secondItem="rrl-ob-xd8" secondAttribute="trailing" constant="20" id="AAW-bf-noP"/>
-                            <constraint firstItem="yNT-F2-NZ7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="DIE-Dx-Zl6"/>
-                            <constraint firstItem="p8t-uz-yCl" firstAttribute="width" secondItem="y1R-yr-gis" secondAttribute="width" id="DjA-K7-a15"/>
-                            <constraint firstItem="y1R-yr-gis" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="H1f-od-TOG"/>
-                            <constraint firstItem="WzA-wP-OEE" firstAttribute="leading" secondItem="p8t-uz-yCl" secondAttribute="leading" id="HiB-cl-Ode"/>
-                            <constraint firstItem="WzA-wP-OEE" firstAttribute="top" secondItem="p8t-uz-yCl" secondAttribute="bottom" constant="8" symbolic="YES" id="HuP-rR-3hd"/>
-                            <constraint firstItem="WzA-wP-OEE" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="JqD-kX-H4T"/>
-                            <constraint firstItem="THC-4H-l6j" firstAttribute="top" secondItem="266-Ac-esv" secondAttribute="bottom" constant="8" id="LMl-wN-cHJ"/>
-                            <constraint firstItem="38O-Bl-nJn" firstAttribute="leading" secondItem="WzA-wP-OEE" secondAttribute="trailing" constant="4" id="Mt2-4Q-VtW"/>
-                            <constraint firstItem="eXd-4I-l4C" firstAttribute="leading" secondItem="yNT-F2-NZ7" secondAttribute="trailing" constant="4" id="SoW-gF-UAY"/>
-                            <constraint firstItem="rrl-ob-xd8" firstAttribute="leading" secondItem="y1R-yr-gis" secondAttribute="trailing" constant="4" id="XUT-iZ-PUi"/>
-                            <constraint firstItem="WzA-wP-OEE" firstAttribute="height" secondItem="p8t-uz-yCl" secondAttribute="height" id="XiX-DJ-MFh"/>
-                            <constraint firstItem="266-Ac-esv" firstAttribute="top" secondItem="yNT-F2-NZ7" secondAttribute="bottom" constant="8" id="YHl-cD-QaY"/>
-                            <constraint firstItem="p8t-uz-yCl" firstAttribute="top" secondItem="y1R-yr-gis" secondAttribute="bottom" constant="8" id="YhZ-GO-riN"/>
-                            <constraint firstItem="zQE-AS-Dx3" firstAttribute="baseline" secondItem="p8t-uz-yCl" secondAttribute="firstBaseline" id="avZ-rJ-6L1"/>
-                            <constraint firstItem="ZCN-5m-GuM" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="c8e-z6-ZjZ"/>
-                            <constraint firstAttribute="trailing" secondItem="THC-4H-l6j" secondAttribute="trailing" constant="20" id="c9l-dT-mbE"/>
-                            <constraint firstItem="7HW-Yg-asM" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="ccO-NN-WoV"/>
-                            <constraint firstItem="7E1-pb-BUM" firstAttribute="leading" secondItem="7HW-Yg-asM" secondAttribute="trailing" constant="4" id="dTG-vk-Hh5"/>
-                            <constraint firstAttribute="trailing" secondItem="zQE-AS-Dx3" secondAttribute="trailing" constant="20" id="fHb-B0-2kA"/>
-                            <constraint firstItem="38O-Bl-nJn" firstAttribute="baseline" secondItem="WzA-wP-OEE" secondAttribute="firstBaseline" id="fvL-JK-ySl"/>
-                            <constraint firstAttribute="trailing" secondItem="ZCN-5m-GuM" secondAttribute="trailing" constant="20" id="gqp-8n-pRC"/>
-                            <constraint firstItem="ZCN-5m-GuM" firstAttribute="top" secondItem="THC-4H-l6j" secondAttribute="bottom" constant="8" id="guj-tw-zLf"/>
-                            <constraint firstItem="eXd-4I-l4C" firstAttribute="top" secondItem="7E1-pb-BUM" secondAttribute="bottom" constant="8" id="hRK-PH-3Qp"/>
-                            <constraint firstItem="eXd-4I-l4C" firstAttribute="firstBaseline" secondItem="yNT-F2-NZ7" secondAttribute="firstBaseline" id="hmU-QQ-aAD"/>
-                            <constraint firstAttribute="bottom" secondItem="ZCN-5m-GuM" secondAttribute="bottom" constant="20" id="lGZ-e2-wuD"/>
-                            <constraint firstAttribute="trailing" secondItem="4w0-nQ-DW5" secondAttribute="trailing" constant="20" id="nAr-Ms-yzc"/>
-                            <constraint firstItem="yNT-F2-NZ7" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="nbI-mV-TIJ"/>
-                            <constraint firstItem="rrl-ob-xd8" firstAttribute="baseline" secondItem="y1R-yr-gis" secondAttribute="firstBaseline" id="oNL-le-Nq6"/>
-                            <constraint firstItem="y1R-yr-gis" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="8" id="qwQ-8L-CTs"/>
-                            <constraint firstItem="266-Ac-esv" firstAttribute="width" secondItem="p8t-uz-yCl" secondAttribute="width" id="rl4-FO-4fc"/>
-                            <constraint firstItem="THC-4H-l6j" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="s6z-Oe-ffn"/>
+                            <constraint firstAttribute="trailing" secondItem="2r6-BR-TS7" secondAttribute="trailing" constant="20" id="5gR-bE-NOR"/>
+                            <constraint firstItem="2r6-BR-TS7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="5s2-3u-dYM"/>
+                            <constraint firstItem="2r6-BR-TS7" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="JAk-79-ccO"/>
+                            <constraint firstAttribute="bottom" secondItem="2r6-BR-TS7" secondAttribute="bottom" constant="20" id="daQ-b5-vGW"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1093,7 +1143,7 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="Chb-aL-vh3"/>
             </objects>
-            <point key="canvasLocation" x="75" y="873"/>
+            <point key="canvasLocation" x="75" y="930"/>
         </scene>
     </scenes>
 </document>
