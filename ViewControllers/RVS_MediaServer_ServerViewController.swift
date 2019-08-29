@@ -93,9 +93,78 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     
     /* ################################################################## */
     /**
+     This will hold the URL of a temp file created to absorb console output from ffmpeg.
+     */
+    var consoleOutputFile: TemporaryFile?
+    
+    /* ################################################################## */
+    /**
+     This will hold the URL of a temp file created to absorb standard error output from ffmpeg.
+     */
+    var errorOutputFile: TemporaryFile?
+    
+    /* ################################################################## */
+    /**
+     This holds the original stdout file ref number.
+     */
+    var originalStdOutFileNo: Int32!
+    
+    /* ################################################################## */
+    /**
+     This holds the original stderr file ref number.
+     */
+    var originalStdErrFileNo: Int32!
+
+    /* ################################################################## */
+    /**
      This is a Web Server instance that is associated with this stream. Its lifetime is the lifetime of the object (not persistent).
      */
     var webServer: GCDWebServer?
+
+    /* ############################################################################################################################## */
+    // MARK: - Internal Instance Calculated Properties
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     This returns a string, with the contents of the stdout redirector.
+     
+     The file must be closed. It will return nil if there were issues.
+     */
+    var stdOutRedirectorContents: String! {
+        if  nil == originalStdOutFileNo,
+            let stdOutFilePath = consoleOutputFile?.fileURL.absoluteString {    // We must be stopped and wrapped up.
+            do {
+                return try String(contentsOfFile: stdOutFilePath, encoding: String.Encoding.utf8)
+            } catch {
+                #if DEBUG
+                    print("Error! Attempt to read from stdout file failed: \(error)")
+                #endif
+            }
+        }
+        
+        return nil
+    }
+
+    /* ################################################################## */
+    /**
+     This returns a string, with the contents of the stderr redirector.
+     
+     The file must be closed. It will return nil if there were issues.
+     */
+    var stdErrRedirectorContents: String! {
+        if  nil == originalStdErrFileNo,
+            let stdErrFilePath = errorOutputFile?.fileURL.absoluteString {    // We must be stopped and wrapped up.
+            do {
+                return try String(contentsOfFile: stdErrFilePath, encoding: String.Encoding.utf8)
+            } catch {
+                #if DEBUG
+                    print("Error! Attempt to read from stderr file failed: \(error)")
+                #endif
+            }
+        }
+        
+        return nil
+    }
 
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Methods
@@ -185,9 +254,9 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
             // First, we make sure that we got a Process. It's a conditional init.
             if let ffmpegTask = ffmpegTask {
                 // Next, set up a tempdir for the stream files.
-                if let tmp = try? TemporaryFile(creatingTempDirectoryForFilename: "stream.m3u8") {
-                    outputTmpFile = tmp
-
+                if  let outputTmpFileTmp = try? TemporaryFile(creatingTempDirectoryForFilename: "stream.m3u8") {
+                    outputTmpFile = outputTmpFileTmp
+                    
                     // Fetch the executable path from the bundle. We have our copy of ffmpeg in there with the app.
                     if var executablePath = (Bundle.main.executablePath as NSString?)?.deletingLastPathComponent {
                         executablePath += "/ffmpeg"
@@ -236,18 +305,13 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
                             ffmpegTask.arguments?.append(outputTmpFile?.fileURL.path ?? "") // The output temp dir, where the Webserver picks up the stream.
                         }
 
+                        setUpStdRedirectors()
+                        // Everything below this, until we take down the redirectors, will go into the temp file, including debug output.
                         #if DEBUG
                             if let args = ffmpegTask.arguments, 1 < args.count {
                                 let path = ([executablePath] + args).joined(separator: " ")
                                 print("\n----\n\(path)")
                             }
-                        #else
-                            // This just eats the output from the ffmpeg task for non-debug, so we don't litter the console.
-                            let standardOutputPipe = Pipe()
-                            ffmpegTask.standardOutput = standardOutputPipe
-                        
-                            let standardErrorPipe = Pipe()
-                            ffmpegTask.standardError = standardErrorPipe
                         #endif
                         
                         // Launch the task
@@ -258,6 +322,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
                         #endif
 
                         if !ffmpegTask.isRunning {
+                            takeDownStdRedirectors()
                             handleError(message: "SLUG-CANNOT-START-FFMPEG-MESSAGE")
                         }
                         
@@ -274,6 +339,85 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
 
     /* ################################################################## */
     /**
+     This sets up a couple of temp files that catch the standard output and error. We can then examine those files.
+     */
+    func setUpStdRedirectors() {
+        deleteRedirectorFiles() // Make sure we take down our redirectors. Additionally, we make sure that we delete any previously existing files, so we don't litter.
+        
+        do {
+            let consoleOutputFileTmp = try TemporaryFile(creatingTempDirectoryForFilename: "stdout.txt")
+            let errorOutputFileTmp = try TemporaryFile(creatingTempDirectoryForFilename: "stderr.txt")
+            consoleOutputFile = consoleOutputFileTmp
+            errorOutputFile = errorOutputFileTmp
+            #if DEBUG
+                if  let stdOutFilePath = consoleOutputFile?.fileURL.absoluteString,
+                    let stdErrFilePath = errorOutputFile?.fileURL.absoluteString {
+                    print("Temporary stdOut: \(stdOutFilePath))")
+                    print("Temporary stdErr: \(stdErrFilePath))")
+                }
+            #endif
+            
+            if let stdOutFilePath = consoleOutputFile?.fileURL.absoluteString {
+                originalStdOutFileNo = dup(STDOUT_FILENO)
+                freopen(stdOutFilePath, "w", stdout)
+            }
+            
+            if let stdErrFilePath = errorOutputFile?.fileURL.absoluteString {
+                originalStdErrFileNo = dup(STDERR_FILENO)
+                freopen(stdErrFilePath, "w", stderr)
+            }
+        } catch {
+            #if DEBUG
+                print("Error Creating Redirect Files! Error: \(error)")
+            #endif
+        }
+    }
+
+    /* ################################################################## */
+    /**
+     This takes down the redirector, but does not get rid of the files.
+     */
+    func takeDownStdRedirectors() {
+        if let tmp = originalStdOutFileNo {
+            fflush(stdout)
+            dup2(tmp, STDOUT_FILENO)
+            close(tmp)
+        }
+        
+        if let tmp = originalStdErrFileNo {
+            fflush(stderr)
+            dup2(tmp, STDERR_FILENO)
+            close(tmp)
+        }
+        
+        originalStdOutFileNo = nil
+        originalStdErrFileNo = nil
+    }
+    
+    /* ################################################################## */
+    /**
+     This deletes the redirector files (if any).
+     */
+    func deleteRedirectorFiles() {
+        takeDownStdRedirectors()    // See if we need to turn off the gas before closing up for the winter.
+        
+        #if DEBUG
+            if let stdoutReport = stdOutRedirectorContents {
+                print("\n\nstdout dump:\n\n\(stdoutReport)")
+            }
+            if let stderrReport = stdErrRedirectorContents {
+                print("\n\nstderr dump:\n\n\(stderrReport)")
+            }
+        #endif
+        
+        try? consoleOutputFile?.deleteDirectory()
+        consoleOutputFile = nil
+        try? errorOutputFile?.deleteDirectory()
+        errorOutputFile = nil
+    }
+
+    /* ################################################################## */
+    /**
      This simply stops the Web server.
      */
     func stopServer() {
@@ -283,6 +427,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
         ffmpegTask = nil
         webServer?.stop()
         webServer = nil
+        takeDownStdRedirectors()
         try? outputTmpFile?.deleteDirectory()
         outputTmpFile = nil
         DispatchQueue.main.async {  // Make sure we call in the main thread, in case we were referenced from a callback, or something.
@@ -355,12 +500,14 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
         didSet {
             if  isRunning {
                 if startFFMpeg(),
-                prefs.use_output_http_server {
+                prefs.use_output_http_server || !prefs.use_raw_parameters {
                     startServer()
                     isRunning = webServer?.isRunning ?? false
-                    if let linkButtonTitle = webServer?.serverURL?.absoluteString {
-                        linkButton.isHidden = false
-                        linkButton.title = linkButtonTitle + "stream.m3u8"
+                    DispatchQueue.main.async {
+                        if let linkButtonTitle = self.webServer?.serverURL?.absoluteString {
+                            self.linkButton.isHidden = false
+                            self.linkButton.title = linkButtonTitle + "stream.m3u8"
+                        }
                     }
                 } else {
                     linkButton.isHidden = true
@@ -467,6 +614,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     override func viewWillDisappear() {
         super.viewWillDisappear()
         stopServer()
+        deleteRedirectorFiles()
     }
     
     /* ############################################################################################################################## */
@@ -478,5 +626,6 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      */
     deinit {
         stopServer()
+        deleteRedirectorFiles()
     }
 }
