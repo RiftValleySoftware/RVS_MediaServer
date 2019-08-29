@@ -22,7 +22,7 @@ import Cocoa
 /* ################################################################################################################################## */
 /**
  */
-class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController, NSTextViewDelegate {
+class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController, NSTextViewDelegate, NSWindowDelegate {
     /* ############################################################################################################################## */
     // MARK: - Internal IBOutlet Properties
     /* ############################################################################################################################## */
@@ -187,5 +187,33 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpLocalizations()
+    }
+    
+    /* ################################################################## */
+    /**
+     Called just after the view appears.
+     
+     We use this to mark the preference for the window being open.
+     */
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        view.window?.delegate = self    // We make ourselves a delegate, so we can intercept the close, in order to clear the flag.
+        prefs.prefs_window_open = true  // We are open for business.
+    }
+    
+    /* ############################################################################################################################## */
+    // MARK: - NSWindowDelegate Methods
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     We set the prefs window tracker to false.
+     
+     - parameter: ignored
+     
+     - returns: true (always)
+     */
+    func windowShouldClose(_: NSWindow) -> Bool {
+        prefs.prefs_window_open = false
+        return true
     }
 }

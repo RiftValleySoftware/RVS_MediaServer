@@ -24,7 +24,7 @@
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
                                             <connections>
-                                                <segue destination="B8D-0N-5wS" kind="show" id="oIC-Z9-njz"/>
+                                                <segue destination="B8D-0N-5wS" kind="show" identifier="open-preferences-segue" id="oIC-Z9-njz"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
@@ -678,7 +678,11 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="RVS_MediaServer_AppDelegate" customModule="RVS_MediaServer" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="RVS_MediaServer_AppDelegate" customModule="RVS_MediaServer" customModuleProvider="target">
+                    <connections>
+                        <outlet property="preferencesMenuItem" destination="BOF-NM-1cW" id="q2H-oa-IlA"/>
+                    </connections>
+                </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

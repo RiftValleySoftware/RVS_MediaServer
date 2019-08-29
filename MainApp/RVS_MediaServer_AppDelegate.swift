@@ -27,6 +27,8 @@ import Cocoa
  */
 @NSApplicationMain
 class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
+    var myApplication: NSApplication!
+    
     /* ############################################################################################################################## */
     // MARK: - Internal Class Calculated Properties
     /* ############################################################################################################################## */
@@ -92,12 +94,13 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
     /* ################################################################## */
     /**
      */
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-    }
-    
-    /* ################################################################## */
-    /**
-     */
-    func applicationWillTerminate(_ aNotification: Notification) {
+    func applicationDidFinishLaunching(_ inNotification: Notification) {
+        myApplication = inNotification.object as? NSApplication
+        
+        if prefs.prefs_window_open {
+            if let myPreferencesController = NSStoryboard.main?.instantiateController(withIdentifier: "SETTINGS") as? RVS_MediaServer_WindowController {
+                myPreferencesController.showWindow(nil)
+            }
+        }
     }
 }

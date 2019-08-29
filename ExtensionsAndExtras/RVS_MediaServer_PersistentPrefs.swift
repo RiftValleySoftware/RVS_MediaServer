@@ -60,6 +60,8 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         case rawFFMPEGString
         /// This is true, if we are to use an output HTTP server.
         case use_output_http_server
+        /// This is true, if the preferences window is open (used to reopen the window on startup).
+        case prefs_window_open
     }
     
     /* ############################################################################################################################## */
@@ -78,7 +80,8 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         _PrefsKeys.temp_directory_name.rawValue: "html",
         _PrefsKeys.mode_flag.rawValue: "HLS",
         _PrefsKeys.rawFFMPEGString.rawValue: "",
-        _PrefsKeys.use_output_http_server.rawValue: "true"
+        _PrefsKeys.use_output_http_server.rawValue: true,
+        _PrefsKeys.prefs_window_open.rawValue: false
     ]
     
     /* ############################################################################################################################## */
@@ -250,11 +253,25 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
      */
     @objc dynamic var use_output_http_server: Bool {
         get {
-            return "true" == (values[_PrefsKeys.use_output_http_server.rawValue] as? String ?? "true")
+            return values[_PrefsKeys.use_output_http_server.rawValue] as? Bool ?? true
         }
         
         set {
-            values[_PrefsKeys.use_output_http_server.rawValue] = newValue ? "true" : "false"
+            values[_PrefsKeys.use_output_http_server.rawValue] = newValue
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     Returns true, if the prefs window is open.
+     */
+    @objc dynamic var prefs_window_open: Bool {
+        get {
+            return values[_PrefsKeys.prefs_window_open.rawValue] as? Bool ?? false
+        }
+        
+        set {
+            values[_PrefsKeys.prefs_window_open.rawValue] = newValue
         }
     }
 }
