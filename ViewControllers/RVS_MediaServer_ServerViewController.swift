@@ -23,6 +23,7 @@ import GCDWebServers
 // MARK: - Main View Controller Class
 /* ################################################################################################################################## */
 /**
+ This is the view controller for the main server status window.
  */
 class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     /* ############################################################################################################################## */
@@ -90,30 +91,6 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      This will hold the url of our output streaming file.
      */
     var outputTmpFile: TemporaryFile?
-    
-    /* ################################################################## */
-    /**
-     This will hold the URL of a temp file created to absorb console output from ffmpeg.
-     */
-    var consoleOutputFile: TemporaryFile?
-    
-    /* ################################################################## */
-    /**
-     This will hold the URL of a temp file created to absorb standard error output from ffmpeg.
-     */
-    var errorOutputFile: TemporaryFile?
-    
-    /* ################################################################## */
-    /**
-     This holds the original stdout file ref number.
-     */
-    var originalStdOutFileNo: Int32!
-    
-    /* ################################################################## */
-    /**
-     This holds the original stderr file ref number.
-     */
-    var originalStdErrFileNo: Int32!
 
     /* ################################################################## */
     /**
@@ -126,44 +103,18 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     This returns a string, with the contents of the stdout redirector.
-     
-     The file must be closed. It will return nil if there were issues.
+     Accessor for the temporary HTTP server file.
      */
-    var stdOutRedirectorContents: String! {
-        if  nil == originalStdOutFileNo,
-            let stdOutFilePath = consoleOutputFile?.fileURL.absoluteString {    // We must be stopped and wrapped up.
-            do {
-                return try String(contentsOfFile: stdOutFilePath, encoding: String.Encoding.utf8)
-            } catch {
-                #if DEBUG
-                    print("Error! Attempt to read from stdout file failed: \(error)")
-                #endif
-            }
-        }
-        
-        return nil
+    var tempOutputFileURL: URL! {
+        return outputTmpFile?.fileURL
     }
-
+    
     /* ################################################################## */
     /**
-     This returns a string, with the contents of the stderr redirector.
-     
-     The file must be closed. It will return nil if there were issues.
+     Accessor for the temporary HTTP server directory.
      */
-    var stdErrRedirectorContents: String! {
-        if  nil == originalStdErrFileNo,
-            let stdErrFilePath = errorOutputFile?.fileURL.absoluteString {    // We must be stopped and wrapped up.
-            do {
-                return try String(contentsOfFile: stdErrFilePath, encoding: String.Encoding.utf8)
-            } catch {
-                #if DEBUG
-                    print("Error! Attempt to read from stderr file failed: \(error)")
-                #endif
-            }
-        }
-        
-        return nil
+    var tempOutputDirURL: URL! {
+        return outputTmpFile?.directoryURL
     }
 
     /* ############################################################################################################################## */
@@ -177,11 +128,12 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      If not provided (or set to nil), then whatever we already have is used. This will replace any existing handler.
      */
     func startServer() {
-        if nil == webServer || !(webServer?.isRunning ?? false) {
+        if  nil == webServer || !(webServer?.isRunning ?? false),
+            let tempPath = tempOutputDirURL?.path {
             webServer = GCDWebServer()
             
             // Add a default get handler to make sure that the stream file is considered our index.
-            webServer?.addGETHandler(forBasePath: "/", directoryPath: outputTmpFile?.directoryURL.path ?? "", indexFilename: "stream.m3u8", cacheAge: 3600, allowRangeRequests: true)
+            webServer?.addGETHandler(forBasePath: "/", directoryPath: tempPath, indexFilename: "stream.m3u8", cacheAge: 3600, allowRangeRequests: true)
             // Make sure that our handler is called for all requests.
             webServer?.addDefaultHandler(forMethod: "GET", request: GCDWebServerRequest.self, processBlock: webServerHandler)
             _timeoutTimer = Timer(fire: Date(), interval: type(of: self)._serverStartTimeoutThresholdInSeconds, repeats: false, block: timerDone)
@@ -301,12 +253,11 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
                         }
                         
                         // We use the output Webserver for simple HLS, or if the raw parameters mode requests it.
-                        if prefs.use_output_http_server || !prefs.use_raw_parameters {
-                            ffmpegTask.arguments?.append(outputTmpFile?.fileURL.path ?? "") // The output temp dir, where the Webserver picks up the stream.
+                        if  prefs.use_output_http_server || !prefs.use_raw_parameters,
+                            let path = tempOutputFileURL?.path {
+                            ffmpegTask.arguments?.append(path) // The output temp file and dir. The Web server picks up the stream, here.
                         }
 
-                        setUpStdRedirectors()
-                        // Everything below this, until we take down the redirectors, will go into the temp file, including debug output.
                         #if DEBUG
                             if let args = ffmpegTask.arguments, 1 < args.count {
                                 let path = ([executablePath] + args).joined(separator: " ")
@@ -322,7 +273,6 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
                         #endif
 
                         if !ffmpegTask.isRunning {
-                            takeDownStdRedirectors()
                             handleError(message: "SLUG-CANNOT-START-FFMPEG-MESSAGE")
                         }
                         
@@ -339,85 +289,6 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
 
     /* ################################################################## */
     /**
-     This sets up a couple of temp files that catch the standard output and error. We can then examine those files.
-     */
-    func setUpStdRedirectors() {
-        deleteRedirectorFiles() // Make sure we take down our redirectors. Additionally, we make sure that we delete any previously existing files, so we don't litter.
-        
-        do {
-            let consoleOutputFileTmp = try TemporaryFile(creatingTempDirectoryForFilename: "stdout.txt")
-            let errorOutputFileTmp = try TemporaryFile(creatingTempDirectoryForFilename: "stderr.txt")
-            consoleOutputFile = consoleOutputFileTmp
-            errorOutputFile = errorOutputFileTmp
-            #if DEBUG
-                if  let stdOutFilePath = consoleOutputFile?.fileURL.absoluteString,
-                    let stdErrFilePath = errorOutputFile?.fileURL.absoluteString {
-                    print("Temporary stdOut: \(stdOutFilePath))")
-                    print("Temporary stdErr: \(stdErrFilePath))")
-                }
-            #endif
-            
-            if let stdOutFilePath = consoleOutputFile?.fileURL.absoluteString {
-                originalStdOutFileNo = dup(STDOUT_FILENO)
-                freopen(stdOutFilePath, "w", stdout)
-            }
-            
-            if let stdErrFilePath = errorOutputFile?.fileURL.absoluteString {
-                originalStdErrFileNo = dup(STDERR_FILENO)
-                freopen(stdErrFilePath, "w", stderr)
-            }
-        } catch {
-            #if DEBUG
-                print("Error Creating Redirect Files! Error: \(error)")
-            #endif
-        }
-    }
-
-    /* ################################################################## */
-    /**
-     This takes down the redirector, but does not get rid of the files.
-     */
-    func takeDownStdRedirectors() {
-        if let tmp = originalStdOutFileNo {
-            fflush(stdout)
-            dup2(tmp, STDOUT_FILENO)
-            close(tmp)
-        }
-        
-        if let tmp = originalStdErrFileNo {
-            fflush(stderr)
-            dup2(tmp, STDERR_FILENO)
-            close(tmp)
-        }
-        
-        originalStdOutFileNo = nil
-        originalStdErrFileNo = nil
-    }
-    
-    /* ################################################################## */
-    /**
-     This deletes the redirector files (if any).
-     */
-    func deleteRedirectorFiles() {
-        takeDownStdRedirectors()    // See if we need to turn off the gas before closing up for the winter.
-        
-        #if DEBUG
-            if let stdoutReport = stdOutRedirectorContents {
-                print("\n\nstdout dump:\n\n\(stdoutReport)")
-            }
-            if let stderrReport = stdErrRedirectorContents {
-                print("\n\nstderr dump:\n\n\(stderrReport)")
-            }
-        #endif
-        
-        try? consoleOutputFile?.deleteDirectory()
-        consoleOutputFile = nil
-        try? errorOutputFile?.deleteDirectory()
-        errorOutputFile = nil
-    }
-
-    /* ################################################################## */
-    /**
      This simply stops the Web server.
      */
     func stopServer() {
@@ -427,9 +298,6 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
         ffmpegTask = nil
         webServer?.stop()
         webServer = nil
-        takeDownStdRedirectors()
-        try? outputTmpFile?.deleteDirectory()
-        outputTmpFile = nil
         DispatchQueue.main.async {  // Make sure we call in the main thread, in case we were referenced from a callback, or something.
             self.serverStateSegmentedSwitch.selectedSegment = 0
             self.serverStatusObserverHandler()   // Make sure the UI is reset.
@@ -550,7 +418,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
             }
         } else {
             // If we have started to build up video data files, then we stop the server, strip out this handler, and then restart it.
-            if  let path = outputTmpFile?.directoryURL.path,
+            if  let path = tempOutputDirURL?.path,
                 let dirContents = try? FileManager.default.contentsOfDirectory(atPath: path),
                 1 < dirContents.count {
                 #if DEBUG
@@ -562,7 +430,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
                 webServer?.stop()
                 webServer?.removeAllHandlers()
                 // Re-add the default handler for the directory.
-                webServer?.addGETHandler(forBasePath: "/", directoryPath: outputTmpFile?.directoryURL.path ?? "", indexFilename: "stream.m3u8", cacheAge: 3600, allowRangeRequests: true)
+                webServer?.addGETHandler(forBasePath: "/", directoryPath: path, indexFilename: "stream.m3u8", cacheAge: 3600, allowRangeRequests: true)
                 webServer?.start()
                 // We emit a "LOADING..." text, and set the browser to refresh in one second.
                 var retHTML = "<html><head><meta http-equiv=\"refresh\" content=\""
@@ -614,7 +482,6 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     override func viewWillDisappear() {
         super.viewWillDisappear()
         stopServer()
-        deleteRedirectorFiles()
     }
     
     /* ############################################################################################################################## */
@@ -626,6 +493,5 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      */
     deinit {
         stopServer()
-        deleteRedirectorFiles()
     }
 }
