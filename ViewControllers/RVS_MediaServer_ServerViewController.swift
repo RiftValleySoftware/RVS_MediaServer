@@ -66,9 +66,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
     /* ################################################################## */
     /**
      */
-    
-    @IBOutlet weak var displayConsoleToggleButton: NSButton!
-
+    @IBOutlet weak var consoleDisplayScrollView: NSScrollView!
     @IBOutlet var consoleDisplayTextView: NSTextView!
     @IBAction func displayClosureToggleButtonHit(_ sender: Any) {
     }

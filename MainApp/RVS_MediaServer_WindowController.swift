@@ -31,6 +31,6 @@ class RVS_MediaServer_WindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         window?.title = window?.title.localizedVariant ?? "ERROR"
-        self.windowFrameAutosaveName = (window?.title ?? "ERROR") + "-position"
+        self.windowFrameAutosaveName = window?.title ?? "ERROR" // This is because there seems to be a bug (maybe in IB), where the auto-restore setting is not saved unless we do this.
     }
 }

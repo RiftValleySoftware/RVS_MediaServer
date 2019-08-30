@@ -21,6 +21,7 @@ import Cocoa
 // MARK: - Main View Controller Class
 /* ################################################################################################################################## */
 /**
+ This manages the preferences/settings view window.
  */
 class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController, NSTextViewDelegate, NSWindowDelegate {
     /* ############################################################################################################################## */
