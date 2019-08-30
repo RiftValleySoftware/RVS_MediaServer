@@ -46,7 +46,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     This is the server handler view model.
+     This is the server handler view model. Most of the work goes on in that class.
      */
     private var _serverHandler: RVS_MediaServer_ServerViewModel!
     
