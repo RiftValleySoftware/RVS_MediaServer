@@ -48,7 +48,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     /**
      This is the server handler view model. Most of the work goes on in that class.
      */
-    private var _serverHandler: RVS_MediaServer_ServerViewModel!
+    private var _serverHandler: RVS_MediaServer_ServerManager!
     
     /* ############################################################################################################################## */
     // MARK: - Internal IB Instance Properties
@@ -175,7 +175,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        _serverHandler = RVS_MediaServer_ServerViewModel()
+        _serverHandler = RVS_MediaServer_ServerManager()
         setUpLocalizations()
         serverStatusObserver = observe(\.isRunning, changeHandler: serverStatusObserverHandler)
         serverStatusObserverHandler()

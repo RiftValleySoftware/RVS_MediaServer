@@ -25,7 +25,7 @@ import GCDWebServers
 /**
  This is a view model for the server status screen. It handles the management of the actual ffmpeg instance, and any HTTP server we set up.
  */
-class RVS_MediaServer_ServerViewModel {
+class RVS_MediaServer_ServerManager {
     /* ############################################################################################################################## */
     // MARK: - Private Static Propeties
     /* ############################################################################################################################## */
@@ -76,7 +76,19 @@ class RVS_MediaServer_ServerViewModel {
      This is a Web Server instance that is associated with this stream. Its lifetime is the lifetime of the object (not persistent).
      */
     var webServer: GCDWebServer?
-
+    
+    /* ################################################################## */
+    /**
+     ffmpeg sends its reports out via stderr; not stdout, so we trap that, in order to report it in the console.
+     */
+    var stderrPipe: Pipe!
+    
+    /* ################################################################## */
+    /**
+     This is an observer handler for stderr (ffmpeg).
+     */
+    var stdErrObserver: NSObjectProtocol!
+    
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Calculated Properties
     /* ############################################################################################################################## */
@@ -252,6 +264,8 @@ class RVS_MediaServer_ServerViewModel {
                             }
                         #endif
                         
+                        openErrorPipe(ffmpegTask)
+
                         // Launch the task
                         ffmpegTask.launch()
                         
@@ -273,14 +287,44 @@ class RVS_MediaServer_ServerViewModel {
         
         return false
     }
+    
+    /* ################################################################## */
+    /**
+     This sets up a trap, so we can intercept the textual output from ffmpeg (which comes out on stderr).
+     
+     - parameter inTask: The ffmpeg task we're intercepting.
+     */
+    func openErrorPipe(_ inTask: Process) {
+        stderrPipe = Pipe()
+        // This closure will intercept stderr from the input task.
+        stdErrObserver = NotificationCenter.default.addObserver(forName: .NSFileHandleDataAvailable, object: stderrPipe.fileHandleForReading, queue: nil) { [unowned self] _ in
+            let data = self.stderrPipe.fileHandleForReading.availableData
+            if 0 < data.count {
+                let str = String(data: data, encoding: .ascii) ?? "<Unexpected \(data.count) elements of data!>\n"
+                print(str)
+                self.stderrPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
+            } else if let stdErrObserver = self.stdErrObserver {
+                NotificationCenter.default.removeObserver(stdErrObserver)
+                self.stdErrObserver = nil
+            }
+        }
+        
+        inTask.standardError = stderrPipe
+        self.stderrPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
+    }
 
     /* ################################################################## */
     /**
      This simply stops the Web server.
      */
     func stopFFMPEGServer() {
-        ffmpegTask?.terminate()
+        ffmpegTask?.terminate() // Ah'll be bach...
         ffmpegTask = nil
+        // Make sure that we unwind any interceptor.
+        if let stdErrObserver = self.stdErrObserver {
+            NotificationCenter.default.removeObserver(stdErrObserver)
+            self.stdErrObserver = nil
+        }
     }
 
     /* ################################################################## */
@@ -297,6 +341,8 @@ class RVS_MediaServer_ServerViewModel {
     /* ################################################################## */
     /**
      This will throw up an error alert, if we encounter an error.
+     
+     - parameter messag: A string, with the error message to be displayed, in un-localized form.
      */
     func handleError(message inMessage: String = "") {
         DispatchQueue.main.async {  // Make sure we call in the main thread, in case we were referenced from a callback, or something.
@@ -309,6 +355,11 @@ class RVS_MediaServer_ServerViewModel {
     /* ############################################################################################################################## */    
     /* ################################################################## */
     /**
+     This is the HTTP server callback. It is called with HTTP requests from the server, and we handle it all here.
+     
+     - parameter inRequestObject: The request from the server.
+     
+     - returns: A data response; usually some form of HTML or stream data.
      */
     func webServerHandler(_ inRequestObject: GCDWebServerRequest) -> GCDWebServerDataResponse! {
         #if DEBUG
