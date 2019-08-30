@@ -20,10 +20,48 @@ import Cocoa
 import GCDWebServers
 
 /* ################################################################################################################################## */
+// MARK: - Delegate Protocol
+/* ################################################################################################################################## */
+/**
+ These are methods that can be called from the manager to a registered delegate.
+ 
+ They are all called on the main thread, and are all optional.
+ */
+protocol RVS_MediaServer_ServerManagerDelegate: class {
+    /* ################################################################## */
+    /**
+     Called to deliver text intercepted from ffmpeg.
+     
+     - parameter manager: The manager object
+     - parameter ffmpegConsoleTextReceived: The text received.
+     */
+    func mediaServerManager( _ manager: RVS_MediaServer_ServerManager, ffmpegConsoleTextReceived: String)
+}
+
+/* ################################################################################################################################## */
+// MARK: - Delegate Protocol Extension
+/* ################################################################################################################################## */
+/**
+ This is an extension that allows the protocol methods to be optional.
+ 
+ They do nothing.
+ */
+extension RVS_MediaServer_ServerManagerDelegate {
+    /* ################################################################## */
+    /**
+     Does Nothing.
+     
+     - parameter: ignored
+     - parameter ffmpegConsoleTextReceived: ignored.
+     */
+    func mediaServerManager( _: RVS_MediaServer_ServerManager, ffmpegConsoleTextReceived: String) { }
+}
+
+/* ################################################################################################################################## */
 // MARK: - Main View Controller Class
 /* ################################################################################################################################## */
 /**
- This is a view model for the server status screen. It handles the management of the actual ffmpeg instance, and any HTTP server we set up.
+ This is a model for the server status screen. It handles the management of the actual ffmpeg instance, and any HTTP server we set up.
  */
 class RVS_MediaServer_ServerManager {
     /* ############################################################################################################################## */
@@ -69,7 +107,7 @@ class RVS_MediaServer_ServerManager {
     /**
      This will hold the ffmpeg command line task.
      */
-    var ffmpegTask: Process?
+    private var ffmpegTask: Process?
     
     /* ################################################################## */
     /**
@@ -88,6 +126,12 @@ class RVS_MediaServer_ServerManager {
      This is an observer handler for stderr (ffmpeg).
      */
     var stdErrObserver: NSObjectProtocol!
+    
+    /* ################################################################## */
+    /**
+     A delegate object for handling the operation of the manager. This is a weak class reference.
+     */
+    weak var delegate: RVS_MediaServer_ServerManagerDelegate!
     
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Calculated Properties
@@ -301,7 +345,14 @@ class RVS_MediaServer_ServerManager {
             let data = self.stderrPipe.fileHandleForReading.availableData
             if 0 < data.count {
                 let str = String(data: data, encoding: .ascii) ?? "<Unexpected \(data.count) elements of data!>\n"
-                print(str)
+                if let delegate = self.delegate {   // If we have a delegate, then we call it.
+                    // We call delegate methods in the main thread.
+                    DispatchQueue.main.async {
+                        delegate.mediaServerManager(self, ffmpegConsoleTextReceived: str)
+                    }
+                } else {
+                    print(str)  // Otherwise, just print to the console.
+                }
                 self.stderrPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
             } else if let stdErrObserver = self.stdErrObserver {
                 NotificationCenter.default.removeObserver(stdErrObserver)

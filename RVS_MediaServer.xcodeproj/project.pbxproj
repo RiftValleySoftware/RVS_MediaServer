@@ -158,8 +158,8 @@
 		D440FC2723197BD10076D630 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D467645E23194CE500256312 /* RVS_MediaServer_ServerManager.swift */,
 				D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */,
+				D467645E23194CE500256312 /* RVS_MediaServer_ServerManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

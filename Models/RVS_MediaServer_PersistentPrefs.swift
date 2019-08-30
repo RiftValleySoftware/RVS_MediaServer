@@ -62,6 +62,8 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         case use_output_http_server
         /// This is true, if the preferences window is open (used to reopen the window on startup).
         case prefs_window_open
+        /// This is true, if we are displaying the console screen.
+        case display_console_screen
     }
     
     /* ############################################################################################################################## */
@@ -81,7 +83,8 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         _PrefsKeys.mode_flag.rawValue: "HLS",
         _PrefsKeys.rawFFMPEGString.rawValue: "",
         _PrefsKeys.use_output_http_server.rawValue: true,
-        _PrefsKeys.prefs_window_open.rawValue: false
+        _PrefsKeys.prefs_window_open.rawValue: false,
+        _PrefsKeys.display_console_screen.rawValue: false
     ]
     
     /* ############################################################################################################################## */
@@ -272,6 +275,20 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         
         set {
             values[_PrefsKeys.prefs_window_open.rawValue] = newValue
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     Returns true, if the console screen is open.
+     */
+    @objc dynamic var display_console_screen: Bool {
+        get {
+            return values[_PrefsKeys.display_console_screen.rawValue] as? Bool ?? false
+        }
+        
+        set {
+            values[_PrefsKeys.display_console_screen.rawValue] = newValue
         }
     }
 }

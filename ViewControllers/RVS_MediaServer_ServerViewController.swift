@@ -23,7 +23,7 @@ import Cocoa
 /**
  This is the view controller for the main server status window.
  */
-class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
+class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, RVS_MediaServer_ServerManagerDelegate {
     /* ############################################################################################################################## */
     // MARK: - Private Static Propeties
     /* ############################################################################################################################## */
@@ -63,6 +63,15 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
      */
     @IBOutlet weak var linkButton: NSButton!
     
+    /* ################################################################## */
+    /**
+     */
+    
+    @IBOutlet weak var displayConsoleToggleButton: NSButton!
+
+    @IBOutlet var consoleDisplayTextView: NSTextView!
+    @IBAction func displayClosureToggleButtonHit(_ sender: Any) {
+    }
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Properties
     /* ############################################################################################################################## */
@@ -130,6 +139,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
                     _serverHandler?.startHTTPServer()
                     isRunning = _serverHandler?.webServer?.isRunning ?? false   // Can't be running if the Web server is not running.
                     DispatchQueue.main.async {
+                        self.consoleDisplayTextView.string = ""
                         if let linkButtonTitle = self._serverHandler?.webServer?.serverURL?.absoluteString {
                             self.linkButton.isHidden = false
                             self.linkButton.title = linkButtonTitle + "stream.m3u8"
@@ -174,6 +184,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         _serverHandler = RVS_MediaServer_ServerManager()
+        _serverHandler.delegate = self
         setUpLocalizations()
         serverStatusObserver = observe(\.isRunning, changeHandler: serverStatusObserverHandler)
         serverStatusObserverHandler()
@@ -190,5 +201,21 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController {
         _serverHandler?.stopFFMPEGServer()
         serverStateSegmentedSwitch.selectedSegment = 0
         serverStatusObserverHandler()   // Make sure the UI is reset.
+    }
+    
+    /* ############################################################################################################################## */
+    // MARK: - RVS_MediaServer_ServerManagerDelegate Methods
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     Called to deliver text intercepted from ffmpeg.
+     
+     This is called on the main thread.
+     
+     - parameter inManager: The manager object
+     - parameter ffmpegConsoleTextReceived: The text received.
+     */
+    func mediaServerManager( _ inManager: RVS_MediaServer_ServerManager, ffmpegConsoleTextReceived inTextReceived: String) {
+        consoleDisplayTextView.string += inTextReceived
     }
 }
