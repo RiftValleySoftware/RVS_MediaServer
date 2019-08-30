@@ -16,8 +16,6 @@
  */
 
 import Cocoa
-/// This is the dependency for a small, embedded GCD Web server.
-import GCDWebServers
 
 /* ################################################################################################################################## */
 // MARK: - Main View Controller Class
