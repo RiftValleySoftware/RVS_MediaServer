@@ -193,6 +193,17 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpLocalizations()
+        serverStatusObserver = observe(\.isRunning, changeHandler: serverStatusObserverHandler)
+        serverStatusObserverHandler()
+    }
+    
+    /* ################################################################## */
+    /**
+     Called when the view finishes loading.
+     */
+    override func viewWillAppear() {
+        super.viewWillAppear()
         if  let outputTmpFileTmp = try? TemporaryFile(creatingTempDirectoryForFilename: "stream.m3u8") {
             _outputTmpFile = outputTmpFileTmp
             _ffmpegServerHandler = RVS_MediaServer_FFMPEGServerManager(outputTmpFile: _outputTmpFile)
@@ -201,9 +212,6 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
         } else {
             
         }
-        setUpLocalizations()
-        serverStatusObserver = observe(\.isRunning, changeHandler: serverStatusObserverHandler)
-        serverStatusObserverHandler()
     }
     
     /* ################################################################## */
@@ -215,7 +223,9 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
         super.viewWillDisappear()
         _httpServerManager?.stopHTTPServer()
         _ffmpegServerHandler?.stopFFMPEGServer()
-        try? _outputTmpFile.deleteDirectory()
+        if let outTmp = _outputTmpFile {
+            try? outTmp.deleteDirectory()
+        }
         serverStateSegmentedSwitch.selectedSegment = 0
         serverStatusObserverHandler()   // Make sure the UI is reset.
     }

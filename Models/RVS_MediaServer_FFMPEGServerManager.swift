@@ -58,7 +58,7 @@ extension RVS_MediaServer_FFMPEGServerManagerDelegate {
 }
 
 /* ################################################################################################################################## */
-// MARK: - Main View Controller Class
+// MARK: - Main ffmpeg Service Manager Class
 /* ################################################################################################################################## */
 /**
  This is a model for the server status screen. It handles the management of the actual ffmpeg instance, and any HTTP server we set up.
@@ -100,27 +100,27 @@ class RVS_MediaServer_FFMPEGServerManager {
      */
     private var _outputTmpFile: TemporaryFile!
     
-    /* ############################################################################################################################## */
-    // MARK: - Internal Instance Properties
-    /* ############################################################################################################################## */
     /* ################################################################## */
     /**
      This will hold the ffmpeg command line task.
      */
-    private var ffmpegTask: Process?
-    
+    private var _ffmpegTask: Process?
+
     /* ################################################################## */
     /**
      ffmpeg sends its reports out via stderr; not stdout, so we trap that, in order to report it in the console.
      */
-    var stderrPipe: Pipe!
+    private var _stderrPipe: Pipe!
     
     /* ################################################################## */
     /**
      This is an observer handler for stderr (ffmpeg).
      */
-    var stdErrObserver: NSObjectProtocol!
+    private var _stdErrObserver: NSObjectProtocol!
     
+    /* ############################################################################################################################## */
+    // MARK: - Internal Instance Properties
+    /* ############################################################################################################################## */
     /* ################################################################## */
     /**
      A delegate object for handling the operation of the manager. This is a weak class reference.
@@ -225,10 +225,10 @@ class RVS_MediaServer_FFMPEGServerManager {
         let rtspURI = createRTSPURI(uri: prefs.input_uri, loginID: prefs.login_id, password: prefs.password)
         
         if !rtspURI.isEmpty {
-            ffmpegTask = Process()
+            _ffmpegTask = Process()
             
             // First, we make sure that we got a Process. It's a conditional init.
-            if let ffmpegTask = ffmpegTask {
+            if let ffmpegTask = _ffmpegTask {
                 // Fetch the executable path from the bundle. We have our copy of ffmpeg in there with the app.
                 if var executablePath = (Bundle.main.executablePath as NSString?)?.deletingLastPathComponent {
                     executablePath += "/ffmpeg"
@@ -279,7 +279,7 @@ class RVS_MediaServer_FFMPEGServerManager {
                     }
 
                     #if DEBUG
-                        if let args = ffmpegTask.arguments, 1 < args.count {
+                        if let args = _ffmpegTask?.arguments, 1 < args.count {
                             let path = ([executablePath] + args).joined(separator: " ")
                             print("\n----\n\(path)")
                         }
@@ -315,10 +315,10 @@ class RVS_MediaServer_FFMPEGServerManager {
      - parameter inTask: The ffmpeg task we're intercepting.
      */
     func openErrorPipe(_ inTask: Process) {
-        stderrPipe = Pipe()
+        _stderrPipe = Pipe()
         // This closure will intercept stderr from the input task.
-        stdErrObserver = NotificationCenter.default.addObserver(forName: .NSFileHandleDataAvailable, object: stderrPipe.fileHandleForReading, queue: nil) { [unowned self] _ in
-            let data = self.stderrPipe.fileHandleForReading.availableData
+        _stdErrObserver = NotificationCenter.default.addObserver(forName: .NSFileHandleDataAvailable, object: _stderrPipe.fileHandleForReading, queue: nil) { [unowned self] _ in
+            let data = self._stderrPipe.fileHandleForReading.availableData
             if 0 < data.count {
                 let str = String(data: data, encoding: .ascii) ?? "<Unexpected \(data.count) elements of data!>\n"
                 if let delegate = self.delegate {   // If we have a delegate, then we call it.
@@ -329,15 +329,15 @@ class RVS_MediaServer_FFMPEGServerManager {
                 } else {
                     print(str)  // Otherwise, just print to the console.
                 }
-                self.stderrPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
-            } else if let stdErrObserver = self.stdErrObserver {
+                self._stderrPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
+            } else if let stdErrObserver = self._stdErrObserver {
                 NotificationCenter.default.removeObserver(stdErrObserver)
-                self.stdErrObserver = nil
+                self._stdErrObserver = nil
             }
         }
         
-        inTask.standardError = stderrPipe
-        self.stderrPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
+        inTask.standardError = _stderrPipe
+        self._stderrPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
     }
 
     /* ################################################################## */
@@ -345,12 +345,12 @@ class RVS_MediaServer_FFMPEGServerManager {
      This simply stops the Web server.
      */
     func stopFFMPEGServer() {
-        ffmpegTask?.terminate() // Ah'll be bach...
-        ffmpegTask = nil
+        _ffmpegTask?.terminate() // Ah'll be bach...
+        _ffmpegTask = nil
         // Make sure that we unwind any interceptor.
-        if let stdErrObserver = self.stdErrObserver {
+        if let stdErrObserver = self._stdErrObserver {
             NotificationCenter.default.removeObserver(stdErrObserver)
-            self.stdErrObserver = nil
+            self._stdErrObserver = nil
         }
     }
 
