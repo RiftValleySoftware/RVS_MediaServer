@@ -53,7 +53,13 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
      This is the HTTP server handler view model.
      */
     private var _httpServerManager: RVS_MediaServer_HTTPServerManager!
-    
+
+    /* ################################################################## */
+    /**
+     This will hold the url of our output streaming file.
+     */
+    private var _outputTmpFile: TemporaryFile!
+
     /* ############################################################################################################################## */
     // MARK: - Internal IB Instance Properties
     /* ############################################################################################################################## */
@@ -188,9 +194,12 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
     override func viewDidLoad() {
         super.viewDidLoad()
         if  let outputTmpFileTmp = try? TemporaryFile(creatingTempDirectoryForFilename: "stream.m3u8") {
-            _ffmpegServerHandler = RVS_MediaServer_FFMPEGServerManager(outputTmpFile: outputTmpFileTmp)
+            _outputTmpFile = outputTmpFileTmp
+            _ffmpegServerHandler = RVS_MediaServer_FFMPEGServerManager(outputTmpFile: _outputTmpFile)
             _ffmpegServerHandler.delegate = self
-            _httpServerManager = RVS_MediaServer_HTTPServerManager(outputTmpFile: outputTmpFileTmp)
+            _httpServerManager = RVS_MediaServer_HTTPServerManager(outputTmpFile: _outputTmpFile)
+        } else {
+            
         }
         setUpLocalizations()
         serverStatusObserver = observe(\.isRunning, changeHandler: serverStatusObserverHandler)
@@ -206,6 +215,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
         super.viewWillDisappear()
         _httpServerManager?.stopHTTPServer()
         _ffmpegServerHandler?.stopFFMPEGServer()
+        try? _outputTmpFile.deleteDirectory()
         serverStateSegmentedSwitch.selectedSegment = 0
         serverStatusObserverHandler()   // Make sure the UI is reset.
     }
