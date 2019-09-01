@@ -98,12 +98,6 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     We use this to observe the current Web Server status
-     */
-    var serverStatusObserver: NSKeyValueObservation?
-
-    /* ################################################################## */
-    /**
      Set up the various localized items and initial values.
      */
     func setUpLocalizations() {
@@ -225,16 +219,16 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
     /**
      This is an observer callback that handles changes in the prefs server running status.
      
-     - parameter inObject: The object that is being changed. We ignore it.
-     - parameter inChange: The change object. We ignore this, too.
+     - parameter: The object that is being changed. We ignore it.
+     - parameter: The change object. We ignore this, too.
      */
-    func serverStatusObserverHandler(_ inObject: Any! = nil, _ inChange: NSKeyValueObservedChange<Bool>! = nil) {
+    func serverStatusObserverHandler(_: RVS_MediaServer_ServerViewController! = nil, _: NSKeyValueObservedChange<Bool>! = nil) {
         DispatchQueue.main.async {
             self.linkButton.isHidden = !self.isRunning || (!self.prefs.use_output_http_server && self.prefs.use_raw_parameters)
             self.serverStateSegmentedSwitch.selectedSegment = self.isRunning ? 1 : 0
         }
     }
-
+    
     /* ############################################################################################################################## */
     // MARK: - Superclass Override Methods
     /* ############################################################################################################################## */
@@ -245,7 +239,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpLocalizations()
-        serverStatusObserver = observe(\.isRunning, changeHandler: serverStatusObserverHandler)
+        _ = observe(\.isRunning, changeHandler: serverStatusObserverHandler)
         serverStatusObserverHandler()
     }
     
