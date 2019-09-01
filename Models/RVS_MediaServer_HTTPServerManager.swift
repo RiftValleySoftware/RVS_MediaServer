@@ -149,11 +149,15 @@ class RVS_MediaServer_HTTPServerManager {
     /* ################################################################## */
     /**
      - parameter outputTmpFile: The temporary file object that describes the temporary directory, where we fetch our data.
+     - parameter port: A TCP Port for the server to use.
+     - parameter streamname: A name to use for the stream.
+     - parameter delegate: The delegate for the object. This is optional.
      */
-    init(outputTmpFile inOutputTmpFile: TemporaryFile, port inPort: Int, streamName inStreamName: String) {
+    init(outputTmpFile inOutputTmpFile: TemporaryFile, port inPort: Int, streamName inStreamName: String, delegate inDelegate: RVS_MediaServer_HTTPServerManagerDelegate! = nil) {
         _outputTmpFile = inOutputTmpFile
         _port = inPort
         _streamName = inStreamName
+        delegate = inDelegate
     }
     
     /* ############################################################################################################################## */

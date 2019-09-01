@@ -171,13 +171,15 @@ class RVS_MediaServer_FFMPEGServerManager {
      - parameter login_id: A String, with a login for authorization. This is optional. If not provided, authorization will not be attempted.
      - parameter password: A String, with a password for authorization. This is optional. If not provided, authorization will not be attempted.
      - parameter raw_parameters: A String, containing raw parameters to use (instead of the standard HLS).
+     - parameter delegate: The delegate for the object. This is optional.
      */
-    init(outputTmpFile inOutputTmpFile: TemporaryFile! = nil, inputURI inInputURI: String, login_id inLoginID: String! = nil, password inPassword: String! = nil, raw_parameters inRawParameters: String! = nil) {
+    init(outputTmpFile inOutputTmpFile: TemporaryFile! = nil, inputURI inInputURI: String, login_id inLoginID: String! = nil, password inPassword: String! = nil, raw_parameters inRawParameters: String! = nil, delegate inDelegate: RVS_MediaServer_FFMPEGServerManagerDelegate! = nil) {
         _outputTmpFile = inOutputTmpFile
         _inputURI = inInputURI
         _loginID = inLoginID
         _password = inPassword
         _raw_parameters = inRawParameters
+        delegate = inDelegate
     }
     
     /* ############################################################################################################################## */
