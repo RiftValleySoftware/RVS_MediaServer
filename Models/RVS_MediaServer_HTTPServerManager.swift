@@ -60,7 +60,7 @@ extension RVS_MediaServer_HTTPServerManagerDelegate {
 // MARK: - Main HTTP Server Manager Class
 /* ################################################################################################################################## */
 /**
- This is a model for the server status screen. It handles the management of the actual ffmpeg instance, and any HTTP server we set up.
+ This is a model for the HTTP server instance.
  */
 class RVS_MediaServer_HTTPServerManager {
     /* ############################################################################################################################## */

@@ -15,7 +15,7 @@
  The Great Rift Valley Software Company: https://riftvalleysoftware.com
  */
 
-import Foundation
+import Foundation   // Only requires Foundation, but don't try running this without ffmpeg! (i.e: Mac-only).
 
 /* ################################################################################################################################## */
 // MARK: - Delegate Protocol
@@ -99,7 +99,7 @@ extension RVS_MediaServer_FFMPEGServerManagerDelegate {
 // MARK: - Main ffmpeg Service Manager Class
 /* ################################################################################################################################## */
 /**
- This is a model for the server status screen. It handles the management of the actual ffmpeg instance, and any HTTP server we set up.
+ This is a model for the server status screen. It handles the management of the actual ffmpeg instance.
  */
 class RVS_MediaServer_FFMPEGServerManager {
     /* ############################################################################################################################## */

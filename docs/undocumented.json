@@ -1,12 +1,6 @@
 {
   "warnings": [
-    {
-      "file": "/Volumes/Development/RiftValley/RVS_MediaServer/ViewControllers/RVS_MediaServer_SettingsViewController.swift",
-      "line": 157,
-      "symbol": "RVS_MediaServer_SettingsViewController.setUpLocalizations()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    }
+
   ],
   "source_directory": "/Volumes/Development/RiftValley/RVS_MediaServer"
 }

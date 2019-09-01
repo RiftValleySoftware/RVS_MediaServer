@@ -154,6 +154,10 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Methods
     /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     Set up the various localized items and initial values.
+     */
     func setUpLocalizations() {
         stream_name_label.stringValue = stream_name_label.stringValue.localizedVariant
         stream_name_text_field.placeholderString = stream_name_text_field.placeholderString?.localizedVariant

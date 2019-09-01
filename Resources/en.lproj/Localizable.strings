@@ -71,3 +71,7 @@
 "SLUG-USE-OUTPUT-CHECKBOX"                  =       "Use Built-In HTTP Server";
 /// The error displayed if we could not set up the temporary directory.
 "SLUG-UNABLE-TO-SET-UP-TMP-ERROR"           =       "Cannot Establish Temporary Directory.";
+/// Show the console button text
+"SLUG-SHOW-CONSOLE"                         =       "Show Console";
+/// Hide the console button text
+"SLUG-HIDE-CONSOLE"                         =       "Hide Console";

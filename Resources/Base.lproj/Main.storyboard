@@ -735,14 +735,14 @@
             <objects>
                 <viewController title="SLUG-SERVER-VIEWCONTROLLER" id="Vb5-tk-ief" customClass="RVS_MediaServer_ServerViewController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="lkg-00-B7e">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="759"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="906"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tX1-5n-6yS">
-                                <rect key="frame" x="20" y="20" width="440" height="719"/>
+                                <rect key="frame" x="20" y="20" width="440" height="866"/>
                                 <subviews>
                                     <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Vh-zu-8Z5">
-                                        <rect key="frame" x="-2" y="696" width="444" height="24"/>
+                                        <rect key="frame" x="-2" y="843" width="444" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="rKb-V8-2P9"/>
                                         </constraints>
@@ -758,7 +758,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="flW-J9-XVc">
-                                        <rect key="frame" x="-6" y="662" width="452" height="32"/>
+                                        <rect key="frame" x="-6" y="809" width="452" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Kl7-DI-aT8"/>
                                             <constraint firstAttribute="height" constant="21" id="Ryb-Ku-3IZ"/>
@@ -771,31 +771,57 @@
                                             <action selector="linkButtonHit:" target="Vb5-tk-ief" id="JtV-TY-cat"/>
                                         </connections>
                                     </button>
-                                    <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M8D-b0-hpC">
-                                        <rect key="frame" x="0.0" y="648" width="13" height="13"/>
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yLx-na-O1F">
+                                        <rect key="frame" x="0.0" y="787" width="440" height="21"/>
+                                        <subviews>
+                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M8D-b0-hpC">
+                                                <rect key="frame" x="0.0" y="4" width="13" height="13"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="13" id="Lbz-Ts-mxc"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="only" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ykj-jL-FJg">
+                                                    <behavior key="behavior" pushIn="YES" changeBackground="YES" changeGray="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <binding destination="Vb5-tk-ief" name="value" keyPath="self.prefs.display_console_screen" id="5uE-k0-JYu"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="04c-dJ-MCY">
+                                                <rect key="frame" x="21" y="2" width="419" height="17"/>
+                                                <buttonCell key="cell" type="bevel" title="SLUG-SHOW-CONSOLE" bezelStyle="rounded" alignment="left" imageScaling="proportionallyDown" inset="2" id="p7Q-0L-feG">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="showConsoleToggleButtonHit:" target="Vb5-tk-ief" id="vag-hV-H1P"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="13" id="Lbz-Ts-mxc"/>
+                                            <constraint firstAttribute="height" constant="21" id="MHf-Pg-54P"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="only" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ykj-jL-FJg">
-                                            <behavior key="behavior" pushIn="YES" changeBackground="YES" changeGray="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <binding destination="Vb5-tk-ief" name="value" keyPath="self.prefs.display_console_screen" id="5uE-k0-JYu"/>
-                                        </connections>
-                                    </button>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                     <scrollView borderType="groove" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="allowed" translatesAutoresizingMaskIntoConstraints="NO" id="Ix3-c2-nu9">
-                                        <rect key="frame" x="0.0" y="0.0" width="440" height="640"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="440" height="779"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="lfb-NW-wgh">
-                                            <rect key="frame" x="2" y="2" width="436" height="636"/>
+                                            <rect key="frame" x="2" y="2" width="436" height="775"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="Cok-dN-30t">
-                                                    <rect key="frame" x="0.0" y="0.0" width="436" height="636"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="436" height="775"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <size key="minSize" width="436" height="636"/>
+                                                    <size key="minSize" width="436" height="775"/>
                                                     <size key="maxSize" width="440" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 </textView>
@@ -824,9 +850,11 @@
                                 <constraints>
                                     <constraint firstItem="flW-J9-XVc" firstAttribute="leading" secondItem="tX1-5n-6yS" secondAttribute="leading" id="4vB-84-Hxh"/>
                                     <constraint firstItem="Ix3-c2-nu9" firstAttribute="leading" secondItem="tX1-5n-6yS" secondAttribute="leading" id="5QV-dB-jfQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="yLx-na-O1F" secondAttribute="trailing" id="9vZ-y5-Zjr"/>
                                     <constraint firstAttribute="trailing" secondItem="0Vh-zu-8Z5" secondAttribute="trailing" id="GDH-n7-amo"/>
                                     <constraint firstItem="0Vh-zu-8Z5" firstAttribute="leading" secondItem="tX1-5n-6yS" secondAttribute="leading" id="KCF-sQ-UkQ"/>
                                     <constraint firstAttribute="trailing" secondItem="Ix3-c2-nu9" secondAttribute="trailing" id="YPW-xf-kgS"/>
+                                    <constraint firstItem="yLx-na-O1F" firstAttribute="leading" secondItem="tX1-5n-6yS" secondAttribute="leading" id="iI9-Rj-JDA"/>
                                     <constraint firstAttribute="trailing" secondItem="flW-J9-XVc" secondAttribute="trailing" id="p8u-4B-oHX"/>
                                 </constraints>
                                 <visibilityPriorities>
@@ -855,6 +883,8 @@
                         <outlet property="consoleDisplayTextView" destination="Cok-dN-30t" id="6uZ-XP-pXF"/>
                         <outlet property="linkButton" destination="flW-J9-XVc" id="bLw-6I-MAC"/>
                         <outlet property="serverStateSegmentedSwitch" destination="0Vh-zu-8Z5" id="vyG-z1-uLR"/>
+                        <outlet property="showConsoleDisclosure" destination="M8D-b0-hpC" id="5ay-ON-GY6"/>
+                        <outlet property="showConsoleToggleButton" destination="04c-dJ-MCY" id="zX3-TL-2Se"/>
                     </connections>
                 </viewController>
                 <customObject id="lxA-RB-8sx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

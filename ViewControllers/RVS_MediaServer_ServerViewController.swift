@@ -93,6 +93,18 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
      */
     @IBOutlet var consoleDisplayTextView: NSTextView!
     
+    /* ################################################################## */
+    /**
+     This is the disclosure tirangle for the console display.
+     */
+    @IBOutlet weak var showConsoleDisclosure: NSButton!
+
+    /* ################################################################## */
+    /**
+     This button holds the text for the disclosure, and toggles it.
+     */
+    @IBOutlet weak var showConsoleToggleButton: NSButton!
+    
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Properties
     /* ############################################################################################################################## */
@@ -180,6 +192,14 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
         }
     }
     
+    /* ################################################################## */
+    /**
+     This is called when the disclosure toggle button is hit.
+     */
+    @IBAction func showConsoleToggleButtonHit(_ sender: Any) {
+        prefs.display_console_screen = !prefs.display_console_screen
+    }
+    
     /* ############################################################################################################################## */
     // MARK: - Internal Observable Properties
     /* ############################################################################################################################## */
@@ -224,6 +244,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
      */
     func serverStatusObserverHandler(_: RVS_MediaServer_ServerViewController! = nil, _: NSKeyValueObservedChange<Bool>! = nil) {
         DispatchQueue.main.async {
+            self.showConsoleToggleButton.title = (self.prefs.display_console_screen ? "SLUG-HIDE-CONSOLE" : "SLUG-SHOW-CONSOLE").localizedVariant
             self.linkButton.isHidden = !self.isRunning || (!self.prefs.use_output_http_server && self.prefs.use_raw_parameters)
             self.serverStateSegmentedSwitch.selectedSegment = self.isRunning ? 1 : 0
         }

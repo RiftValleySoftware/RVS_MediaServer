@@ -23,7 +23,7 @@
         <a class="header-link" href="index.html">
           RVS_MediaServer Docs
         </a>
-         (99% documented)
+         (100% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -190,7 +190,8 @@
 The stored <code>Dictionary</code> would be a String-keyed Dictionary of <code>Any</code> (flexible types). It s up to subclasses to specialize the typeless data.
 THIS IS NOT EFFICIENT OR ROBUST!
 It is meant as a simple <q>bucket</q> for things like application preferences. It is not an industrial data storage solution. You have been warned.
-Subclasses could declare their accessors as <a href="https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift"><code>KVO</code></a>-style, thus, providing a direct way to influence persistent state.</p>
+Subclasses could declare their accessors as <a href="https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift"><code>KVO</code></a>-style, thus, providing a direct way to influence persistent state.
+You can also directly observe the .values property. It will change when ANY pref is changed (so might not be suitable for <q>pick and choose</q> observation).</p>
 
                         <a href="Classes/RVS_PersistentPrefs.html" class="slightly-smaller">See more</a>
                       </div>
@@ -310,7 +311,7 @@ Subclasses could declare their accessors as <a href="https://developer.apple.com
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This is a model for the server status screen. It handles the management of the actual ffmpeg instance, and any HTTP server we set up.</p>
+                        <p>This is a model for the server status screen. It handles the management of the actual ffmpeg instance.</p>
 
                         <a href="Classes/RVS_MediaServer_FFMPEGServerManager.html" class="slightly-smaller">See more</a>
                       </div>
@@ -349,7 +350,7 @@ Subclasses could declare their accessors as <a href="https://developer.apple.com
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This is a model for the server status screen. It handles the management of the actual ffmpeg instance, and any HTTP server we set up.</p>
+                        <p>This is a model for the HTTP server instance.</p>
 
                         <a href="Classes/RVS_MediaServer_HTTPServerManager.html" class="slightly-smaller">See more</a>
                       </div>

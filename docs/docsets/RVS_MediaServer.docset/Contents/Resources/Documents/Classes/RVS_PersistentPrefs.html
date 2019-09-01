@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           RVS_MediaServer Docs
         </a>
-         (99% documented)
+         (100% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -167,7 +167,8 @@
 The stored <code>Dictionary</code> would be a String-keyed Dictionary of <code>Any</code> (flexible types). It s up to subclasses to specialize the typeless data.
 THIS IS NOT EFFICIENT OR ROBUST!
 It is meant as a simple <q>bucket</q> for things like application preferences. It is not an industrial data storage solution. You have been warned.
-Subclasses could declare their accessors as <a href="https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift"><code>KVO</code></a>-style, thus, providing a direct way to influence persistent state.</p>
+Subclasses could declare their accessors as <a href="https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift"><code>KVO</code></a>-style, thus, providing a direct way to influence persistent state.
+You can also directly observe the .values property. It will change when ANY pref is changed (so might not be suitable for <q>pick and choose</q> observation).</p>
 
           </div>
         </section>
@@ -431,9 +432,9 @@ It is an Array of String, containing the keys used to store and retrieve the val
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15RVS_MediaServer0A16_PersistentPrefsC6valuesSDySSypGvp"></a>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_PersistentPrefs(py)values"></a>
                     <a name="//apple_ref/swift/Property/values" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A16_PersistentPrefsC6valuesSDySSypGvp">values</a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_PersistentPrefs(py)values">values</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -451,7 +452,8 @@ You simply read and write the Dictionary, using these accessors. The saving and 
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">values</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">dynamic</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">values</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -553,7 +555,7 @@ You simply read and write the Dictionary, using these accessors. The saving and 
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n"><a href="../Classes/RVS_PersistentPrefs.html#/s:15RVS_MediaServer0A16_PersistentPrefsC3keySSvp">key</a></span> <span class="nv">inKey</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n"><a href="../Classes/RVS_PersistentPrefs.html#/s:15RVS_MediaServer0A16_PersistentPrefsC6valuesSDySSypGvp">values</a></span> <span class="nv">inValues</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span><span class="o">!</span> <span class="o">=</span> <span class="p">[:])</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n"><a href="../Classes/RVS_PersistentPrefs.html#/s:15RVS_MediaServer0A16_PersistentPrefsC3keySSvp">key</a></span> <span class="nv">inKey</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n"><a href="../Classes/RVS_PersistentPrefs.html#/c:@M@RVS_MediaServer@objc(cs)RVS_PersistentPrefs(py)values">values</a></span> <span class="nv">inValues</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span><span class="o">!</span> <span class="o">=</span> <span class="p">[:])</span></code></pre>
 
                         </div>
                       </div>
