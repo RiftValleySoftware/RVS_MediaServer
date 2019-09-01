@@ -279,6 +279,8 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
      */
     func mediaServerManager( _ inManager: RVS_MediaServer_FFMPEGServerManager, task: Process!, ffmpegConsoleTextReceived inTextReceived: String) {
         consoleDisplayTextView.string += inTextReceived
+        let textRange = NSRange(location: consoleDisplayTextView.string.count, length: 0)
+        consoleDisplayTextView.scrollRangeToVisible(textRange)
     }
     
     /* ################################################################## */
