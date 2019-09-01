@@ -15,9 +15,46 @@
  The Great Rift Valley Software Company: https://riftvalleysoftware.com
  */
 
-import Cocoa
 /// This is the dependency for a small, embedded GCD Web server.
 import GCDWebServers
+
+/* ################################################################################################################################## */
+// MARK: - Delegate Protocol
+/* ################################################################################################################################## */
+/**
+ These are methods that can be called from the manager to a registered delegate.
+ 
+ They are all called on the main thread, and are all optional.
+ */
+protocol RVS_MediaServer_HTTPServerManagerDelegate: class {
+    /* ################################################################## */
+    /**
+     Called if there was an error encountered.
+     
+     - parameter manager: The manager object
+     - parameter httpError: The text received.
+     */
+    func mediaServerManager( _ manager: RVS_MediaServer_HTTPServerManager, httpError: String)
+}
+
+/* ################################################################################################################################## */
+// MARK: - Delegate Protocol Extension
+/* ################################################################################################################################## */
+/**
+ This is an extension that allows the protocol methods to be optional.
+ 
+ They do nothing.
+ */
+extension RVS_MediaServer_HTTPServerManagerDelegate {
+    /* ################################################################## */
+    /**
+     Called if there was an error encountered.
+     
+     - parameter: ignored
+     - parameter httpError: ignored
+     */
+    func mediaServerManager( _ manager: RVS_MediaServer_HTTPServerManager, httpError: String) { }
+}
 
 /* ################################################################################################################################## */
 // MARK: - Main HTTP Server Manager Class
@@ -62,6 +99,16 @@ class RVS_MediaServer_HTTPServerManager {
      */
     private var _outputTmpFile: TemporaryFile!
     
+    /* ################################################################## */
+    /**
+     */
+    private let _port: Int
+    
+    /* ################################################################## */
+    /**
+     */
+    private let _streamName: String
+
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Properties
     /* ############################################################################################################################## */
@@ -70,18 +117,16 @@ class RVS_MediaServer_HTTPServerManager {
      This is a Web Server instance that is associated with this stream. Its lifetime is the lifetime of the object (not persistent).
      */
     var webServer: GCDWebServer?
-    
+
+    /* ################################################################## */
+    /**
+     A delegate object for handling the operation of the manager. This is a weak class reference.
+     */
+    weak var delegate: RVS_MediaServer_HTTPServerManagerDelegate!
+
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Calculated Properties
     /* ############################################################################################################################## */
-    /* ################################################################## */
-    /**
-     This is a direct accessor to the app prefs object for this instance. We just access the main App Delegate prefs.
-     */
-    var prefs: RVS_MediaServer_PersistentPrefs {
-        return RVS_MediaServer_AppDelegate.appDelegateObject.prefs
-    }
-
     /* ################################################################## */
     /**
      Accessor for the temporary HTTP server file.
@@ -105,8 +150,10 @@ class RVS_MediaServer_HTTPServerManager {
     /**
      - parameter outputTmpFile: The temporary file object that describes the temporary directory, where we fetch our data.
      */
-    init(outputTmpFile inOutputTmpFile: TemporaryFile) {
+    init(outputTmpFile inOutputTmpFile: TemporaryFile, port inPort: Int, streamName inStreamName: String) {
         _outputTmpFile = inOutputTmpFile
+        _port = inPort
+        _streamName = inStreamName
     }
     
     /* ############################################################################################################################## */
@@ -129,7 +176,7 @@ class RVS_MediaServer_HTTPServerManager {
             // Make sure that our handler is called for all requests.
             webServer?.addDefaultHandler(forMethod: "GET", request: GCDWebServerRequest.self, processBlock: webServerHandler)
             _timeoutTimer = Timer(fire: Date(), interval: type(of: self)._serverStartTimeoutThresholdInSeconds, repeats: false, block: timerDone)
-            webServer?.start(withPort: UInt(prefs.output_tcp_port), bonjourName: prefs.stream_name)
+            webServer?.start(withPort: UInt(_port), bonjourName: _streamName)
             if !(webServer?.isRunning ?? false) {
                 handleError(message: "SLUG-CANNOT-START-WEBSERVER-MESSAGE")
             }
@@ -145,18 +192,6 @@ class RVS_MediaServer_HTTPServerManager {
         _timeoutTimer = nil
         webServer?.stop()
         webServer = nil
-    }
-
-    /* ################################################################## */
-    /**
-     This will throw up an error alert, if we encounter an error.
-     
-     - parameter messag: A string, with the error message to be displayed, in un-localized form.
-     */
-    func handleError(message inMessage: String = "") {
-        DispatchQueue.main.async {  // Make sure we call in the main thread, in case we were referenced from a callback, or something.
-            RVS_MediaServer_AppDelegate.displayAlert(header: "SLUG-SERVER-ERROR-HEADER".localizedVariant, message: inMessage.localizedVariant)
-        }
     }
 
     /* ############################################################################################################################## */
@@ -224,6 +259,18 @@ class RVS_MediaServer_HTTPServerManager {
         #endif
         stopHTTPServer()
         handleError(message: "SLUG-TIMEOUT-MESSAGE")
+    }
+
+    /* ################################################################## */
+    /**
+     This will throw up an error alert, if we encounter an error.
+     
+     - parameter message: A string, with the error message to be displayed, in un-localized form.
+     */
+    func handleError(message inMessage: String = "") {
+        DispatchQueue.main.async {  // Make sure we call in the main thread, in case we were referenced from a callback, or something.
+            self.delegate?.mediaServerManager(self, httpError: inMessage)
+        }
     }
 
     /* ############################################################################################################################## */

@@ -51,6 +51,10 @@
 "SLUG-LOADING"                              =       "LOADING...";
 /// The general error alert title.
 "SLUG-SERVER-ERROR-HEADER"                  =       "Server Error";
+/// The ffmpeg server manager error alert title.
+"SLUG-FFMPEG-SERVER-ERROR-HEADER"           =       "ffmpeg Process Error";
+/// The HTTP server manager error alert title.
+"SLUG-HTTP-SERVER-ERROR-HEADER"             =       "Web Server Error";
 /// The message displayed when the Web server takes too long to start.
 "SLUG-TIMEOUT-MESSAGE"                      =       "The server took too long to start.";
 /// The message displayed when the URL in the preferences is bad.
@@ -65,3 +69,5 @@
 "SLUG-USE-RAW-COMMAND-LINE"                 =       "Direct Command-Line Entry";
 /// The label text for the use output checkbox
 "SLUG-USE-OUTPUT-CHECKBOX"                  =       "Use Built-In HTTP Server";
+/// The error displayed if we could not set up the temporary directory.
+"SLUG-UNABLE-TO-SET-UP-TMP-ERROR"           =       "Cannot Establish Temporary Directory.";

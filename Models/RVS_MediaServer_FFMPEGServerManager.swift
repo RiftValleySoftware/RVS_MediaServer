@@ -15,9 +15,7 @@
  The Great Rift Valley Software Company: https://riftvalleysoftware.com
  */
 
-import Cocoa
-/// This is the dependency for a small, embedded GCD Web server.
-import GCDWebServers
+import Foundation
 
 /* ################################################################################################################################## */
 // MARK: - Delegate Protocol
@@ -36,6 +34,15 @@ protocol RVS_MediaServer_FFMPEGServerManagerDelegate: class {
      - parameter ffmpegConsoleTextReceived: The text received.
      */
     func mediaServerManager( _ manager: RVS_MediaServer_FFMPEGServerManager, ffmpegConsoleTextReceived: String)
+    
+    /* ################################################################## */
+    /**
+     Called if there was an error encountered.
+     
+     - parameter manager: The manager object
+     - parameter ffmpegError: The text received.
+     */
+    func mediaServerManager( _ manager: RVS_MediaServer_FFMPEGServerManager, ffmpegError: String)
 }
 
 /* ################################################################################################################################## */
@@ -55,6 +62,15 @@ extension RVS_MediaServer_FFMPEGServerManagerDelegate {
      - parameter ffmpegConsoleTextReceived: ignored.
      */
     func mediaServerManager( _: RVS_MediaServer_FFMPEGServerManager, ffmpegConsoleTextReceived: String) { }
+    
+    /* ################################################################## */
+    /**
+     Called if there was an error encountered.
+     
+     - parameter: ignored
+     - parameter ffmpegError: ignored
+     */
+    func mediaServerManager( _ manager: RVS_MediaServer_FFMPEGServerManager, ffmpegError: String) { }
 }
 
 /* ################################################################################################################################## */
@@ -90,12 +106,6 @@ class RVS_MediaServer_FFMPEGServerManager {
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     This is a timer that we use to trap too long a wait.
-     */
-    private var _timeoutTimer: Timer!
-
-    /* ################################################################## */
-    /**
      This will hold the url of our output streaming file.
      */
     private var _outputTmpFile: TemporaryFile!
@@ -118,6 +128,36 @@ class RVS_MediaServer_FFMPEGServerManager {
      */
     private var _stdErrObserver: NSObjectProtocol!
     
+    /* ################################################################## */
+    /**
+     This is an input source URI.
+     */
+    private let _inputURI: String
+    
+    /* ################################################################## */
+    /**
+     This is a login ID for authorization.
+     */
+    private let _loginID: String!
+
+    /* ################################################################## */
+    /**
+     This is a password for authorization.
+     */
+    private let _password: String!
+    
+    /* ################################################################## */
+    /**
+     A String, containing raw parameters to use, if that is how we are rolling.
+     */
+    private let _raw_parameters: String!
+    
+    /* ################################################################## */
+    /**
+     Our prefs object. Even though we could simply reference the app delegate prefs, we don't do that because of smelly code.
+     */
+    private weak var _prefs: RVS_MediaServer_PersistentPrefs!
+    
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Properties
     /* ############################################################################################################################## */
@@ -126,45 +166,26 @@ class RVS_MediaServer_FFMPEGServerManager {
      A delegate object for handling the operation of the manager. This is a weak class reference.
      */
     weak var delegate: RVS_MediaServer_FFMPEGServerManagerDelegate!
-    
-    /* ############################################################################################################################## */
-    // MARK: - Internal Instance Calculated Properties
-    /* ############################################################################################################################## */
-    /* ################################################################## */
-    /**
-     This is a direct accessor to the app prefs object for this instance. We just access the main App Delegate prefs.
-     */
-    var prefs: RVS_MediaServer_PersistentPrefs {
-        return RVS_MediaServer_AppDelegate.appDelegateObject.prefs
-    }
-
-    /* ################################################################## */
-    /**
-     Accessor for the temporary HTTP server file.
-     */
-    var tempOutputFileURL: URL! {
-        return _outputTmpFile?.fileURL
-    }
-    
-    /* ################################################################## */
-    /**
-     Accessor for the temporary HTTP server directory.
-     */
-    var tempOutputDirURL: URL! {
-        return _outputTmpFile?.directoryURL
-    }
 
     /* ############################################################################################################################## */
     // MARK: - Initializer
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     - parameter outputTmpFile: The temporary file object that describes the temporary directory, where we fetch our data.
+     - parameter outputTmpFile: The temporary file object that describes the temporary directory, where we fetch our data. This can be omitted or nil, if we are not using one.
+     - parameter inputURI: A String with the input URI.
+     - parameter login_id: A String, with a login for authorization. This is optional. If not provided, authorization will not be attempted.
+     - parameter password: A String, with a password for authorization. This is optional. If not provided, authorization will not be attempted.
+     - parameter raw_parameters: A String, containing raw parameters to use (instead of the standard HLS).
      */
-    init(outputTmpFile inOutputTmpFile: TemporaryFile) {
+    init(outputTmpFile inOutputTmpFile: TemporaryFile! = nil, inputURI inInputURI: String, login_id inLoginID: String! = nil, password inPassword: String! = nil, raw_parameters inRawParameters: String! = nil) {
         _outputTmpFile = inOutputTmpFile
+        _inputURI = inInputURI
+        _loginID = inLoginID
+        _password = inPassword
+        _raw_parameters = inRawParameters
     }
-
+    
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Methods
     /* ############################################################################################################################## */
@@ -220,9 +241,9 @@ class RVS_MediaServer_FFMPEGServerManager {
      
      - returns: True, if the task launched successfully.
      */
-    func startFFMpeg() -> Bool {
+    func startFFMPEGProcess() -> Bool {
         // We check to make sure we have a viable RTSP URL
-        let rtspURI = createRTSPURI(uri: prefs.input_uri, loginID: prefs.login_id, password: prefs.password)
+        let rtspURI = createRTSPURI(uri: _inputURI, loginID: _loginID, password: _password)
         
         if !rtspURI.isEmpty {
             _ffmpegTask = Process()
@@ -235,8 +256,7 @@ class RVS_MediaServer_FFMPEGServerManager {
                     ffmpegTask.launchPath = executablePath
                     // For "raw" parameters, each line is one argument pair, with the key, followed by the value, separated by one space (" ").
                     // For example: "-c:v libx264\n-crf 21" would be two arguments.
-                    if prefs.use_raw_parameters {
-                        let rawFFMPEGString = prefs.rawFFMPEGString
+                    if let rawFFMPEGString = _raw_parameters {
                         let lines = rawFFMPEGString.split(separator: "\n")
                         if 0 < lines.count {
                             var arguments: [String] = []
@@ -256,25 +276,25 @@ class RVS_MediaServer_FFMPEGServerManager {
                             ffmpegTask.arguments = arguments
                         }
                     } else {
-                        let arguments =
-                            [
-                            "-i", rtspURI,          // This is the main URL to the stream. It should have auth parameters included.
-                            "-c:v", "libx264",      // This denotes that we use the libx264 (VideoLAN) version of the H.264 decoder.
-                            "-crf", "21",           // This is a "middle" quality level (1...51, with 1 being the best -slowest-, and 51 being the worst -fastsest-).
-                            "-preset", "superfast", // As fast as possible (we are streaming).
-                            "-g", "30",             // This says assume that the input is coming at 30 frames/sec.
-                            "-sc_threshold", "0",   // This tells ffmpeg not to do scene analysis, so we can regulate the time slices
-                            "-f", "hls",            // This says output HLS
+                        let timeSlice = type(of: self)._hlsTimeSliceInSeconds
+                        
+                        let arguments = [
+                            "-i", rtspURI,                      // This is the main URL to the stream. It should have any auth parameters included.
+                            "-c:v", "libx264",                  // This denotes that we use the libx264 (VideoLAN) version of the H.264 decoder.
+                            "-crf", "21",                       // This is a "middle" quality level (1...51, with 1 being the best -slowest-, and 51 being the worst -fastsest-).
+                            "-preset", "superfast",             // As fast as possible (we are streaming).
+                            "-g", "30",                         // This says assume that the input is coming at 30 frames/sec.
+                            "-sc_threshold", "0",               // This tells ffmpeg not to do scene analysis, so we can regulate the time slices
+                            "-f", "hls",                        // This says output HLS
                             "-hls_flags", "delete_segments",    // This says that the streamer should pick up after itself, and remove old files. This keeps a "window" going.
-                            "-hls_time", "\(type(of: self)._hlsTimeSliceInSeconds)"    // The size of HLS slices, in seconds.
+                            "-hls_time", "\(timeSlice)"         // The size of HLS slices, in seconds.
                         ]
                         
                         ffmpegTask.arguments = arguments
                     }
                     
-                    // We use the output Webserver for simple HLS, or if the raw parameters mode requests it.
-                    if  prefs.use_output_http_server || !prefs.use_raw_parameters,
-                        let path = tempOutputFileURL?.path {
+                    // If we have been provided an output file and directory.
+                    if  let path = _outputTmpFile?.fileURL.path {
                         ffmpegTask.arguments?.append(path) // The output temp file and dir. The Web server picks up the stream, here.
                     }
 
@@ -299,7 +319,11 @@ class RVS_MediaServer_FFMPEGServerManager {
                     }
                     
                     return ffmpegTask.isRunning
+                } else {
+                    handleError(message: "SLUG-CANNOT-START-FFMPEG-MESSAGE")
                 }
+            } else {
+                handleError(message: "SLUG-CANNOT-START-FFMPEG-MESSAGE")
             }
         } else {
             handleError(message: "SLUG-BAD-URI-MESSAGE")
@@ -316,6 +340,7 @@ class RVS_MediaServer_FFMPEGServerManager {
      */
     func openErrorPipe(_ inTask: Process) {
         _stderrPipe = Pipe()
+        
         // This closure will intercept stderr from the input task.
         _stdErrObserver = NotificationCenter.default.addObserver(forName: .NSFileHandleDataAvailable, object: _stderrPipe.fileHandleForReading, queue: nil) { [unowned self] _ in
             let data = self._stderrPipe.fileHandleForReading.availableData
@@ -358,11 +383,11 @@ class RVS_MediaServer_FFMPEGServerManager {
     /**
      This will throw up an error alert, if we encounter an error.
      
-     - parameter messag: A string, with the error message to be displayed, in un-localized form.
+     - parameter message: A string, with the error message to be displayed, in un-localized form.
      */
     func handleError(message inMessage: String = "") {
         DispatchQueue.main.async {  // Make sure we call in the main thread, in case we were referenced from a callback, or something.
-            RVS_MediaServer_AppDelegate.displayAlert(header: "SLUG-SERVER-ERROR-HEADER".localizedVariant, message: inMessage.localizedVariant)
+            self.delegate?.mediaServerManager(self, ffmpegError: inMessage)
         }
     }
 

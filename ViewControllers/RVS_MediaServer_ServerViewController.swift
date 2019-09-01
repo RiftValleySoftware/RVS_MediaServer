@@ -23,7 +23,7 @@ import Cocoa
 /**
  This is the view controller for the main server status window.
  */
-class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, RVS_MediaServer_FFMPEGServerManagerDelegate {
+class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, RVS_MediaServer_FFMPEGServerManagerDelegate, RVS_MediaServer_HTTPServerManagerDelegate {
     /* ############################################################################################################################## */
     // MARK: - Private Static Propeties
     /* ############################################################################################################################## */
@@ -144,7 +144,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
     @objc dynamic var isRunning: Bool = false {
         didSet {
             if  isRunning {
-                if _ffmpegServerHandler?.startFFMpeg() ?? false,
+                if _ffmpegServerHandler?.startFFMPEGProcess() ?? false,
                 prefs.use_output_http_server || !prefs.use_raw_parameters {
                     _httpServerManager?.startHTTPServer()
                     isRunning = _httpServerManager?.webServer?.isRunning ?? false   // Can't be running if the Web server is not running.
@@ -181,7 +181,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
      - parameter inChange: The change object. We ignore this, too.
      */
     func serverStatusObserverHandler(_ inObject: Any! = nil, _ inChange: NSKeyValueObservedChange<Bool>! = nil) {
-        self.linkButton.isHidden = !self.isRunning || !prefs.use_output_http_server
+        self.linkButton.isHidden = !self.isRunning || (!prefs.use_output_http_server && prefs.use_raw_parameters)
     }
 
     /* ############################################################################################################################## */
@@ -200,18 +200,28 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
     
     /* ################################################################## */
     /**
-     Called when the view finishes loading.
+     Called when the view is about to appear.
+     We use this to start the two servers.
      */
     override func viewWillAppear() {
         super.viewWillAppear()
-        if  let outputTmpFileTmp = try? TemporaryFile(creatingTempDirectoryForFilename: "stream.m3u8") {
-            _outputTmpFile = outputTmpFileTmp
-            _ffmpegServerHandler = RVS_MediaServer_FFMPEGServerManager(outputTmpFile: _outputTmpFile)
-            _ffmpegServerHandler.delegate = self
-            _httpServerManager = RVS_MediaServer_HTTPServerManager(outputTmpFile: _outputTmpFile)
-        } else {
+        if !prefs.use_raw_parameters || prefs.use_output_http_server {   // Only if we will be using HTTP.
+            guard let outputTmpFileTmp = try? TemporaryFile(creatingTempDirectoryForFilename: "stream.m3u8") else {
+                RVS_MediaServer_AppDelegate.displayAlert(header: "SLUG-HTTP-SERVER-ERROR-HEADER".localizedVariant, message: "SLUG-UNABLE-TO-SET-UP-TMP-ERROR".localizedVariant)
+                return
+            }
             
+            _outputTmpFile = outputTmpFileTmp
+            _ffmpegServerHandler = RVS_MediaServer_FFMPEGServerManager(outputTmpFile: _outputTmpFile, inputURI: prefs.input_uri, login_id: prefs.login_id, password: prefs.password, raw_parameters: prefs.use_raw_parameters ? prefs.rawFFMPEGString : nil)
+            _ffmpegServerHandler.delegate = self
+            _httpServerManager = RVS_MediaServer_HTTPServerManager(outputTmpFile: _outputTmpFile, port: prefs.output_tcp_port, streamName: prefs.stream_name)
+            _httpServerManager.delegate = self
+            
+        } else {
+            _ffmpegServerHandler = RVS_MediaServer_FFMPEGServerManager(inputURI: prefs.input_uri, login_id: prefs.login_id, password: prefs.password, raw_parameters: prefs.use_raw_parameters ? prefs.rawFFMPEGString : nil)
+            _ffmpegServerHandler.delegate = self
         }
+        serverStatusObserverHandler()   // Make sure the UI is reset.
     }
     
     /* ################################################################## */
@@ -231,7 +241,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
     }
     
     /* ############################################################################################################################## */
-    // MARK: - RVS_MediaServer_ServerManagerDelegate Methods
+    // MARK: - RVS_MediaServer_FFMPEGServerManagerDelegate Methods
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
@@ -244,5 +254,30 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
      */
     func mediaServerManager( _ inManager: RVS_MediaServer_FFMPEGServerManager, ffmpegConsoleTextReceived inTextReceived: String) {
         consoleDisplayTextView.string += inTextReceived
+    }
+    
+    /* ################################################################## */
+    /**
+     Called if there was an error encountered.
+     
+     - parameter: ignored
+     - parameter ffmpegError: The text received.
+     */
+    func mediaServerManager( _: RVS_MediaServer_FFMPEGServerManager, ffmpegError inError: String) {
+        RVS_MediaServer_AppDelegate.displayAlert(header: "SLUG-FFMPEG-SERVER-ERROR-HEADER".localizedVariant, message: inError.localizedVariant)
+    }
+    
+    /* ############################################################################################################################## */
+    // MARK: - RVS_MediaServer_HTTPServerManagerDelegate Methods
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     Called if there was an error encountered.
+     
+     - parameter: ignored
+     - parameter httpError: The text received.
+     */
+    func mediaServerManager( _: RVS_MediaServer_HTTPServerManagerDelegate, httpError inError: String) {
+        RVS_MediaServer_AppDelegate.displayAlert(header: "SLUG-HTTP-SERVER-ERROR-HEADER".localizedVariant, message: inError.localizedVariant)
     }
 }
