@@ -342,13 +342,9 @@ class RVS_MediaServer_FFMPEGServerManager {
             let data = self._stderrPipe.fileHandleForReading.availableData
             if 0 < data.count {
                 let str = String(data: data, encoding: .ascii) ?? "<Unexpected \(data.count) elements of data!>\n"
-                if let delegate = self.delegate {   // If we have a delegate, then we call it.
-                    // We call delegate methods in the main thread.
-                    DispatchQueue.main.async {
-                        delegate.mediaServerManager(self, ffmpegConsoleTextReceived: str)
-                    }
-                } else {
-                    print(str)  // Otherwise, just print to the console.
+                // We call delegate methods in the main thread.
+                DispatchQueue.main.async { [weak self] in
+                    self?.delegate?.mediaServerManager(self!, ffmpegConsoleTextReceived: str)
                 }
                 self._stderrPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
             } else if let stdErrObserver = self._stdErrObserver {

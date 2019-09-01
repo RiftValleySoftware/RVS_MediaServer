@@ -23,7 +23,7 @@ import Cocoa
 /**
  This class will provide some common base properties and methods to be made available to derived View Controllers.
  */
-class RVS_MediaServer_BaseViewController: NSViewController {
+class RVS_MediaServer_BaseViewController: NSViewController, RVS_MediaServer_AppDelegateNotifier {
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Calculated Properties
     /* ############################################################################################################################## */
@@ -33,5 +33,27 @@ class RVS_MediaServer_BaseViewController: NSViewController {
      */
     @objc dynamic var prefs: RVS_MediaServer_PersistentPrefs {
         return RVS_MediaServer_AppDelegate.appDelegateObject.prefs
+    }
+    
+    /* ############################################################################################################################## */
+    // MARK: - Superclass Override Methods
+    /* ############################################################################################################################## */
+    /* ################################################################## */
+    /**
+     Called when the view finishes loading.
+     */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        RVS_MediaServer_AppDelegate.appDelegateObject.addNotifier(self)
+    }
+
+    /* ################################################################################################################################## */
+    // MARK: - RVS_MediaServer_AppDelegateNotifier Methods
+    /* ################################################################################################################################## */
+    /* ################################################################## */
+    /**
+     We declare this to allow the method to be optional for subclasses.
+     */
+    func updateUI() {
     }
 }

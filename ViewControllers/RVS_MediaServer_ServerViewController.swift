@@ -293,4 +293,17 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
     func mediaServerManager( _: RVS_MediaServer_HTTPServerManagerDelegate, httpError inError: String) {
         RVS_MediaServer_AppDelegate.displayAlert(header: "SLUG-HTTP-SERVER-ERROR-HEADER".localizedVariant, message: inError.localizedVariant)
     }
+
+    /* ################################################################################################################################## */
+    // MARK: - RVS_MediaServer_AppDelegateNotifier Protocol Methods
+    /* ################################################################################################################################## */
+    /* ################################################################## */
+    /**
+     Called by the app delegate to ask registrants to re-up their UI.
+     */
+    override func updateUI() {
+        let wasRunning = isRunning
+        isRunning = false
+        isRunning = wasRunning
+    }
 }
