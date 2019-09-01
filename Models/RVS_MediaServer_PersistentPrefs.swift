@@ -135,6 +135,7 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         
         set {
             values[_PrefsKeys.stream_name.rawValue] = newValue
+            self.didChangeValue(for: \.stream_name)
         }
     }
     
@@ -149,6 +150,7 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         
         set {
             values[_PrefsKeys.input_uri.rawValue] = newValue
+            self.didChangeValue(for: \.input_uri)
         }
     }
     
@@ -163,6 +165,7 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         
         set {
             values[_PrefsKeys.output_tcp_port.rawValue] = newValue
+            self.didChangeValue(for: \.output_tcp_port)
         }
     }
     
@@ -177,6 +180,7 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         
         set {
             values[_PrefsKeys.login_id.rawValue] = newValue
+            self.didChangeValue(for: \.login_id)
         }
     }
     
@@ -191,6 +195,7 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         
         set {
             values[_PrefsKeys.password.rawValue] = newValue
+            self.didChangeValue(for: \.password)
         }
     }
     
@@ -205,6 +210,7 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         
         set {
             values[_PrefsKeys.temp_directory_name.rawValue] = newValue
+            self.didChangeValue(for: \.temp_directory_name)
         }
     }
     
@@ -219,6 +225,7 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         
         set {
             values[_PrefsKeys.mode_flag.rawValue] = newValue ? "raw" : "HLS"
+            self.didChangeValue(for: \.use_raw_parameters)
         }
     }
     
@@ -233,6 +240,7 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         
         set {
             values[_PrefsKeys.rawFFMPEGString.rawValue] = newValue
+            self.didChangeValue(for: \.rawFFMPEGString)
         }
     }
     
@@ -247,6 +255,7 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         
         set {
             values[_PrefsKeys.use_output_http_server.rawValue] = newValue
+            self.didChangeValue(for: \.use_output_http_server)
         }
     }
     
@@ -261,6 +270,7 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         
         set {
             values[_PrefsKeys.prefs_window_open.rawValue] = newValue
+            self.didChangeValue(for: \.prefs_window_open)
         }
     }
     

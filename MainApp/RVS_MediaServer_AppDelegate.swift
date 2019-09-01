@@ -49,9 +49,9 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
     
     /* ################################################################## */
     /**
-     This holds our registered observers. They need to be kept around.
+     This holds an observer for our prefs. We need to keep it around in order to remain active.
      */
-    private var _registeredObservers: [NSKeyValueObservation] = []
+    private var _prefsObserver: NSKeyValueObservation!
     
     /* ############################################################################################################################## */
     // MARK: - Internal Class Calculated Properties
@@ -168,23 +168,19 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
+     Called after the application has completed its launch preparations and allocations.
+     
+     - parameter inNotification: The notification that accompanied the application launch.
      */
     func applicationDidFinishLaunching(_ inNotification: Notification) {
+        // Check to see if we want the preferences window to open up. This is via a saved preference.
         if prefs.prefs_window_open {
             if let myPreferencesController = NSStoryboard.main?.instantiateController(withIdentifier: "SETTINGS") as? RVS_MediaServer_WindowController {
                 myPreferencesController.showWindow(nil)
             }
         }
         
-        // Add observers to catch changes in most of our prefs. Changing a pref will restart any running servers.
-        _registeredObservers.append(observe(\.prefsObject?.use_raw_parameters, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
-        _registeredObservers.append(observe(\.prefsObject?.use_output_http_server, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
-        _registeredObservers.append(observe(\.prefsObject?.login_id, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
-        _registeredObservers.append(observe(\.prefsObject?.password, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
-        _registeredObservers.append(observe(\.prefsObject?.output_tcp_port, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
-        _registeredObservers.append(observe(\.prefsObject?.input_uri, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
-        _registeredObservers.append(observe(\.prefsObject?.temp_directory_name, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
-        _registeredObservers.append(observe(\.prefsObject?.rawFFMPEGString, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
-        _registeredObservers.append(observe(\.prefsObject?.stream_name, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
+        // Add an observer to catch changes in our prefs. Changing a pref will restart any running servers.
+        _prefsObserver = observe(\.prefsObject?.values, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() })
     }
 }

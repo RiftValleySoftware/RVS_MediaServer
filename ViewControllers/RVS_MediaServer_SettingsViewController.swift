@@ -144,11 +144,11 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
      - parameter inCheckbox: The checkbox object. Can be omitted.
      */
     @IBAction func outputItemsCheckboxChanged(_ inCheckbox: NSButton! = nil) {
-        if 1 == modeSwitchSegmentedControl.selectedSegment {
-            prefs.use_output_http_server = .on == useOutputServerCheckbox.state
+        if 1 == modeSwitchSegmentedControl?.selectedSegment {
+            prefs.use_output_http_server = .on == useOutputServerCheckbox?.state
         }
         
-        outputItemsStackView.isHidden = (0 != modeSwitchSegmentedControl.selectedSegment) && !prefs.use_output_http_server
+        outputItemsStackView?.isHidden = (0 != modeSwitchSegmentedControl?.selectedSegment) && !prefs.use_output_http_server
     }
     
     /* ############################################################################################################################## */
@@ -175,7 +175,6 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
         
         useOutputServerCheckbox.state = prefs.use_output_http_server ? .on : .off
         modeSwitchSegmentedControl.selectedSegment = prefs.use_raw_parameters ? 1 : 0
-        outputItemsCheckboxChanged()
     }
     
     /* ############################################################################################################################## */
@@ -200,6 +199,7 @@ class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController
         super.viewDidAppear()
         view.window?.delegate = self    // We make ourselves a delegate, so we can intercept the close, in order to clear the flag.
         prefs.prefs_window_open = true  // We are open for business.
+        outputItemsCheckboxChanged()
     }
     
     /* ############################################################################################################################## */

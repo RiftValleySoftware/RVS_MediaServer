@@ -18,6 +18,8 @@
  CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  
  The Great Rift Valley Software Company: https://riftvalleysoftware.com
+ 
+ Version 1.0.1
  */
 
 import Foundation
@@ -31,6 +33,7 @@ import Foundation
  THIS IS NOT EFFICIENT OR ROBUST!
  It is meant as a simple "bucket" for things like application preferences. It is not an industrial data storage solution. You have been warned.
  Subclasses could declare their accessors as [`KVO`](https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift)-style, thus, providing a direct way to influence persistent state.
+ You can also directly observe the .values property. It will change when ANY pref is changed (so might not be suitable for "pick and choose" observation).
  */
 public class RVS_PersistentPrefs: NSObject {
     /* ############################################################################################################################## */
@@ -56,7 +59,7 @@ public class RVS_PersistentPrefs: NSObject {
             UserDefaults.standard.set(_values, forKey: key)
         } else {
             #if DEBUG
-                print("Attempt to set non-plist values!")
+            print("Attempt to set non-plist values!")
             #endif
             
             // What we do here, is look through our values list, and record the keys of the elements that are not considered plist-compatible (for XML plists). We return those in the error that we throw.
@@ -64,11 +67,11 @@ public class RVS_PersistentPrefs: NSObject {
             _values.forEach {
                 if PropertyListSerialization.propertyList($0.value, isValidFor: .xml) {
                     #if DEBUG
-                        print("\($0.key) is OK")
+                    print("\($0.key) is OK")
                     #endif
                 } else {
                     #if DEBUG
-                        print("\($0.key) is not plist-compliant")
+                    print("\($0.key) is not plist-compliant")
                     #endif
                     valueElementList.append($0.key)
                 }
@@ -90,7 +93,7 @@ public class RVS_PersistentPrefs: NSObject {
             _values = loadedPrefs
         } else {
             #if DEBUG
-                print("Unable to Load Prefs for \"\(key)\"")
+            print("Unable to Load Prefs for \"\(key)\"")
             #endif
             throw PrefsError.noStoredPrefsForKey(key: key)
         }
@@ -128,7 +131,7 @@ public class RVS_PersistentPrefs: NSObject {
      This is any error that was thrown during a save or a load.
      */
     public var lastError: PrefsError!
-
+    
     /* ############################################################################################################################## */
     // MARK: - Public Calculated Properties
     /* ############################################################################################################################## */
@@ -148,13 +151,13 @@ public class RVS_PersistentPrefs: NSObject {
      This is meant to make persistent storage completely transparent.
      You simply read and write the Dictionary, using these accessors. The saving and retrieving happens in the background.
      */
-    public var values: [String: Any] {
+    @objc dynamic public var values: [String: Any] {
         get {
             lastError = nil
             do {
                 try _load()
                 #if DEBUG
-                    print("Successfully Loaded \(_values)")
+                print("Successfully Loaded \(_values)")
                 #endif
             } catch PrefsError.noStoredPrefsForKey(let unknownKey) {
                 lastError = PrefsError.noStoredPrefsForKey(key: unknownKey)
@@ -185,14 +188,14 @@ public class RVS_PersistentPrefs: NSObject {
             
             if !illegalKeys.isEmpty {
                 #if DEBUG
-                    print("Illegal Keys!")
+                print("Illegal Keys!")
                 #endif
                 lastError = PrefsError.incorrectKeys(invalidElements: illegalKeys)
             } else {
                 do {
                     try _save()
                     #if DEBUG
-                        print("Successfully Saved \(_values)")
+                    print("Successfully Saved \(_values)")
                     #endif
                 } catch PrefsError.valuesNotPlistCompatible(let unCodableKeys) {
                     lastError = PrefsError.valuesNotPlistCompatible(invalidElements: unCodableKeys)
@@ -247,10 +250,10 @@ public class RVS_PersistentPrefs: NSObject {
      You can initialize instances with a key and some initial data values.
      
      - parameter key: Optional (default is nil). A String, with a key to be used to associate the persistent state of this object to storage in the bundle.
-        If not provided, the subclass classname is used as the key.
+     If not provided, the subclass classname is used as the key.
      - parameter values: Optional (default is nil). A Dictionary<String, Any>, with the values to be stored.
-        If not provided, then the instance is populated by any persistent prefs.
-        If provided, then the persistent prefs are updated with the new values.
+     If not provided, then the instance is populated by any persistent prefs.
+     If provided, then the persistent prefs are updated with the new values.
      */
     public init(key inKey: String! = nil, values inValues: [String: Any]! = [:]) {
         super.init()
@@ -266,9 +269,9 @@ public class RVS_PersistentPrefs: NSObject {
         }
         
         #if DEBUG
-            print("Initial Values for \"\(key)\": \(_values)")
+        print("Initial Values for \"\(key)\": \(_values)")
         #endif
-
+        
         if nil == lastError, !inValues.isEmpty {   // Make sure we didn't barf.
             values = _values.merging(inValues, uniquingKeysWith: { (_, new) in new })
         }
