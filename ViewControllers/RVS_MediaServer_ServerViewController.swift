@@ -39,6 +39,12 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
      */
     static private let _pageReloadDelayInSeconds: Float = 1.0
     
+    /* ################################################################## */
+    /**
+     The name of our temporary stream file (for HTTP server).
+     */
+    static private let _streamFileName = "stream.m3u8"
+    
     /* ############################################################################################################################## */
     // MARK: - Private Instance Propeties
     /* ############################################################################################################################## */
@@ -59,7 +65,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
      This will hold the url of our output streaming file.
      */
     private var _outputTmpFile: TemporaryFile!
-
+    
     /* ############################################################################################################################## */
     // MARK: - Internal IB Instance Properties
     /* ############################################################################################################################## */
@@ -77,11 +83,16 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
     
     /* ################################################################## */
     /**
+     This is the scroller that contains the console display.
      */
     @IBOutlet weak var consoleDisplayScrollView: NSScrollView!
+
+    /* ################################################################## */
+    /**
+     This is the actual console text display within that scroller.
+     */
     @IBOutlet var consoleDisplayTextView: NSTextView!
-    @IBAction func displayClosureToggleButtonHit(_ sender: Any) {
-    }
+    
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Properties
     /* ############################################################################################################################## */
@@ -102,6 +113,48 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
                 serverStateSegmentedSwitch.setLabel(label, forSegment: i)
             }
         }
+    }
+
+    /* ################################################################## */
+    /**
+     Starts both (or just the ffmpeg) server[s], and refreshes the UI.
+     */
+    func startServers() {
+        // Clear the decks. Needs to be called in the main thread.
+        DispatchQueue.main.async {
+            self.consoleDisplayTextView.string = ""
+        }
+        
+        if !prefs.use_raw_parameters || prefs.use_output_http_server {   // Only if we will be using HTTP.
+            guard let outputTmpFileTmp = try? TemporaryFile(creatingTempDirectoryForFilename: type(of: self)._streamFileName) else {
+                RVS_MediaServer_AppDelegate.displayAlert(header: "SLUG-HTTP-SERVER-ERROR-HEADER".localizedVariant, message: "SLUG-UNABLE-TO-SET-UP-TMP-ERROR".localizedVariant)
+                return
+            }
+            
+            _outputTmpFile = outputTmpFileTmp
+            _ffmpegServerHandler = RVS_MediaServer_FFMPEGServerManager(outputTmpFile: _outputTmpFile, inputURI: prefs.input_uri, login_id: prefs.login_id, password: prefs.password, raw_parameters: prefs.use_raw_parameters ? prefs.rawFFMPEGString : nil, delegate: self)
+            _httpServerManager = RVS_MediaServer_HTTPServerManager(outputTmpFile: _outputTmpFile, port: prefs.output_tcp_port, streamName: prefs.stream_name, delegate: self)
+        } else {
+            _ffmpegServerHandler = RVS_MediaServer_FFMPEGServerManager(inputURI: prefs.input_uri, login_id: prefs.login_id, password: prefs.password, raw_parameters: prefs.use_raw_parameters ? prefs.rawFFMPEGString : nil, delegate: self)
+        }
+        
+        serverStatusObserverHandler()   // Make sure the UI is reset.
+    }
+    
+    /* ################################################################## */
+    /**
+     Stops any running servers, and refreshes the UI.
+     */
+    func stopServers() {
+        _httpServerManager?.stopHTTPServer()
+        _ffmpegServerHandler?.stopFFMPEGServer()
+        
+        // Delete our temporary HTTP directory (if established).
+        if let outTmp = _outputTmpFile {
+            try? outTmp.deleteDirectory()
+        }
+        
+        serverStatusObserverHandler()   // Make sure the UI is reset.
     }
 
     /* ############################################################################################################################## */
@@ -143,7 +196,9 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
      */
     @objc dynamic var isRunning: Bool = false {
         didSet {
+            // If we have switched to running, we set up and start our server.
             if  isRunning {
+                startServers()
                 if _ffmpegServerHandler?.startFFMPEGProcess() ?? false,
                 prefs.use_output_http_server || !prefs.use_raw_parameters {
                     _httpServerManager?.startHTTPServer()
@@ -151,21 +206,14 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
                     DispatchQueue.main.async {
                         self.consoleDisplayTextView.string = ""
                         if let linkButtonTitle = self._httpServerManager?.webServer?.serverURL?.absoluteString {
-                            self.linkButton.isHidden = false
-                            self.linkButton.title = linkButtonTitle + "stream.m3u8"
+                            self.linkButton.title = linkButtonTitle + type(of: self)._streamFileName
                         }
                     }
                 } else {
                     linkButton.isHidden = true
                 }
-            } else {
-                linkButton.isHidden = true
-                _httpServerManager?.stopHTTPServer()
-                _ffmpegServerHandler?.stopFFMPEGServer()
-                DispatchQueue.main.async {  // Make sure we call in the main thread, in case we were referenced from a callback, or something.
-                    self.serverStateSegmentedSwitch.selectedSegment = 0
-                    self.serverStatusObserverHandler()   // Make sure the UI is reset.
-                }
+            } else {    // Otherwise, we scrag everything.
+                stopServers()
             }
         }
     }
@@ -181,7 +229,10 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
      - parameter inChange: The change object. We ignore this, too.
      */
     func serverStatusObserverHandler(_ inObject: Any! = nil, _ inChange: NSKeyValueObservedChange<Bool>! = nil) {
-        self.linkButton.isHidden = !self.isRunning || (!prefs.use_output_http_server && prefs.use_raw_parameters)
+        DispatchQueue.main.async {
+            self.linkButton.isHidden = !self.isRunning || (!self.prefs.use_output_http_server && self.prefs.use_raw_parameters)
+            self.serverStateSegmentedSwitch.selectedSegment = self.isRunning ? 1 : 0
+        }
     }
 
     /* ############################################################################################################################## */
@@ -200,41 +251,12 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
     
     /* ################################################################## */
     /**
-     Called when the view is about to appear.
-     We use this to start the two servers.
-     */
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        if !prefs.use_raw_parameters || prefs.use_output_http_server {   // Only if we will be using HTTP.
-            guard let outputTmpFileTmp = try? TemporaryFile(creatingTempDirectoryForFilename: "stream.m3u8") else {
-                RVS_MediaServer_AppDelegate.displayAlert(header: "SLUG-HTTP-SERVER-ERROR-HEADER".localizedVariant, message: "SLUG-UNABLE-TO-SET-UP-TMP-ERROR".localizedVariant)
-                return
-            }
-            
-            _outputTmpFile = outputTmpFileTmp
-            _ffmpegServerHandler = RVS_MediaServer_FFMPEGServerManager(outputTmpFile: _outputTmpFile, inputURI: prefs.input_uri, login_id: prefs.login_id, password: prefs.password, raw_parameters: prefs.use_raw_parameters ? prefs.rawFFMPEGString : nil, delegate: self)
-            _httpServerManager = RVS_MediaServer_HTTPServerManager(outputTmpFile: _outputTmpFile, port: prefs.output_tcp_port, streamName: prefs.stream_name, delegate: self)
-            
-        } else {
-            _ffmpegServerHandler = RVS_MediaServer_FFMPEGServerManager(inputURI: prefs.input_uri, login_id: prefs.login_id, password: prefs.password, raw_parameters: prefs.use_raw_parameters ? prefs.rawFFMPEGString : nil, delegate: self)
-        }
-        serverStatusObserverHandler()   // Make sure the UI is reset.
-    }
-    
-    /* ################################################################## */
-    /**
      Called when the view is about to disappear.
      We make sure that we stop our server and the ffmpeg process.
      */
     override func viewWillDisappear() {
         super.viewWillDisappear()
-        _httpServerManager?.stopHTTPServer()
-        _ffmpegServerHandler?.stopFFMPEGServer()
-        if let outTmp = _outputTmpFile {
-            try? outTmp.deleteDirectory()
-        }
-        serverStateSegmentedSwitch.selectedSegment = 0
-        serverStatusObserverHandler()   // Make sure the UI is reset.
+        stopServers()
     }
     
     /* ############################################################################################################################## */
