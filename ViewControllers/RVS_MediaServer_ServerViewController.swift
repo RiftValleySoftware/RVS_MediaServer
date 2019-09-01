@@ -258,14 +258,26 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
+     Called to indicate that a running process, is running no more.
+     
+     - parameter inManager: The manager object
+     - parameter task: The process that is no longer running.
+     */
+    func mediaServerManager( _ inManager: RVS_MediaServer_FFMPEGServerManager, taskStopped inTask: Process!) {
+        isRunning = false
+    }
+    
+    /* ################################################################## */
+    /**
      Called to deliver text intercepted from ffmpeg.
      
      This is called on the main thread.
      
      - parameter inManager: The manager object
+     - parameter task: The process running.
      - parameter ffmpegConsoleTextReceived: The text received.
      */
-    func mediaServerManager( _ inManager: RVS_MediaServer_FFMPEGServerManager, ffmpegConsoleTextReceived inTextReceived: String) {
+    func mediaServerManager( _ inManager: RVS_MediaServer_FFMPEGServerManager, task: Process!, ffmpegConsoleTextReceived inTextReceived: String) {
         consoleDisplayTextView.string += inTextReceived
     }
     
@@ -274,9 +286,10 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
      Called if there was an error encountered.
      
      - parameter: ignored
+     - parameter task: The process running.
      - parameter ffmpegError: The text received.
      */
-    func mediaServerManager( _: RVS_MediaServer_FFMPEGServerManager, ffmpegError inError: String) {
+    func mediaServerManager( _: RVS_MediaServer_FFMPEGServerManager, task inTask: Process!, ffmpegError inError: String) {
         RVS_MediaServer_AppDelegate.displayAlert(header: "SLUG-FFMPEG-SERVER-ERROR-HEADER".localizedVariant, message: inError.localizedVariant)
     }
     

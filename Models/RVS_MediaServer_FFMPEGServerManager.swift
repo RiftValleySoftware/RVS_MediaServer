@@ -28,21 +28,32 @@ import Foundation
 protocol RVS_MediaServer_FFMPEGServerManagerDelegate: class {
     /* ################################################################## */
     /**
+     Called to indicate that a running process, is running no more.
+     
+     - parameter manager: The manager object
+     - parameter task: The process that is no longer running.
+     */
+    func mediaServerManager( _ manager: RVS_MediaServer_FFMPEGServerManager, taskStopped: Process!)
+    
+    /* ################################################################## */
+    /**
      Called to deliver text intercepted from ffmpeg.
      
      - parameter manager: The manager object
+     - parameter task: The process running.
      - parameter ffmpegConsoleTextReceived: The text received.
      */
-    func mediaServerManager( _ manager: RVS_MediaServer_FFMPEGServerManager, ffmpegConsoleTextReceived: String)
+    func mediaServerManager( _ manager: RVS_MediaServer_FFMPEGServerManager, task: Process!, ffmpegConsoleTextReceived: String)
     
     /* ################################################################## */
     /**
      Called if there was an error encountered.
      
      - parameter manager: The manager object
+     - parameter task: The process running.
      - parameter ffmpegError: The text received.
      */
-    func mediaServerManager( _ manager: RVS_MediaServer_FFMPEGServerManager, ffmpegError: String)
+    func mediaServerManager( _ manager: RVS_MediaServer_FFMPEGServerManager, task: Process!, ffmpegError: String)
 }
 
 /* ################################################################################################################################## */
@@ -56,21 +67,32 @@ protocol RVS_MediaServer_FFMPEGServerManagerDelegate: class {
 extension RVS_MediaServer_FFMPEGServerManagerDelegate {
     /* ################################################################## */
     /**
+     Called to indicate that a running process, is running no more.
+     
+     - parameter: ignored
+     - parameter task: Ignored
+     */
+    func mediaServerManager( _: RVS_MediaServer_FFMPEGServerManager, taskStopped: Process) { }
+    
+    /* ################################################################## */
+    /**
      Does Nothing.
      
      - parameter: ignored
+     - parameter task: ignored
      - parameter ffmpegConsoleTextReceived: ignored.
      */
-    func mediaServerManager( _: RVS_MediaServer_FFMPEGServerManager, ffmpegConsoleTextReceived: String) { }
+    func mediaServerManager( _: RVS_MediaServer_FFMPEGServerManager, task: Process, ffmpegConsoleTextReceived: String) { }
     
     /* ################################################################## */
     /**
      Called if there was an error encountered.
      
      - parameter: ignored
+     - parameter task: Ignored
      - parameter ffmpegError: ignored
      */
-    func mediaServerManager( _ manager: RVS_MediaServer_FFMPEGServerManager, ffmpegError: String) { }
+    func mediaServerManager( _ manager: RVS_MediaServer_FFMPEGServerManager, task: Process, ffmpegError: String) { }
 }
 
 /* ################################################################################################################################## */
@@ -344,12 +366,18 @@ class RVS_MediaServer_FFMPEGServerManager {
                 let str = String(data: data, encoding: .ascii) ?? "<Unexpected \(data.count) elements of data!>\n"
                 // We call delegate methods in the main thread.
                 DispatchQueue.main.async { [weak self] in
-                    self?.delegate?.mediaServerManager(self!, ffmpegConsoleTextReceived: str)
+                    self?.delegate?.mediaServerManager(self!, task: self!._ffmpegTask, ffmpegConsoleTextReceived: str)
                 }
                 self._stderrPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
             } else if let stdErrObserver = self._stdErrObserver {
                 NotificationCenter.default.removeObserver(stdErrObserver)
                 self._stdErrObserver = nil
+            }
+            
+            if !(self._ffmpegTask?.isRunning ?? false) {
+                DispatchQueue.main.async {  // Make sure we call in the main thread, in case we were referenced from a callback, or something.
+                    self.delegate?.mediaServerManager(self, taskStopped: self._ffmpegTask)
+                }
             }
         }
         
@@ -379,7 +407,7 @@ class RVS_MediaServer_FFMPEGServerManager {
      */
     func handleError(message inMessage: String = "") {
         DispatchQueue.main.async {  // Make sure we call in the main thread, in case we were referenced from a callback, or something.
-            self.delegate?.mediaServerManager(self, ffmpegError: inMessage)
+            self.delegate?.mediaServerManager(self, task: self._ffmpegTask, ffmpegError: inMessage)
         }
     }
 

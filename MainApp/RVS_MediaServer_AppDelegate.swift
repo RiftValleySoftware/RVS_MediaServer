@@ -176,6 +176,7 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
+        // Add observers to catch changes in most of our prefs. Changing a pref will restart any running servers.
         _registeredObservers.append(observe(\.prefsObject?.use_raw_parameters, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
         _registeredObservers.append(observe(\.prefsObject?.use_output_http_server, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
         _registeredObservers.append(observe(\.prefsObject?.login_id, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
@@ -184,5 +185,6 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
         _registeredObservers.append(observe(\.prefsObject?.input_uri, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
         _registeredObservers.append(observe(\.prefsObject?.temp_directory_name, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
         _registeredObservers.append(observe(\.prefsObject?.rawFFMPEGString, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
+        _registeredObservers.append(observe(\.prefsObject?.stream_name, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() }))
     }
 }
