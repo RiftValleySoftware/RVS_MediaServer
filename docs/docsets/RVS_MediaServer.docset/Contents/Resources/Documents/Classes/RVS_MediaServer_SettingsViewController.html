@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           RVS_MediaServer Docs
         </a>
-         (100% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -60,6 +60,12 @@
                 <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_BaseViewController.html">RVS_MediaServer_BaseViewController</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_FFMPEGServerManager.html">RVS_MediaServer_FFMPEGServerManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_HTTPServerManager.html">RVS_MediaServer_HTTPServerManager</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_PersistentPrefs.html">RVS_MediaServer_PersistentPrefs</a>
               </li>
               <li class="nav-group-task">
@@ -76,6 +82,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/RVS_PersistentPrefs.html">RVS_PersistentPrefs</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_PersistentPrefs/PrefsError.html">– PrefsError</a>
               </li>
             </ul>
           </li>
@@ -116,6 +125,15 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/RVS_IPAddress.html">RVS_IPAddress</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_MediaServer_AppDelegateNotifier.html">RVS_MediaServer_AppDelegateNotifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_MediaServer_FFMPEGServerManagerDelegate.html">RVS_MediaServer_FFMPEGServerManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_MediaServer_HTTPServerManagerDelegate.html">RVS_MediaServer_HTTPServerManagerDelegate</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -141,11 +159,12 @@
             <h1>RVS_MediaServer_SettingsViewController</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RVS_MediaServer_SettingsViewController</span> <span class="p">:</span> <span class="kt"><a href="../Classes/RVS_MediaServer_BaseViewController.html">RVS_MediaServer_BaseViewController</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RVS_MediaServer_SettingsViewController</span> <span class="p">:</span> <span class="kt"><a href="../Classes/RVS_MediaServer_BaseViewController.html">RVS_MediaServer_BaseViewController</a></span><span class="p">,</span> <span class="kt">NSTextViewDelegate</span><span class="p">,</span> <span class="kt">NSWindowDelegate</span></code></pre>
 
                 </div>
               </div>
-            
+            <p>This manages the preferences/settings view window.</p>
+
           </div>
         </section>
 
@@ -160,6 +179,62 @@
                 </a>
               </div>
               <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(py)stream_name_label"></a>
+                    <a name="//apple_ref/swift/Property/stream_name_label" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(py)stream_name_label">stream_name_label</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The label for the Stream Name Text Field</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="k">weak</span> <span class="k">var</span> <span class="nv">stream_name_label</span><span class="p">:</span> <span class="kt">NSTextField</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(py)stream_name_text_field"></a>
+                    <a name="//apple_ref/swift/Property/stream_name_text_field" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(py)stream_name_text_field">stream_name_text_field</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Stream Name Text Field</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="k">weak</span> <span class="k">var</span> <span class="nv">stream_name_text_field</span><span class="p">:</span> <span class="kt">NSTextField</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -440,6 +515,242 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(py)modeSwitchSegmentedControl"></a>
+                    <a name="//apple_ref/swift/Property/modeSwitchSegmentedControl" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(py)modeSwitchSegmentedControl">modeSwitchSegmentedControl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Mode Selector Segmented Switch</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="k">weak</span> <span class="k">var</span> <span class="nv">modeSwitchSegmentedControl</span><span class="p">:</span> <span class="kt">NSSegmentedControl</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(py)inputItemsStackView"></a>
+                    <a name="//apple_ref/swift/Property/inputItemsStackView" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(py)inputItemsStackView">inputItemsStackView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>These are the input items</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="k">weak</span> <span class="k">var</span> <span class="nv">inputItemsStackView</span><span class="p">:</span> <span class="kt">NSStackView</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(py)outputItemsStackView"></a>
+                    <a name="//apple_ref/swift/Property/outputItemsStackView" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(py)outputItemsStackView">outputItemsStackView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>These are the items about the HTTP server.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="k">weak</span> <span class="k">var</span> <span class="nv">outputItemsStackView</span><span class="p">:</span> <span class="kt">NSStackView</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(py)useOutputServerCheckbox"></a>
+                    <a name="//apple_ref/swift/Property/useOutputServerCheckbox" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(py)useOutputServerCheckbox">useOutputServerCheckbox</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>These are the items about the HTTP server.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="k">weak</span> <span class="k">var</span> <span class="nv">useOutputServerCheckbox</span><span class="p">:</span> <span class="kt">NSButton</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/@IBAction%20Methods"></a>
+                <a name="//apple_ref/swift/Section/@IBAction Methods" class="dashAnchor"></a>
+                <a href="#/@IBAction%20Methods">
+                  <h3 class="section-name">@IBAction Methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(im)modeSwitchChanged:"></a>
+                    <a name="//apple_ref/swift/Method/modeSwitchChanged(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(im)modeSwitchChanged:">modeSwitchChanged(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called when the mode selector changes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">func</span> <span class="nf">modeSwitchChanged</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(im)outputItemsCheckboxChanged:"></a>
+                    <a name="//apple_ref/swift/Method/outputItemsCheckboxChanged(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(im)outputItemsCheckboxChanged:">outputItemsCheckboxChanged(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called when the use output HTTP server checkbox changes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">func</span> <span class="nf">outputItemsCheckboxChanged</span><span class="p">(</span><span class="n">_</span> <span class="nv">inCheckbox</span><span class="p">:</span> <span class="kt">NSButton</span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inCheckbox</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The checkbox object. Can be omitted.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Internal%20Instance%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Internal Instance Methods" class="dashAnchor"></a>
+                <a href="#/Internal%20Instance%20Methods">
+                  <h3 class="section-name">Internal Instance Methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC23_SettingsViewControllerC18setUpLocalizationsyyF"></a>
+                    <a name="//apple_ref/swift/Method/setUpLocalizations()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC23_SettingsViewControllerC18setUpLocalizationsyyF">setUpLocalizations()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setUpLocalizations</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
             <div class="task-group">
@@ -478,6 +789,77 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(im)viewDidAppear"></a>
+                    <a name="//apple_ref/swift/Method/viewDidAppear()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(im)viewDidAppear">viewDidAppear()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called just after the view appears.</p>
+
+<p>We use this to mark the preference for the window being open.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidAppear</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/NSWindowDelegate%20Methods"></a>
+                <a name="//apple_ref/swift/Section/NSWindowDelegate Methods" class="dashAnchor"></a>
+                <a href="#/NSWindowDelegate%20Methods">
+                  <h3 class="section-name">NSWindowDelegate Methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(im)windowShouldClose:"></a>
+                    <a name="//apple_ref/swift/Method/windowShouldClose(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_SettingsViewController(im)windowShouldClose:">windowShouldClose(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>We set the prefs window tracker to false.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">windowShouldClose</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">NSWindow</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>true (always)</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -486,7 +868,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-08-10)</p>
+      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-09-01)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

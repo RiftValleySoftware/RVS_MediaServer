@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>TemporaryFile Structure Reference</title>
+    <title>RVS_MediaServer_HTTPServerManagerDelegate Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Struct/TemporaryFile" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Protocol/RVS_MediaServer_HTTPServerManagerDelegate" class="dashAnchor"></a>
 
-    <a title="TemporaryFile Structure Reference"></a>
+    <a title="RVS_MediaServer_HTTPServerManagerDelegate Protocol Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">RVS_MediaServer Reference</a>
       <img class="carat" src="../img/carat.png" />
-      TemporaryFile Structure Reference
+      RVS_MediaServer_HTTPServerManagerDelegate Protocol Reference
     </p>
 
     <div class="content-wrapper">
@@ -156,18 +156,16 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>TemporaryFile</h1>
+            <h1>RVS_MediaServer_HTTPServerManagerDelegate</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">TemporaryFile</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">RVS_MediaServer_HTTPServerManagerDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
 
                 </div>
               </div>
-            <p>A wrapper around a temporary file in a temporary directory. The directory
-has been especially created for the file, so it&rsquo;s safe to delete when you&rsquo;re
-done working with the file.</p>
+            <p>These are methods that can be called from the manager to a registered delegate.</p>
 
-<p>Call <code>deleteDirectory</code> when you no longer need the file.</p>
+<p>They are all called on the main thread, and are all optional.</p>
 
           </div>
         </section>
@@ -179,114 +177,65 @@ done working with the file.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15RVS_MediaServer13TemporaryFileV12directoryURL10Foundation0G0Vvp"></a>
-                    <a name="//apple_ref/swift/Property/directoryURL" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer13TemporaryFileV12directoryURL10Foundation0G0Vvp">directoryURL</a>
+                    <a name="/s:15RVS_MediaServer0a1_bC26_HTTPServerManagerDelegateP05mediacE0_9httpErroryAA0a1_bc1_dE0C_SStF"></a>
+                    <a name="//apple_ref/swift/Method/mediaServerManager(_:httpError:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC26_HTTPServerManagerDelegateP05mediacE0_9httpErroryAA0a1_bc1_dE0C_SStF">mediaServerManager(_:httpError:)</a>
                     </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This will be the URL that references the directory, itself.</p>
+                        <p>Called if there was an error encountered.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Called if there was an error encountered.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">directoryURL</span><span class="p">:</span> <span class="kt">URL</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">mediaServerManager</span><span class="p">(</span><span class="n">_</span> <span class="nv">manager</span><span class="p">:</span> <span class="kt"><a href="../Classes/RVS_MediaServer_HTTPServerManager.html">RVS_MediaServer_HTTPServerManager</a></span><span class="p">,</span> <span class="nv">httpError</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer13TemporaryFileV7fileURL10Foundation0G0Vvp"></a>
-                    <a name="//apple_ref/swift/Property/fileURL" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer13TemporaryFileV7fileURL10Foundation0G0Vvp">fileURL</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This will be the URL to the file (once it&rsquo;s created).</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">fileURL</span><span class="p">:</span> <span class="kt">URL</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer13TemporaryFileV15deleteDirectoryyyKcvp"></a>
-                    <a name="//apple_ref/swift/Property/deleteDirectory" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer13TemporaryFileV15deleteDirectoryyyKcvp">deleteDirectory</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Deletes the temporary directory and all files in it.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">deleteDirectory</span><span class="p">:</span> <span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer13TemporaryFileV32creatingTempDirectoryForFilenameACSS_tKcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(creatingTempDirectoryForFilename:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer13TemporaryFileV32creatingTempDirectoryForFilenameACSS_tKcfc">init(creatingTempDirectoryForFilename:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Creates a temporary directory with a unique name and initializes the
-receiver with a <code><a href="../Structs/TemporaryFile.html#/s:15RVS_MediaServer13TemporaryFileV7fileURL10Foundation0G0Vvp">fileURL</a></code> representing a file named <code>filename</code> in that
-directory.</p>
-<div class="aside aside-note">
-    <p class="aside-title">Note</p>
-    This doesn&rsquo;t create the file!
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">creatingTempDirectoryForFilename</span> <span class="nv">filename</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre>
-
-                        </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>manager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The manager object</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>httpError</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The text received.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

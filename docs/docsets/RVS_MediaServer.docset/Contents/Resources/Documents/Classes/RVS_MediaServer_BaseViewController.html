@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           RVS_MediaServer Docs
         </a>
-         (100% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -60,6 +60,12 @@
                 <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_BaseViewController.html">RVS_MediaServer_BaseViewController</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_FFMPEGServerManager.html">RVS_MediaServer_FFMPEGServerManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_HTTPServerManager.html">RVS_MediaServer_HTTPServerManager</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_PersistentPrefs.html">RVS_MediaServer_PersistentPrefs</a>
               </li>
               <li class="nav-group-task">
@@ -76,6 +82,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/RVS_PersistentPrefs.html">RVS_PersistentPrefs</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_PersistentPrefs/PrefsError.html">– PrefsError</a>
               </li>
             </ul>
           </li>
@@ -116,6 +125,15 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/RVS_IPAddress.html">RVS_IPAddress</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_MediaServer_AppDelegateNotifier.html">RVS_MediaServer_AppDelegateNotifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_MediaServer_FFMPEGServerManagerDelegate.html">RVS_MediaServer_FFMPEGServerManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_MediaServer_HTTPServerManagerDelegate.html">RVS_MediaServer_HTTPServerManagerDelegate</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -141,7 +159,7 @@
             <h1>RVS_MediaServer_BaseViewController</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RVS_MediaServer_BaseViewController</span> <span class="p">:</span> <span class="kt">NSViewController</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RVS_MediaServer_BaseViewController</span> <span class="p">:</span> <span class="kt">NSViewController</span><span class="p">,</span> <span class="kt"><a href="../Protocols/RVS_MediaServer_AppDelegateNotifier.html">RVS_MediaServer_AppDelegateNotifier</a></span></code></pre>
 
                 </div>
               </div>
@@ -152,44 +170,6 @@
 
         <section class="section">
           <div class="section-content">
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Internal%20Instance%20Properties"></a>
-                <a name="//apple_ref/swift/Section/Internal Instance Properties" class="dashAnchor"></a>
-                <a href="#/Internal%20Instance%20Properties">
-                  <h3 class="section-name">Internal Instance Properties</h3>
-                </a>
-              </div>
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer0a1_bC19_BaseViewControllerC6_prefsAA0a1_bC16_PersistentPrefsCSgvp"></a>
-                    <a name="//apple_ref/swift/Property/_prefs" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC19_BaseViewControllerC6_prefsAA0a1_bC16_PersistentPrefsCSgvp">_prefs</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This is the prefs object that we&rsquo;ll use to maintain our persistent state.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">_prefs</span><span class="p">:</span> <span class="kt"><a href="../Classes/RVS_MediaServer_PersistentPrefs.html">RVS_MediaServer_PersistentPrefs</a></span><span class="o">!</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
             <div class="task-group">
               <div class="task-name-container">
                 <a name="/Internal%20Instance%20Calculated%20Properties"></a>
@@ -229,13 +209,89 @@
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Superclass%20Override%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Superclass Override Methods" class="dashAnchor"></a>
+                <a href="#/Superclass%20Override%20Methods">
+                  <h3 class="section-name">Superclass Override Methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_BaseViewController(im)viewDidLoad"></a>
+                    <a name="//apple_ref/swift/Method/viewDidLoad()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RVS_MediaServer@objc(cs)RVS_MediaServer_BaseViewController(im)viewDidLoad">viewDidLoad()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called when the view finishes loading.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/RVS_MediaServer_AppDelegateNotifier%20Methods"></a>
+                <a name="//apple_ref/swift/Section/RVS_MediaServer_AppDelegateNotifier Methods" class="dashAnchor"></a>
+                <a href="#/RVS_MediaServer_AppDelegateNotifier%20Methods">
+                  <h3 class="section-name">RVS_MediaServer_AppDelegateNotifier Methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC19_BaseViewControllerC8updateUIyyF"></a>
+                    <a name="//apple_ref/swift/Method/updateUI()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC19_BaseViewControllerC8updateUIyyF">updateUI()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>We declare this to allow the method to be optional for subclasses.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">updateUI</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-08-10)</p>
+      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-09-01)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

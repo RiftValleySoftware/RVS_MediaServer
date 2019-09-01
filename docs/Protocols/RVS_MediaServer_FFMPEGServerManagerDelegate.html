@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RVS_IPAddress Protocol Reference</title>
+    <title>RVS_MediaServer_FFMPEGServerManagerDelegate Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Protocol/RVS_IPAddress" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Protocol/RVS_MediaServer_FFMPEGServerManagerDelegate" class="dashAnchor"></a>
 
-    <a title="RVS_IPAddress Protocol Reference"></a>
+    <a title="RVS_MediaServer_FFMPEGServerManagerDelegate Protocol Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">RVS_MediaServer Reference</a>
       <img class="carat" src="../img/carat.png" />
-      RVS_IPAddress Protocol Reference
+      RVS_MediaServer_FFMPEGServerManagerDelegate Protocol Reference
     </p>
 
     <div class="content-wrapper">
@@ -156,18 +156,16 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>RVS_IPAddress</h1>
+            <h1>RVS_MediaServer_FFMPEGServerManagerDelegate</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RVS_IPAddress</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">RVS_MediaServer_FFMPEGServerManagerDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
 
                 </div>
               </div>
-            <p>This protocol is an abstract base for IP addresses. When we parse a String as an IP address, it will return a specific implementation of this.</p>
+            <p>These are methods that can be called from the manager to a registered delegate.</p>
 
-<p>When we say <q>valid,</q> we don&rsquo;t mean the address resolves to anything; just that it is syntactically correct.</p>
-
-<p>This file is the only one that you need for your implementation. Simply copy it wherever you want in your project, and add it to your chosen target.</p>
+<p>They are all called on the main thread, and are all optional.</p>
 
           </div>
         </section>
@@ -179,9 +177,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15RVS_MediaServer0A10_IPAddressP7isEmptySbvp"></a>
-                    <a name="//apple_ref/swift/Property/isEmpty" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A10_IPAddressP7isEmptySbvp">isEmpty</a>
+                    <a name="/s:15RVS_MediaServer0a1_bC28_FFMPEGServerManagerDelegateP05mediacE0_11taskStoppedyAA0a1_bc1_dE0C_So6NSTaskCSgtF"></a>
+                    <a name="//apple_ref/swift/Method/mediaServerManager(_:taskStopped:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC28_FFMPEGServerManagerDelegateP05mediacE0_11taskStoppedyAA0a1_bc1_dE0C_So6NSTaskCSgtF">mediaServerManager(_:taskStopped:)</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -192,23 +190,52 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Called to indicate that a running process, is running no more.</p>
+
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        
+                        <p>Called to indicate that a running process, is running no more.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isEmpty</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">mediaServerManager</span><span class="p">(</span><span class="n">_</span> <span class="nv">manager</span><span class="p">:</span> <span class="kt"><a href="../Classes/RVS_MediaServer_FFMPEGServerManager.html">RVS_MediaServer_FFMPEGServerManager</a></span><span class="p">,</span> <span class="nv">taskStopped</span><span class="p">:</span> <span class="kt">Process</span><span class="o">!</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
                       <div>
-                        <h4>Return Value</h4>
-                        <p>true, if the IP address is invalid (all 0&rsquo;s).</p>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>manager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The manager object</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>task</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The process that is no longer running.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -216,9 +243,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15RVS_MediaServer0A10_IPAddressP4isV6Sbvp"></a>
-                    <a name="//apple_ref/swift/Property/isV6" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A10_IPAddressP4isV6Sbvp">isV6</a>
+                    <a name="/s:15RVS_MediaServer0a1_bC28_FFMPEGServerManagerDelegateP05mediacE0_4task25ffmpegConsoleTextReceivedyAA0a1_bc1_dE0C_So6NSTaskCSgSStF"></a>
+                    <a name="//apple_ref/swift/Method/mediaServerManager(_:task:ffmpegConsoleTextReceived:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC28_FFMPEGServerManagerDelegateP05mediacE0_4task25ffmpegConsoleTextReceivedyAA0a1_bc1_dE0C_So6NSTaskCSgSStF">mediaServerManager(_:task:ffmpegConsoleTextReceived:)</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -229,23 +256,64 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Called to deliver text intercepted from ffmpeg.</p>
+
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        
+                        <p>Does Nothing.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isV6</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">mediaServerManager</span><span class="p">(</span><span class="n">_</span> <span class="nv">manager</span><span class="p">:</span> <span class="kt"><a href="../Classes/RVS_MediaServer_FFMPEGServerManager.html">RVS_MediaServer_FFMPEGServerManager</a></span><span class="p">,</span> <span class="nv">task</span><span class="p">:</span> <span class="kt">Process</span><span class="o">!</span><span class="p">,</span> <span class="nv">ffmpegConsoleTextReceived</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
                       <div>
-                        <h4>Return Value</h4>
-                        <p>true, if this is a valid IPV6 address.</p>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>manager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The manager object</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>task</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The process running.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ffmpegConsoleTextReceived</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The text received.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -253,9 +321,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15RVS_MediaServer0A10_IPAddressP14isValidAddressSbvp"></a>
-                    <a name="//apple_ref/swift/Property/isValidAddress" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A10_IPAddressP14isValidAddressSbvp">isValidAddress</a>
+                    <a name="/s:15RVS_MediaServer0a1_bC28_FFMPEGServerManagerDelegateP05mediacE0_4task11ffmpegErroryAA0a1_bc1_dE0C_So6NSTaskCSgSStF"></a>
+                    <a name="//apple_ref/swift/Method/mediaServerManager(_:task:ffmpegError:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC28_FFMPEGServerManagerDelegateP05mediacE0_4task11ffmpegErroryAA0a1_bc1_dE0C_So6NSTaskCSgSStF">mediaServerManager(_:task:ffmpegError:)</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -266,187 +334,64 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Called if there was an error encountered.</p>
+
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        
+                        <p>Called if there was an error encountered.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isValidAddress</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">mediaServerManager</span><span class="p">(</span><span class="n">_</span> <span class="nv">manager</span><span class="p">:</span> <span class="kt"><a href="../Classes/RVS_MediaServer_FFMPEGServerManager.html">RVS_MediaServer_FFMPEGServerManager</a></span><span class="p">,</span> <span class="nv">task</span><span class="p">:</span> <span class="kt">Process</span><span class="o">!</span><span class="p">,</span> <span class="nv">ffmpegError</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
                       <div>
-                        <h4>Return Value</h4>
-                        <p>true, if this is a valid IPV6 or IPV4 address.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer0A10_IPAddressP7addressSSvp"></a>
-                    <a name="//apple_ref/swift/Property/address" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A10_IPAddressP7addressSSvp">address</a>
-                    </code>
-                      <span class="declaration-note">
-                        Default implementation
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <h4>Default Implementation</h4>
-                      <div class="default_impl abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">address</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>just the address portion of an address/port pair, as a syntactically correct String.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer0A10_IPAddressP14addressAndPortSSvp"></a>
-                    <a name="//apple_ref/swift/Property/addressAndPort" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A10_IPAddressP14addressAndPortSSvp">addressAndPort</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">addressAndPort</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>both the address, and the port, as a syntactically correct String.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer0A10_IPAddressP4portSivp"></a>
-                    <a name="//apple_ref/swift/Property/port" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A10_IPAddressP4portSivp">port</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The TCP port, as an unsigned integer.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer0A10_IPAddressP12addressArraySaySiGvp"></a>
-                    <a name="//apple_ref/swift/Property/addressArray" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A10_IPAddressP12addressArraySaySiGvp">addressArray</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">addressArray</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The actual IP address, as an Array of Int, with each element being one of the displayed elements.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15RVS_MediaServer0A10_IPAddressP11descriptionSSvp"></a>
-                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15RVS_MediaServer0A10_IPAddressP11descriptionSSvp">description</a>
-                    </code>
-                      <span class="declaration-note">
-                        Default implementation
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <h4>Default Implementation</h4>
-                      <div class="default_impl abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The address and port, as a String.</p>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>manager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The manager object</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>task</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The process running.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ffmpegError</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The text received.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

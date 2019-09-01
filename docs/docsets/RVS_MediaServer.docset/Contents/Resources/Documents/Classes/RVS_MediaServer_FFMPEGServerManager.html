@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RVS_MediaServer_FFMPEGServerManager Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/RVS_MediaServer_FFMPEGServerManager" class="dashAnchor"></a>
+
+    <a title="RVS_MediaServer_FFMPEGServerManager Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          RVS_MediaServer Docs
+        </a>
+         (99% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/RiftValleySoftware/RVS_MediaServer">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">RVS_MediaServer Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      RVS_MediaServer_FFMPEGServerManager Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_AppDelegate.html">RVS_MediaServer_AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_BaseViewController.html">RVS_MediaServer_BaseViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_FFMPEGServerManager.html">RVS_MediaServer_FFMPEGServerManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_HTTPServerManager.html">RVS_MediaServer_HTTPServerManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_PersistentPrefs.html">RVS_MediaServer_PersistentPrefs</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_PersistentPrefs/_PrefsKeys.html">– _PrefsKeys</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_ServerViewController.html">RVS_MediaServer_ServerViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_SettingsViewController.html">RVS_MediaServer_SettingsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_MediaServer_WindowController.html">RVS_MediaServer_WindowController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_PersistentPrefs.html">RVS_PersistentPrefs</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RVS_PersistentPrefs/PrefsError.html">– PrefsError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/FileManager.html">FileManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/NSView.html">NSView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Sequence.html">Sequence</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/StringProtocol.html">StringProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:15RVS_MediaServer0a17_IPAddressExtractD0_8isPaddedAA0a1_D0_pSgSS_SbtF">RVS_IPAddressExtractIPAddress(_:isPadded:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:15RVS_MediaServer0a17_IPAddressExtractD05array4port8isPaddedAA0a1_D0_pSgSaySiG_SiSbtF">RVS_IPAddressExtractIPAddress(array:port:isPadded:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_IPAddress.html">RVS_IPAddress</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_MediaServer_AppDelegateNotifier.html">RVS_MediaServer_AppDelegateNotifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_MediaServer_FFMPEGServerManagerDelegate.html">RVS_MediaServer_FFMPEGServerManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_MediaServer_HTTPServerManagerDelegate.html">RVS_MediaServer_HTTPServerManagerDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RVS_IPAddressV4.html">RVS_IPAddressV4</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RVS_IPAddressV6.html">RVS_IPAddressV6</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TemporaryFile.html">TemporaryFile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>RVS_MediaServer_FFMPEGServerManager</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">RVS_MediaServer_FFMPEGServerManager</span></code></pre>
+
+                </div>
+              </div>
+            <p>This is a model for the server status screen. It handles the management of the actual ffmpeg instance, and any HTTP server we set up.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Private%20Static%20Propeties"></a>
+                <a name="//apple_ref/swift/Section/Private Static Propeties" class="dashAnchor"></a>
+                <a href="#/Private%20Static%20Propeties">
+                  <h3 class="section-name">Private Static Propeties</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC22_hlsTimeSliceInSeconds33_CAB5E964E916670D11CDA213E345229BLLSivpZ"></a>
+                    <a name="//apple_ref/swift/Variable/_hlsTimeSliceInSeconds" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC22_hlsTimeSliceInSeconds33_CAB5E964E916670D11CDA213E345229BLLSivpZ">_hlsTimeSliceInSeconds</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The size of time slices in the HLS output. ffmpeg defaults to 2. Apple recommends 6.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">_hlsTimeSliceInSeconds</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC25_pageReloadDelayInSeconds33_CAB5E964E916670D11CDA213E345229BLLSfvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/_pageReloadDelayInSeconds" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC25_pageReloadDelayInSeconds33_CAB5E964E916670D11CDA213E345229BLLSfvpZ">_pageReloadDelayInSeconds</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The number of seconds to wait between page refreshes, while waiting to load.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">_pageReloadDelayInSeconds</span><span class="p">:</span> <span class="kt">Float</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC37_serverStartTimeoutThresholdInSeconds33_CAB5E964E916670D11CDA213E345229BLLSdvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/_serverStartTimeoutThresholdInSeconds" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC37_serverStartTimeoutThresholdInSeconds33_CAB5E964E916670D11CDA213E345229BLLSdvpZ">_serverStartTimeoutThresholdInSeconds</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The number of seconds to wait as a timeout, when starting the server.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">_serverStartTimeoutThresholdInSeconds</span><span class="p">:</span> <span class="kt">TimeInterval</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Private%20Instance%20Propeties"></a>
+                <a name="//apple_ref/swift/Section/Private Instance Propeties" class="dashAnchor"></a>
+                <a href="#/Private%20Instance%20Propeties">
+                  <h3 class="section-name">Private Instance Propeties</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC14_outputTmpFile33_CAB5E964E916670D11CDA213E345229BLLAA09TemporaryH0VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_outputTmpFile" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC14_outputTmpFile33_CAB5E964E916670D11CDA213E345229BLLAA09TemporaryH0VSgvp">_outputTmpFile</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This will hold the url of our output streaming file.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_outputTmpFile</span><span class="p">:</span> <span class="kt"><a href="../Structs/TemporaryFile.html">TemporaryFile</a></span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC11_ffmpegTask33_CAB5E964E916670D11CDA213E345229BLLSo6NSTaskCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_ffmpegTask" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC11_ffmpegTask33_CAB5E964E916670D11CDA213E345229BLLSo6NSTaskCSgvp">_ffmpegTask</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This will hold the ffmpeg command line task.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_ffmpegTask</span><span class="p">:</span> <span class="kt">Process</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC11_stderrPipe33_CAB5E964E916670D11CDA213E345229BLLSo6NSPipeCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_stderrPipe" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC11_stderrPipe33_CAB5E964E916670D11CDA213E345229BLLSo6NSPipeCSgvp">_stderrPipe</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>ffmpeg sends its reports out via stderr; not stdout, so we trap that, in order to report it in the console.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_stderrPipe</span><span class="p">:</span> <span class="kt">Pipe</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC15_stdErrObserver33_CAB5E964E916670D11CDA213E345229BLLSo8NSObject_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_stdErrObserver" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC15_stdErrObserver33_CAB5E964E916670D11CDA213E345229BLLSo8NSObject_pSgvp">_stdErrObserver</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is an observer handler for stderr (ffmpeg).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_stdErrObserver</span><span class="p">:</span> <span class="kt">NSObjectProtocol</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC9_inputURI33_CAB5E964E916670D11CDA213E345229BLLSSvp"></a>
+                    <a name="//apple_ref/swift/Property/_inputURI" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC9_inputURI33_CAB5E964E916670D11CDA213E345229BLLSSvp">_inputURI</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is an input source URI.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">let</span> <span class="nv">_inputURI</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC8_loginID33_CAB5E964E916670D11CDA213E345229BLLSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_loginID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC8_loginID33_CAB5E964E916670D11CDA213E345229BLLSSSgvp">_loginID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is a login ID for authorization.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">let</span> <span class="nv">_loginID</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC9_password33_CAB5E964E916670D11CDA213E345229BLLSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_password" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC9_password33_CAB5E964E916670D11CDA213E345229BLLSSSgvp">_password</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is a password for authorization.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">let</span> <span class="nv">_password</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC15_raw_parameters33_CAB5E964E916670D11CDA213E345229BLLSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_raw_parameters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC15_raw_parameters33_CAB5E964E916670D11CDA213E345229BLLSSSgvp">_raw_parameters</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A String, containing raw parameters to use, if that is how we are rolling.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">let</span> <span class="nv">_raw_parameters</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Internal%20Instance%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Internal Instance Properties" class="dashAnchor"></a>
+                <a href="#/Internal%20Instance%20Properties">
+                  <h3 class="section-name">Internal Instance Properties</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC8delegateAA0a1_bc1_dE8Delegate_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC8delegateAA0a1_bc1_dE8Delegate_pSgvp">delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A delegate object for handling the operation of the manager. This is a weak class reference.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_MediaServer_FFMPEGServerManagerDelegate.html">RVS_MediaServer_FFMPEGServerManagerDelegate</a></span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initializer"></a>
+                <a name="//apple_ref/swift/Section/Initializer" class="dashAnchor"></a>
+                <a href="#/Initializer">
+                  <h3 class="section-name">Initializer</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC13outputTmpFile8inputURI8login_id8password14raw_parameters8delegateAcA09TemporaryH0VSg_S2SSgA2mA0a1_bc1_dE8Delegate_pSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(outputTmpFile:inputURI:login_id:password:raw_parameters:delegate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC13outputTmpFile8inputURI8login_id8password14raw_parameters8delegateAcA09TemporaryH0VSg_S2SSgA2mA0a1_bc1_dE8Delegate_pSgtcfc">init(outputTmpFile:inputURI:login_id:password:raw_parameters:delegate:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">outputTmpFile</span> <span class="nv">inOutputTmpFile</span><span class="p">:</span> <span class="kt"><a href="../Structs/TemporaryFile.html">TemporaryFile</a></span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">inputURI</span> <span class="nv">inInputURI</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">login_id</span> <span class="nv">inLoginID</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">password</span> <span class="nv">inPassword</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">raw_parameters</span> <span class="nv">inRawParameters</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n"><a href="../Classes/RVS_MediaServer_FFMPEGServerManager.html#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC8delegateAA0a1_bc1_dE8Delegate_pSgvp">delegate</a></span> <span class="nv">inDelegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_MediaServer_FFMPEGServerManagerDelegate.html">RVS_MediaServer_FFMPEGServerManagerDelegate</a></span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>outputTmpFile</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The temporary file object that describes the temporary directory, where we fetch our data. This can be omitted or nil, if we are not using one.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inputURI</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A String with the input URI.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>login_id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A String, with a login for authorization. This is optional. If not provided, authorization will not be attempted.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>password</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A String, with a password for authorization. This is optional. If not provided, authorization will not be attempted.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>raw_parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A String, containing raw parameters to use (instead of the standard HLS).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>delegate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The delegate for the object. This is optional.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Internal%20Instance%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Internal Instance Methods" class="dashAnchor"></a>
+                <a href="#/Internal%20Instance%20Methods">
+                  <h3 class="section-name">Internal Instance Methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC13createRTSPURI3uri7loginID8passwordS2S_SSSgAHtF"></a>
+                    <a name="//apple_ref/swift/Method/createRTSPURI(uri:loginID:password:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC13createRTSPURI3uri7loginID8passwordS2S_SSSgAHtF">createRTSPURI(uri:loginID:password:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This will create a <q>clean</q> RTSP URI, adding the login and password as inline Auth elements (rtsp://user:pass@server/path?query).</p>
+
+<p>If either the login ID or password is left out, then the stream will be returned without adding authentication.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">createRTSPURI</span><span class="p">(</span><span class="n">uri</span> <span class="nv">inURI</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">loginID</span> <span class="nv">inLoginID</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">password</span> <span class="nv">inPassword</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>uri</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL, without auth, as a String. This is required.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>loginID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Login ID, as a String. This is optional. If left out, authentication is not added to the URI.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>password</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Password, as a String. This is optional. If left out, authentication is not added to the URI.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC18startFFMPEGProcessSbyF"></a>
+                    <a name="//apple_ref/swift/Method/startFFMPEGProcess()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC18startFFMPEGProcessSbyF">startFFMPEGProcess()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This starts the ffmpeg task.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">startFFMPEGProcess</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True, if the task launched successfully.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC13openErrorPipeyySo6NSTaskCF"></a>
+                    <a name="//apple_ref/swift/Method/openErrorPipe(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC13openErrorPipeyySo6NSTaskCF">openErrorPipe(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This sets up a trap, so we can intercept the textual output from ffmpeg (which comes out on stderr).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">openErrorPipe</span><span class="p">(</span><span class="n">_</span> <span class="nv">inTask</span><span class="p">:</span> <span class="kt">Process</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inTask</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ffmpeg task we&rsquo;re intercepting.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC04stopD0yyF"></a>
+                    <a name="//apple_ref/swift/Method/stopFFMPEGServer()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC04stopD0yyF">stopFFMPEGServer()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This simply stops the Web server.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">stopFFMPEGServer</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC11handleError7messageySS_tF"></a>
+                    <a name="//apple_ref/swift/Method/handleError(message:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerC11handleError7messageySS_tF">handleError(message:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This will throw up an error alert, if we encounter an error.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">handleError</span><span class="p">(</span><span class="n">message</span> <span class="nv">inMessage</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>message</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A string, with the error message to be displayed, in un-localized form.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Deinit"></a>
+                <a name="//apple_ref/swift/Section/Deinit" class="dashAnchor"></a>
+                <a href="#/Deinit">
+                  <h3 class="section-name">Deinit</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerCfd"></a>
+                    <a name="//apple_ref/swift/Method/deinit" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_FFMPEGServerManagerCfd">deinit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Make sure that we stop the server upon dealloc.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">deinit</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-09-01)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

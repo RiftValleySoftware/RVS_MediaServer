@@ -23,7 +23,7 @@
         <a class="header-link" href="../../index.html">
           RVS_MediaServer Docs
         </a>
-         (100% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -60,6 +60,12 @@
                 <a class="nav-group-task-link" href="../../Classes/RVS_MediaServer_BaseViewController.html">RVS_MediaServer_BaseViewController</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/RVS_MediaServer_FFMPEGServerManager.html">RVS_MediaServer_FFMPEGServerManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/RVS_MediaServer_HTTPServerManager.html">RVS_MediaServer_HTTPServerManager</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../../Classes/RVS_MediaServer_PersistentPrefs.html">RVS_MediaServer_PersistentPrefs</a>
               </li>
               <li class="nav-group-task">
@@ -76,6 +82,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../../Classes/RVS_PersistentPrefs.html">RVS_PersistentPrefs</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/RVS_PersistentPrefs/PrefsError.html">– PrefsError</a>
               </li>
             </ul>
           </li>
@@ -116,6 +125,15 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../../Protocols/RVS_IPAddress.html">RVS_IPAddress</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/RVS_MediaServer_AppDelegateNotifier.html">RVS_MediaServer_AppDelegateNotifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/RVS_MediaServer_FFMPEGServerManagerDelegate.html">RVS_MediaServer_FFMPEGServerManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/RVS_MediaServer_HTTPServerManagerDelegate.html">RVS_MediaServer_HTTPServerManagerDelegate</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -141,11 +159,12 @@
             <h1>_PrefsKeys</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">enum</span> <span class="nv">_PrefsKeys</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">enum</span> <span class="nv">_PrefsKeys</span> <span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">CaseIterable</span></code></pre>
 
                 </div>
               </div>
-            <p>These are the keys for our prefs.</p>
+            <p>These are the keys for our prefs.
+Making it CaseIterable means that we can access the cases and return them as strings.</p>
 
           </div>
         </section>
@@ -316,6 +335,142 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC01_E4Keys33_0D32F3FD4EAFADF3219BC9930E2A9662LLO9mode_flagyA2FmF"></a>
+                    <a name="//apple_ref/swift/Element/mode_flag" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC01_E4Keys33_0D32F3FD4EAFADF3219BC9930E2A9662LLO9mode_flagyA2FmF">mode_flag</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is a flag that determines what type of ffmpeg interaction we will have.
+Possible values are <q>HLS</q> (simple HLS recoding), <q>raw</q> (<q>raw</q> ffmpeg argument string).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">mode_flag</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC01_E4Keys33_0D32F3FD4EAFADF3219BC9930E2A9662LLO15rawFFMPEGStringyA2FmF"></a>
+                    <a name="//apple_ref/swift/Element/rawFFMPEGString" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC01_E4Keys33_0D32F3FD4EAFADF3219BC9930E2A9662LLO15rawFFMPEGStringyA2FmF">rawFFMPEGString</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is the string to be applied, if mode_flag is set to <q>raw</q>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">rawFFMPEGString</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC01_E4Keys33_0D32F3FD4EAFADF3219BC9930E2A9662LLO22use_output_http_serveryA2FmF"></a>
+                    <a name="//apple_ref/swift/Element/use_output_http_server" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC01_E4Keys33_0D32F3FD4EAFADF3219BC9930E2A9662LLO22use_output_http_serveryA2FmF">use_output_http_server</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is true, if we are to use an output HTTP server.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">use_output_http_server</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC01_E4Keys33_0D32F3FD4EAFADF3219BC9930E2A9662LLO17prefs_window_openyA2FmF"></a>
+                    <a name="//apple_ref/swift/Element/prefs_window_open" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC01_E4Keys33_0D32F3FD4EAFADF3219BC9930E2A9662LLO17prefs_window_openyA2FmF">prefs_window_open</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is true, if the preferences window is open (used to reopen the window on startup).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">prefs_window_open</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC01_E4Keys33_0D32F3FD4EAFADF3219BC9930E2A9662LLO22display_console_screenyA2FmF"></a>
+                    <a name="//apple_ref/swift/Element/display_console_screen" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC16_PersistentPrefsC01_E4Keys33_0D32F3FD4EAFADF3219BC9930E2A9662LLO22display_console_screenyA2FmF">display_console_screen</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is true, if we are displaying the console screen.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">display_console_screen</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -324,7 +479,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-08-10)</p>
+      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-09-01)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

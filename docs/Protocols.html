@@ -23,7 +23,7 @@
         <a class="header-link" href="index.html">
           RVS_MediaServer Docs
         </a>
-         (100% documented)
+         (99% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -60,6 +60,12 @@
                 <a class="nav-group-task-link" href="Classes/RVS_MediaServer_BaseViewController.html">RVS_MediaServer_BaseViewController</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/RVS_MediaServer_FFMPEGServerManager.html">RVS_MediaServer_FFMPEGServerManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/RVS_MediaServer_HTTPServerManager.html">RVS_MediaServer_HTTPServerManager</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/RVS_MediaServer_PersistentPrefs.html">RVS_MediaServer_PersistentPrefs</a>
               </li>
               <li class="nav-group-task">
@@ -76,6 +82,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/RVS_PersistentPrefs.html">RVS_PersistentPrefs</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/RVS_PersistentPrefs/PrefsError.html">– PrefsError</a>
               </li>
             </ul>
           </li>
@@ -115,6 +124,15 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Protocols/RVS_IPAddress.html">RVS_IPAddress</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/RVS_MediaServer_AppDelegateNotifier.html">RVS_MediaServer_AppDelegateNotifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/RVS_MediaServer_FFMPEGServerManagerDelegate.html">RVS_MediaServer_FFMPEGServerManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/RVS_MediaServer_HTTPServerManagerDelegate.html">RVS_MediaServer_HTTPServerManagerDelegate</a>
               </li>
             </ul>
           </li>
@@ -182,13 +200,134 @@
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/App%20Delegate%20Notifier%20Protocol"></a>
+                <a name="//apple_ref/swift/Section/App Delegate Notifier Protocol" class="dashAnchor"></a>
+                <a href="#/App%20Delegate%20Notifier%20Protocol">
+                  <h3 class="section-name">App Delegate Notifier Protocol</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC20_AppDelegateNotifierP"></a>
+                    <a name="//apple_ref/swift/Protocol/RVS_MediaServer_AppDelegateNotifier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC20_AppDelegateNotifierP">RVS_MediaServer_AppDelegateNotifier</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This protocol allows view controllers to register for updates.</p>
+
+                        <a href="Protocols/RVS_MediaServer_AppDelegateNotifier.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">RVS_MediaServer_AppDelegateNotifier</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Delegate%20Protocol"></a>
+                <a name="//apple_ref/swift/Section/Delegate Protocol" class="dashAnchor"></a>
+                <a href="#/Delegate%20Protocol">
+                  <h3 class="section-name">Delegate Protocol</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC28_FFMPEGServerManagerDelegateP"></a>
+                    <a name="//apple_ref/swift/Protocol/RVS_MediaServer_FFMPEGServerManagerDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC28_FFMPEGServerManagerDelegateP">RVS_MediaServer_FFMPEGServerManagerDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>These are methods that can be called from the manager to a registered delegate.</p>
+
+<p>They are all called on the main thread, and are all optional.</p>
+
+                        <a href="Protocols/RVS_MediaServer_FFMPEGServerManagerDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">RVS_MediaServer_FFMPEGServerManagerDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Delegate%20Protocol2"></a>
+                <a name="//apple_ref/swift/Section/Delegate Protocol" class="dashAnchor"></a>
+                <a href="#/Delegate%20Protocol2">
+                  <h3 class="section-name">Delegate Protocol</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15RVS_MediaServer0a1_bC26_HTTPServerManagerDelegateP"></a>
+                    <a name="//apple_ref/swift/Protocol/RVS_MediaServer_HTTPServerManagerDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15RVS_MediaServer0a1_bC26_HTTPServerManagerDelegateP">RVS_MediaServer_HTTPServerManagerDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>These are methods that can be called from the manager to a registered delegate.</p>
+
+<p>They are all called on the main thread, and are all optional.</p>
+
+                        <a href="Protocols/RVS_MediaServer_HTTPServerManagerDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">RVS_MediaServer_HTTPServerManagerDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-08-10)</p>
+      <p>&copy; 2019 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2019-09-01)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
