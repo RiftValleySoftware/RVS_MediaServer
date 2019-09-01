@@ -152,12 +152,6 @@ class RVS_MediaServer_FFMPEGServerManager {
      */
     private let _raw_parameters: String!
     
-    /* ################################################################## */
-    /**
-     Our prefs object. Even though we could simply reference the app delegate prefs, we don't do that because of smelly code.
-     */
-    private weak var _prefs: RVS_MediaServer_PersistentPrefs!
-    
     /* ############################################################################################################################## */
     // MARK: - Internal Instance Properties
     /* ############################################################################################################################## */
