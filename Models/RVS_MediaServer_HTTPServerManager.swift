@@ -97,7 +97,7 @@ class RVS_MediaServer_HTTPServerManager {
     /**
      This will hold the url of our output streaming file.
      */
-    private var _outputTmpFile: TemporaryFile!
+    private var _outputTmpFile: URL!
     
     /* ################################################################## */
     /**
@@ -129,18 +129,10 @@ class RVS_MediaServer_HTTPServerManager {
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     Accessor for the temporary HTTP server file.
-     */
-    var tempOutputFileURL: URL! {
-        return _outputTmpFile?.fileURL
-    }
-    
-    /* ################################################################## */
-    /**
      Accessor for the temporary HTTP server directory.
      */
     var tempOutputDirURL: URL! {
-        return _outputTmpFile?.directoryURL
+        return _outputTmpFile?.deletingLastPathComponent()
     }
 
     /* ############################################################################################################################## */
@@ -148,12 +140,12 @@ class RVS_MediaServer_HTTPServerManager {
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     - parameter outputTmpFile: The temporary file object that describes the temporary directory, where we fetch our data.
+     - parameter outputTmpFile: The URL for a temporary file object that describes the temporary index file and directory, where we fetch our data.
      - parameter port: A TCP Port for the server to use.
      - parameter streamname: A name to use for the stream.
      - parameter delegate: The delegate for the object. This is optional.
      */
-    init(outputTmpFile inOutputTmpFile: TemporaryFile, port inPort: Int, streamName inStreamName: String, delegate inDelegate: RVS_MediaServer_HTTPServerManagerDelegate! = nil) {
+    init(outputTmpFile inOutputTmpFile: URL, port inPort: Int, streamName inStreamName: String, delegate inDelegate: RVS_MediaServer_HTTPServerManagerDelegate! = nil) {
         _outputTmpFile = inOutputTmpFile
         _port = inPort
         _streamName = inStreamName
@@ -174,9 +166,8 @@ class RVS_MediaServer_HTTPServerManager {
         if  nil == webServer || !(webServer?.isRunning ?? false),
             let tempPath = tempOutputDirURL?.path {
             webServer = GCDWebServer()
-            
             // Add a default get handler to make sure that the stream file is considered our index.
-            webServer?.addGETHandler(forBasePath: "/", directoryPath: tempPath, indexFilename: "stream.m3u8", cacheAge: 3600, allowRangeRequests: true)
+            webServer?.addGETHandler(forBasePath: "/", directoryPath: tempPath, indexFilename: _outputTmpFile?.lastPathComponent, cacheAge: 3600, allowRangeRequests: true)
             // Make sure that our handler is called for all requests.
             webServer?.addDefaultHandler(forMethod: "GET", request: GCDWebServerRequest.self, processBlock: webServerHandler)
             _timeoutTimer = Timer(fire: Date(), interval: type(of: self)._serverStartTimeoutThresholdInSeconds, repeats: false, block: timerDone)
@@ -267,7 +258,7 @@ class RVS_MediaServer_HTTPServerManager {
 
     /* ################################################################## */
     /**
-     This will throw up an error alert, if we encounter an error.
+     This will snitch on us, if we encounter an error.
      
      - parameter message: A string, with the error message to be displayed, in un-localized form.
      */

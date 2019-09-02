@@ -22,6 +22,9 @@
       <FileRef
          location = "group:jazzy.sh">
       </FileRef>
+      <FileRef
+         location = "group:ffmpeg-configure.sh">
+      </FileRef>
    </Group>
    <FileRef
       location = "group:RVS_MediaServer.xcodeproj">

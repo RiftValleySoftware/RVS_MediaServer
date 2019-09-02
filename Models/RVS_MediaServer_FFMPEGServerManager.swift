@@ -389,8 +389,8 @@ class RVS_MediaServer_FFMPEGServerManager {
 
     /* ################################################################## */
     /**
-     This will throw up an error alert, if we encounter an error.
-     
+     This will snitch on us, if we encounter an error.
+
      - parameter message: A string, with the error message to be displayed, in un-localized form.
      */
     func handleError(message inMessage: String = "") {

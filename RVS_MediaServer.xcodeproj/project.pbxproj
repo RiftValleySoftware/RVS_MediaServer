@@ -355,7 +355,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\nCWD=\"$(pwd)\"\ncd \"${PROJECT_DIR}/ffmpeg-src\"\n./configure --enable-gpl --enable-libx264 --enable-libx265 --enable-appkit --enable-avfoundation --enable-coreimage --enable-audiotoolbox\nmake\ncd \"${CWD}\"\n";
+			shellScript = "#!/bin/sh\nCWD=\"$(pwd)\"\ncd \"${PROJECT_DIR}/ffmpeg-src\"\nsource \"${PROJECT_DIR}/ffmpeg-configure.sh\"\nmake\ncd \"${CWD}\"\n";
 		};
 		D4EEC82F22F84010000AD2A9 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;

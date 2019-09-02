@@ -139,7 +139,7 @@ class RVS_MediaServer_ServerViewController: RVS_MediaServer_BaseViewController, 
             
             _outputTmpFile = outputTmpFileTmp
             _ffmpegServerHandler = RVS_MediaServer_FFMPEGServerManager(outputTmpFile: _outputTmpFile.fileURL, inputURI: prefs.input_uri, login_id: prefs.login_id, password: prefs.password, raw_parameters: prefs.use_raw_parameters ? prefs.rawFFMPEGString : nil, delegate: self)
-            _httpServerManager = RVS_MediaServer_HTTPServerManager(outputTmpFile: _outputTmpFile, port: prefs.output_tcp_port, streamName: prefs.stream_name, delegate: self)
+            _httpServerManager = RVS_MediaServer_HTTPServerManager(outputTmpFile: _outputTmpFile.fileURL, port: prefs.output_tcp_port, streamName: prefs.stream_name, delegate: self)
         } else {
             _ffmpegServerHandler = RVS_MediaServer_FFMPEGServerManager(inputURI: prefs.input_uri, login_id: prefs.login_id, password: prefs.password, raw_parameters: prefs.use_raw_parameters ? prefs.rawFFMPEGString : nil, delegate: self)
         }
