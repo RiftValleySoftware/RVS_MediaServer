@@ -111,18 +111,6 @@ class RVS_MediaServer_FFMPEGServerManager {
      */
     static private let _hlsTimeSliceInSeconds: Int = 2
     
-    /* ################################################################## */
-    /**
-     The number of seconds to wait between page refreshes, while waiting to load.
-     */
-    static private let _pageReloadDelayInSeconds: Float = 1.0
-    
-    /* ################################################################## */
-    /**
-     The number of seconds to wait as a timeout, when starting the server.
-     */
-    static private let _serverStartTimeoutThresholdInSeconds: TimeInterval = 10.0
-    
     /* ############################################################################################################################## */
     // MARK: - Private Instance Propeties
     /* ############################################################################################################################## */
