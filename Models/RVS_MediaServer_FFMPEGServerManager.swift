@@ -130,7 +130,7 @@ class RVS_MediaServer_FFMPEGServerManager {
     /**
      This will hold the url of our output streaming file.
      */
-    private var _outputTmpFile: TemporaryFile!
+    private var _outputTmpFile: URL!
     
     /* ################################################################## */
     /**
@@ -188,14 +188,14 @@ class RVS_MediaServer_FFMPEGServerManager {
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
-     - parameter outputTmpFile: The temporary file object that describes the temporary directory, where we fetch our data. This can be omitted or nil, if we are not using one.
+     - parameter outputTmpFile: The URL to the temporary file object that describes the temporary directory, where we fetch our data. This can be omitted or nil, if we are not using one.
      - parameter inputURI: A String with the input URI.
      - parameter login_id: A String, with a login for authorization. This is optional. If not provided, authorization will not be attempted.
      - parameter password: A String, with a password for authorization. This is optional. If not provided, authorization will not be attempted.
      - parameter raw_parameters: A String, containing raw parameters to use (instead of the standard HLS).
      - parameter delegate: The delegate for the object. This is optional.
      */
-    init(outputTmpFile inOutputTmpFile: TemporaryFile! = nil, inputURI inInputURI: String, login_id inLoginID: String! = nil, password inPassword: String! = nil, raw_parameters inRawParameters: String! = nil, delegate inDelegate: RVS_MediaServer_FFMPEGServerManagerDelegate! = nil) {
+    init(outputTmpFile inOutputTmpFile: URL! = nil, inputURI inInputURI: String, login_id inLoginID: String! = nil, password inPassword: String! = nil, raw_parameters inRawParameters: String! = nil, delegate inDelegate: RVS_MediaServer_FFMPEGServerManagerDelegate! = nil) {
         _outputTmpFile = inOutputTmpFile
         _inputURI = inInputURI
         _loginID = inLoginID
@@ -312,7 +312,7 @@ class RVS_MediaServer_FFMPEGServerManager {
                     }
                     
                     // If we have been provided an output file and directory.
-                    if  let path = _outputTmpFile?.fileURL.path {
+                    if  let path = _outputTmpFile?.path {
                         ffmpegTask.arguments?.append(path) // The output temp file and dir. The Web server picks up the stream, here.
                     }
 
