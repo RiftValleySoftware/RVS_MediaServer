@@ -213,6 +213,7 @@ public class RVS_PersistentPrefs: NSObject {
     /* ############################################################################################################################## */
     /* ################################################################## */
     /**
+     This is a direct-access subscript that allows you to use the prefs object to reach its stored properties.
      */
     subscript(_ inKey: String) -> Any? {
         get {
@@ -272,7 +273,9 @@ public class RVS_PersistentPrefs: NSObject {
         print("Initial Values for \"\(key)\": \(_values)")
         #endif
         
-        if nil == lastError, !inValues.isEmpty {   // Make sure we didn't barf.
+        // Make sure we didn't barf.
+        if  nil == lastError,
+            !inValues.isEmpty {
             values = _values.merging(inValues, uniquingKeysWith: { (_, new) in new })
         }
     }
