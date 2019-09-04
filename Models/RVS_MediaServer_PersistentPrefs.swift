@@ -72,7 +72,7 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
      */
     private static let _defaultPrefsValues: [String: Any] = [
         _PrefsKeys.stream_name.rawValue: "RVS_MediaServer_Stream",
-        _PrefsKeys.input_uri.rawValue: "",
+        _PrefsKeys.input_uri.rawValue: "rtsp://170.93.143.139/rtplive/470011e600ef003a004ee33696235daa",
         _PrefsKeys.output_tcp_port.rawValue: 8080,
         _PrefsKeys.login_id.rawValue: "",
         _PrefsKeys.password.rawValue: "",

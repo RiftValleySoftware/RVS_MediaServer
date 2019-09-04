@@ -31,6 +31,9 @@
 		D467645F23194CE500256312 /* RVS_MediaServer_FFMPEGServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467645E23194CE500256312 /* RVS_MediaServer_FFMPEGServerManager.swift */; };
 		D4807B4522F843CD00759FE8 /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D4807B4322F843CD00759FE8 /* Warnings.xcconfig */; };
 		D4AB8ED722FE0C8200080197 /* OLEB_TemporaryFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AB8ED622FE0C8200080197 /* OLEB_TemporaryFile.swift */; };
+		D4B1F53323204A36005C3AFF /* VLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B1F53223204A36005C3AFF /* VLCKit.framework */; };
+		D4B1F53423204A5C005C3AFF /* VLCKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4B1F53223204A36005C3AFF /* VLCKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D4B1F53623205497005C3AFF /* RVS_MediaServer_About_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1F53523205497005C3AFF /* RVS_MediaServer_About_ViewController.swift */; };
 		D4D4805A2300456E0037AFB1 /* GCDWebServers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D480592300456E0037AFB1 /* GCDWebServers.framework */; };
 		D4D4805C230045820037AFB1 /* GCDWebServers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4D480592300456E0037AFB1 /* GCDWebServers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4E140C5231B1BA600CA0D52 /* RVS_MediaServer_PersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */; };
@@ -76,6 +79,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D4B1F53423204A5C005C3AFF /* VLCKit.framework in Embed Frameworks */,
 				D4D4805C230045820037AFB1 /* GCDWebServers.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -95,6 +99,8 @@
 		D4807B4222F843CD00759FE8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4807B4322F843CD00759FE8 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		D4AB8ED622FE0C8200080197 /* OLEB_TemporaryFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OLEB_TemporaryFile.swift; sourceTree = "<group>"; };
+		D4B1F53223204A36005C3AFF /* VLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VLCKit.framework; path = Carthage/Build/Mac/VLCKit.framework; sourceTree = "<group>"; };
+		D4B1F53523205497005C3AFF /* RVS_MediaServer_About_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_About_ViewController.swift; sourceTree = "<group>"; };
 		D4D480592300456E0037AFB1 /* GCDWebServers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCDWebServers.framework; path = DerivedData/RVS_MediaServer/Build/Products/Release/GCDWebServers.framework; sourceTree = "<group>"; };
 		D4EEC81E22F83F81000AD2A9 /* RVS_MediaServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RVS_MediaServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4EEC82022F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4D4805A2300456E0037AFB1 /* GCDWebServers.framework in Frameworks */,
+				D4B1F53323204A36005C3AFF /* VLCKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				D401206F22FC8B3F00F0ECCD /* RVS_MediaServer_BaseViewController.swift */,
+				D4B1F53523205497005C3AFF /* RVS_MediaServer_About_ViewController.swift */,
 				D4EEC82222F83F81000AD2A9 /* RVS_MediaServer_SettingsViewController.swift */,
 				D401206D22FC775200F0ECCD /* RVS_MediaServer_ServerViewController.swift */,
 			);
@@ -211,6 +219,7 @@
 		D4F9D9D522FB107200310F17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4B1F53223204A36005C3AFF /* VLCKit.framework */,
 				D4D480592300456E0037AFB1 /* GCDWebServers.framework */,
 			);
 			name = Frameworks;
@@ -393,6 +402,7 @@
 				D467645F23194CE500256312 /* RVS_MediaServer_FFMPEGServerManager.swift in Sources */,
 				D4F9D9E622FB2C1E00310F17 /* RVS_String_Extensions.swift in Sources */,
 				D401206E22FC775300F0ECCD /* RVS_MediaServer_ServerViewController.swift in Sources */,
+				D4B1F53623205497005C3AFF /* RVS_MediaServer_About_ViewController.swift in Sources */,
 				D4F9D9E422FB2C1E00310F17 /* RVS_IPAddress.swift in Sources */,
 				D4FF5E2E22FB3D7A001F787E /* RVS_NSView_Extension.swift in Sources */,
 				D401207022FC8B3F00F0ECCD /* RVS_MediaServer_BaseViewController.swift in Sources */,
@@ -587,6 +597,7 @@
 					"$(PROJECT_DIR)/DerivedData/RVS_MediaServer/Build/Products/Debug",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/DerivedData/RVS_MediaServer/Build/Products/Release",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Meta/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -612,6 +623,7 @@
 					"$(PROJECT_DIR)/DerivedData/RVS_MediaServer/Build/Products/Debug",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/DerivedData/RVS_MediaServer/Build/Products/Release",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Meta/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

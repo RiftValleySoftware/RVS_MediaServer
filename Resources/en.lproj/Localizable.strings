@@ -75,3 +75,9 @@
 "SLUG-SHOW-CONSOLE"                         =       "Show Console";
 /// Hide the console button text
 "SLUG-HIDE-CONSOLE"                         =       "Hide Console";
+/// The Window Title for the About Screen
+"SLUG-ABOUT-TITLE"                          =       "About RVS_MediaServer";
+/// The header for the About Screen
+"SLUG-ABOUT-HEADER"                         =       "About RVS_MediaServer";
+/// The text filling the about screen.
+"SLUG-ABOUT-TEXT"                           =       "Uses ffmpeg\nUses VLCKit\nUses GLWebservers";

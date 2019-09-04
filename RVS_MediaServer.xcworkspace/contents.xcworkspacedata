@@ -23,6 +23,9 @@
          location = "group:jazzy.sh">
       </FileRef>
       <FileRef
+         location = "group:Cartfile">
+      </FileRef>
+      <FileRef
          location = "group:ffmpeg-configure.sh">
       </FileRef>
    </Group>
