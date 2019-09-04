@@ -80,4 +80,4 @@
 /// The header for the About Screen
 "SLUG-ABOUT-HEADER"                         =       "About RVS_MediaServer";
 /// The text filling the about screen.
-"SLUG-ABOUT-TEXT"                           =       "Uses ffmpeg\nUses VLCKit\nUses GLWebservers";
+"SLUG-ABOUT-TEXT"                           =       "Uses ffmpeg (https://ffmpeg.org)\nUses VLCKit (https://videolan.org)\nUses GCDWebserver (https://github.com/swisspol/GCDWebServer)";

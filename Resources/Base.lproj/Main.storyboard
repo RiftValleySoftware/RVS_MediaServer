@@ -756,7 +756,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="440" height="200"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" linkDetection="YES" id="efr-uQ-arB">
+                                        <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" linkDetection="YES" id="efr-uQ-arB">
                                             <rect key="frame" x="0.0" y="0.0" width="440" height="200"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
