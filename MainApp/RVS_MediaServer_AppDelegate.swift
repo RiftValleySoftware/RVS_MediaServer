@@ -179,6 +179,8 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
      - parameter inNotification: The notification that accompanied the application launch.
      */
     func applicationDidFinishLaunching(_ inNotification: Notification) {
+        prefs.display_video_screen = false  // We never start up with the video display showing.
+        
         // Make sure that our menu item is localized.
         displayVideoScreenMenuItem.title = displayVideoScreenMenuItem.title.localizedVariant
         
@@ -188,7 +190,7 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
                 myPreferencesController.showWindow(nil)
             }
         }
-        
+
         // Add an observer to catch changes in our prefs. Changing a pref will restart any running servers.
         _prefsObserver = observe(\.prefsObject?.values, options: [], changeHandler: { [unowned self] _, _ in self.forceUpdate() })
     }

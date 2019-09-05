@@ -107,14 +107,14 @@ class RVS_MediaServer_DisplayVideoViewController: RVS_MediaServer_BaseViewContro
             
             media = VLCMedia(url: uri)
             media.addOptions([
-                "network-caching": 0,
-                "network-synchronisation": true,
-                "sout-x264-preset": "ultrafast",
-                "sout-x264-tune": "zerolatency",
-                "sout-x264-lookahead": 15,
-                "sout-x264-keyint": 10,
-                "sout-x264-intra-refresh": true,
-                "sout-x264-mvrange-thread": -1,
+//                "network-caching": 0,
+//                "network-synchronisation": true,
+//                "sout-x264-preset": "fast",
+//                "sout-x264-tune": "zerolatency",
+//                "sout-x264-lookahead": 15,
+//                "sout-x264-keyint": 10,
+//                "sout-x264-intra-refresh": true,
+//                "sout-x264-mvrange-thread": -1,
                 "rtsp-user": login_id,
                 "rtsp-pwd": password
                 ])
