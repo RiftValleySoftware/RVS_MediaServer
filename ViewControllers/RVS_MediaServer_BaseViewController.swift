@@ -30,6 +30,8 @@ class RVS_MediaServer_BaseViewController: NSViewController, RVS_MediaServer_AppD
     /* ################################################################## */
     /**
      This is a direct accessor to the app prefs object for this controller.
+     
+     It is available for KVO binding.
      */
     @objc dynamic var prefs: RVS_MediaServer_PersistentPrefs {
         return RVS_MediaServer_AppDelegate.appDelegateObject.prefs
@@ -41,6 +43,8 @@ class RVS_MediaServer_BaseViewController: NSViewController, RVS_MediaServer_AppD
     /* ################################################################## */
     /**
      Called when the view finishes loading.
+     
+     We use this to set up the view to receive notifications from the app delegate.
      */
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +57,8 @@ class RVS_MediaServer_BaseViewController: NSViewController, RVS_MediaServer_AppD
     /* ################################################################## */
     /**
      We declare this to allow the method to be optional for subclasses.
+     
+     This base version does nothing.
      */
     func updateUI() {
     }

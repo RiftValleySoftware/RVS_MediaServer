@@ -34,11 +34,24 @@ class RVS_MediaServer_About_ViewController: NSViewController {
     /* ################################################################## */
     /**
      Called when the view finishes loading.
+     
+     We use this to set up the header (app name and version), as well as the body text.
      */
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        headerLabel.stringValue = headerLabel.stringValue.localizedVariant
+        var appVersion = ""
+        var appName = ""
+        
+        if let name = Bundle.main.infoDictionary?["CFBundleName"] as? String {
+            appName = name
+        }
+        
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            appVersion = version
+        }
+
+        headerLabel.stringValue = String(format: headerLabel.stringValue.localizedVariant, appName, appVersion)
         aboutTextView.string = "SLUG-ABOUT-TEXT".localizedVariant
     }
 }

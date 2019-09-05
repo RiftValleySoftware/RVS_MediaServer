@@ -22,8 +22,9 @@ import Foundation
 /* ############################################################################################################################## */
 /**
  This class translates from the rather generic prefs we have in persistent storage, to an object model.
- It also provides a [KVO](https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift) wrapper for them.
- This will also explicitly reference the main prefs object, so simply instantiating this class will automagically give you the app prefs. All changes will be sent to the bundle prefs.
+ It also provides a [KVO](https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift) wrapper for them, and
+ will also explicitly reference the main prefs object, so simply instantiating this class will automagically give you the app prefs.
+ All changes will be sent to the bundle prefs.
  We use a class, even though we could get away with a struct, because we want to make it clear that we are affecting referenced values (saved in the bundle).
  As the class is KVO-enabled, you can bind it for stuff like SwiftUI.
  As it is a class, it can be subclassed and extended.

@@ -78,6 +78,6 @@
 /// The Window Title for the About Screen
 "SLUG-ABOUT-TITLE"                          =       "About RVS_MediaServer";
 /// The header for the About Screen
-"SLUG-ABOUT-HEADER"                         =       "About RVS_MediaServer";
+"SLUG-ABOUT-HEADER-FORMAT"                  =       "%@ Version %@";
 /// The text filling the about screen.
-"SLUG-ABOUT-TEXT"                           =       "Uses ffmpeg (https://ffmpeg.org)\nUses VLCKit (https://videolan.org)\nUses GCDWebserver (https://github.com/swisspol/GCDWebServer)";
+"SLUG-ABOUT-TEXT"                           =       "This is an open-source (https://github.com/RiftValleySoftware/RVS_MediaServer) project\nIt is created and maintained by The Great Rift Valley Software Company (https://riftvalleysoftware.com).\nThe project incorporates the following third-party libraries:\n\tffmpeg (https://ffmpeg.org)\n\n\tVLCKit (https://videolan.org)\n\n\tGCDWebServer (https://github.com/swisspol/GCDWebServer)\n\nLICENSE: GPLV2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)";

@@ -22,6 +22,10 @@ import Cocoa
 /* ################################################################################################################################## */
 /**
  This manages the preferences/settings view window.
+ 
+ Most of the settings are handled via direct KVO.
+ 
+ The main task of this class is to establish localized text.
  */
 class RVS_MediaServer_SettingsViewController: RVS_MediaServer_BaseViewController, NSTextViewDelegate, NSWindowDelegate {
     /* ############################################################################################################################## */

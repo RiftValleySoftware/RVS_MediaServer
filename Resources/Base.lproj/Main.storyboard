@@ -19,12 +19,17 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
-                                                <segue destination="TQL-pC-sdB" kind="show" id="hTe-Bn-6Ja"/>
+                                                <segue destination="TQL-pC-sdB" kind="modal" id="hTe-Bn-6Ja"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
                                             <connections>
+                                                <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.prefsObject.prefs_window_open" id="Vba-RN-pnJ">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
                                                 <segue destination="B8D-0N-5wS" kind="show" identifier="open-preferences-segue" id="oIC-Z9-njz"/>
                                             </connections>
                                         </menuItem>
@@ -686,6 +691,7 @@
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="jbL-ZR-4w0"/>
             </objects>
             <point key="canvasLocation" x="75" y="-395"/>
         </scene>
@@ -744,7 +750,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="dct-b3-LiN"/>
                                 </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="SLUG-ABOUT-HEADER" id="A5O-ci-8Uh">
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="SLUG-ABOUT-HEADER-FORMAT" id="A5O-ci-8Uh">
                                     <font key="font" metaFont="systemBold" size="18"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -795,7 +801,7 @@
                 </viewController>
                 <customObject id="EHn-SR-rX1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="630" y="410"/>
+            <point key="canvasLocation" x="630" y="457"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="Xh6-Jr-kIw">
@@ -978,7 +984,7 @@
                 <customObject id="lxA-RB-8sx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="9ZC-jU-DMW"/>
             </objects>
-            <point key="canvasLocation" x="-516" y="655"/>
+            <point key="canvasLocation" x="-516" y="775"/>
         </scene>
         <!--SLUG-PREFERENCES-VIEWCONTROLLER-->
         <scene sceneID="hIz-AP-VOD">
@@ -1451,7 +1457,7 @@
                 <userDefaultsController id="Chb-aL-vh3"/>
                 <userDefaultsController id="dHv-Si-heD"/>
             </objects>
-            <point key="canvasLocation" x="53" y="722"/>
+            <point key="canvasLocation" x="54" y="769"/>
         </scene>
     </scenes>
 </document>
