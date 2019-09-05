@@ -62,6 +62,8 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         case prefs_window_open
         /// This is true, if we are displaying the console screen.
         case display_console_screen
+        /// This is true, if we are displaying the video screen.
+        case display_video_screen
     }
     
     /* ############################################################################################################################## */
@@ -82,7 +84,8 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         _PrefsKeys.rawFFMPEGString.rawValue: "",
         _PrefsKeys.use_output_http_server.rawValue: true,
         _PrefsKeys.prefs_window_open.rawValue: false,
-        _PrefsKeys.display_console_screen.rawValue: false
+        _PrefsKeys.display_console_screen.rawValue: false,
+        _PrefsKeys.display_video_screen.rawValue: false
     ]
     
     /* ############################################################################################################################## */
@@ -286,6 +289,20 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
         
         set {
             values[_PrefsKeys.display_console_screen.rawValue] = newValue
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     Returns true, if the video screen is open.
+     */
+    @objc dynamic var display_video_screen: Bool {
+        get {
+            return values[_PrefsKeys.display_video_screen.rawValue] as? Bool ?? false
+        }
+        
+        set {
+            values[_PrefsKeys.display_video_screen.rawValue] = newValue
         }
     }
 }

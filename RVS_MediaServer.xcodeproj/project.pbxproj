@@ -29,6 +29,7 @@
 		D41DF25322FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */; };
 		D41DF25622FC50E200BDB620 /* RVS_MediaServer_WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41DF25522FC50E200BDB620 /* RVS_MediaServer_WindowController.swift */; };
 		D467645F23194CE500256312 /* RVS_MediaServer_FFMPEGServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467645E23194CE500256312 /* RVS_MediaServer_FFMPEGServerManager.swift */; };
+		D46C01B823218497005A6A70 /* RVS_MediaServer_DisplayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46C01B723218497005A6A70 /* RVS_MediaServer_DisplayVideoViewController.swift */; };
 		D4807B4522F843CD00759FE8 /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D4807B4322F843CD00759FE8 /* Warnings.xcconfig */; };
 		D4AB8ED722FE0C8200080197 /* OLEB_TemporaryFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AB8ED622FE0C8200080197 /* OLEB_TemporaryFile.swift */; };
 		D4B1F53323204A36005C3AFF /* VLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B1F53223204A36005C3AFF /* VLCKit.framework */; };
@@ -96,6 +97,7 @@
 		D41DF25222FC349C00BDB620 /* RVS_MediaServer_PersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_PersistentPrefs.swift; sourceTree = "<group>"; };
 		D41DF25522FC50E200BDB620 /* RVS_MediaServer_WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_WindowController.swift; sourceTree = "<group>"; };
 		D467645E23194CE500256312 /* RVS_MediaServer_FFMPEGServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_FFMPEGServerManager.swift; sourceTree = "<group>"; };
+		D46C01B723218497005A6A70 /* RVS_MediaServer_DisplayVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVS_MediaServer_DisplayVideoViewController.swift; sourceTree = "<group>"; };
 		D4807B4222F843CD00759FE8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4807B4322F843CD00759FE8 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		D4AB8ED622FE0C8200080197 /* OLEB_TemporaryFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OLEB_TemporaryFile.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				D401206F22FC8B3F00F0ECCD /* RVS_MediaServer_BaseViewController.swift */,
+				D46C01B723218497005A6A70 /* RVS_MediaServer_DisplayVideoViewController.swift */,
 				D4B1F53523205497005C3AFF /* RVS_MediaServer_About_ViewController.swift */,
 				D4EEC82222F83F81000AD2A9 /* RVS_MediaServer_SettingsViewController.swift */,
 				D401206D22FC775200F0ECCD /* RVS_MediaServer_ServerViewController.swift */,
@@ -398,6 +401,7 @@
 				D4AB8ED722FE0C8200080197 /* OLEB_TemporaryFile.swift in Sources */,
 				D4EEC82122F83F81000AD2A9 /* RVS_MediaServer_AppDelegate.swift in Sources */,
 				D4F9D9E522FB2C1E00310F17 /* RVS_Sequence_Extensions.swift in Sources */,
+				D46C01B823218497005A6A70 /* RVS_MediaServer_DisplayVideoViewController.swift in Sources */,
 				D4F9D9E822FB2CC000310F17 /* RVS_PersistentPrefs.swift in Sources */,
 				D467645F23194CE500256312 /* RVS_MediaServer_FFMPEGServerManager.swift in Sources */,
 				D4F9D9E622FB2C1E00310F17 /* RVS_String_Extensions.swift in Sources */,

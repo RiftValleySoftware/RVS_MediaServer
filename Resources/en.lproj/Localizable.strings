@@ -77,6 +77,8 @@
 "SLUG-HIDE-CONSOLE"                         =       "Hide Console";
 /// The Window Title for the About Screen
 "SLUG-ABOUT-TITLE"                          =       "About RVS_MediaServer";
+/// This is the string for the menu item for displaying the video screen.
+"SLUG-DISPLAY-VIDEO-SCREEN"                 =       "Display Video Screen";
 /// The header for the About Screen
 "SLUG-ABOUT-HEADER-FORMAT"                  =       "%@ Version %@";
 /// The text filling the about screen.

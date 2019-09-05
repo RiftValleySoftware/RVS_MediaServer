@@ -43,6 +43,12 @@ protocol RVS_MediaServer_AppDelegateNotifier {
 class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
     /* ################################################################## */
     /**
+     This is a reference to the "Display Video Screen" menu item, for localization.
+     */
+    @IBOutlet weak var displayVideoScreenMenuItem: NSMenuItem!
+    
+    /* ################################################################## */
+    /**
      This just holds the view controllers that request updates.
      */
     private var _notifierClients: [RVS_MediaServer_AppDelegateNotifier?] = []
@@ -173,6 +179,9 @@ class RVS_MediaServer_AppDelegate: NSObject, NSApplicationDelegate {
      - parameter inNotification: The notification that accompanied the application launch.
      */
     func applicationDidFinishLaunching(_ inNotification: Notification) {
+        // Make sure that our menu item is localized.
+        displayVideoScreenMenuItem.title = displayVideoScreenMenuItem.title.localizedVariant
+        
         // Check to see if we want the preferences window to open up. This is via a saved preference.
         if prefs.prefs_window_open {
             if let myPreferencesController = NSStoryboard.main?.instantiateController(withIdentifier: "SETTINGS") as? RVS_MediaServer_WindowController {

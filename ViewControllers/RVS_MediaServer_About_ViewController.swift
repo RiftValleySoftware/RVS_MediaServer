@@ -21,6 +21,7 @@ import Cocoa
 // MARK: - Main View Controller Class for the About Screen
 /* ################################################################################################################################## */
 /**
+ This is the View Controller for the about modal screen.
  */
 class RVS_MediaServer_About_ViewController: NSViewController {
     /// This is the bold label at the top of the screen.
