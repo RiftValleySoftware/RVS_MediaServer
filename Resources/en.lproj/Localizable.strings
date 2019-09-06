@@ -79,6 +79,8 @@
 "SLUG-ABOUT-TITLE"                          =       "About RVS_MediaServer";
 /// This is the string for the menu item for displaying the video screen.
 "SLUG-DISPLAY-VIDEO-SCREEN"                 =       "Display Video Screen";
+/// This is the title for the video display screen.
+"SLUG-DISPLAY-VIDEO-WINDOW-TITLE"           =       "Video Display";
 /// The header for the About Screen
 "SLUG-ABOUT-HEADER-FORMAT"                  =       "%@ Version %@";
 /// The text filling the about screen.

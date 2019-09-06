@@ -757,7 +757,7 @@
         <scene sceneID="0Tm-XQ-Qut">
             <objects>
                 <windowController storyboardIdentifier="VideoDisplay" id="OZT-wA-qj2" customClass="RVS_MediaServer_WindowController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="r3T-1u-2Ab">
+                    <window key="window" title="SLUG-DISPLAY-VIDEO-WINDOW-TITLE" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="r3T-1u-2Ab">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="0.0" y="0.0" width="480" height="480"/>
@@ -774,10 +774,10 @@
             </objects>
             <point key="canvasLocation" x="1159" y="83"/>
         </scene>
-        <!--Video Display-->
+        <!--SLUG-DISPLAY-VIDEO-WINDOW-TITLE-->
         <scene sceneID="TvU-DD-CMF">
             <objects>
-                <viewController title="Video Display" id="7MQ-TE-Wwb" customClass="RVS_MediaServer_DisplayVideoViewController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="SLUG-DISPLAY-VIDEO-WINDOW-TITLE" id="7MQ-TE-Wwb" customClass="RVS_MediaServer_DisplayVideoViewController" customModule="RVS_MediaServer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="XY2-fK-Npa">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
