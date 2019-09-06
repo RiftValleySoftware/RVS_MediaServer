@@ -72,10 +72,18 @@ public class RVS_MediaServer_PersistentPrefs: RVS_PersistentPrefs {
     /* ################################################################## */
     /**
      These are the default prefs values.
+     
+     Here's more RTSP URIs for testing:
+        rtsp://170.93.143.139/rtplive/470011e600ef003a004ee33696235daa
+        rtsp://freja.hiof.no:1935/rtplive/definst/hessdalen03.stream
+     
+     This one is RTMP, not RTSP:
+        rtmp://semerkandglb.mediatriple.net:1935/semerkandliveedge/semerkand2
+     
      */
     private static let _defaultPrefsValues: [String: Any] = [
         _PrefsKeys.stream_name.rawValue: "RVS_MediaServer_Stream",
-        _PrefsKeys.input_uri.rawValue: "rtsp://170.93.143.139/rtplive/470011e600ef003a004ee33696235daa",
+        _PrefsKeys.input_uri.rawValue: "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov",
         _PrefsKeys.output_tcp_port.rawValue: 8080,
         _PrefsKeys.login_id.rawValue: "",
         _PrefsKeys.password.rawValue: "",

@@ -796,16 +796,18 @@
                                             </constraints>
                                         </progressIndicator>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="okK-VR-Gnk">
-                                            <rect key="frame" x="0.0" y="0.0" width="438" height="438"/>
+                                            <rect key="frame" x="8" y="8" width="422" height="422"/>
                                         </customView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="okK-VR-Gnk" firstAttribute="leading" secondItem="AeU-Ig-9Od" secondAttribute="leading" id="5Mt-aY-kyn"/>
-                                        <constraint firstAttribute="trailing" secondItem="okK-VR-Gnk" secondAttribute="trailing" id="B01-it-wVj"/>
-                                        <constraint firstItem="okK-VR-Gnk" firstAttribute="top" secondItem="AeU-Ig-9Od" secondAttribute="top" id="NC1-0S-h11"/>
-                                        <constraint firstAttribute="bottom" secondItem="okK-VR-Gnk" secondAttribute="bottom" id="S6b-ef-06n"/>
                                         <constraint firstItem="NUd-tt-sKH" firstAttribute="centerY" secondItem="AeU-Ig-9Od" secondAttribute="centerY" id="dx5-Dc-Dhf"/>
+                                        <constraint firstItem="okK-VR-Gnk" firstAttribute="top" secondItem="AeU-Ig-9Od" secondAttribute="top" constant="8" id="ggq-9g-s6n"/>
+                                        <constraint firstItem="okK-VR-Gnk" firstAttribute="centerX" secondItem="AeU-Ig-9Od" secondAttribute="centerX" id="h40-LW-uHd"/>
+                                        <constraint firstItem="okK-VR-Gnk" firstAttribute="leading" secondItem="AeU-Ig-9Od" secondAttribute="leading" constant="8" id="hsn-0g-Vh6"/>
                                         <constraint firstItem="NUd-tt-sKH" firstAttribute="centerX" secondItem="AeU-Ig-9Od" secondAttribute="centerX" id="j5Q-8g-hZE"/>
+                                        <constraint firstItem="okK-VR-Gnk" firstAttribute="centerY" secondItem="AeU-Ig-9Od" secondAttribute="centerY" id="jOJ-x6-84r"/>
+                                        <constraint firstAttribute="bottom" secondItem="okK-VR-Gnk" secondAttribute="bottom" constant="8" id="lvq-kP-qVp"/>
+                                        <constraint firstAttribute="trailing" secondItem="okK-VR-Gnk" secondAttribute="trailing" constant="8" id="uWR-Kc-pvd"/>
                                     </constraints>
                                 </view>
                                 <color key="fillColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>

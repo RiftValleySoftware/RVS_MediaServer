@@ -1,4 +1,4 @@
-*Version 1.0.0.2001* **TBD**
+*Version 1.0.0.2001* **September 6, 2019**
 - Added VLCKit for immediate display.
 - Added an about screen.
 
