@@ -30,7 +30,6 @@
 		D41DF25622FC50E200BDB620 /* RVS_MediaServer_WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41DF25522FC50E200BDB620 /* RVS_MediaServer_WindowController.swift */; };
 		D467645F23194CE500256312 /* RVS_MediaServer_FFMPEGServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D467645E23194CE500256312 /* RVS_MediaServer_FFMPEGServerManager.swift */; };
 		D46C01B823218497005A6A70 /* RVS_MediaServer_DisplayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46C01B723218497005A6A70 /* RVS_MediaServer_DisplayVideoViewController.swift */; };
-		D4807B4522F843CD00759FE8 /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D4807B4322F843CD00759FE8 /* Warnings.xcconfig */; };
 		D4AB8ED722FE0C8200080197 /* OLEB_TemporaryFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AB8ED622FE0C8200080197 /* OLEB_TemporaryFile.swift */; };
 		D4B1F53323204A36005C3AFF /* VLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B1F53223204A36005C3AFF /* VLCKit.framework */; };
 		D4B1F53423204A5C005C3AFF /* VLCKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4B1F53223204A36005C3AFF /* VLCKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -296,7 +295,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1030;
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "The Great Rift Valley Software Company";
 				TargetAttributes = {
 					D40393D722FA4CF300DF4877 = {
@@ -344,7 +343,6 @@
 				D40239A02301E27C00D2BED4 /* throbber.gif in Resources */,
 				D4EEC82522F83F82000AD2A9 /* Assets.xcassets in Resources */,
 				D4F9D9DB22FB2AF600310F17 /* Localizable.strings in Resources */,
-				D4807B4522F843CD00759FE8 /* Warnings.xcconfig in Resources */,
 				D4EEC82822F83F82000AD2A9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,6 +591,7 @@
 			baseConfigurationReference = D4807B4322F843CD00759FE8 /* Warnings.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KSAUGZFWP2;
@@ -619,6 +618,7 @@
 			baseConfigurationReference = D4807B4322F843CD00759FE8 /* Warnings.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KSAUGZFWP2;

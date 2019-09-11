@@ -36,12 +36,13 @@ class RVS_MediaServer_DisplayVideoViewController: RVS_MediaServer_BaseViewContro
      This is the "busy" throbber.
      */
     @IBOutlet weak var throbber: NSProgressIndicator!
-
+    
     /* ################################################################## */
     /**
      This is the box that surrounds the video display.
      */
     @IBOutlet weak var surroundingBox: NSBox!
+    
     /* ################################################################## */
     /**
      This is the VLCKit media player object.
@@ -97,28 +98,27 @@ class RVS_MediaServer_DisplayVideoViewController: RVS_MediaServer_BaseViewContro
      */
     func displayStreamingURI() {
         if let uri = URL(string: prefs.input_uri) {
-            var login_id: String = ""
-            var password: String = ""
-            
-            if !prefs.login_id.isEmpty, prefs.password.isEmpty {
-                login_id = prefs.login_id
-                password = prefs.password
-            }
-            
             media = VLCMedia(url: uri)
+            mediaPlayer.media = media
+
             media.addOptions([
-                "network-caching": 0,
-                "network-synchronisation": true,
-                "sout-x264-preset": "fast",
+                "network-caching": 30,
+                "network-synchronisation": false,
+                "sout-x264-preset": "ultrafast",
                 "sout-x264-tune": "zerolatency",
                 "sout-x264-lookahead": 15,
-                "sout-x264-keyint": 10,
-                "sout-x264-intra-refresh": true,
-                "sout-x264-mvrange-thread": -1,
-                "rtsp-user": login_id,
-                "rtsp-pwd": password
+                "sout-x264-keyint": -1,
+                "sout-x264-intra-refresh": false,
+                "sout-x264-mvrange-thread": -1
                 ])
-            mediaPlayer.media = media
+
+            if !prefs.login_id.isEmpty, !prefs.password.isEmpty {
+                media.addOptions([
+                    "rtsp-user": prefs.login_id,
+                    "rtsp-pwd": prefs.password
+                    ])
+            }
+            
             mediaPlayer.play()
         }
     }
@@ -130,10 +130,17 @@ class RVS_MediaServer_DisplayVideoViewController: RVS_MediaServer_BaseViewContro
      - parameter: ignored
      */
     func mediaPlayerStateChanged(_: Notification!) {
-        if nil != mediaPlayer.time.value {
+        if  let videoContainerView = videoContainerView,
+            nil != mediaPlayer.time.value,
+            videoContainerView.isHidden {
             throbber?.stopAnimation(nil)
             videoContainerView.isHidden = false
             surroundingBox?.fillColor = NSColor.black
+            let displaySize = mediaPlayer.videoSize
+            videoContainerView.bounds.origin = CGPoint.zero
+            videoContainerView.bounds.size = displaySize
+            videoContainerView.frame.origin.x = (surroundingBox.bounds.size.width - displaySize.width) / 2.0
+            videoContainerView.frame.origin.y = (surroundingBox.bounds.size.height - displaySize.height) / 2.0
         }
     }
 }
