@@ -787,7 +787,7 @@
                                 <rect key="frame" x="20" y="20" width="440" height="440"/>
                                 <view key="contentView" id="AeU-Ig-9Od">
                                     <rect key="frame" x="1" y="1" width="438" height="438"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="NUd-tt-sKH">
                                             <rect key="frame" x="203" y="203" width="32" height="32"/>
